@@ -149,51 +149,6 @@
         ]
     },
     {
-        "name": "bower-asset/jquery",
-        "version": "2.1.3",
-        "version_normalized": "2.1.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/jquery/jquery.git",
-            "reference": "8f2a9d9272d6ed7f32d3a484740ab342c02541e0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/jquery/jquery/zipball/8f2a9d9272d6ed7f32d3a484740ab342c02541e0",
-            "reference": "8f2a9d9272d6ed7f32d3a484740ab342c02541e0",
-            "shasum": ""
-        },
-        "require-dev": {
-            "bower-asset/qunit": "1.14.0",
-            "bower-asset/requirejs": "2.1.10",
-            "bower-asset/sinon": "1.8.1",
-            "bower-asset/sizzle": "2.1.1-patch2"
-        },
-        "type": "bower-asset-library",
-        "extra": {
-            "bower-asset-main": "dist/jquery.js",
-            "bower-asset-ignore": [
-                "**/.*",
-                "build",
-                "speed",
-                "test",
-                "*.md",
-                "AUTHORS.txt",
-                "Gruntfile.js",
-                "package.json"
-            ]
-        },
-        "installation-source": "dist",
-        "license": [
-            "MIT"
-        ],
-        "keywords": [
-            "javascript",
-            "jquery",
-            "library"
-        ]
-    },
-    {
         "name": "bower-asset/yii2-pjax",
         "version": "v2.0.4",
         "version_normalized": "2.0.4.0",
@@ -257,60 +212,6 @@
             ]
         },
         "installation-source": "dist"
-    },
-    {
-        "name": "bower-asset/jquery.inputmask",
-        "version": "3.1.62",
-        "version_normalized": "3.1.62.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
-            "reference": "da1a274cefa18a52a0519ac7ffe8e8d31e950eae"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/da1a274cefa18a52a0519ac7ffe8e8d31e950eae",
-            "reference": "da1a274cefa18a52a0519ac7ffe8e8d31e950eae",
-            "shasum": ""
-        },
-        "require": {
-            "bower-asset/jquery": ">=1.7"
-        },
-        "type": "bower-asset-library",
-        "extra": {
-            "bower-asset-main": [
-                "./dist/inputmask/jquery.inputmask.js",
-                "./dist/inputmask/jquery.inputmask.extensions.js",
-                "./dist/inputmask/jquery.inputmask.date.extensions.js",
-                "./dist/inputmask/jquery.inputmask.numeric.extensions.js",
-                "./dist/inputmask/jquery.inputmask.phone.extensions.js",
-                "./dist/inputmask/jquery.inputmask.regex.extensions.js"
-            ],
-            "bower-asset-ignore": [
-                "**/.*",
-                "qunit/",
-                "nuget/",
-                "tools/",
-                "js/",
-                "*.md",
-                "build.properties",
-                "build.xml",
-                "jquery.inputmask.jquery.json"
-            ]
-        },
-        "installation-source": "dist",
-        "license": [
-            "http://opensource.org/licenses/mit-license.php"
-        ],
-        "description": "jquery.inputmask is a jquery plugin which create an input mask.",
-        "keywords": [
-            "form",
-            "input",
-            "inputmask",
-            "jquery",
-            "mask",
-            "plugins"
-        ]
     },
     {
         "name": "cebe/markdown",
@@ -1031,6 +932,106 @@
             "image",
             "imagine",
             "yii2"
+        ]
+    },
+    {
+        "name": "bower-asset/jquery",
+        "version": "2.1.4",
+        "version_normalized": "2.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jquery/jquery.git",
+            "reference": "7751e69b615c6eca6f783a81e292a55725af6b85"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jquery/jquery/zipball/7751e69b615c6eca6f783a81e292a55725af6b85",
+            "reference": "7751e69b615c6eca6f783a81e292a55725af6b85",
+            "shasum": ""
+        },
+        "require-dev": {
+            "bower-asset/qunit": "1.14.0",
+            "bower-asset/requirejs": "2.1.10",
+            "bower-asset/sinon": "1.8.1",
+            "bower-asset/sizzle": "2.1.1-patch2"
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": "dist/jquery.js",
+            "bower-asset-ignore": [
+                "**/.*",
+                "build",
+                "dist/cdn",
+                "speed",
+                "test",
+                "*.md",
+                "AUTHORS.txt",
+                "Gruntfile.js",
+                "package.json"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ],
+        "keywords": [
+            "javascript",
+            "jquery",
+            "library"
+        ]
+    },
+    {
+        "name": "bower-asset/jquery.inputmask",
+        "version": "3.1.63",
+        "version_normalized": "3.1.63.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/RobinHerbots/jquery.inputmask.git",
+            "reference": "c40c7287eadc31e341ebbf0c02352eb55b9cbc48"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/RobinHerbots/jquery.inputmask/zipball/c40c7287eadc31e341ebbf0c02352eb55b9cbc48",
+            "reference": "c40c7287eadc31e341ebbf0c02352eb55b9cbc48",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/jquery": ">=1.7"
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "./dist/inputmask/jquery.inputmask.js",
+                "./dist/inputmask/jquery.inputmask.extensions.js",
+                "./dist/inputmask/jquery.inputmask.date.extensions.js",
+                "./dist/inputmask/jquery.inputmask.numeric.extensions.js",
+                "./dist/inputmask/jquery.inputmask.phone.extensions.js",
+                "./dist/inputmask/jquery.inputmask.regex.extensions.js"
+            ],
+            "bower-asset-ignore": [
+                "**/.*",
+                "qunit/",
+                "nuget/",
+                "tools/",
+                "js/",
+                "*.md",
+                "build.properties",
+                "build.xml",
+                "jquery.inputmask.jquery.json"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "http://opensource.org/licenses/mit-license.php"
+        ],
+        "description": "jquery.inputmask is a jquery plugin which create an input mask.",
+        "keywords": [
+            "form",
+            "input",
+            "inputmask",
+            "jquery",
+            "mask",
+            "plugins"
         ]
     }
 ]

@@ -23,8 +23,10 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
+    const STATUS_BLOCKED = 0;
+    const STATUS_ACTIVE = 1;
+    const STATUS_WAIT = 2;
+
 
     /**
      * @inheritdoc
@@ -50,11 +52,57 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            ['username', 'required'],
+            ['username', 'match', 'pattern' => '#^[\w_-]+$#i'],
+            ['username', 'unique', 'targetClass' => self::className(), 'message' => 'This username has already been taken.'],
+            ['username', 'string', 'min' => 2, 'max' => 255],
+
+            ['email', 'required'],
+            ['email', 'email'],
+            ['email', 'unique', 'targetClass' => self::className(), 'message' => 'This email address has already been taken.'],
+            ['email', 'string', 'max' => 255],
+
+            ['status', 'integer'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getStatusName()
+    {
+        $statuses = self::getStatusesArray();
+        return isset($statuses[$this->status]) ? $statuses[$this->status] : '';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function getStatusesArray()
+    {
+        return [
+            self::STATUS_BLOCKED => 'Заблокирован',
+            self::STATUS_ACTIVE => 'Активен',
+            self::STATUS_WAIT => 'Ожидает подтверждения',
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'created_at' => 'Создан',
+            'updated_at' => 'Обновлён',
+            'username' => 'Имя пользователя',
+            'email' => 'Email',
+            'status' => 'Статус',
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -79,7 +127,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username]);
     }
 
     /**
@@ -170,6 +218,7 @@ class User extends ActiveRecord implements IdentityInterface
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
+
     /**
      * Generates new password reset token
      */
@@ -184,5 +233,43 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->generateAuthKey();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param string $email_confirm_token
+     * @return static|null
+     */
+    public static function findByEmailConfirmToken($email_confirm_token)
+    {
+        return static::findOne(['email_confirm_token' => $email_confirm_token, 'status' => self::STATUS_WAIT]);
+    }
+
+    /**
+     * Generates email confirmation token
+     */
+    public function generateEmailConfirmToken()
+    {
+        $this->email_confirm_token = Yii::$app->security->generateRandomString();
+    }
+
+    /**
+     * Removes email confirmation token
+     */
+    public function removeEmailConfirmToken()
+    {
+        $this->email_confirm_token = null;
     }
 }

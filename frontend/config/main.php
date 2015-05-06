@@ -28,6 +28,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                '<_a:(login|logout|signup|confirm-email|request-password-reset|reset-password)>' => 'user/<_a>',
+                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
+                '<_c:[\w\-]+>' => '<_c>/index',
+                '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
+            ],
+        ],
     ],
     'params' => $params,
 ];

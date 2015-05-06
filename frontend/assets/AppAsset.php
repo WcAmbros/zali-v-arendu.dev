@@ -16,14 +16,18 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $baseUrl = '@web/template/site';
     public $css = [
-        'css/site.css',
+        'css/reset.css',
+        'css/style.css',
     ];
     public $js = [
+        'js/style.js',
     ];
     public $depends = [
+        'frontend\assets\Html5ShivAsset',
+        'frontend\assets\RespondAsset',
+        'frontend\assets\DadataAsset',
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
     ];
 }

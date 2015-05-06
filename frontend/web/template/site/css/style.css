@@ -1,0 +1,699 @@
+@import url(template.css);
+
+/**главная страница**/
+.main-background{
+    background: url("../images/style/header.jpg") repeat-x;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 460px;
+    z-index: -2;
+}
+.main-background-slider{
+    width: 1400px;
+    margin: auto;
+    border-left: 10px #fff solid;
+    border-right: 10px #fff solid;
+}
+.main-section{
+    height: 400px;
+}
+.main-find{
+    font: 14px arial, Helvetica, sans-serif;
+    color: #fff;
+    display: inline-block;
+    width: 470px;
+    height: 300px;
+    margin: 30px 0 0 0;
+    position: relative;
+}
+.main-find:before{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #002d86;
+    opacity: 0.7;
+    content: '';
+    z-index: -1;
+}
+.main-find__header{
+
+    text-transform: uppercase;
+    font:bold 18px "Gotham Pro",gotham_pro;
+    margin: 23px 0 17px 145px;
+}
+.main-find-form{
+    padding: 0 10px 10px;
+}
+.main-find-form-label{
+    display: block;
+    margin-bottom: 20px;
+}
+.main-find-form-label__span{
+    display: inline-block;
+    padding-right:12px;
+    width: 120px;
+    text-align: right;
+}
+.main-find-form-label__select{
+    width: 248px;
+    height: 28px;
+}
+.main__button{
+    text-transform: uppercase;
+    font:bold 14px "Gotham Pro",gotham_pro;
+    border: 0;
+    cursor: pointer;
+    background: #ffff00;
+}
+.main__button:hover{
+    box-shadow: inset  -5px -5px 5px -5px #333;
+}
+.main__button:active{
+    box-shadow: inset 5px 5px 5px -5px #333;
+}
+.main-find-form__button{
+    width: 180px;
+    height: 40px;
+    margin: 5px 0 0 135px;
+}
+.main-find-form__button .i-icons,
+.main__add .i-icons{
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.main__add{
+    vertical-align: middle;
+    margin: 40px 0 0 0;
+    width: 238px;
+    text-align: center;
+    line-height: 44px;
+    float: right;
+}
+
+.main-caption{
+    position: relative;
+    display: block;
+    background: #dbdbdb;
+    margin: 20px 0 0;
+    font:lighter 24px/70px "Gotham Pro",gotham_pro;
+    vertical-align: middle;
+    text-align: center;
+}
+.main-caption:before{
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -10px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    border-top: 15px solid #dbdbdb;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    content: '';
+
+}
+.main-caption__span{
+    font-weight: bold;
+}
+
+.main__header,.deals__header{
+    font:bold 30px "Gotham Pro",gotham_pro;
+    border-bottom: 2px solid #ffff00;
+    padding: 40px 0 8px;
+    margin-bottom: 29px;
+}
+.b-star{
+    display: block;
+    width: 24px;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: -24px;
+    position: relative;
+    z-index: 1;
+}
+.deals{
+    font: 14px arial, Helvetica, sans-serif;
+}
+.deals-content{
+    text-align: justify;
+}
+.deals-content:after {
+    display: inline-block;
+    content: "";
+    width: 100%;
+}
+.deals-item{
+    vertical-align: top;
+    display: inline-block;
+    width: 220px;
+    margin: 0 0 20px 0;
+}
+.deals-item-description{
+    margin: 10px 0 0 0 ;
+    text-align: left;
+}
+.deals-item-description__address{
+    font-weight: bold;
+}
+.deals-item-description__map{
+    color: #669900;
+    display: inline-block;
+    cursor: pointer;
+    border-bottom: 1px dotted #669900;
+}
+.deals-item-description__map .i-map{
+    position: absolute;
+    margin-left: 5px;
+}
+.deals__more{
+    font-weight: bold;
+    text-align: right;
+}
+.main-content{
+    font: 12px arial, Helvetica, sans-serif;
+    padding-bottom: 70px;
+}
+
+/** зал**/
+
+.return_to_search{
+    margin: 26px 0 0 0;
+}
+.return_to_search__link{
+    font: bold 14px arial, Helvetica, sans-serif;
+    margin-left: 3px;
+}
+
+.hall{
+
+}
+
+.hall__header{
+    font:bold 30px "Gotham Pro",gotham_pro;
+    margin: 20px 0 8px;
+}
+.hall__caption{
+    font: bold 16px arial, Helvetica, sans-serif;
+    margin-bottom:5px;
+}
+
+.hall-content-slider{
+    float: left;
+    margin: 0 30px 0 0;
+    width: 336px;
+}
+.hall-content-slider-thumnails{
+    margin-top: 15px;
+    text-align: justify;
+}
+.hall-content-slider-thumnails:after{
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+.hall-content-slider-thumbnails-link{
+    display: inline-block;
+    margin-bottom: 18px;
+}
+.hall-content-banner{
+    width: 220px;
+    min-height: 500px;
+    float: right;
+    margin-left:32px;
+
+}
+.hall-content-banner__example{
+    margin: 0;
+    display: block;
+    text-align: center;
+    line-height: 500px;
+    vertical-align: middle;
+    font-weight: bold;
+    background: #e5e5e5;
+}
+.hall-content-contact{
+    list-style-type: none;
+    padding-left:25px;
+    margin: 0;
+}
+.hall-content-contact-link{
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 1px dotted #3060bf;
+}
+.hall-content-contact-link .i-icons{
+    position: absolute;
+    margin:2px 0 0 -25px;
+}
+.hall-content-contact__line{
+    margin-bottom: 15px;
+}
+.equipment{
+    width: 350px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: justify;
+    padding: 0;
+    margin: 0;
+}
+.equipment:after{
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+.equipment li{
+    display: inline-block;
+    width: 160px;
+}
+.equipment__header{
+    margin-top: 30px;
+    font: bold 16px arial, Helvetica, sans-serif;
+}
+
+
+/* похожие товары*/
+.similar{
+    clear: both;
+    margin-bottom: 59px;
+}
+
+.similar-content{
+    padding-bottom: 70px;
+}
+
+/* результат поиска*/
+
+.result{
+    margin: 10px 0 0 0;
+}
+
+.result-find{
+    font: 14px arial, Helvetica, sans-serif;
+    width: 220px;
+    float: left;
+}
+
+.result-find-location{
+    background: #4c6dae;
+    padding: 20px;
+    color: #fff;
+}
+.result-find-location__header,.result-find-params__header{
+    font:bold 18px "Gotham Pro",gotham_pro;
+    text-transform: uppercase;
+}
+.result-find-location-item{
+    display: block;
+}
+.result-find-location-item__header{
+    display: block;
+    margin: 13px 0 9px;
+}
+.result-find-location-item__select{
+    width: 180px;
+    height: 27px;
+}
+
+.result-find__button{
+    margin: 19px 0 10px;
+    width: 180px;
+    text-transform: uppercase;
+    font:bold 14px/40px "Gotham Pro",gotham_pro;
+    border: 0;
+    cursor: pointer;
+    background: #ffff00;
+}
+.result-find__button:hover{
+    box-shadow: inset  -5px -5px 5px -5px #333;
+}
+.result-find__button:active{
+    box-shadow: inset 5px 5px 5px -5px #333;
+}
+.result-find__button .i-icons{
+    margin-right: 8px;
+}
+.result-find-params{
+    margin-top: 10px;
+    background: #e5eeff;
+    padding: 20px;
+}
+
+.result-content{
+    margin-left: 250px;
+}
+
+.result-content-header{
+    font: bold 30px "Gotham Pro",gotham_pro;
+}
+
+.result-content-header__span{
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.result-content-sort{
+    margin: 18px 0 18px;
+}
+.result-content-sort__select{
+    color: #3060bf;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px dotted #3060bf;
+}
+.result-content-sort__select:after{
+    width: 0;
+    height: 0;
+    display: inline-block;
+    position: absolute;
+    margin: 6px 0 0 5px;
+    border-top: 5px solid #3060bf;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    content: '';
+}
+.result-content-deals{
+    border-bottom: 2px solid #ffff00;
+}
+
+.pagination{
+    font: 10px arial, Helvetica, sans-serif;
+    margin: 20px 0 50px;
+    line-height: 28px;
+    vertical-align: top;
+    height: 28px;
+}
+.pagination-pages{
+    float: left;
+    display: inline-block;
+    width: 168px;
+    text-align: justify;
+    height: 28px;
+
+}
+.pagination-pages:after{
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+.pagination-pages-link{
+    position: relative;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    width: 28px;
+    background: url("../images/style/pagination.jpg");
+}
+
+.pagination-pages-link:hover{
+    background: #fff;
+    color: #000;
+}
+.pagination-pages-link:hover:before{
+    display: block;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    border: 2px solid #3060bf;
+    content: '';
+}
+.pagination-next{
+    float: left;
+    margin-left: 28px;
+    display: inline-block;
+}
+.pagination-next-link{
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    width: 87px;
+    text-decoration: none;
+    font-weight: bold;
+    background: url("../images/style/pagination.jpg");
+}
+.pagination-status{
+    font-size: 12px;
+    float: right;
+}
+
+.add-hall{
+    display: none;
+}
+.add-hall-background{
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background: #000;
+    z-index: 10;
+    content: '';
+}
+.add-hall-form{
+    position: absolute;
+    z-index: 11;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 720px;
+    margin: auto;
+    background: url("../images/style/header.jpg");
+    box-shadow: 0 0 5px 5px #1a1a1a;
+}
+.add-hall-form__header{
+    font: 18px "Gotham Pro",gotham_pro;
+    line-height: 44px;
+    text-transform: uppercase;
+    position: relative;
+    display: block;
+    padding: 0 32px;
+    color: #fff;
+}
+.add-hall-form__header:before{
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #a8a3dd;
+    opacity: 0.7;
+    content: '';
+}
+.add-hall-form__close{
+    display: inline-block;
+    margin: 13px -16px 0 0;
+    cursor: pointer;
+    float: right;
+}
+.add-hall-form-location,
+.add-hall-form-params
+{
+    margin: 30px;
+    border-bottom: 1px solid #a4b3dc;
+}
+.add-hall-form-location__header,
+.add-hall-form-contacts__header,
+.add-hall-form-params__header
+{
+    font: bold 30px "Gotham Pro",gotham_pro;
+    margin: 0 0 30px 0;
+    color:  #2955b4;
+}
+.add-hall-form-col{
+    width: 278px;
+    display: inline-block;
+    vertical-align: top;
+}
+.add-hall-form-col_right{
+    width: 330px;
+    margin-left: 43px;
+}
+.add-hall-form__line{
+    display: block;
+    width: 290px;
+    margin-bottom: 20px;
+}
+.add-hall-form-location__label{
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 70px;
+    display: inline-block;
+}
+
+.add-hall-form-location__select{
+    width: 210px;
+    border: 1px solid #a4b3dc;
+    height: 23px;
+}
+.add-hall-form-location__input{
+    width: 38px;
+    height: 23px;
+    border: 1px solid #a4b3dc;
+    margin-right: 16px;
+}
+.add-hall-form-location__textarea{
+    margin-top: 5px;
+    width: 264px;
+    height: 166px;
+    border: 1px solid #a4b3dc;
+    padding: 5px;
+}
+.add-hall-form-params__label{
+    font-weight: bold;
+    font-size: 14px;
+    min-width: 100px;
+    display: inline-block;
+}
+.add-hall-form-params__select{
+    width: 178px;
+    border: 1px solid #a4b3dc;
+    height: 23px;
+}
+.add-hall-form-params-cover{
+    margin-top: 5px;
+}
+.add-hall-form-params-cover__label{
+ margin-right: 3px;
+}
+.add-hall-form-params-cover__select{
+    width: 88px;
+    border: 1px solid #a4b3dc;
+    height: 23px;
+}
+.add-hall-form-params__square{
+    border: 1px solid #a4b3dc;
+    width: 62px;
+    height: 23px;
+}
+.add-hall-form-checklist{
+    margin-top: 16px;
+    text-align: justify;
+}
+.add-hall-form-checklist:after{
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+.add-hall-form-checklist-item{
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 7px;
+    width: 125px;
+}
+.add-hall-form-params{
+    padding-bottom: 30px;
+}
+.add-hall-form-params__checkbox{
+    border: 1px solid #a4b3dc;
+}
+.add-hall-form-params__textarea{
+    border: 1px solid #a4b3dc;
+    width: 274px;
+    height: 91px;
+    margin-top: 5px;
+}
+.add-hall-form-params-price{
+    text-align: justify;
+}
+.add-hall-form-params-price:after{
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+.add-hall-form-params-price-min,
+.add-hall-form-params-price-max
+{
+    display: inline-block;
+    width: 160px;
+}
+.add-hall-form-params-price-min__input{
+    border: 1px solid #a4b3dc;
+    width: 92px;
+    height: 23px;
+}
+.add-hall-form-params-price-max__input{
+    border: 1px solid #a4b3dc;
+    width: 92px;
+    height: 23px;
+}
+.add-hall-form-params__price{
+    display: block;
+    margin-bottom: 7px;
+}
+.add-hall-form-params-price-min__label,
+.add-hall-form-params-price-max__label{
+    margin-bottom: 3px;
+}
+.add-hall-form-params-album{
+    margin-top: 20px;
+}
+.add-hall-form-params-album-content{
+    text-align: justify;
+}
+.add-hall-form-params-album-content:after{
+    display: inline-block;
+    width: 100%;
+    content: '';
+}
+.add-hall-form-params-album-content-item{
+    display: inline-block;
+    margin-top: 10px;
+}
+.add-hall-form-params-album-content-item__img{
+    width: 100px;
+    height: 65px;
+}
+.add-hall-form-params-album-button{
+    font-size: 14px;
+    font-weight: bold;
+    color: #2955b4;
+    border-bottom: 1px dotted #2955b4;
+    display: inline-block;
+    cursor: pointer;
+}
+.add-hall-form-contacts{
+    margin: 30px;
+}
+.add-hall-form-contacts__label{
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    width: 80px;
+}
+.add-hall-form-contacts__input{
+    border: 1px solid #a4b3dc;
+    height: 23px;
+    width: 200px;
+}
+.add-hall-form-contacts-line{
+    display: block;
+    margin-bottom: 20px;
+}
+.add-hall-form-contacts-capthca__input{
+    width: 117px;
+    border: 1px solid #a4b3dc;
+    height: 23px;
+    float: right;
+}
+.add-hall__button{
+    background: #2853b2;
+    color: #fff;
+    font: bold 14px "Gotham Pro",gotham_pro;
+    text-transform: uppercase;
+    border: 0;
+    display: inline-block;
+    width: 288px;
+    line-height: 40px;
+    height: 40px;
+    margin:  0 0 30px 30px ;
+    cursor: pointer;
+}

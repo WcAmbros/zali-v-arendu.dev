@@ -1,0 +1,95 @@
+.i-icons{
+    display: inline-block;
+    background: url("../images/style/elements.png");
+}
+.i-search{
+    width: 16px;
+    height: 16px;
+}
+
+.i-add{
+    width: 14px;
+    height: 14px;
+    background-position: -19px 0;
+}
+.i-star{
+    width: 15px;
+    height: 13px;
+    background-position: -36px 0;
+}
+
+.i-metro_red{
+    width: 16px;
+    height: 15px;
+    background-position: -56px 0;
+}
+.i-metro_purple{
+    width: 16px;
+    height: 15px;
+    background-position: -76px 0;
+}
+.i-metro_orange{
+    width: 16px;
+    height: 15px;
+    background-position: -96px 0;
+}
+
+.i-metro_green{
+    width: 16px;
+    height: 15px;
+    background-position: -116px 0;
+}
+.i-metro_blue{
+    width: 16px;
+    height: 15px;
+    background-position: -136px 0;
+}
+.i-map{
+    width: 10px;
+    height: 14px;
+    background-position: 0 -20px;
+}
+.i-vk{
+    width: 21px;
+    height: 21px;
+    background-position: -155px 0;
+}
+.i-facebook{
+    width: 21px;
+    height: 21px;
+    background-position: -178px 0;
+}
+.i-phone{
+    width: 16px;
+    height: 16px;
+    background-position: -47px -19px;
+}
+.i-mail{
+    width: 16px;
+    height: 14px;
+    background-position: -65px -19px;
+}
+
+.i-close{
+    width: 18px;
+    height: 18px;
+    background-position: -85px -19px ;
+}
+.i-arrow{
+    width: 28px;
+    height: 11px;
+    background-position: -13px -20px;
+}
+.i-shadow{
+    position: relative;
+}
+.i-shadow:before{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #000;
+    opacity: 0.5;
+    z-index: -1;
+    content: '';
+}

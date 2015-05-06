@@ -1,8 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
+use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
 
@@ -21,56 +19,66 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
-    <?php $this->beginBody() ?>
-    <div class="wrap">
-        <?php
-            NavBar::begin([
-                'brandLabel' => 'My Company',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]);
-            $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
-            ];
-            if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup']];
-                $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
-            } else {
-                $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/user/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ];
-            }
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => $menuItems,
-            ]);
-            NavBar::end();
-        ?>
 
-        <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+
+<body class="page">
+<?php $this->beginBody() ?>
+<header class="header">
+
+    <div class="header-content">
+        <div class="header-content-logo">
+            <span class="header-content-logo__label">Залы</span> в аренду
+        </div>
+        <div class="header-content-town">
+            В городе: <span class="header-content-town__label">Санкт-Петербург</span>
+            <div class="dropdown">
+                <ul class="dropdown-list"></ul>
+            </div>
+        </div>
+        <div class="header-content-user">
+            <?php
+
+            $login=Url::toRoute('user/login');
+            $logout=Url::toRoute('user/logout');
+            $signup=Url::toRoute('user/signup');
+            if(Yii::$app->user->isGuest){
+
+                echo '<a href="'.$login.'">Войти</a> / <a href="'.$signup.'">Зарегистрироваться</a>';
+            }else{
+                echo 'Привет, <a href="#" class="header-content-user__label">'.Yii::$app->user->identity->username.'!</a>
+                <img src="/images/user.jpg" class="header-content-user__icon"> /
+                <a data-method="post" href="'.$logout.'">Выйти</a>';
+            }
+            ?>
         </div>
     </div>
-
-    <footer class="footer">
-        <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+</header>
+<div class="content">
+    <?= $content ?>
+    <?= Alert::widget() ?>
+</div>
+<footer class="footer">
+    <div class="footer-content">
+        <div class="site-master">
+            <img src="/images/style/site-master.png">
         </div>
-    </footer>
-
-    <?php $this->endBody() ?>
+        <div class="footer-content-nav">
+            <a href="#" class="footer-content-nav-link">О проекте</a> |
+            <a href="#" class="footer-content-nav-link">Реклама</a> |
+            <a href="#" class="footer-content-nav-link">Обратная связь</a>
+        </div>
+        <div class="footer-social">
+            <a href="#" class="i-icons i-vk"></a>
+            <a href="#" class="i-icons i-facebook"></a>
+        </div>
+        <div class="footer-copy">
+            &copy; <?= date('Y') ?> <a href="/" class="footer-copy-link">Залы в аренду</a>
+        </div>
+    </div>
+</footer>
+<?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>
+
+

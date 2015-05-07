@@ -6,6 +6,12 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+        ],
+        'log' => [
+            'class' => 'yii\log\Dispatcher',
+        ],
         'i18n' => [
             'translations' => [
                 'app*' => [

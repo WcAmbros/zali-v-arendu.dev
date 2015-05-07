@@ -7,7 +7,9 @@
  */
 
 namespace frontend\assets;
+
 use yii\web\AssetBundle;
+use yii\web\View;
 
 class DadataAsset extends AssetBundle{
     public $css = [
@@ -15,5 +17,8 @@ class DadataAsset extends AssetBundle{
     ];
     public $js = [
         'https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js',
+    ];
+    public $jsOptions = [
+        'position' => View::POS_HEAD,
     ];
 }

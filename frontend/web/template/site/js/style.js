@@ -9,8 +9,6 @@ var button={
 };
 
 $(document).ready(function(){
-    //$('form').submit(false);
-
 
     $(".add-hall-form-col__address").suggestions({
         serviceUrl: "https://dadata.ru/api/v2",

@@ -8,6 +8,7 @@
 namespace frontend\assets;
 
 use yii\web\AssetBundle;
+use yii\web\View;
 
 /**
  * @author Qiang Xue <qiang.xue@gmail.com>
@@ -24,10 +25,14 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/style.js',
     ];
+    public $jsOptions = [
+        'position' => View::POS_HEAD,
+    ];
     public $depends = [
+        'yii\web\YiiAsset',
         'frontend\assets\Html5ShivAsset',
         'frontend\assets\RespondAsset',
         'frontend\assets\DadataAsset',
-        'yii\web\YiiAsset',
+
     ];
 }

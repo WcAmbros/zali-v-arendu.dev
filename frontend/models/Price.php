@@ -10,9 +10,8 @@ use Yii;
  * @property integer $id
  * @property integer $min
  * @property integer $max
- * @property integer $hall_id
  *
- * @property Hall $hall
+ * @property Hall[] $halls
  */
 class Price extends \yii\db\ActiveRecord
 {
@@ -30,8 +29,7 @@ class Price extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'hall_id'], 'required'],
-            [['id', 'min', 'max', 'hall_id'], 'integer']
+            [['min', 'max'], 'integer']
         ];
     }
 
@@ -44,15 +42,14 @@ class Price extends \yii\db\ActiveRecord
             'id' => 'ID',
             'min' => 'Min',
             'max' => 'Max',
-            'hall_id' => 'Hall ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHall()
+    public function getHalls()
     {
-        return $this->hasOne(Hall::className(), ['id' => 'hall_id']);
+        return $this->hasMany(Hall::className(), ['price_id' => 'id']);
     }
 }

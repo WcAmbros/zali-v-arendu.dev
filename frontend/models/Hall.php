@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "hall".
  *
@@ -138,7 +139,16 @@ class Hall extends \yii\db\ActiveRecord
         return [
             'UploadImageBehavior' => [
                 'class' => 'common\behaviors\UploadImageBehavior',
-            ]
+            ],
+            'HallBehavior' => [
+                'class' => 'common\behaviors\HallBehavior',
+            ],
+//            'SlugBehavior' => [
+//                'class' => 'common\behaviors\SlugBehavior',
+//                'in_attribute' => 'name',
+//                'out_attribute' => 'slug',
+//                'translit' => true
+//            ]
         ];
     }
 }

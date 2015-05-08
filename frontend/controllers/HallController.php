@@ -1,7 +1,11 @@
 <?php
 namespace frontend\controllers;
 
+
+use common\models\User;
+use frontend\models\Agent;
 use Yii;
+use yii\captcha\CaptchaAction;
 use yii\web\Controller;
 use frontend\models\Hall;
 
@@ -26,25 +30,29 @@ class HallController extends Controller
         ];
     }
 
-    public function actionCreate()
-    {
-
-        $model = new Hall();
-        $post=Yii::$app->request->post();
-
-        $post['Hall']['user_id']=Yii::$app->session->get('__id');
-
-
-        if($model->load($post)&& $model->save()){}
-
+    public  function actionIndex(){
         return $this->goBack();
     }
 
-    public function actionRead()
+    public function actionCreate()
+    {
+
+        $post=Yii::$app->request->post()
+        $model = new Hall();
+        if($model->load($post)&& $model->save()){}
+
+        //return $this->goBack();
+    }
+
+    public function actionRead($slug)
     {
     }
 
-    public function actionDelete()
+    public function actionUpdate($slug)
+    {
+    }
+
+    public function actionDelete($slug)
     {
     }
 }

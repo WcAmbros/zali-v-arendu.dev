@@ -5,7 +5,7 @@ $this->title = 'Залы в аренду';
 
 <div class="add-hall">
     <div class="add-hall-background"></div>
-    <form class="add-hall-form" action="/add" method="post" enctype="multipart/form-data">
+    <form class="add-hall-form" action="/hall/create" method="post" enctype="multipart/form-data">
         <div class="add-hall-form__header">Добавить зал в базу <span class="add-hall-form__close i-close i-icons" onclick="button.close('.add-hall')"></span></div>
         <div class="add-hall-form-location">
             <div class="add-hall-form-location__header">Местоположение зала</div>
@@ -17,22 +17,22 @@ $this->title = 'Залы в аренду';
                     <input class="add-hall-form-col__address" name="Hall[address]">
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Город:</span>
-                    <input class="add-hall-form-location__select" name="Hall[town]">
+                    <input class="add-hall-form-location__select" name="Address[town]">
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Метро:</span>
-                    <input class="add-hall-form-location__select"  name="Hall[metro]">
+                    <input class="add-hall-form-location__select"  name="Address[metro]">
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Район:</span>
-                    <input class="add-hall-form-location__select"  name="Hall[district]">
+                    <input class="add-hall-form-location__select"  name="Address[district]">
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Улица:</span>
-                    <input class="add-hall-form-location__select"  name="Hall[street]">
+                    <input class="add-hall-form-location__select"  name="Address[street]">
                 </label>
                 <label class="add-hall-form__line">
                     <span class="add-hall-form-location__label">Дом:</span>
-                    <input class="add-hall-form-location__input"  name="Hall[house]">
+                    <input class="add-hall-form-location__input"  name="Address[house]">
                     <span class="add-hall-form-location__label">Корпус:</span>
-                    <input class="add-hall-form-location__input"  name="Hall[block]">
+                    <input class="add-hall-form-location__input"  name="Address[block]">
                 </label>
 
                 <label class="add-hall-form__line">
@@ -43,7 +43,7 @@ $this->title = 'Залы в аренду';
             <div class="add-hall-form-col add-hall-form-col_right">
                 <label class="add-hall-form__line">
                     <span class="add-hall-form-location__label">Примечание как добраться:</span>
-                    <textarea class="add-hall-form-location__textarea"  name="Hall[comment]"></textarea>
+                    <textarea class="add-hall-form-location__textarea"  name="Address[comment]"></textarea>
                 </label>
             </div>
         </div>
@@ -52,7 +52,7 @@ $this->title = 'Залы в аренду';
                     <div class="add-hall-form-col">
                         <label class="add-hall-form__line">
                             <span class="add-hall-form-params__label">Назначение:</span>
-                            <select class="add-hall-form-params__select"  name="Params[type]">
+                            <select class="add-hall-form-params__select"  name="Hall[purpose]">
                                 <option>Не выбран</option>
                                 <option>Для танцев</option>
                             </select>
@@ -66,7 +66,7 @@ $this->title = 'Залы в аренду';
                             <div  class="add-hall-form-params-cover">
                                 <label>
                                     <span class="add-hall-form-params-cover__label">Покрытие:</span>
-                                    <select class="add-hall-form-params-cover__select"  name="Params[flooring]">
+                                    <select class="add-hall-form-params-cover__select"  name="Hall[floor]">
                                         <option>Не выбран</option>
                                         <option>Ламинат</option>
                                     </select>
@@ -74,15 +74,15 @@ $this->title = 'Залы в аренду';
                             </div>
                         </div>
                         <div class="add-hall-form-checklist">
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Params[equipment][]"/> Раздевалка</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Params[equipment][]"/> Душевые</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Params[equipment][]"/> Куллер с водой</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Params[equipment][]"/> Wi-Fi</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Params[equipment][]"/> Зеркальная стена</label>
+                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Раздевалка</label>
+                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Душевые</label>
+                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Куллер с водой</label>
+                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Wi-Fi</label>
+                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Зеркальная стена</label>
                         </div>
                         <label>
                             <span>Дополнительное оборудование:</span>
-                            <textarea class="add-hall-form-params__textarea" name="Params[additional_equipment]"></textarea>
+                            <textarea class="add-hall-form-params__textarea" name="Hall[optional_equipment]"></textarea>
                         </label>
                     </div>
                     <div class="add-hall-form-col add-hall-form-col_right">
@@ -146,12 +146,11 @@ $this->title = 'Залы в аренду';
                 <div class="add-hall-form-contacts">
                     <div class="add-hall-form-contacts__header">Контакты</div>
                     <label class="add-hall-form__line"><span class="add-hall-form-contacts__label">Имя:</span>
-                        <input class="add-hall-form-contacts__input" name="Agent[attribs][name]"/></label>
+                        <input class="add-hall-form-contacts__input" name="Agent[name]"/></label>
                     <label class="add-hall-form__line"><span class="add-hall-form-contacts__label">Телефон:</span>
-                        <input class="add-hall-form-contacts__input" name="Agent[attribs][phone]"></label>
+                        <input class="add-hall-form-contacts__input" name="Agent[phone]"></label>
                     <label class="add-hall-form__line"><span class="add-hall-form-contacts__label">E-mail:</span>
-                        <input class="add-hall-form-contacts__input"  name="Agent[attribs][email]"></label>
-
+                        <input class="add-hall-form-contacts__input"  name="Agent[email]"></label>
                     <div class="add-hall-form-contacts-capthca">
                         <label class="add-hall-form__line"><span>Введите текст с катртинки:</span>
                             <input class="add-hall-form-contacts-capthca__input">

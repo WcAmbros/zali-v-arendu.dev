@@ -34,9 +34,6 @@ class UploadImageBehavior extends Behavior{
 
     public function beforeValidate($event)
     {
-        $path=YII2_PATH;
-        $path=str_replace('/yii2','',$path);
-
         /** @var ActiveRecord $model */
         $model = $this->owner;
         if ($model->{$this->fileAttribute} instanceof UploadedFile) {

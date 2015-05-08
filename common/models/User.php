@@ -12,8 +12,6 @@ use yii\web\IdentityInterface;
  *
  * @property integer $id
  * @property string $username
- * @property string $name
- * @property string $alias
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -101,7 +99,6 @@ class User extends ActiveRecord implements IdentityInterface
             'created_at' => 'Создан',
             'updated_at' => 'Обновлён',
             'username' => 'Логин',
-            'name' => 'Имя пользователя',
             'email' => 'Email',
             'status' => 'Статус',
         ];

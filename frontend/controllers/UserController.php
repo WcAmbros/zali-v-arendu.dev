@@ -60,10 +60,12 @@ class UserController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'foreColor'=>0x5FA068,
+                'fontFile'=>'@webroot/template/site/fonts/gotham_pro/GothaProBolIta.ttf',
+
             ],
         ];
     }
-
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {

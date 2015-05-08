@@ -9,8 +9,9 @@ use frontend\models\Address;
 use frontend\models\Purpose;
 use frontend\models\Floor;
 use frontend\models\Agent;
+use common\models\User;
 
-class HallImageBehavior extends Behavior{
+class HallBehavior extends Behavior{
 
     public function events()
     {
@@ -64,7 +65,7 @@ class HallImageBehavior extends Behavior{
 
         if(Yii::$app->user->isGuest){
             $user=new User();
-            $user=$user->findOne(['name'=>'guest']);
+            $user=$user->findOne(['username'=>'guest']);
             $model->user_id=$user->id;
         }else{
             $model->user_id=Yii::$app->session->get('__id');

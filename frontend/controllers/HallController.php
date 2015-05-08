@@ -37,11 +37,12 @@ class HallController extends Controller
     public function actionCreate()
     {
 
-        $post=Yii::$app->request->post()
+        $post=Yii::$app->request->post();
         $model = new Hall();
         if($model->load($post)&& $model->save()){}
 
-        //return $this->goBack();
+        var_dump($model);
+//        return $this->goBack();
     }
 
     public function actionRead($slug)

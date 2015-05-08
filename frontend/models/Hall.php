@@ -33,6 +33,8 @@ use Yii;
  */
 class Hall extends \yii\db\ActiveRecord
 {
+
+    public $image=null;
     /**
      * @inheritdoc
      */
@@ -48,7 +50,7 @@ class Hall extends \yii\db\ActiveRecord
     {
         return [
             [['square', 'public', 'deleted', 'floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'integer'],
-            [['images', 'optional_equipment'], 'string'],
+            [['optional_equipment'], 'string'],
             [['created'], 'safe'],
             [['floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'required'],
             [['name', 'alias'], 'string', 'max' => 255]

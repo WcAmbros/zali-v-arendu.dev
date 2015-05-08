@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sz
- * Date: 08.05.2015
- * Time: 17:04
- */
-
 namespace common\behaviors;
 
 

@@ -35,10 +35,10 @@ $this->title = 'Залы в аренду';
                     <input class="add-hall-form-location__input"  name="Address[block]">
                 </label>
 
-                <label class="add-hall-form__line">
-                    <span class="add-hall-form-file__label">Изображение:</span>
-                    <input class="add-hall-form-file__input" type="file" name="Hall[image]">
-                </label>
+<!--                <label class="add-hall-form__line">-->
+<!--                    <span class="add-hall-form-file__label">Изображение:</span>-->
+<!--                    <input class="add-hall-form-file__input" type="file" name="Hall[images]">-->
+<!--                </label>-->
             </div>
             <div class="add-hall-form-col add-hall-form-col_right">
                 <label class="add-hall-form__line">

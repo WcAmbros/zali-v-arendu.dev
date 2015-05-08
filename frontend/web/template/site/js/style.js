@@ -20,7 +20,7 @@ $(document).ready(function(){
                 hall={};
 
             hall={
-                name:'Hall',
+                name:'Address',
                 params:{
                     town:obj.city,
                     street:obj.street,

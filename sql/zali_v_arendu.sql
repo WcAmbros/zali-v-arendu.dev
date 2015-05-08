@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.10
+-- version 4.3.13
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 08 2015 г., 12:37
--- Версия сервера: 5.6.23-log
--- Версия PHP: 5.4.13
+-- Время создания: Май 08 2015 г., 12:08
+-- Версия сервера: 5.6.23-1~dotdeb.3
+-- Версия PHP: 5.4.40-1~dotdeb+wheezy.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `address` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `town` varchar(255) DEFAULT NULL,
   `district` varchar(255) DEFAULT NULL,
   `street` varchar(255) DEFAULT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `address` (
 --
 
 CREATE TABLE IF NOT EXISTS `agent` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
@@ -59,9 +59,20 @@ CREATE TABLE IF NOT EXISTS `agent` (
 --
 
 CREATE TABLE IF NOT EXISTS `equipment` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `equipment`
+--
+
+INSERT INTO `equipment` (`id`, `name`) VALUES
+(1, 'Кулер с водой'),
+(2, 'Зеркальная стена'),
+(3, 'Раздевалка'),
+(4, 'Душ'),
+(5, 'Wi-fi');
 
 -- --------------------------------------------------------
 
@@ -70,9 +81,17 @@ CREATE TABLE IF NOT EXISTS `equipment` (
 --
 
 CREATE TABLE IF NOT EXISTS `floor` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `floor`
+--
+
+INSERT INTO `floor` (`id`, `name`) VALUES
+(1, 'ламинат'),
+(2, 'керамическая плитка');
 
 -- --------------------------------------------------------
 
@@ -81,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `floor` (
 --
 
 CREATE TABLE IF NOT EXISTS `hall` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `alias` varchar(255) DEFAULT NULL,
   `square` int(11) DEFAULT NULL,
@@ -115,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `hall_has_equipment` (
 --
 
 CREATE TABLE IF NOT EXISTS `price` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `min` int(11) DEFAULT NULL,
   `max` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -127,9 +146,16 @@ CREATE TABLE IF NOT EXISTS `price` (
 --
 
 CREATE TABLE IF NOT EXISTS `purpose` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `purpose`
+--
+
+INSERT INTO `purpose` (`id`, `name`) VALUES
+(1, 'для танцев');
 
 -- --------------------------------------------------------
 
@@ -138,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `purpose` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
@@ -148,7 +174,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_reset_token` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`id`, `created_at`, `updated_at`, `username`, `auth_key`, `email_confirm_token`, `password_hash`, `password_reset_token`, `email`, `status`) VALUES
+(1, 1431083612, 1431083612, 'guest', '9J7BVOWfh9NaQbepmTnf2trfSqr_rXdp', 'mKaLQTyOR4BgB2vVINkO49esuRb5CUiu', '$2y$13$RIDZO5scZiLBsq75/gx3/OwIbLH4XilQYxK.3A0zeI6jLAeWLiZaW', NULL, 'guest@example.com', 1),
+(2, 1431083645, 1431083645, 'stas', 'MZ0pNqTMDRcgII1CvTSbaQyjUGad7yoQ', '5I2BpYRiZcIFd6kNNuODJ1tQ36c49FOu', '$2y$13$Wc/puI9z0g25VrWjqd28dONNVOJalpUeSnPEPm7IGYAafwx8YNMmu', NULL, 'zahs88@yandex.ru', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -158,55 +192,55 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Индексы таблицы `address`
 --
 ALTER TABLE `address`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `agent`
 --
 ALTER TABLE `agent`
- ADD PRIMARY KEY (`id`,`user_id`), ADD KEY `fk_agent_user1_idx` (`user_id`);
+  ADD PRIMARY KEY (`id`,`user_id`), ADD KEY `fk_agent_user1_idx` (`user_id`);
 
 --
 -- Индексы таблицы `equipment`
 --
 ALTER TABLE `equipment`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `floor`
 --
 ALTER TABLE `floor`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `hall`
 --
 ALTER TABLE `hall`
- ADD PRIMARY KEY (`id`,`floor_id`,`purpose_id`,`agent_id`,`price_id`,`address_id`), ADD KEY `fk_hall_floor1_idx` (`floor_id`), ADD KEY `fk_hall_purpose1_idx` (`purpose_id`), ADD KEY `fk_hall_agent1_idx` (`agent_id`), ADD KEY `fk_hall_price1_idx` (`price_id`), ADD KEY `fk_hall_address1_idx` (`address_id`);
+  ADD PRIMARY KEY (`id`,`floor_id`,`purpose_id`,`agent_id`,`price_id`,`address_id`), ADD KEY `fk_hall_floor1_idx` (`floor_id`), ADD KEY `fk_hall_purpose1_idx` (`purpose_id`), ADD KEY `fk_hall_agent1_idx` (`agent_id`), ADD KEY `fk_hall_price1_idx` (`price_id`), ADD KEY `fk_hall_address1_idx` (`address_id`);
 
 --
 -- Индексы таблицы `hall_has_equipment`
 --
 ALTER TABLE `hall_has_equipment`
- ADD PRIMARY KEY (`hall_id`,`equipment_id`), ADD KEY `fk_hall_has_equipment_equipment1_idx` (`equipment_id`), ADD KEY `fk_hall_has_equipment_hall1_idx` (`hall_id`);
+  ADD PRIMARY KEY (`hall_id`,`equipment_id`), ADD KEY `fk_hall_has_equipment_equipment1_idx` (`equipment_id`), ADD KEY `fk_hall_has_equipment_hall1_idx` (`hall_id`);
 
 --
 -- Индексы таблицы `price`
 --
 ALTER TABLE `price`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `purpose`
 --
 ALTER TABLE `purpose`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `user`
 --
 ALTER TABLE `user`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -216,42 +250,42 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `address`
 --
 ALTER TABLE `address`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `agent`
 --
 ALTER TABLE `agent`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `equipment`
 --
 ALTER TABLE `equipment`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT для таблицы `floor`
 --
 ALTER TABLE `floor`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `hall`
 --
 ALTER TABLE `hall`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `price`
 --
 ALTER TABLE `price`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `purpose`
 --
 ALTER TABLE `purpose`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

@@ -9,7 +9,7 @@
 namespace common\behaviors;
 
 
-use dosamigos\helpers\TransliteratorHelper;
+use dosamigos\transliterator\TransliteratorHelper;
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;

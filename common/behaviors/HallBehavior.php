@@ -21,16 +21,42 @@ class HallImageBehavior extends Behavior{
 
     /**
      * Loading post data
+     *
+     * ['floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'required'
      * */
     public function beforeValidate($event)
     {
         $price=$this->savePrice();
         $address=$this->saveAddress();
         $agent=$this->saveAgent();
+        $floor=$this->getFloor();
+        $purpose=$this->getPurpose();
         $this->owner->price_id=$price->id;
         $this->owner->address_id=$address->id;
         $this->owner->agent_id=$agent->id;
+        $this->owner->floor_id=$floor->id;
+        $this->owner->purpose_id=$purpose->id;
     }
+
+	/**
+	 * @return Floor
+	 **/
+	private function getFloor(){
+		$post=Yii::$app->request->post();
+		$model = new Floor();
+		$model->findOne(['name'=>$post['Hall']['floor']]);
+		return $model;
+	}
+
+	/**
+	 * @return Purpose
+	 **/
+	private function getPurpose(){
+		$post=Yii::$app->request->post();
+		$model = new Purpose();
+		$model->findOne(['name'=>$post['Hall']['purpose']]);
+		return $model;
+	}
 
     /**
      * @return Price

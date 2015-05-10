@@ -588,6 +588,7 @@
     text-align: left;
     margin-bottom: 7px;
     width: 125px;
+	vertical-align: top;
 }
 .add-hall-form-params{
     padding-bottom: 30px;

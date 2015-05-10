@@ -1,9 +1,13 @@
 <?php
 namespace frontend\controllers;
 
+
 use Yii;
 use frontend\models\ContactForm;
 use yii\web\Controller;
+use frontend\models\Floor;
+use frontend\models\Purpose;
+use frontend\models\Equipment;
 
 /**
  * Site controller
@@ -28,7 +32,15 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+	    $floor=new Floor();
+	    $purpose=new Purpose();
+	    $equipment=new Equipment();
+
+        return $this->render('index',[
+	        'floor'=>$floor->find()->all(),
+	        'purpose'=>$purpose->find()->all(),
+	        'equipment'=>$equipment->find()->all(),
+        ]);
     }
 
     public function actionContact()

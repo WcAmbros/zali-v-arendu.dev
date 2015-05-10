@@ -2,12 +2,10 @@
 namespace frontend\controllers;
 
 
-use common\models\User;
-use frontend\models\Agent;
 use Yii;
-use yii\captcha\CaptchaAction;
 use yii\web\Controller;
 use frontend\models\Hall;
+use frontend\models\HallHasEquipment;
 
 /**
  * Hall controller
@@ -37,11 +35,17 @@ class HallController extends Controller
     public function actionCreate()
     {
 
-        $post=Yii::$app->request->post()
+        $post=Yii::$app->request->post();
         $model = new Hall();
-        if($model->load($post)&& $model->save()){}
-
-        //return $this->goBack();
+        if($model->load($post)&& $model->save()){
+	        foreach($post['Equipment'] as $item){
+		        $equipment_has_hall=new HallHasEquipment();
+		        $equipment_has_hall->hall_id=$model->id;
+		        $equipment_has_hall->equipment_id=$item;
+		        $equipment_has_hall->save();
+	        }
+        }
+        return $this->goBack();
     }
 
     public function actionRead($slug)

@@ -6,11 +6,9 @@ use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use frontend\models\Price;
 use frontend\models\Address;
-use frontend\models\Purpose;
-use frontend\models\Floor;
 use frontend\models\Agent;
 
-class HallImageBehavior extends Behavior{
+class HallBehavior extends Behavior{
 
     public function events()
     {
@@ -26,37 +24,36 @@ class HallImageBehavior extends Behavior{
      * */
     public function beforeValidate($event)
     {
+	    $post=Yii::$app->request->post();
         $price=$this->savePrice();
         $address=$this->saveAddress();
         $agent=$this->saveAgent();
-        $floor=$this->getFloor();
-        $purpose=$this->getPurpose();
+        $this->owner->name=$this->setName();
         $this->owner->price_id=$price->id;
         $this->owner->address_id=$address->id;
         $this->owner->agent_id=$agent->id;
-        $this->owner->floor_id=$floor->id;
-        $this->owner->purpose_id=$purpose->id;
+        $this->owner->floor_id=$post['Hall']['floor'];
+        $this->owner->purpose_id=$post['Hall']['purpose'];
     }
 
-	/**
-	 * @return Floor
-	 **/
-	private function getFloor(){
-		$post=Yii::$app->request->post();
-		$model = new Floor();
-		$model->findOne(['name'=>$post['Hall']['floor']]);
-		return $model;
-	}
-
-	/**
-	 * @return Purpose
-	 **/
-	private function getPurpose(){
-		$post=Yii::$app->request->post();
-		$model = new Purpose();
-		$model->findOne(['name'=>$post['Hall']['purpose']]);
-		return $model;
-	}
+    /**
+     * @return string
+     **/
+    private function setName(){
+        $post=Yii::$app->request->post();
+		$name='';
+	    foreach($post['Address'] as $key=>$value){
+		    if(in_array($key,['street','house','block'])&&trim($value)!=''){
+			    if($key=='street')
+				    $name.=$value;
+			    if($key=='house')
+				    $name.=', д.'.$value;
+			    if($key=='block')
+				    $name.=', к.'.$value;
+		    }
+	    }
+        return $name;
+    }
 
     /**
      * @return Price

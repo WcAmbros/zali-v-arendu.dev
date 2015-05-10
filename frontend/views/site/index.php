@@ -1,6 +1,13 @@
 <?php
-/* @var $this yii\web\View */
+/**
+ * @var $this yii\web\View
+ *
+ * @var $floor
+ * @var $purpose
+ * @var $equipment
+ */
 $this->title = 'Залы в аренду';
+
 ?>
 
 <div class="add-hall">
@@ -53,8 +60,10 @@ $this->title = 'Залы в аренду';
                         <label class="add-hall-form__line">
                             <span class="add-hall-form-params__label">Назначение:</span>
                             <select class="add-hall-form-params__select"  name="Hall[purpose]">
-                                <option>Не выбран</option>
-                                <option>Для танцев</option>
+	                            <?php
+	                                foreach($purpose as $item)
+		                                echo "<option value='$item->id'>$item->name</option>";
+	                            ?>
                             </select>
                         </label>
                         <label class="add-hall-form__line">
@@ -67,18 +76,19 @@ $this->title = 'Залы в аренду';
                                 <label>
                                     <span class="add-hall-form-params-cover__label">Покрытие:</span>
                                     <select class="add-hall-form-params-cover__select"  name="Hall[floor]">
-                                        <option>Не выбран</option>
-                                        <option>Ламинат</option>
+	                                    <?php
+	                                    foreach($floor as $item)
+		                                    echo "<option value='$item->id'>$item->name</option>";
+	                                    ?>
                                     </select>
                                 </label>
                             </div>
                         </div>
                         <div class="add-hall-form-checklist">
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Раздевалка</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Душевые</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Куллер с водой</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Wi-Fi</label>
-                            <label class="add-hall-form-checklist-item"><input type="checkbox" name="Equipment[]"/> Зеркальная стена</label>
+	                        <?php
+	                        foreach($equipment as $item)
+		                        echo '<label class="add-hall-form-checklist-item"><input type="checkbox" value="'.$item->id.'" name="Equipment[]"/> '.$item->name.'</label>';
+	                        ?>
                         </div>
                         <label>
                             <span>Дополнительное оборудование:</span>

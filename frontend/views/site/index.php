@@ -19,6 +19,7 @@ $this->title = 'Залы в аренду';
 
             <div class="add-hall-form-col">
                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+	            <input type="hidden" name="Hall[geocode]">
                 <label class="add-hall-form__line">
                     <span>Адрес</span>
                     <input class="add-hall-form-col__address" name="Hall[address]">
@@ -27,10 +28,12 @@ $this->title = 'Залы в аренду';
                     <input class="add-hall-form-location__select" name="Address[town]">
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Метро:</span>
-                    <input class="add-hall-form-location__select"  name="Address[metro]">
+                    <input class="add-hall-form-location__select"  name="Address[metro]" list="metro">
+	                <datalist id="metro"></datalist>
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Район:</span>
-                    <input class="add-hall-form-location__select"  name="Address[district]">
+                    <input class="add-hall-form-location__select"  name="Address[district]" list="district">
+	                <datalist id="district"></datalist>
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Улица:</span>
                     <input class="add-hall-form-location__select"  name="Address[street]">

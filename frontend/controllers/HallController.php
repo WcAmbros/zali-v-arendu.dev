@@ -38,12 +38,13 @@ class HallController extends Controller
         $post=Yii::$app->request->post();
         $model = new Hall();
         if($model->load($post)&& $model->save()){
-	        foreach($post['Equipment'] as $item){
-		        $equipment_has_hall=new HallHasEquipment();
-		        $equipment_has_hall->hall_id=$model->id;
-		        $equipment_has_hall->equipment_id=$item;
-		        $equipment_has_hall->save();
-	        }
+	        if(isset($post['Equipment']))
+		        foreach($post['Equipment'] as $item){
+			        $equipment_has_hall=new HallHasEquipment();
+			        $equipment_has_hall->hall_id=$model->id;
+			        $equipment_has_hall->equipment_id=$item;
+			        $equipment_has_hall->save();
+		        }
         }
         return $this->goBack();
     }

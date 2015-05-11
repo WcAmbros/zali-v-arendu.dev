@@ -34,6 +34,7 @@ class HallBehavior extends Behavior{
         $this->owner->agent_id=$agent->id;
         $this->owner->floor_id=$post['Hall']['floor'];
         $this->owner->purpose_id=$post['Hall']['purpose'];
+	    $this->owner->attribs=$post['Hall']['geocode'];
     }
 
     /**

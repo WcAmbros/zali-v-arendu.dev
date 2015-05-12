@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 10 2015 г., 20:53
+-- Время создания: Май 12 2015 г., 13:43
 -- Версия сервера: 5.6.23-1~dotdeb.3
 -- Версия PHP: 5.4.40-1~dotdeb+wheezy.1
 
@@ -35,14 +35,29 @@ CREATE TABLE IF NOT EXISTS `address` (
   `block` varchar(45) DEFAULT NULL,
   `comment` mediumtext,
   `metro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `address`
 --
 
 INSERT INTO `address` (`id`, `town`, `district`, `street`, `house`, `block`, `comment`, `metro`) VALUES
-(12, 'Санкт-Петербург', 'Красносельский', 'Лени Голикова', '45', '', 'из метро направо 500 метров', 'Проспект Ветеранов');
+(12, 'Санкт-Петербург', 'Красносельский', 'Лени Голикова', '45', '', 'из метро направо 500 метров', 'Проспект Ветеранов'),
+(13, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '1А', '', '', ' Площадь Александра Невского 1'),
+(14, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(15, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(16, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(17, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(18, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(19, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(20, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(21, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(22, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(23, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(24, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(25, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(26, 'Санкт-Петербург', 'Невский ', 'Дальневосточный', '71', '', '', ' Улица Дыбенко'),
+(27, 'Санкт-Петербург', 'Центральный ', 'Александра Невского', '2', '', 'Пл. Александра Невского, от метро: 500 м', 'Площадь Александра Невского 1');
 
 -- --------------------------------------------------------
 
@@ -57,14 +72,29 @@ CREATE TABLE IF NOT EXISTS `agent` (
   `phone` varchar(45) DEFAULT NULL,
   `images` mediumtext,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `agent`
 --
 
 INSERT INTO `agent` (`id`, `name`, `email`, `phone`, `images`, `user_id`) VALUES
-(12, 'Стас', 'test@test.ru', '55555555', NULL, 2);
+(12, 'Стас', 'test@test.ru', '55555555', NULL, 2),
+(13, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(14, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(15, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(16, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(17, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(18, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(19, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(20, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(21, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(22, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(23, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(24, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(25, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(26, 'Стас', 'test@test.ru', '55555555', NULL, 1),
+(27, 'Стас', 'test@test.ru', '55555555', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -130,14 +160,15 @@ CREATE TABLE IF NOT EXISTS `hall` (
   `agent_id` int(11) NOT NULL,
   `price_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `hall`
 --
 
 INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `images`, `optional_equipment`, `created_at`, `updated_at`, `public`, `deleted`, `floor_id`, `purpose_id`, `agent_id`, `price_id`, `address_id`) VALUES
-(3, 'Лени Голикова, д.45', NULL, 1200, NULL, 'Бильярд', 1431291056, 1431291056, 1, NULL, 2, 1, 12, 12, 12);
+(14, 'Дальневосточный, д.71', '{"images":[{"original":"uploads\\/hall\\/kSfMHIYCqU9zXluX9DHML3Eba4nIGZc0.jpg","thumbnail":"uploads\\/hall\\/th_kSfMHIYCqU9zXluX9DHML3Eba4nIGZc0.jpg","slide":"uploads\\/hall\\/slide_kSfMHIYCqU9zXluX9DHML3Eba4nIGZc0.jpg"},{"original":"uploads\\/hall\\/tD0F8JynJEVVUzH_4yo_j9-qfsmk61lY.jpg","thumbnail":"uploads\\/hall\\/th_tD0F8JynJEVVUzH_4yo_j9-qfsmk61lY.jpg","slide":"uploads\\/hall\\/slide_tD0F8JynJEVVUzH_4yo_j9-qfsmk61lY.jpg"},{"original":"uploads\\/hall\\/vL07cZbjyJOiifYUuHLiXOcHIVRrE67n.jpg","thumbnail":"uploads\\/hall\\/th_vL07cZbjyJOiifYUuHLiXOcHIVRrE67n.jpg","slide":"uploads\\/hall\\/slide_vL07cZbjyJOiifYUuHLiXOcHIVRrE67n.jpg"}],"geocode":"[\\"30.4770474\\",\\"59.8778098\\"]"}', 100, NULL, '', 1431422383, 1431422383, 1, NULL, 1, 1, 26, 26, 26),
+(15, 'Александра Невского, д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"30.3866531\\",\\"59.9243231\\"]"}', 1000, NULL, 'Кондиционер', 1431435815, 1431435815, 1, NULL, 2, 1, 27, 27, 27);
 
 -- --------------------------------------------------------
 
@@ -155,9 +186,12 @@ CREATE TABLE IF NOT EXISTS `hall_has_equipment` (
 --
 
 INSERT INTO `hall_has_equipment` (`hall_id`, `equipment_id`) VALUES
-(3, 1),
-(3, 3),
-(3, 5);
+(14, 1),
+(15, 1),
+(15, 2),
+(14, 3),
+(15, 3),
+(15, 5);
 
 -- --------------------------------------------------------
 
@@ -169,14 +203,29 @@ CREATE TABLE IF NOT EXISTS `price` (
   `id` int(11) NOT NULL,
   `min` int(11) DEFAULT NULL,
   `max` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `price`
 --
 
 INSERT INTO `price` (`id`, `min`, `max`) VALUES
-(12, 100, 200);
+(12, 100, 200),
+(13, 100, 200),
+(14, 2000, 3000),
+(15, 2000, 3000),
+(16, 2000, 3000),
+(17, 2000, 3000),
+(18, 2000, 3000),
+(19, 2000, 3000),
+(20, 2000, 3000),
+(21, 2000, 3000),
+(22, 2000, 3000),
+(23, 2000, 3000),
+(24, 2000, 3000),
+(25, 2000, 3000),
+(26, 2000, 3000),
+(27, 300, 500);
 
 -- --------------------------------------------------------
 
@@ -289,12 +338,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT для таблицы `agent`
 --
 ALTER TABLE `agent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT для таблицы `equipment`
 --
@@ -309,12 +358,12 @@ ALTER TABLE `floor`
 -- AUTO_INCREMENT для таблицы `hall`
 --
 ALTER TABLE `hall`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT для таблицы `price`
 --
 ALTER TABLE `price`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT для таблицы `purpose`
 --
@@ -349,8 +398,8 @@ ADD CONSTRAINT `fk_hall_purpose1` FOREIGN KEY (`purpose_id`) REFERENCES `purpose
 -- Ограничения внешнего ключа таблицы `hall_has_equipment`
 --
 ALTER TABLE `hall_has_equipment`
-ADD CONSTRAINT `fk_hall_has_equipment_equipment1` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_hall_has_equipment_hall1` FOREIGN KEY (`hall_id`) REFERENCES `hall` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_hall_has_equipment_equipment1` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_hall_has_equipment_hall1` FOREIGN KEY (`hall_id`) REFERENCES `hall` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

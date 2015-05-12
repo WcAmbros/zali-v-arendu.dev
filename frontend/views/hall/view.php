@@ -51,7 +51,7 @@ $agent=$model->getAgent()->all();
                 <li>Покрытие: <strong><?php echo $floor[0]->attributes['name']; ?></strong></li>
                 <?php
                     foreach($equipment as $item){
-                        echo "<li>{$item['name']}: <strong>есть</strong></li>";
+                        print "<li>{$item['name']}: <strong>есть</strong></li>\n";
                     }
                 ?>
             </ul>

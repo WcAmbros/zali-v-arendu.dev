@@ -153,6 +153,10 @@
     width: 220px;
     margin: 0 0 20px 0;
 }
+.deals-item img{
+    width: 220px;
+    height: 140px;
+}
 .deals-item-description{
     margin: 10px 0 0 0 ;
     text-align: left;

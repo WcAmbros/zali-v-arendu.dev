@@ -55,8 +55,10 @@ class HallController extends Controller
     }
 
     public function actionSearch(){
+        $post=Yii::$app->request->post();
         return $this->render('search', [
             'model' => $this->findModels(),
+            'purpose'=>$post['Search']['purpose'],
         ]);
     }
 

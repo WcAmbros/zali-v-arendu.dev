@@ -8,7 +8,6 @@
 
 namespace common\behaviors;
 
-
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
@@ -26,7 +25,13 @@ class UploadImageBehavior extends Behavior{
     public $fileTypes = 'image/jpeg,image/png';
 
     public $savePathAlias = '@app/uploads';
-    public $list=array();
+    public $list=[
+        [
+            'original'=>"uploads/noimage.jpg",
+            'thumbnail'=>"uploads/th_noimage.jpg",
+            'slide'=>"uploads/slide_noimage.jpg",
+        ]
+    ];
 
     public function events()
     {

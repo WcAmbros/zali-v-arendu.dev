@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c4846aac3726612f2f251963359447e7",
+    "hash": "ec21b30b0a5e65f2084d595dc5095d30",
     "packages": [
         {
             "name": "2amigos/yii2-transliterator-helper",

@@ -8,6 +8,7 @@ var button={
 
 };
 
+
 $(document).ready(function(){
 
     $(".add-hall-form-col__address").suggestions({
@@ -17,7 +18,8 @@ $(document).ready(function(){
         /* Вызывается, когда пользователь выбирает одну из подсказок */
         onSelect: function(suggestion) {
             var obj =suggestion.data,
-                hall={};
+                hall={},
+	            geo_results=null;
 
             hall={
                 name:'Address',
@@ -31,8 +33,60 @@ $(document).ready(function(){
             for(var key in hall.params ){
                 $('input[name="'+hall.name+'['+key+']"]').val(hall.params[key]);
             }
+
+			$('input[name="Hall[geocode]"]').val(JSON.stringify([obj.geo_lon,obj.geo_lat]));
+
+	        geocode_maps({
+		        geocode:obj.geo_lon+','+obj.geo_lat,
+		        kind:'district'
+	        });
+	        geocode_maps({
+		        geocode:obj.geo_lon+','+obj.geo_lat,
+		        kind:'metro',
+		        results:3
+	        });
+
+
         }
     });
+
+
+		geocode_maps=function(data){
+
+			var options={
+					format:'json'
+				},
+				kind=data.kind;
+			data=$.extend(options,data);
+			$.ajax({
+				dataType:'jsonp',
+				url:'http://geocode-maps.yandex.ru/1.x',
+				data:data
+			}).done(function(data){
+				geocode_results(data,kind);
+			});
+		};
+
+		geocode_results=function(data,kind){
+			var collection=data.response.GeoObjectCollection.featureMember,
+				length=collection.length,
+				name='';
+			$('#'+kind).html('');
+			for(var i= 0;i<length;i++){
+				name=collection[i].GeoObject.name;
+				name=geocode_replace(name,kind);
+				$('#'+kind).append('<option>'+name+'</option>');
+			}
+			$('input[name="Address['+kind+']"]').val(name);
+		};
+
+		geocode_replace=function(name,kind){
+			if(kind=='metro')
+				name=name.replace('метро','');
+			if(kind=='district')
+				name=name.replace('район','');
+			return name
+		};
 
     $('.add-hall__button').click(function(){
 

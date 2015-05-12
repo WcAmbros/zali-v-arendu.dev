@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 08 2015 г., 12:08
+-- Время создания: Май 10 2015 г., 20:53
 -- Версия сервера: 5.6.23-1~dotdeb.3
 -- Версия PHP: 5.4.40-1~dotdeb+wheezy.1
 
@@ -35,7 +35,14 @@ CREATE TABLE IF NOT EXISTS `address` (
   `block` varchar(45) DEFAULT NULL,
   `comment` mediumtext,
   `metro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `address`
+--
+
+INSERT INTO `address` (`id`, `town`, `district`, `street`, `house`, `block`, `comment`, `metro`) VALUES
+(12, 'Санкт-Петербург', 'Красносельский', 'Лени Голикова', '45', '', 'из метро направо 500 метров', 'Проспект Ветеранов');
 
 -- --------------------------------------------------------
 
@@ -50,7 +57,14 @@ CREATE TABLE IF NOT EXISTS `agent` (
   `phone` varchar(45) DEFAULT NULL,
   `images` mediumtext,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `agent`
+--
+
+INSERT INTO `agent` (`id`, `name`, `email`, `phone`, `images`, `user_id`) VALUES
+(12, 'Стас', 'test@test.ru', '55555555', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -83,15 +97,16 @@ INSERT INTO `equipment` (`id`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `floor` (
   `id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `floor`
 --
 
 INSERT INTO `floor` (`id`, `name`) VALUES
-(1, 'ламинат'),
-(2, 'керамическая плитка');
+(1, 'Не выбран'),
+(2, 'ламинат'),
+(4, 'Керамическая плитка');
 
 -- --------------------------------------------------------
 
@@ -102,19 +117,27 @@ INSERT INTO `floor` (`id`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `hall` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `alias` varchar(255) DEFAULT NULL,
+  `attribs` mediumtext,
   `square` int(11) DEFAULT NULL,
   `images` mediumtext,
   `optional_equipment` mediumtext,
-  `created` datetime DEFAULT NULL,
-  `public` tinyint(1) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `public` tinyint(1) DEFAULT '1',
   `deleted` tinyint(1) DEFAULT NULL,
   `floor_id` int(11) NOT NULL,
   `purpose_id` int(11) NOT NULL,
   `agent_id` int(11) NOT NULL,
   `price_id` int(11) NOT NULL,
   `address_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `hall`
+--
+
+INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `images`, `optional_equipment`, `created_at`, `updated_at`, `public`, `deleted`, `floor_id`, `purpose_id`, `agent_id`, `price_id`, `address_id`) VALUES
+(3, 'Лени Голикова, д.45', NULL, 1200, NULL, 'Бильярд', 1431291056, 1431291056, 1, NULL, 2, 1, 12, 12, 12);
 
 -- --------------------------------------------------------
 
@@ -127,6 +150,15 @@ CREATE TABLE IF NOT EXISTS `hall_has_equipment` (
   `equipment_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `hall_has_equipment`
+--
+
+INSERT INTO `hall_has_equipment` (`hall_id`, `equipment_id`) VALUES
+(3, 1),
+(3, 3),
+(3, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -137,7 +169,14 @@ CREATE TABLE IF NOT EXISTS `price` (
   `id` int(11) NOT NULL,
   `min` int(11) DEFAULT NULL,
   `max` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `price`
+--
+
+INSERT INTO `price` (`id`, `min`, `max`) VALUES
+(12, 100, 200);
 
 -- --------------------------------------------------------
 
@@ -174,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_reset_token` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `user`
@@ -250,12 +289,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT для таблицы `agent`
 --
 ALTER TABLE `agent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT для таблицы `equipment`
 --
@@ -265,17 +304,17 @@ ALTER TABLE `equipment`
 -- AUTO_INCREMENT для таблицы `floor`
 --
 ALTER TABLE `floor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `hall`
 --
 ALTER TABLE `hall`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `price`
 --
 ALTER TABLE `price`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT для таблицы `purpose`
 --
@@ -285,7 +324,7 @@ ALTER TABLE `purpose`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
@@ -300,10 +339,10 @@ ADD CONSTRAINT `fk_agent_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 -- Ограничения внешнего ключа таблицы `hall`
 --
 ALTER TABLE `hall`
-ADD CONSTRAINT `fk_hall_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_hall_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
 ADD CONSTRAINT `fk_hall_agent1` FOREIGN KEY (`agent_id`) REFERENCES `agent` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 ADD CONSTRAINT `fk_hall_floor1` FOREIGN KEY (`floor_id`) REFERENCES `floor` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_hall_price1` FOREIGN KEY (`price_id`) REFERENCES `price` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ADD CONSTRAINT `fk_hall_price1` FOREIGN KEY (`price_id`) REFERENCES `price` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
 ADD CONSTRAINT `fk_hall_purpose1` FOREIGN KEY (`purpose_id`) REFERENCES `purpose` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

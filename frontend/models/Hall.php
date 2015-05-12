@@ -3,14 +3,14 @@
 namespace frontend\models;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "hall".
  *
  * @property integer $id
  * @property string $name
- * @property string $alias
+ * @property string $attribs
  * @property integer $square
  * @property string $images
  * @property string $optional_equipment
@@ -33,8 +33,7 @@ use Yii;
  */
 class Hall extends \yii\db\ActiveRecord
 {
-
-//    public $image=null;
+	public $image=null;
     /**
      * @inheritdoc
      */
@@ -49,11 +48,10 @@ class Hall extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['square', 'public', 'deleted', 'floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'integer'],
-            [['optional_equipment'], 'string'],
-            [['created'], 'safe'],
+            [['square', 'public', 'created_at', 'updated_at','deleted', 'floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'integer'],
+            [['images', 'optional_equipment','attribs'], 'string'],
             [['floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'required'],
-            [['name', 'alias'], 'string', 'max' => 255]
+            [['name'], 'string', 'max' => 255]
         ];
     }
 
@@ -65,11 +63,10 @@ class Hall extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'alias' => 'Alias',
+            'attribs' => 'Attribs',
             'square' => 'Square',
             'images' => 'Images',
             'optional_equipment' => 'Optional Equipment',
-            'created' => 'Created',
             'public' => 'Public',
             'deleted' => 'Deleted',
             'floor_id' => 'Floor ID',
@@ -145,6 +142,7 @@ class Hall extends \yii\db\ActiveRecord
             'HallBehavior' => [
                 'class' => 'common\behaviors\HallBehavior',
             ],
+	        TimestampBehavior::className(),
 //            'SlugBehavior' => [
 //                'class' => 'common\behaviors\SlugBehavior',
 //                'in_attribute' => 'name',

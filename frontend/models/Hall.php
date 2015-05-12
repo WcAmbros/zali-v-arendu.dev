@@ -34,7 +34,7 @@ use Yii;
 class Hall extends \yii\db\ActiveRecord
 {
 
-    public $image=null;
+//    public $image=null;
     /**
      * @inheritdoc
      */

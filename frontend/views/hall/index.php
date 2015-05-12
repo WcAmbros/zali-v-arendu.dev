@@ -145,21 +145,20 @@ $this->title = 'Залы в аренду';
     <div class="main-section">
         <div class="main-find">
             <div class="main-find__header">Найти зал</div>
-            <form class="main-find-form" action="/hall/search" method="post">
-                <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+            <form class="main-find-form">
                 <fieldset>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Вид зала:</span>
-                        <select class="main-find-form-label__select" name="Search[purpose]">
+                        <select class="main-find-form-label__select">
                             <option>Танцевальный зал</option>
                         </select>
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
-                        <select class="main-find-form-label__select" name="Search[district]">
+                        <select class="main-find-form-label__select">
                             <option>Красногвардейский</option>
                         </select>
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Станция метро:</span>
-                        <select class="main-find-form-label__select"  name="Search[metro]">
+                        <select class="main-find-form-label__select">
                             <option>Технологический</option>
                         </select>
                     </label>

@@ -6,8 +6,8 @@ var button={
         $(el).show();
     }
 
-};
-
+},
+ album={};
 
 $(document).ready(function(){
 
@@ -88,7 +88,30 @@ $(document).ready(function(){
 			return name
 		};
 
-    $('.add-hall__button').click(function(){
 
+    $('.add-hall-form-params-album-button').click(function(){
+        album.add($('.add-hall-form-params-album-content'));
     });
+
+
 });
+album={
+    max:9,
+    count:1,
+    add:function(obj){
+        if(this.count<=this.max){
+            obj.append(template.image);
+            this.count++;
+        }
+    },
+    remove:function(obj){
+        $(obj).parent().remove();
+        this.count--;
+    }
+}
+var template={
+    image:'<div class="add-hall-form-params-album-content-item">'+
+    '<label><input class="add-hall-form-params-album-content__input" type="file" name="Hall[images][]"></label>'+
+    '<span class="add-hall-form-params-album-content-item_remove i-icons i-close_black" onclick="album.remove(this)"></span>'+
+    '</div>'
+};

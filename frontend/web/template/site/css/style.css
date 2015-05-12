@@ -207,6 +207,12 @@
     margin: 0 30px 0 0;
     width: 336px;
 }
+.hall-content-slider-main img{
+    width: 336px;
+}
+.hall-content-slider-thumnails img{
+    width: 100px;
+}
 .hall-content-slider-thumnails{
     margin-top: 15px;
     text-align: justify;
@@ -652,6 +658,16 @@
 .add-hall-form-params-album-content-item__img{
     width: 100px;
     height: 65px;
+}
+.add-hall-form-params-album-content-item_remove{
+    margin-left:20px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.add-hall-form-params-album-content__input{
+    display: inline-block;
+    width: 250px;
+
 }
 .add-hall-form-params-album-button{
     font-size: 14px;

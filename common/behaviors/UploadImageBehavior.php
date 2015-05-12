@@ -8,22 +8,25 @@
 
 namespace common\behaviors;
 
+
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
 use yii\validators\Validator;
 use yii\imagine\Image;
+use Imagine\Image\Box;
 
 class UploadImageBehavior extends Behavior{
 
-    public $fileAttribute = 'image';
+    public $fileAttribute = 'images';
 
     public $maxFileSize = null;
 
     public $fileTypes = 'image/jpeg,image/png';
 
     public $savePathAlias = '@app/uploads';
+    public $list=array();
 
     public function events()
     {
@@ -37,36 +40,46 @@ class UploadImageBehavior extends Behavior{
         /** @var ActiveRecord $model */
         $model = $this->owner;
         if ($model->{$this->fileAttribute} instanceof UploadedFile) {
-            $file = $model->{$this->fileAttribute};
+            $files = $model->{$this->fileAttribute};
         } else {
-            $file = UploadedFile::getInstance($model, $this->fileAttribute);
+            $files = UploadedFile::getInstances($model, $this->fileAttribute);
         }
-
-        if ($file && $file->name) {
-            $model->{$this->fileAttribute} = $file;
-            $validator = Validator::createValidator('image', $model, $this->fileAttribute,  [
-                'mimeTypes'=>$this->fileTypes,
-            ]);
-            $validator->validateAttribute($model, $this->fileAttribute);
-
-//            if(count($model->getErrors())==0)
-                $this->uploadfile($file);
-        }
+        if(is_array($files))
+            foreach($files as $file){
+                if ($file && $file->name) {
+                    $model->{$this->fileAttribute} = $file;
+                    $validator = Validator::createValidator('image', $model, $this->fileAttribute,  [
+                        'mimeTypes'=>$this->fileTypes,
+                    ]);
+                    $validator->validateAttribute($model, $this->fileAttribute);
+                        $errors=$model->getErrors();
+                    if(empty($errors)){
+                        $this->uploadfile($file);
+                    }
+                }
+            }
+        $this->owner->images=$this->list;
     }
 
     /**
      * @param UploadedFile $file
      * */
     public function uploadfile($file){
-        $file->saveAs('uploads/'.$file->name);
-    }
+        $img = Image::getImagine()->open($file->tempName);
+        $name=Yii::$app->security->generateRandomString();
+        preg_match('/\..*/i',$file->name,$extensions);
+        $extension=$extensions[0];
+        $size= new Box(65,100);
+        $img->thumbnail($size)->save("uploads/hall/th_$name".$extension);
+        $size= new Box(213,336);
+        $img->thumbnail($size)->save("uploads/hall/slide_$name".$extension);
+        $img->save("uploads/hall/$name".$extension);
 
-//    private function translit($name)
-//    {
-//        if ($this->translit) {
-//            return Inflector::transliterate($name,'-', true );
-//        } else {
-//            return Inflector::slug( $name, '-', true );
-//        }
-//    }
+        $this->list[]=[
+            'original'=>"uploads/hall/$name".$extension,
+            'thumbnail'=>"uploads/hall/th_$name".$extension,
+            'slide'=>"uploads/hall/slide_$name".$extension,
+            ];
+
+    }
 }

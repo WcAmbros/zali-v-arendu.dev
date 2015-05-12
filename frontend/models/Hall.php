@@ -33,7 +33,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class Hall extends \yii\db\ActiveRecord
 {
-	public $image=null;
+	public $images=null;
     /**
      * @inheritdoc
      */
@@ -49,7 +49,7 @@ class Hall extends \yii\db\ActiveRecord
     {
         return [
             [['square', 'public', 'created_at', 'updated_at','deleted', 'floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'integer'],
-            [['images', 'optional_equipment','attribs'], 'string'],
+            [['optional_equipment','attribs'], 'string'],
             [['floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'required'],
             [['name'], 'string', 'max' => 255]
         ];

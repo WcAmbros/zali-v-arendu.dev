@@ -80,6 +80,11 @@
     height: 11px;
     background-position: -13px -20px;
 }
+.i-close_black{
+    width: 14px;
+    height: 14px;
+    background-position: -107px -20px;
+}
 .i-shadow{
     position: relative;
 }

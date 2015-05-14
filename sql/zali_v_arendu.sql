@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 13 2015 г., 16:57
+-- Время создания: Май 14 2015 г., 12:28
 -- Версия сервера: 5.6.23-log
 -- Версия PHP: 5.4.13
 
@@ -376,15 +376,16 @@ INSERT INTO `purpose` (`id`, `name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `town` (
 `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `subdomain` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `town`
 --
 
-INSERT INTO `town` (`id`, `name`) VALUES
-(1, 'Санкт-Петербург');
+INSERT INTO `town` (`id`, `name`, `subdomain`) VALUES
+(1, 'Санкт-Петербург', 'spb');
 
 -- --------------------------------------------------------
 
@@ -585,7 +586,7 @@ ADD CONSTRAINT `fk_hall_has_equipment_hall1` FOREIGN KEY (`hall_id`) REFERENCES 
 -- Ограничения внешнего ключа таблицы `metro`
 --
 ALTER TABLE `metro`
-ADD CONSTRAINT `fk_metro_district1` FOREIGN KEY (`district_id`, `district_town_id`) REFERENCES `district` (`id`, `town_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `fk_metro_district1` FOREIGN KEY (`district_id`, `district_town_id`) REFERENCES `district` (`id`, `town_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -33,21 +33,6 @@ class HallController extends Controller
         return $this->goBack();
     }
 
-    public function actionCreate()
-    {
-        $post=Yii::$app->request->post();
-        $model = new Hall();
-        if($model->load($post)&& $model->save()){
-	        if(isset($post['Equipment']))
-		        foreach($post['Equipment'] as $item){
-			        $equipment_has_hall=new HallHasEquipment();
-			        $equipment_has_hall->hall_id=$model->id;
-			        $equipment_has_hall->equipment_id=$item;
-			        $equipment_has_hall->save();
-		        }
-        }
-        return $this->goBack();
-    }
     public function actionView($id){
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -62,6 +47,21 @@ class HallController extends Controller
         ]);
     }
 
+    public function actionCreate()
+    {
+        $post=Yii::$app->request->post();
+        $model = new Hall();
+        if($model->load($post)&& $model->save()){
+            if(isset($post['Equipment']))
+                foreach($post['Equipment'] as $item){
+                    $equipment_has_hall=new HallHasEquipment();
+                    $equipment_has_hall->hall_id=$model->id;
+                    $equipment_has_hall->equipment_id=$item;
+                    $equipment_has_hall->save();
+                }
+        }
+        return $this->goBack();
+    }
     public function actionRead($slug)
     {
     }
@@ -89,6 +89,7 @@ class HallController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
     /**
      * Finds the Hall models
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -97,12 +98,30 @@ class HallController extends Controller
      */
     protected function findModels()
     {
-
-        $model = Hall::find()->all();
+        $options=$this->getOptions();
+        $model = Hall::find()->innerJoin('address')->innerJoin('purpose')->where($options)->all();
         if (!empty($model)) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * @return array
+    */
+    protected function getOptions(){
+        $post=Yii::$app->request->post();
+        $fields=[
+            'purpose'=>'purpose.name',
+            'district'=>'address.district',
+            'metro'=>'address.metro',
+        ];
+        $options=array();
+        foreach($post['Search'] as $key=>$item)
+            $options[$fields[$key]]=$item;
+
+
+        return  $options;
     }
 }

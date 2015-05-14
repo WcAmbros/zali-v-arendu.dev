@@ -49,7 +49,8 @@ class UploadImageBehavior extends Behavior{
         } else {
             $files = UploadedFile::getInstances($model, $this->fileAttribute);
         }
-        if(is_array($files))
+        if(!empty($files)){
+            $this->list=array();
             foreach($files as $file){
                 if ($file && $file->name) {
                     $model->{$this->fileAttribute} = $file;
@@ -57,12 +58,14 @@ class UploadImageBehavior extends Behavior{
                         'mimeTypes'=>$this->fileTypes,
                     ]);
                     $validator->validateAttribute($model, $this->fileAttribute);
-                        $errors=$model->getErrors();
+                    $errors=$model->getErrors();
                     if(empty($errors)){
                         $this->uploadfile($file);
                     }
                 }
             }
+        }
+
         $this->owner->images=$this->list;
     }
 

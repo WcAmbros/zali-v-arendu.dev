@@ -2,12 +2,37 @@
 /**
  * @var $this yii\web\View
  *
- * @var $floor
- * @var $purpose
- * @var $equipment
+ * @var array $floor
+ * @var array $purpose
+ * @var array $equipment
+ * @var array $metro
+ * @var array $district
  */
+use yii\jui\AutoComplete;
 $this->title = 'Залы в аренду';
 
+
+function getAutoComplete_config($collection,$name){
+
+    $list=array();
+    foreach($collection as $item){
+        $list[]=$item->name;
+    };
+    $config=[
+        'name' => $name,
+        'options'=>[
+            'class'=>'main-find-form-label__select'
+            ],
+        'clientOptions' => [
+            'source' => $list
+        ]
+    ];
+
+    return $config;
+}
+$district = getAutoComplete_config($district,'Search[district]');
+$metro = getAutoComplete_config($metro,'Search[metro]');
+$search_purpose = getAutoComplete_config($purpose,'Search[purpose]');
 ?>
 
 <div class="add-hall">
@@ -139,7 +164,7 @@ $this->title = 'Залы в аренду';
 <div class="main">
     <div class="main-background">
         <div class="main-background-slider">
-            <img src="images/slider/slide.jpg">
+            <img src="/images/slider/slide.jpg">
         </div>
     </div>
     <div class="main-section">
@@ -149,19 +174,20 @@ $this->title = 'Залы в аренду';
                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                 <fieldset>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Вид зала:</span>
-                        <select class="main-find-form-label__select" name="Search[purpose]">
-                            <option>Танцевальный зал</option>
-                        </select>
+                        <?php
+                            echo AutoComplete::widget($search_purpose);
+                        ?>
+
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
-                        <select class="main-find-form-label__select" name="Search[district]">
-                            <option>Красногвардейский</option>
-                        </select>
+                        <?php
+                        echo AutoComplete::widget($district);
+                        ?>
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Станция метро:</span>
-                        <select class="main-find-form-label__select"  name="Search[metro]">
-                            <option>Технологический</option>
-                        </select>
+                        <?php
+                        echo AutoComplete::widget($metro);
+                        ?>
                     </label>
                 </fieldset>
                 <button class="main-find-form__button main__button"><span class="i-icons i-search"></span>Найти</button>
@@ -178,7 +204,7 @@ $this->title = 'Залы в аренду';
         <div class="deals-content">
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-3.jpg">
+                <img src="/images/thumb-3.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Диктатуры Пролетариата, д.12</a>
                     <p><span class="i-icons i-metro_red"></span> Технологический институт, от метро: 1020 м</p>
@@ -188,7 +214,7 @@ $this->title = 'Залы в аренду';
             </div>
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-4.jpg">
+                <img src="/images/thumb-4.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Хохрякова, д.123</a>
                     <p><span class="i-icons i-metro_purple"></span> Пр-т Просвещения, от метро: 500 м</p>
@@ -198,7 +224,7 @@ $this->title = 'Залы в аренду';
             </div>
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-1.jpg">
+                <img src="/images/thumb-1.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Лизы Чайкиной, д.67</a>
                     <p><span class="i-icons i-metro_green"></span> Пл. Александра Невского, от метро: 1000 м</p>
@@ -208,7 +234,7 @@ $this->title = 'Залы в аренду';
             </div>
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-2.jpg">
+                <img src="/images/thumb-2.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Диктатуры Пролетариата, д.12, корп. 3</a>
                     <p><span class="i-icons i-metro_orange"></span> Пл. Александра Невского, от метро: 1000 м</p>
@@ -218,7 +244,7 @@ $this->title = 'Залы в аренду';
             </div>
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-1.jpg">
+                <img src="/images/thumb-1.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Лизы Чайкиной, д.67</a>
                     <p><span class="i-icons i-metro_green"></span> Пл. Александра Невского, от метро: 1000 м</p>
@@ -228,7 +254,7 @@ $this->title = 'Залы в аренду';
             </div>
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-2.jpg">
+                <img src="/images/thumb-2.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Диктатуры Пролетариата, д.12, корп. 3</a>
                     <p><span class="i-icons i-metro_orange"></span> Пл. Александра Невского, от метро: 1000 м</p>
@@ -238,7 +264,7 @@ $this->title = 'Залы в аренду';
             </div>
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-3.jpg">
+                <img src="/images/thumb-3.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Диктатуры Пролетариата, д.12</a>
                     <p><span class="i-icons i-metro_red"></span> Технологический институт, от метро: 1020 м</p>
@@ -248,7 +274,7 @@ $this->title = 'Залы в аренду';
             </div>
             <div class="deals-item">
                 <div class="b-star i-shadow"><span class="i-icons i-star"></span></div>
-                <img src="images/thumb-4.jpg">
+                <img src="/images/thumb-4.jpg">
                 <div class="deals-item-description">
                     <a href="#" class="deals-item-description__address">Ул. Хохрякова, д.123</a>
                     <p><span class="i-icons i-metro_purple"></span> Пр-т Просвещения, от метро: 500 м</p>

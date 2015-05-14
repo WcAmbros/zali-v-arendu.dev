@@ -34,6 +34,6 @@ class AppAsset extends AssetBundle
         'frontend\assets\RespondAsset',
         'frontend\assets\DadataAsset',
         'frontend\assets\YandexApiAsset',
-
+        'frontend\assets\JqueryUIAsset',
     ];
 }

@@ -8,6 +8,8 @@ use yii\web\Controller;
 use frontend\models\Floor;
 use frontend\models\Purpose;
 use frontend\models\Equipment;
+use frontend\models\District;
+use frontend\models\Metro;
 
 /**
  * Site controller
@@ -35,11 +37,15 @@ class SiteController extends Controller
 	    $floor=new Floor();
 	    $purpose=new Purpose();
 	    $equipment=new Equipment();
+	    $district=new District();
+	    $metro=new Metro();
 
         return $this->render('index',[
 	        'floor'=>$floor->find()->all(),
 	        'purpose'=>$purpose->find()->all(),
 	        'equipment'=>$equipment->find()->all(),
+	        'district'=>$district->find()->all(),
+	        'metro'=>$metro->find()->all(),
         ]);
     }
 

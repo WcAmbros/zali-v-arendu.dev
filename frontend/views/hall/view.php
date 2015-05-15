@@ -8,22 +8,16 @@ use yii\helpers\Html;
 $this->title = $model->name;
 
 $images=json_decode($model->attribs)->images;
-$price=$model->getPrice()->all();
-$address=$model->getAddress()->all();
-$purpose=$model->getPurpose()->all();
-$equipment=$model->getEquipment()->all();
-$floor=$model->getFloor()->all();
-$agent=$model->getAgent()->all();
 
 ?>
 
 <div class="return_to_search">
     <span class="i-icons i-arrow"></span>
-    <a href="/" class="return_to_search__link">Назад к поиску</a>
+    <a href="/hall/search" class="return_to_search__link">Назад к поиску</a>
 </div>
 <div class="hall">
     <h1 class="hall__header"><?php echo $model->name;?></h1>
-    <div class="hall__caption"><?php echo $purpose[0]->attributes['name'];?></div>
+    <div class="hall__caption"><?php echo $model->purpose->name;?></div>
     <div class="hall-content">
 
 
@@ -42,24 +36,26 @@ $agent=$model->getAgent()->all();
         </div>
         <div>
             <?php
-                echo "<p><strong>$model->square</strong> м<sup>2</sup>, <strong>{$price[0]->attributes['min']}</strong> руб./ час</p>"
+                echo "<p><strong>$model->square</strong> м<sup>2</sup>, <strong>{$model->price->min}</strong> руб./ час</p>"
             ?>
-            <p><span class="i-icons i-metro_green"></span> <?php echo $address[0]->attributes['comment']; ?></p>
+            <p><span class="i-icons i-metro_green"></span> <?php echo $model->address->comment; ?></p>
             <div class="main-deals-item-description__map">Смотреть на карте<span class="i-icons i-map"></span></div>
             <p class="equipment__header">Оборудование зала:</p>
             <ul class="equipment">
-                <li>Покрытие: <strong><?php echo $floor[0]->attributes['name']; ?></strong></li>
+                <li>Покрытие: <strong><?php echo $model->floor->name; ?></strong></li>
                 <?php
-                    foreach($equipment as $item){
-                        print "<li>{$item['name']}: <strong>есть</strong></li>\n";
+                    foreach($model->equipment as $item){
+                        print "<li>{$item->name}: <strong>есть</strong></li>\n";
                     }
                 ?>
             </ul>
-            <p>По оценкам ученых, сейчас на Землю ежегодно падают 40-60 тысяч тонн метеоритов и прочего космического мусора, а 4 миллиарда лет тому назад их падало намного больше. Большие споры вызывает марсианский метеорит ALH 84001, обнаруженный в 1984 году в Аллан-Хиллз в Антарктике. </p>
+            <div><?php
+                echo Html::encode($model->optional_equipment);
+                ?></div>
             <p><strong>Контакты:</strong></p>
             <ul class="hall-content-contact">
                 <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link"><span class="i-icons i-phone"></span>Показать номер</a></li>
-                <li class="hall-content-contact__line"><a href="mailto:<?php echo $agent[0]->attributes['email'];?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
+                <li class="hall-content-contact__line"><a href="mailto:<?php echo $model->agent->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
             </ul>
         </div>
     </div>

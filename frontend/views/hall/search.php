@@ -1,18 +1,18 @@
 <?php
 /**
  * @var $this yii\web\View
- * @var string $purpose
+ * @var array $search
+ * @var array $models
  * @var \frontend\models\Hall $model
  * @var \yii\data\Pagination $pages
  */
-use yii\helpers\Html;
+
 use \yii\widgets\LinkPager;
 $this->title = 'Результаты поиска';
-use yii\helpers\Url;
 ?>
 
 <div class="result">
-    <form class="result-find">
+    <form class="result-find" action="/hall/search">
         <div class="result-find-location">
             <div class="result-find-location__header">Вы искали</div>
             <fieldset>
@@ -52,31 +52,26 @@ use yii\helpers\Url;
     </form>
 
     <div class="result-content">
-        <div class="result-content-header"><?php echo $purpose;?> <span class="result-content-header__span">(<?php echo count($model);?> найдено)</span></div>
+        <div class="result-content-header"><?php echo $search['purpose'];?> <span class="result-content-header__span">(<?php echo count($models);?> найдено)</span></div>
         <div class="result-content-sort">
             Сортировать: <span class="result-content-sort__select" >по цене за м<sup>2</sup></span>
         </div>
-
         <div class="deals result-content-deals">
             <div class="deals-content">
                 <?php
-                    foreach($model as $item){
+                    foreach($models as $model){
                         $images=null;
-                        if(!is_null($item->attribs))
-                            $images=json_decode($item->attribs)->images;
-
-                        $price=$item->getPrice()->all();
-                        $address=$item->getAddress()->all();
-                        $purpose=$item->getPurpose()->all();
+                        if(!is_null($model->attribs))
+                            $images=json_decode($model->attribs)->images;
                         print "
                             <div class='deals-item'>
                                 <div class='b-star i-shadow'><span class='i-icons i-star'></span></div>
                                 <a href='/hall/$item->id'><img src='/{$images[0]->slide}'></a>
                                 <div class='deals-item-description'>
                                     <a href='/hall/$item->id' class='deals-item-description__address'>$item->name</a>
-                                    <p><span class='i-icons i-metro_red'></span> {$address[0]->attributes['comment']}</p>
+                                    <p><span class='i-icons i-metro_red'></span> {$model->address->comment}</p>
                                     <div class='deals-item-description__map'>Смотреть на карте<span class='i-icons i-map'></span></div>
-                                    <p><strong>$item->square</strong> м<sup>2</sup>, <strong>{$price[0]->attributes['min']}</strong> руб./ час</p>
+                                    <p><strong>$item->square</strong> м<sup>2</sup>, <strong>{$model->price->min}</strong> руб./ час</p>
                                 </div>
                             </div>\n";
                     }

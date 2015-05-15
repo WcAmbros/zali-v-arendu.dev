@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 
 use Yii;
+use yii\data\Pagination;
 use yii\web\Controller;
 use frontend\models\Hall;
 use frontend\models\HallHasEquipment;
@@ -41,10 +42,31 @@ class HallController extends Controller
 
     public function actionSearch(){
         $post=Yii::$app->request->post();
-        return $this->render('search', [
-            'model' => $this->findModels(),
-            'purpose'=>$post['Search']['purpose'],
-        ]);
+        if(!empty($post)){
+            Yii::$app->session->set('search',$post);
+        }else{
+            $post=Yii::$app->session->get('search');
+        }
+
+        $hall=new  Hall();
+
+        $query = $hall->search($post);
+        $pages = $hall->searchPagination($query);
+
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        if (!empty($models)) {
+            return $this->render('search', [
+                'model' => $models,
+                'pages' => $pages,
+                'purpose'=>$post['Search']['purpose'],
+            ]);
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
     }
 
     public function actionCreate()
@@ -90,38 +112,4 @@ class HallController extends Controller
         }
     }
 
-    /**
-     * Finds the Hall models
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @return Hall the loaded models
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModels()
-    {
-        $options=$this->getOptions();
-        $model = Hall::find()->innerJoin('address')->innerJoin('purpose')->where($options)->all();
-        if (!empty($model)) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
-    /**
-     * @return array
-    */
-    protected function getOptions(){
-        $post=Yii::$app->request->post();
-        $fields=[
-            'purpose'=>'purpose.name',
-            'district'=>'address.district',
-            'metro'=>'address.metro',
-        ];
-        $options=array();
-        foreach($post['Search'] as $key=>$item)
-            $options[$fields[$key]]=$item;
-
-
-        return  $options;
-    }
 }

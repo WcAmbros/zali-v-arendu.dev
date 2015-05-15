@@ -32,7 +32,7 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'frontend\assets\Html5ShivAsset',
         'frontend\assets\RespondAsset',
-        'frontend\assets\DadataAsset',
+//        'frontend\assets\DadataAsset',
         'frontend\assets\YandexApiAsset',
         'frontend\assets\JqueryUIAsset',
     ];

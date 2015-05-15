@@ -11,7 +11,8 @@
 use yii\jui\AutoComplete;
 $this->title = 'Залы в аренду';
 
-
+$this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
+$this->registerJsFile('https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js');
 function getAutoComplete_config($collection,$name){
 
     $list=array();

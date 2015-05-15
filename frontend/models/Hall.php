@@ -4,6 +4,8 @@ namespace frontend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\data\Pagination;
+use yii\db\Query;
 
 /**
  * This is the model class for table "hall".
@@ -150,5 +152,51 @@ class Hall extends \yii\db\ActiveRecord
 //                'translit' => true
 //            ]
         ];
+    }
+
+
+
+    /**
+     * @param array $post
+     * @return Query
+     */
+    public  function search($post){
+
+        return $this->find()->innerJoin('address','address.id=hall.address_id')
+            ->innerJoin('purpose','purpose.id=hall.purpose_id')
+            ->where($this->searchOptions($post));
+    }
+
+    /**
+     * @param Query $query
+     * @return Pagination
+     */
+    public  function searchPagination($query){
+        $countQuery = clone $query;
+        $pages = new Pagination([
+            'totalCount' => $countQuery->count(),
+            'pageSize'=>12
+        ]);
+
+        return $pages;
+    }
+
+    /**
+     * @param array $post
+     * @return array
+     */
+    private  function searchOptions($post){
+        $fields=[
+            'purpose'=>'purpose.name',
+            'district'=>'address.district',
+            'metro'=>'address.metro',
+        ];
+        $options=array();
+
+        foreach($post['Search'] as $key=>$item)
+            $options[$fields[$key]]=$item;
+
+
+        return  $options;
     }
 }

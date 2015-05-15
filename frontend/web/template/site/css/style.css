@@ -400,9 +400,9 @@
 .pagination-pages{
     float: left;
     display: inline-block;
-    width: 168px;
-    text-align: justify;
+    width: 368px;
     height: 28px;
+    padding: 0;
 
 }
 .pagination-pages:after{
@@ -410,41 +410,63 @@
     width: 100%;
     content: '';
 }
-.pagination-pages-link{
-    position: relative;
+.pagination-pages li{
     font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
     text-align: center;
-    width: 28px;
+    display: inline-block;
+    margin-right: 4px;
     background: url("../images/style/pagination.jpg");
 }
-
-.pagination-pages-link:hover{
+.pagination-pages-item__link{
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    width: 28px;
+    color: #3060bf;
+    vertical-align: middle;
+    text-decoration: none;
+}
+.pagination-pages-item__link:hover,
+.pagination-pages-item_active .pagination-pages-item__link{
     background: #fff;
     color: #000;
 }
-.pagination-pages-link:hover:before{
+.pagination-pages-item__link:hover:before,
+.pagination-pages .pagination-pages-item_active:before{
     display: block;
     width: 26px;
     height: 26px;
     position: absolute;
     border: 2px solid #3060bf;
+    z-index: 1;
     content: '';
 }
-.pagination-next{
-    float: left;
-    margin-left: 28px;
-    display: inline-block;
-}
-.pagination-next-link{
+.pagination-pages-item__prev .pagination-pages-item__link,
+.pagination-pages-item__next .pagination-pages-item__link{
     text-transform: uppercase;
-    display: inline-block;
     text-align: center;
     width: 87px;
+    color: #3060bf;
     text-decoration: none;
     font-weight: bold;
     background: url("../images/style/pagination.jpg");
+}
+.pagination-pages-item__next .pagination-pages-item__link:hover:before,
+.pagination-pages-item__prev .pagination-pages-item__link:hover:before{
+    border: 0;
+    display: none;
+}
+
+
+.pagination-pages .pagination-pages-item__next{
+    margin-left: 23px;
+}
+.pagination-pages .pagination-pages-item__prev{
+    margin-right: 28px;
+}
+.pagination-pages .pagination-pages-item_disabled{
+    display: none;
 }
 .pagination-status{
     font-size: 12px;

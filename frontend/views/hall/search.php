@@ -3,8 +3,10 @@
  * @var $this yii\web\View
  * @var string $purpose
  * @var \frontend\models\Hall $model
+ * @var \yii\data\Pagination $pages
  */
 use yii\helpers\Html;
+use \yii\widgets\LinkPager;
 $this->title = 'Результаты поиска';
 use yii\helpers\Url;
 ?>
@@ -82,18 +84,34 @@ use yii\helpers\Url;
             </div>
         </div>
         <div class="pagination">
-            <div class="pagination-pages">
-                <a href="#" class="pagination-pages-link">1</a>
-                <a href="#" class="pagination-pages-link">2</a>
-                <a href="#" class="pagination-pages-link">3</a>
-                <a href="#" class="pagination-pages-link">4</a>
-                <a href="#" class="pagination-pages-link">5</a>
-            </div>
-            <div class="pagination-next">
-                <a href="#" class="pagination-next-link">Дальше &rarr;</a>
-            </div>
+            <?php
+
+            echo LinkPager::widget([
+                'pagination' => $pages,
+                'nextPageLabel'=>'Дальше →',
+                'prevPageLabel'=>'Назад',
+                'firstPageCssClass'=>'pagination-pages-item__first',
+                'lastPageCssClass'=>'pagination-pages-item__last',
+                'prevPageCssClass'=>'pagination-pages-item__prev',
+                'nextPageCssClass'=>'pagination-pages-item__next',
+                'activePageCssClass'=>'pagination-pages-item_active',
+                'disabledPageCssClass'=>'pagination-pages-item_disabled',
+                'options'=>[
+                    'class'=>'pagination-pages'
+                ],
+                'linkOptions'=>[
+                    'class'=>'pagination-pages-item__link'
+                ],
+                'maxButtonCount' =>5
+
+            ]);
+            ?>
             <div class="pagination-status">
-                1-12 из 124
+                <?php
+                $item=($pages->page!=0)?$pages->page*$pages->pageSize:$pages->page+1;
+                $item_next=($pages->page+1)*$pages->pageSize;
+                $item_total=$pages->totalCount;
+                echo "$item-$item_next из $item_total";?>
             </div>
         </div>
 

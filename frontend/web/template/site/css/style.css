@@ -59,7 +59,7 @@
 }
 .main-find-form-label__select{
     width: 248px;
-    height: 28px;
+    height: 21px;
 }
 .main__button{
     text-transform: uppercase;
@@ -169,6 +169,10 @@
     display: inline-block;
     cursor: pointer;
     border-bottom: 1px dotted #669900;
+}
+.ymap{
+    color: #669900;
+    text-decoration: none;
 }
 .deals-item-description__map .i-map{
     position: absolute;
@@ -326,7 +330,7 @@
 }
 .result-find-location-item__select{
     width: 180px;
-    height: 27px;
+    height: 21px;
 }
 
 .result-find__button{

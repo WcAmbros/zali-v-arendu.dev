@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = $model->name;
 
 $images=json_decode($model->attribs)->images;
-
+$geocode=json_decode($model->attribs)->geocode;
 ?>
 
 <div class="return_to_search">
@@ -39,7 +39,11 @@ $images=json_decode($model->attribs)->images;
                 echo "<p><strong>$model->square</strong> м<sup>2</sup>, <strong>{$model->price->min}</strong> руб./ час</p>"
             ?>
             <p><span class="i-icons i-metro_green"></span> <?php echo $model->address->comment; ?></p>
-            <div class="main-deals-item-description__map">Смотреть на карте<span class="i-icons i-map"></span></div>
+            <div class="main-deals-item-description__map">
+                <a href="#<?php echo 'map_'.$model->id;?>"
+                   geoname="<?php echo $model->name;?>"
+                   geocode='<?php echo $geocode;?>'
+                   class="ymap">Смотреть на карте<span class="i-icons i-map"></span></a></div>
             <p class="equipment__header">Оборудование зала:</p>
             <ul class="equipment">
                 <li>Покрытие: <strong><?php echo $model->floor->name; ?></strong></li>
@@ -57,6 +61,10 @@ $images=json_decode($model->attribs)->images;
                 <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link"><span class="i-icons i-phone"></span>Показать номер</a></li>
                 <li class="hall-content-contact__line"><a href="mailto:<?php echo $model->agent->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
             </ul>
+            <?php
+             print_r("<div id='map_$model->id' style='width: 700px; height: 400px;display: none; '></div>\n");
+            ?>
+
         </div>
     </div>
 </div>

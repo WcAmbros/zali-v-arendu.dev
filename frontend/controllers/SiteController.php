@@ -35,15 +35,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
 	    $floor=new Floor();
-	    $purpose=new Purpose();
+
 	    $equipment=new Equipment();
+        $purpose=new Purpose();
 	    $district=new District();
 	    $metro=new Metro();
 
         return $this->render('index',[
 	        'floor'=>$floor->find()->all(),
-	        'purpose'=>$purpose->find()->all(),
 	        'equipment'=>$equipment->find()->all(),
+            'purpose'=>$purpose->find()->all(),
 	        'district'=>$district->find()->all(),
 	        'metro'=>$metro->find()->all(),
         ]);

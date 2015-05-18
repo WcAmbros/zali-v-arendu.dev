@@ -6,6 +6,9 @@ use Yii;
 use yii\data\Pagination;
 use yii\web\Controller;
 use frontend\models\Hall;
+use frontend\models\Purpose;
+use frontend\models\District;
+use frontend\models\Metro;
 use frontend\models\HallHasEquipment;
 use yii\web\NotFoundHttpException;
 
@@ -47,7 +50,9 @@ class HallController extends Controller
         }else{
             $post=Yii::$app->session->get('search');
         }
-
+        $purpose=new Purpose();
+        $district=new District();
+        $metro=new Metro();
         $hall=new  Hall();
 
         $query = $hall->search($post);
@@ -59,9 +64,12 @@ class HallController extends Controller
 
         if (!empty($models)) {
             return $this->render('search', [
-                'model' => $models,
+                'models' => $models,
                 'pages' => $pages,
-                'purpose'=>$post['Search']['purpose'],
+                'search'=>$post['Search'],
+                'purpose'=>$purpose->find()->all(),
+                'district'=>$district->find()->all(),
+                'metro'=>$metro->find()->all(),
             ]);
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

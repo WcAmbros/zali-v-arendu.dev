@@ -34,7 +34,7 @@ $(document).ready(function(){
                 $('input[name="'+hall.name+'['+key+']"]').val(hall.params[key]);
             }
 
-            $('input[name="Hall[geocode]"]').val(JSON.stringify([obj.geo_lon,obj.geo_lat]));
+            $('input[name="Hall[geocode]"]').val(JSON.stringify([obj.geo_lat,obj.geo_lon]));
 
             geocode_maps({
                 geocode:obj.geo_lon+','+obj.geo_lat,

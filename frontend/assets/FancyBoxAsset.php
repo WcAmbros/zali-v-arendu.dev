@@ -17,6 +17,7 @@ class FancyBoxAsset extends AssetBundle{
         'jquery.fancybox.pack.js',
         'helpers/jquery.fancybox-media.js',
         'helpers/jquery.fancybox-thumbs.js',
+        'helpers/jquery.fancybox-buttons.js',
     ];
 
     public $jsOptions = [
@@ -24,8 +25,8 @@ class FancyBoxAsset extends AssetBundle{
     ];
     public $css = [
         'jquery.fancybox.css',
-        'helpers/jquery.fancybox-media.css',
         'helpers/jquery.fancybox-thumbs.css',
+        'helpers/jquery.fancybox-buttons.css',
     ];
 
     public $cssOptions = [

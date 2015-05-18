@@ -1,4 +1,15 @@
 $(document).ready(function(){
+    $('.hall-content-slider-thumbnails-link').fancybox();
+    $('.hall-content-contact-link').click(function(){
+        var obj=$(this);
+        $.get(
+            '/ajax/phone/'+obj.attr('rel'),
+            function(data){
+                obj.parent().html('<span class="hall-content-contact__phone"><span class="i-icons i-phone"></span>'+data.response.phone+'</span>');
+            },
+            'json'
+        )
+    });
 
 });
 

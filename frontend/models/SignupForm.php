@@ -54,16 +54,27 @@ class SignupForm extends Model
             $user->generateAuthKey();
             $user->generateEmailConfirmToken();
             if ($user->save()) {
-                Yii::$app->mailer->compose('confirmEmail', ['user' => $user])
-                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
-                    ->setTo($this->email)
-                    ->setSubject('Email confirmation for ' . Yii::$app->name)
-                    ->send();
-
+                $this->sendEmail($user);
                 return $user;
             }
         }
 
         return null;
+    }
+
+    /**
+     * Sends an email to the specified email address using the information collected by this model.
+     *
+     * @param  string  $email the target email address
+     * @return boolean whether the email was sent
+     */
+    public function sendEmail($user)
+    {
+        return Yii::$app->mailer->compose('confirmEmail',['user' => $user])
+            ->setTo($this->email)
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
+            ->setTo($this->email)
+            ->setSubject('Email confirmation for ' . Yii::$app->name)
+            ->send();
     }
 }

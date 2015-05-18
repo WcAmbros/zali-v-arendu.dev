@@ -19,16 +19,16 @@ $geocode=json_decode($model->attribs)->geocode;
     <h1 class="hall__header"><?php echo $model->name;?></h1>
     <div class="hall__caption"><?php echo $model->purpose->name;?></div>
     <div class="hall-content">
-
-
         <div class="hall-content-slider">
             <a href="#" class="hall-content-slider-main"><img src="/<?php echo $images[0]->slide;?>"></a>
             <div class="hall-content-slider-thumnails">
                 <?php
                     foreach($images as $image)
-                        print (Html::a("<img src='/$image->thumbnail'>","/$image->slide",['class' => 'hall-content-slider-thumbnails-link']))."\n";
+                        print (Html::a("<img src='/$image->thumbnail'>","/$image->original",[
+                                'class' => 'hall-content-slider-thumbnails-link',
+                                'rel'=>"group_$model->id"
+                            ]))."\n";
               ?>
-
             </div>
         </div>
         <div class="hall-content-banner">
@@ -58,7 +58,7 @@ $geocode=json_decode($model->attribs)->geocode;
                 ?></div>
             <p><strong>Контакты:</strong></p>
             <ul class="hall-content-contact">
-                <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link"><span class="i-icons i-phone"></span>Показать номер</a></li>
+                <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link" rel="<?php echo $model->id;?>"><span class="i-icons i-phone"></span>Показать номер</a></li>
                 <li class="hall-content-contact__line"><a href="mailto:<?php echo $model->agent->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
             </ul>
             <?php

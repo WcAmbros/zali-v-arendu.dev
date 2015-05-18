@@ -99,7 +99,7 @@ album={
     max:9,
     count:1,
     add:function(obj){
-        if(this.count<=this.max){
+        if(this.count<this.max){
             obj.append(template.image);
             this.count++;
         }

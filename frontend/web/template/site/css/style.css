@@ -164,7 +164,7 @@
 .deals-item-description__address{
     font-weight: bold;
 }
-.deals-item-description__map{
+.deals-item-description__map,.main-deals-item-description__map {
     color: #669900;
     display: inline-block;
     cursor: pointer;
@@ -174,7 +174,9 @@
     color: #669900;
     text-decoration: none;
 }
-.deals-item-description__map .i-map{
+.deals-item-description__map .i-map,
+.main-deals-item-description__map .i-map
+{
     position: absolute;
     margin-left: 5px;
 }
@@ -255,12 +257,14 @@
     padding-left:25px;
     margin: 0;
 }
-.hall-content-contact-link{
+.hall-content-contact-link,.hall-content-contact__phone{
+    color:#3060bf;
     font-size: 14px;
     text-decoration: none;
     border-bottom: 1px dotted #3060bf;
 }
-.hall-content-contact-link .i-icons{
+
+.hall-content-contact .i-icons{
     position: absolute;
     margin:2px 0 0 -25px;
 }

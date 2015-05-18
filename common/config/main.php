@@ -11,7 +11,7 @@ return [
             'charset' => 'utf8',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DummyCache',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

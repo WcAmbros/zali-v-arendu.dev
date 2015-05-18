@@ -22,9 +22,12 @@ class UploadImageBehavior extends Behavior{
 
     public $maxFileSize = null;
 
+    public $maxFileCount=9;
+
     public $fileTypes = 'image/jpeg,image/png';
 
     public $savePathAlias = '@app/uploads';
+
     public $list=[
         [
             'original'=>"uploads/noimage.jpg",
@@ -51,8 +54,9 @@ class UploadImageBehavior extends Behavior{
         }
         if(!empty($files)){
             $this->list=array();
+            $i=0;
             foreach($files as $file){
-                if ($file && $file->name) {
+                if ($file && $file->name && ($i++) < $this->maxFileCount){
                     $model->{$this->fileAttribute} = $file;
                     $validator = Validator::createValidator('image', $model, $this->fileAttribute,  [
                         'mimeTypes'=>$this->fileTypes,

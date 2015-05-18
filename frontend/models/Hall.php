@@ -183,7 +183,7 @@ class Hall extends \yii\db\ActiveRecord
 
     /**
      * @param array $post
-     * @return array
+     * @return string
      */
     private  function searchOptions($post){
         $fields=[
@@ -192,11 +192,10 @@ class Hall extends \yii\db\ActiveRecord
             'metro'=>'address.metro',
         ];
         $options=array();
-
         foreach($post['Search'] as $key=>$item)
-            $options[$fields[$key]]=$item;
+            if(trim($item)!='')
+                $options[]= $fields[$key].' LIKE ("%'.$item.'%")';
 
-
-        return  $options;
+        return  implode(' AND ', $options);
     }
 }

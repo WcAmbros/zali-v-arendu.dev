@@ -14,7 +14,6 @@ use \yii\widgets\LinkPager;
 $this->title = 'Результаты поиска';
 
 function getAutoComplete_config($collection,$name,$value){
-
     $list=array();
     foreach($collection as $item){
         $list[]=$item->name;

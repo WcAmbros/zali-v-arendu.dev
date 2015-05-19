@@ -30,7 +30,7 @@ class ConfirmEmailForm extends Model
         }
         $this->_user = User::findByEmailConfirmToken($token);
         if (!$this->_user) {
-            throw new InvalidParamException('Неверный токен.');
+            throw new InvalidParamException('Неверный token.');
         }
         parent::__construct($config);
     }

@@ -23,13 +23,13 @@ class SignupForm extends Model
         return [
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Данный пользователь уже зарегистрирован на сайте.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Указанная почта уже зарегистрирована на сайте.'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
@@ -74,7 +74,21 @@ class SignupForm extends Model
             ->setTo($this->email)
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
             ->setTo($this->email)
-            ->setSubject('Email confirmation for ' . Yii::$app->name)
+            ->setSubject('Подтверждение почты для ' . Yii::$app->name)
             ->send();
+    }
+
+
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Логин',
+            'password' => 'Пароль',
+            'verifyCode' => 'Проверочный код',
+        ];
     }
 }

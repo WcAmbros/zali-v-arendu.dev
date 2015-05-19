@@ -2,10 +2,12 @@
 namespace frontend\controllers;
 
 use Yii;
+
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
+use frontend\models\ConfirmEmailForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -104,6 +106,22 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionConfirmEmail($token)
+    {
+        try {
+            $model = new ConfirmEmailForm($token);
+        } catch (InvalidParamException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+
+        if ($model->confirmEmail()) {
+            Yii::$app->getSession()->setFlash('success', 'Спасибо! Ваш Email успешно подтверждён.');
+        } else {
+            Yii::$app->getSession()->setFlash('error', 'Ошибка подтверждения Email.');
+        }
+
+        return $this->goHome();
+    }
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();

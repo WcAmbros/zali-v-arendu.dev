@@ -4,13 +4,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $user common\models\User */
 
-$confirmLink = Yii::$app->urlManager->createAbsoluteUrl(['user/default/confirm-email', 'token' => $user->email_confirm_token]);
+$confirmLink = Yii::$app->urlManager->createAbsoluteUrl(['user/confirm-email', 'token' => $user->email_confirm_token]);
 ?>
 
-Здравствуйте, <?= Html::encode($user->username) ?>!
+<p>Здравствуйте, <?= Html::encode($user->username) ?>!</p>
 
-Для подтверждения адреса пройдите по ссылке:
+<p>Для подтверждения адреса пройдите по ссылке: <?= Html::a(Html::encode($confirmLink), $confirmLink) ?></p>
 
-<?= Html::a(Html::encode($confirmLink), $confirmLink) ?>
-
-Если Вы не регистрировались на нашем сайте, то просто удалите это письмо.
+<p>Если Вы не регистрировались на нашем сайте, то просто удалите это письмо.</p>

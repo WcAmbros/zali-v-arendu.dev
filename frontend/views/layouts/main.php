@@ -63,9 +63,9 @@ AppAsset::register($this);
             <img src="/images/style/site-master.png">
         </div>
         <div class="footer-content-nav">
-            <a href="#" class="footer-content-nav-link">О проекте</a> |
-            <a href="#" class="footer-content-nav-link">Реклама</a> |
-            <a href="#" class="footer-content-nav-link">Обратная связь</a>
+            <a href="/about" class="footer-content-nav-link">О проекте</a> |
+            <a href="/banner" class="footer-content-nav-link">Реклама</a> |
+            <a href="/contact" class="footer-content-nav-link">Обратная связь</a>
         </div>
         <div class="footer-social">
             <a href="#" class="i-icons i-vk"></a>

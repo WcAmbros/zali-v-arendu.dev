@@ -62,4 +62,14 @@ class ResetPasswordForm extends Model
 
         return $user->save();
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'password' => 'Пароль',
+        ];
+    }
 }

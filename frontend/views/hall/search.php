@@ -10,7 +10,7 @@
  * @var \yii\data\Pagination $pages
  */
 use yii\jui\AutoComplete;
-use \yii\widgets\LinkPager;
+
 $this->title = 'Результаты поиска';
 
 function getAutoComplete_config($collection,$name,$value){
@@ -32,7 +32,7 @@ function getAutoComplete_config($collection,$name,$value){
     return $config;
 }
 $district = getAutoComplete_config($district,'Search[district]',$search['district']);
-$metro = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
+$metro_list = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
 
 ?>
 
@@ -61,7 +61,7 @@ $metro = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
                 <label class="find-location-item">
                     <span class="result-find-location-item__header">Станция метро:</span>
                     <?php
-                        echo AutoComplete::widget($metro);
+                        echo AutoComplete::widget($metro_list);
                     ?>
                 </label>
             </fieldset>
@@ -90,62 +90,13 @@ $metro = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
             <div class="deals-content">
                 <?php
                     foreach($models as $model){
-                        $images=null;
-                        $geocode=null;
-                        if(!is_null($model->attribs)){
-                            $images=json_decode($model->attribs)->images;
-                            $geocode=json_decode($model->attribs)->geocode;
-                        }
-                        print "
-                            <div class='deals-item'>
-                                <div class='b-star i-shadow'><span class='i-icons i-star'></span></div>
-                                <a href='/hall/$model->id'><img src='/{$images[0]->slide}'></a>
-                                <div class='deals-item-description'>
-                                    <a href='/hall/$model->id' class='deals-item-description__address'>$model->name</a>
-                                    <p><span class='i-icons i-metro_red'></span> {$model->address->comment}</p>
-                                    <div class='deals-item-description__map'>
-                                        <a href='#map_$model->id' geoname='$model->name' geocode='$geocode' class='ymap'>
-                                            Смотреть на карте<span class='i-icons i-map'></span>
-                                        </a>
-                                    </div>
-                                    <p><strong>$model->square</strong> м<sup>2</sup>, <strong>{$model->price->min}</strong> руб./ час</p>
-                                    <div id='map_$model->id' style='width: 700px; height: 400px;display: none; '></div>
-                                </div>
-                            </div>\n";
+                        echo $this->render('_hall',['model'=>$model,'metro'=>$metro]);
                     }
                 ?>
             </div>
         </div>
         <div class="pagination">
-            <?php
-            
-            echo LinkPager::widget([
-                'pagination' => $pages,
-                'nextPageLabel'=>'Дальше →',
-                'prevPageLabel'=>'Назад',
-                'firstPageCssClass'=>'pagination-pages-item__first',
-                'lastPageCssClass'=>'pagination-pages-item__last',
-                'prevPageCssClass'=>'pagination-pages-item__prev',
-                'nextPageCssClass'=>'pagination-pages-item__next',
-                'activePageCssClass'=>'pagination-pages-item_active',
-                'disabledPageCssClass'=>'pagination-pages-item_disabled',
-                'options'=>[
-                    'class'=>'pagination-pages'
-                ],
-                'linkOptions'=>[
-                    'class'=>'pagination-pages-item__link'
-                ],
-                'maxButtonCount' =>5
-
-            ]);
-            ?>
-            <div class="pagination-status">
-                <?php
-                $model=($pages->page!=0)?$pages->page*$pages->pageSize:$pages->page+1;
-                $model_next=($pages->page+1)*$pages->pageSize;
-                $model_total=$pages->totalCount;
-                echo "$model-$model_next из $model_total";?>
-            </div>
+            <?=$this->render('_pagination',['pages'=>$pages])?>
         </div>
 
     </div>

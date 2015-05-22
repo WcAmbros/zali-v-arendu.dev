@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+
+use frontend\models\Agent;
 use Yii;
 
 use common\models\LoginForm;

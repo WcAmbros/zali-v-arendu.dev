@@ -23,11 +23,10 @@ class Slug extends Behavior
 
     public function getSlug( $event )
     {
-        if ( empty( $this->owner->{$this->out_attribute} ) ) {
-            $this->owner->{$this->out_attribute} = $this->generateSlug( $this->owner->{$this->in_attribute} );
-        } else {
-            $this->owner->{$this->out_attribute} = $this->generateSlug( $this->owner->{$this->out_attribute} );
-        }
+        $attr = empty( $this->owner->{$this->out_attribute}) ?
+            $this->in_attribute : $this->out_attribute;
+
+        $this->owner->{$this->out_attribute} = $this->generateSlug( $this->owner->{$attr} );
     }
 
     private function generateSlug( $slug )

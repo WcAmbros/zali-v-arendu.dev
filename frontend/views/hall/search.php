@@ -22,7 +22,7 @@ function getAutoComplete_config($collection,$name,$value){
         'name' => $name,
         'value' => $value,
         'options'=>[
-            'class'=>'result-find-location-item__select'
+            'class'=>'result-find-location-item__input'
         ],
         'clientOptions' => [
             'source' => $list
@@ -33,7 +33,7 @@ function getAutoComplete_config($collection,$name,$value){
 }
 $district = getAutoComplete_config($district,'Search[district]',$search['district']);
 $metro = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
-$search_purpose = getAutoComplete_config($purpose,'Search[purpose]',$search['purpose']);
+
 ?>
 
 <div class="result">
@@ -44,9 +44,13 @@ $search_purpose = getAutoComplete_config($purpose,'Search[purpose]',$search['pur
             <fieldset>
                 <label class="result-find-location-item">
                     <span  class="result-find-location-item__header">Вид зала:</span>
-                    <?php
-                    echo AutoComplete::widget($search_purpose);
-                    ?>
+                    <select name="Search[purpose]" class="result-find-location-item__select">
+                        <?php
+                            foreach($purpose as $item){
+                                echo "<option>$item->name</option>";
+                            }
+                        ?>
+                    </select>
                 </label>
                 <label class="result-find-location-item">
                     <span class="result-find-location-item__header">Район города:</span>

@@ -2,7 +2,6 @@
 namespace frontend\controllers;
 
 
-
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\Controller;
@@ -10,14 +9,19 @@ use frontend\models\District;
 use frontend\models\Metro;
 use frontend\models\Hall;
 
-
 class AjaxController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
     public function actionIndex()
     {
         return $this->goHome();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function actionDistrict($name)
     {
         $model=new District();
@@ -26,6 +30,9 @@ class AjaxController extends Controller
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function actionMetro($name)
     {
         $model=new Metro();
@@ -34,6 +41,9 @@ class AjaxController extends Controller
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function actionPhone($id)
     {
         $model=Hall::findOne($id);

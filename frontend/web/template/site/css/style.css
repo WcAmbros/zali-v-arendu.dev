@@ -58,6 +58,10 @@
     text-align: right;
 }
 .main-find-form-label__select{
+    width: 253px;
+    height: 27px;
+}
+.main-find-form-label__input{
     width: 248px;
     height: 21px;
 }
@@ -333,6 +337,10 @@
     margin: 13px 0 9px;
 }
 .result-find-location-item__select{
+    width: 185px;
+    height: 27px;
+}
+.result-find-location-item__input{
     width: 180px;
     height: 21px;
 }

@@ -9,6 +9,7 @@
  * @var array $district
  */
 use yii\jui\AutoComplete;
+use \yii\helpers\Html;
 $this->title = 'Залы в аренду';
 
 $this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
@@ -23,7 +24,7 @@ function getAutoComplete_config($collection,$name){
     $config=[
         'name' => $name,
         'options'=>[
-            'class'=>'main-find-form-label__select'
+            'class'=>'main-find-form-label__input'
             ],
         'clientOptions' => [
             'source' => $list
@@ -34,9 +35,9 @@ function getAutoComplete_config($collection,$name){
 }
 $district = getAutoComplete_config($district,'Search[district]');
 $metro = getAutoComplete_config($metro,'Search[metro]');
-$search_purpose = getAutoComplete_config($purpose,'Search[purpose]');
-?>
+//$search_purpose = getAutoComplete_config('Search[purpose]');
 
+?>
 <div class="add-hall">
     <div class="add-hall-background"></div>
     <form class="add-hall-form" action="/hall/create" method="post" enctype="multipart/form-data">
@@ -176,9 +177,15 @@ $search_purpose = getAutoComplete_config($purpose,'Search[purpose]');
                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                 <fieldset>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Вид зала:</span>
-                        <?php
-                            echo AutoComplete::widget($search_purpose);
-                        ?>
+                        <select class="main-find-form-label__select" name="Search[purpose]">
+
+                            <?php
+                            foreach($purpose as $item){
+                                echo "<option>$item->name</option>";
+                            }
+                            ?>
+                        </select>
+
 
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>

@@ -8,6 +8,20 @@ use frontend\widgets\Alert;
 /* @var $content string */
 
 AppAsset::register($this);
+
+if(!Yii::$app->user->isGuest){
+    $route='/agent';
+    $username=Yii::$app->user->identity->username;
+    $icon='';
+    $agent=Yii::$app->agent->findOne(['user_id'=>Yii::$app->user->id]);
+    if(!is_null($agent)){
+        $route='/agent/'.$agent->id;
+        $username=$agent->name;
+        $icon='<img src="/'.$agent->images.'" class="header-content-user__icon">';
+    }
+
+}
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -42,11 +56,11 @@ AppAsset::register($this);
             $logout=Url::toRoute('user/logout');
             $signup=Url::toRoute('user/signup');
             if(Yii::$app->user->isGuest){
-
                 echo '<a href="'.$login.'">Войти</a> / <a href="'.$signup.'">Зарегистрироваться</a>';
             }else{
-                echo 'Привет, <a href="#" class="header-content-user__label">'.Yii::$app->user->identity->username.'!</a>
-                <img src="/images/user.jpg" class="header-content-user__icon"> /
+
+                echo 'Привет, <a href="'.$route.'" class="header-content-user__label">'.$username.'!</a>
+                '.$icon.' /
                 <a data-method="post" href="'.$logout.'">Выйти</a>';
             }
             ?>

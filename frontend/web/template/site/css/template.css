@@ -83,6 +83,8 @@ body{
     text-decoration: none;
 }
 .header-content-user__icon{
+    width: 26px;
+    height: 26px;
     margin-left: 12px;
     border-radius:26px;
 }

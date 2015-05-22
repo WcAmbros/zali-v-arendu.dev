@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use common\models\User;
 use Yii;
 
 /**
@@ -11,7 +12,7 @@ use Yii;
  * @property string $name
  * @property string $email
  * @property string $phone
- * @property string $images
+ * @property string $image
  * @property integer $user_id
  *
  * @property User $user
@@ -19,6 +20,8 @@ use Yii;
  */
 class Agent extends \yii\db\ActiveRecord
 {
+
+    public $image=null;
     /**
      * @inheritdoc
      */
@@ -27,6 +30,7 @@ class Agent extends \yii\db\ActiveRecord
         return 'agent';
     }
 
+
     /**
      * @inheritdoc
      */
@@ -34,25 +38,31 @@ class Agent extends \yii\db\ActiveRecord
     {
         return [
             [['images'], 'string'],
-            [['user_id'], 'required'],
+            [['user_id','name','email','phone'], 'required'],
             [['user_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['email', 'phone'], 'string', 'max' => 45]
         ];
     }
 
+    public function behaviors()
+    {
+        return [
+            'AgentUploadImageBehavior' => [
+                'class' => 'common\behaviors\AgentUploadImageBehavior',
+            ]
+        ];
+    }
     /**
      * @inheritdoc
      */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Имя',
             'email' => 'Email',
-            'phone' => 'Phone',
-            'images' => 'Images',
-            'user_id' => 'User ID',
+            'phone' => 'Телефон',
+            'image' => 'Иконка',
         ];
     }
 

@@ -16,6 +16,9 @@ return [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
         ],
+        'agent'=>[
+            'class'=>'frontend\models\Agent'
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -41,8 +44,10 @@ return [
             'rules' => [
                 '<_a:(login|logout|signup|confirm-email|request-password-reset|reset-password)>' => 'user/<_a>',
                 '<_a:(about|contact|banner)>' => 'site/<_a>',
-                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
+                'agent' => 'agent/create',
+                'agent/<id:\d+>' => 'agent/update',
                 '<_c:[\w\-]+>' => '<_c>/index',
+                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
             ],
         ],

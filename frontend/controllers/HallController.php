@@ -2,14 +2,13 @@
 namespace frontend\controllers;
 
 
-use Yii;
-use yii\data\Pagination;
-use yii\web\Controller;
-use frontend\models\Hall;
-use frontend\models\Purpose;
 use frontend\models\District;
-use frontend\models\Metro;
+use frontend\models\Hall;
 use frontend\models\HallHasEquipment;
+use frontend\models\Metro;
+use frontend\models\Purpose;
+use Yii;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -38,8 +37,11 @@ class HallController extends Controller
     }
 
     public function actionView($id){
+        $metro=new Metro();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'metro'=>$metro->find()->all(),
         ]);
     }
 

@@ -1,13 +1,13 @@
 <?php
 namespace common\behaviors;
 
+use common\models\User;
+use frontend\models\Address;
+use frontend\models\Agent;
+use frontend\models\Price;
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
-use frontend\models\Price;
-use frontend\models\Address;
-use frontend\models\Agent;
-use common\models\User;
 
 class HallBehavior extends Behavior{
 
@@ -88,18 +88,20 @@ class HallBehavior extends Behavior{
      * @return Agent
      **/
     private function saveAgent(){
-        $post=Yii::$app->request->post();
-        $model = new Agent();
-        $model->load($post);
 
         if(Yii::$app->user->isGuest){
+            $post=Yii::$app->request->post();
+            $model = new Agent();
+            $model->load($post);
             $user=new User();
             $user=$user->findOne(['username'=>'guest']);
             $model->user_id=$user->id;
+            $model->save();
+
         }else{
-            $model->user_id=Yii::$app->session->get('__id');
+
+            $model = Agent::findOne(['user_id'=>Yii::$app->user->id]);
         }
-        $model->save();
 
         return $model;
     }

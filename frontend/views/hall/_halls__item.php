@@ -7,6 +7,8 @@
  * @var \frontend\models\Metro $metro_current
  */
 
+use yii\helpers\Url;
+
 $images=null;
 $geocode=null;
 $metro_current=null;
@@ -16,23 +18,21 @@ if(!is_null($model->attribs)){
 }
     foreach($metro as $metro_item){
         if($metro_item->name==$model->address->metro){
-
             $metro_current=$metro_item;//json_decode($metro_item->attribs)->options->class;
-
         }
     }
 ?>
 
 <div class='deals-item'>
     <div class='b-star i-shadow'><span class='i-icons i-star'></span></div>
-    <a href='/hall/<?=$model->id;?>'><img src='/<?=$images[0]->slide;?>'></a>
+    <a href='<?=(Url::toRoute(['hall/view','id'=>$model->id]))?>'><img src='/<?=$images[0]->slide;?>'></a>
     <div class='deals-item-description'>
-        <a href='/hall/<?=$model->id;?>' class='deals-item-description__address'><?=$model->name;?></a>
+        <a href='<?=(Url::toRoute(['hall/view','id'=>$model->id]))?>' class='deals-item-description__address'><?=$model->name;?></a>
         <p>
             <?php
                 if(!is_null($metro_current)){
                     $class=json_decode($metro_current->attribs)->options->class;
-                    echo "<span class='i-icons $class'></span> $metro_current->name,";
+                    echo "<span class='i-icons $class'></span> $metro_current->name, ";
                 }
             ?>
             <?=$model->address->comment;?>
@@ -46,3 +46,4 @@ if(!is_null($model->attribs)){
         <div id='map_<?=$model->id;?>' style='width: 700px; height: 400px;display: none; '></div>
     </div>
 </div>
+

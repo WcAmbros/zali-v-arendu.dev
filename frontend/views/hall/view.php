@@ -1,19 +1,30 @@
 <?php
 /**
  * @var $this yii\web\View
- *
  * @var \frontend\models\Hall $model
+ * @var \frontend\models\Metro $metro
  */
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 $this->title = $model->name;
+$metro_current=null;
+$images_max_in_line=3;
 
 $images=json_decode($model->attribs)->images;
 $geocode=json_decode($model->attribs)->geocode;
+
+foreach($metro as $metro_item){
+    if($metro_item->name==$model->address->metro){
+        $metro_current=$metro_item;//json_decode($metro_item->attribs)->options->class;
+    }
+}
+
 ?>
 
 <div class="return_to_search">
     <span class="i-icons i-arrow"></span>
-    <a href="/hall/search" class="return_to_search__link">Назад к поиску</a>
+    <a href="<?=(Url::toRoute('hall/search'))?>" class="return_to_search__link">Назад к поиску</a>
 </div>
 <div class="hall">
     <h1 class="hall__header"><?php echo $model->name;?></h1>
@@ -28,6 +39,10 @@ $geocode=json_decode($model->attribs)->geocode;
                                 'class' => 'hall-content-slider-thumbnails-link',
                                 'rel'=>"group_$model->id"
                             ]))."\n";
+
+                $different=abs(count($images)%$images_max_in_line-$images_max_in_line);
+                for($i=0;$i<$different;$i++)
+                    print("<span style='display: inline-block; width: 100px;'></span>\n");
               ?>
             </div>
         </div>
@@ -38,15 +53,20 @@ $geocode=json_decode($model->attribs)->geocode;
             <?php
                 echo "<p><strong>$model->square</strong> м<sup>2</sup>, <strong>{$model->price->min}</strong> руб./ час</p>"
             ?>
-            <p><span class="i-icons i-metro_green"></span> <?php echo $model->address->comment; ?></p>
+            <p><?php
+                if(!is_null($metro_current)){
+                    $class=json_decode($metro_current->attribs)->options->class;
+                    echo "<span class='i-icons $class'></span> $metro_current->name, ";
+                }
+                ?> <?=$model->address->comment; ?></p>
             <div class="main-deals-item-description__map">
-                <a href="#<?php echo 'map_'.$model->id;?>"
-                   geoname="<?php echo $model->name;?>"
-                   geocode='<?php echo $geocode;?>'
+                <a href="#<?='map_'.$model->id;?>"
+                   geoname="<?=$model->name;?>"
+                   geocode="<?=$geocode;?>"
                    class="ymap">Смотреть на карте<span class="i-icons i-map"></span></a></div>
             <p class="equipment__header">Оборудование зала:</p>
             <ul class="equipment">
-                <li>Покрытие: <strong><?php echo $model->floor->name; ?></strong></li>
+                <li>Покрытие: <strong><?=$model->floor->name; ?></strong></li>
                 <?php
                     foreach($model->equipment as $item){
                         print "<li>{$item->name}: <strong>есть</strong></li>\n";
@@ -58,13 +78,12 @@ $geocode=json_decode($model->attribs)->geocode;
                 ?></div>
             <p><strong>Контакты:</strong></p>
             <ul class="hall-content-contact">
-                <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link" rel="<?php echo $model->id;?>"><span class="i-icons i-phone"></span>Показать номер</a></li>
-                <li class="hall-content-contact__line"><a href="mailto:<?php echo $model->agent->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
+                <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link" rel="<?=$model->id;?>"><span class="i-icons i-phone"></span>Показать номер</a></li>
+                <li class="hall-content-contact__line"><a href="mailto:<?=$model->agent->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
             </ul>
             <?php
-             print_r("<div id='map_$model->id' style='width: 700px; height: 400px;display: none; '></div>\n");
+                print_r("<div id='map_$model->id' style='width: 700px; height: 400px;display: none; '></div>\n");
             ?>
-
         </div>
     </div>
 </div>

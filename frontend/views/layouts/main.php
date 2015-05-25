@@ -1,8 +1,8 @@
 <?php
-use yii\helpers\Html;
-use yii\helpers\Url;
 use frontend\assets\AppAsset;
 use frontend\widgets\Alert;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -13,7 +13,7 @@ if(!Yii::$app->user->isGuest){
     $route='/agent';
     $username=Yii::$app->user->identity->username;
     $icon='';
-    $agent=Yii::$app->agent->findOne(['user_id'=>Yii::$app->user->id]);
+    $agent=Yii::$app->agent->findOne(['user_id'=>Yii::$app->user->id]);// плохо - переделать
     if(!is_null($agent)){
         $route='/agent/'.$agent->id;
         $username=$agent->name;
@@ -41,7 +41,7 @@ if(!Yii::$app->user->isGuest){
 
     <div class="header-content">
         <div class="header-content-logo">
-            <span class="header-content-logo__label">Залы</span> в аренду
+            <a class="header-content-logo-link" href="/"><span class="header-content-logo-link__label">Залы</span> в аренду</a>
         </div>
         <div class="header-content-town">
             В городе: <span class="header-content-town__label">Санкт-Петербург</span>
@@ -77,9 +77,9 @@ if(!Yii::$app->user->isGuest){
             <img src="/images/style/site-master.png">
         </div>
         <div class="footer-content-nav">
-            <a href="/about" class="footer-content-nav-link">О проекте</a> |
-            <a href="/banner" class="footer-content-nav-link">Реклама</a> |
-            <a href="/contact" class="footer-content-nav-link">Обратная связь</a>
+            <a href="<?=(Url::toRoute('site/about'))?>" class="footer-content-nav-link">О проекте</a> |
+            <a href="<?=(Url::toRoute('site/banner'))?>" class="footer-content-nav-link">Реклама</a> |
+            <a href="<?=(Url::toRoute('site/contact'))?>" class="footer-content-nav-link">Обратная связь</a>
         </div>
         <div class="footer-social">
             <a href="#" class="i-icons i-vk"></a>

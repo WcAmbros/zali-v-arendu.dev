@@ -8,13 +8,18 @@
  * @var array $metro
  * @var array $district
  */
-use yii\jui\AutoComplete;
-use \yii\helpers\Html;
+
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 $this->title = 'Залы в аренду';
 
 $this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
 $this->registerJsFile('https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js');
 $this->registerJsFile('/template/site/js/dadata.js');
+
+/*
 function getAutoComplete_config($collection,$name){
 
     $list=array();
@@ -35,12 +40,12 @@ function getAutoComplete_config($collection,$name){
 }
 $district = getAutoComplete_config($district,'Search[district]');
 $metro = getAutoComplete_config($metro,'Search[metro]');
-//$search_purpose = getAutoComplete_config('Search[purpose]');
-
+$search_purpose = getAutoComplete_config('Search[purpose]');
+*/
 ?>
 <div class="add-hall">
     <div class="add-hall-background"></div>
-    <form class="add-hall-form" action="/hall/create" method="post" enctype="multipart/form-data">
+    <form class="add-hall-form" action="<?=(Url::toRoute('hall/create'))?>" method="post" enctype="multipart/form-data">
         <div class="add-hall-form__header">Добавить зал в базу <span class="add-hall-form__close i-close i-icons" onclick="button.close('.add-hall')"></span></div>
         <div class="add-hall-form-location">
             <div class="add-hall-form-location__header">Местоположение зала</div>
@@ -86,10 +91,7 @@ $metro = getAutoComplete_config($metro,'Search[metro]');
                         <label class="add-hall-form__line">
                             <span class="add-hall-form-params__label">Назначение:</span>
                             <select class="add-hall-form-params__select"  name="Hall[purpose]">
-	                            <?php
-	                                foreach($purpose as $item)
-		                                echo "<option value='$item->id'>$item->name</option>";
-	                            ?>
+                                <?= Html::renderSelectOptions('',ArrayHelper::map($purpose,'id','name'));?>
                             </select>
                         </label>
                         <label class="add-hall-form__line">
@@ -102,10 +104,7 @@ $metro = getAutoComplete_config($metro,'Search[metro]');
                                 <label>
                                     <span class="add-hall-form-params-cover__label">Покрытие:</span>
                                     <select class="add-hall-form-params-cover__select"  name="Hall[floor]">
-	                                    <?php
-	                                    foreach($floor as $item)
-		                                    echo "<option value='$item->id'>$item->name</option>";
-	                                    ?>
+                                        <?= Html::renderSelectOptions('',ArrayHelper::map($floor,'id','name'));?>
                                     </select>
                                 </label>
                             </div>
@@ -113,7 +112,7 @@ $metro = getAutoComplete_config($metro,'Search[metro]');
                         <div class="add-hall-form-checklist">
 	                        <?php
 	                        foreach($equipment as $item)
-		                        echo '<label class="add-hall-form-checklist-item"><input type="checkbox" value="'.$item->id.'" name="Equipment[]"/> '.$item->name.'</label>';
+		                        print '<label class="add-hall-form-checklist-item"><input type="checkbox" value="'.$item->id.'" name="Equipment[]"/> '.$item->name."</label>\n";
 	                        ?>
                         </div>
                         <label>
@@ -173,33 +172,37 @@ $metro = getAutoComplete_config($metro,'Search[metro]');
     <div class="main-section">
         <div class="main-find">
             <div class="main-find__header">Найти зал</div>
-            <form class="main-find-form" action="/hall/search" method="post">
+            <form class="main-find-form" action="<?=(Url::toRoute('hall/search'))?>" method="post">
                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                 <fieldset>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Вид зала:</span>
                         <select class="main-find-form-label__select" name="Search[purpose]">
-
-                            <?php
-                            foreach($purpose as $item){
-                                echo "<option>$item->name</option>";
-                            }
-                            ?>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($purpose,'name','name'));?>
                         </select>
 
 
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
-                        <?php
-                        echo AutoComplete::widget($district);
-                        ?>
+                        <select class="main-find-form-label__select" name="Search[district]">
+                            <option value="">Не выбрано</option>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name'));?>
+                            <?php
+                            //AutoComplete::widget($district);
+                            ?>
+                        </select>
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Станция метро:</span>
-                        <?php
-                        echo AutoComplete::widget($metro);
-                        ?>
+
+                        <select class="main-find-form-label__select" name="Search[metro]">
+                            <option value="">Не выбрано</option>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($metro,'name','name'));?>
+                            <?php
+                            //AutoComplete::widget($metro);
+                            ?>
+                        </select>
                     </label>
                 </fieldset>
-                <button class="main-find-form__button main__button"><span class="i-icons i-search"></span>Найти</button>
+                <button class="main-find-form__button main__button" ><span class="i-icons i-search"></span>Найти</button>
             </form>
         </div>
         <div class="main__add main__button" onclick="button.show('.add-hall')">

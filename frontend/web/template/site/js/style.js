@@ -11,6 +11,10 @@ $(document).ready(function(){
         )
     });
 
+    $(document).on('change','form',function(){
+        $(this).find('button').focus();
+    });
+
 });
 
 ymaps.ready(function  () {

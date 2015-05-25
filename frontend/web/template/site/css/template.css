@@ -39,7 +39,11 @@ body{
     font:lighter 30px "Gotham Pro",gotham_pro;
     text-transform: uppercase;
 }
-.header-content-logo__label,
+.header-content-logo-link{
+    color: inherit;
+    text-decoration: none;
+}
+.header-content-logo-link__label,
 .header-content-town__label,
 .header-content-user__label
 {

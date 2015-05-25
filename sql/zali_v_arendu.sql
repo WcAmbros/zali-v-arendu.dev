@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 22 2015 г., 14:09
+-- Время создания: Май 25 2015 г., 14:10
 -- Версия сервера: 5.6.23-1~dotdeb.3
 -- Версия PHP: 5.4.40-1~dotdeb+wheezy.1
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `block` varchar(45) DEFAULT NULL,
   `comment` mediumtext,
   `metro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `address`
@@ -61,7 +61,8 @@ INSERT INTO `address` (`id`, `town`, `district`, `street`, `house`, `block`, `co
 (28, 'Санкт-Петербург', 'Центральный ', 'Александра Невского', '2', '', 'направо, 500м от гостиницы Москва', 'Площадь Александра Невского 1'),
 (29, 'Санкт-Петербург', 'Центральный ', 'Невский', '180/2', '', '', 'Площадь Александра Невского 1'),
 (30, 'Санкт-Петербург', 'Центральный ', 'Невский', '184', '', '500 метров от станции метро "площадь Александра Невского"', 'Площадь Александра Невского 1'),
-(31, 'Санкт-Петербург', 'Центральный ', 'Константина Заслонова', '15', '', '1000 метров от метро', ' Звенигородская');
+(31, 'Санкт-Петербург', 'Центральный ', 'Константина Заслонова', '15', '', '1000 метров от метро', ' Звенигородская'),
+(32, 'Санкт-Петербург', 'Фрунзенский ', 'Альпийский', '23', '1', '', ' Звёздная');
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `agent` (
   `phone` varchar(45) DEFAULT NULL,
   `images` mediumtext,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `agent`
@@ -103,7 +104,8 @@ INSERT INTO `agent` (`id`, `name`, `email`, `phone`, `images`, `user_id`) VALUES
 (30, 'Стас', 'test@test.ru', '55555555', NULL, 1),
 (31, 'Стас', 'test@test.ru', '55555555', NULL, 1),
 (47, 'Станислав', 'zahs88@yandex.ru', '3330000', 'uploads/agent/icon_tr0LpcASyrldm7S8ImwV-naxjIiGDEKw.jpg', 4),
-(48, 'Александр', 'qwwerty@yandex.ru', '1111111111', 'uploads/agent/icon_NqtHVUHZTyDLES5BN8_VYrieAo3S5V7l.jpg', 5);
+(48, 'Александр', 'qwwerty@yandex.ru', '1111111111', 'uploads/agent/icon_NqtHVUHZTyDLES5BN8_VYrieAo3S5V7l.jpg', 5),
+(49, 'Админ', 'admin@zali-v-arendu.ru', '777000222', 'uploads/agent/icon_RC4EYpQ_Mu9wck0lYTD9g55Y9grgCW2o.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -344,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `price` (
   `id` int(11) NOT NULL,
   `min` int(11) DEFAULT NULL,
   `max` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `price`
@@ -370,7 +372,8 @@ INSERT INTO `price` (`id`, `min`, `max`) VALUES
 (28, 300, 400),
 (29, 300, 700),
 (30, 300, 400),
-(31, 100, 200);
+(31, 100, 200),
+(32, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -381,14 +384,20 @@ INSERT INTO `price` (`id`, `min`, `max`) VALUES
 CREATE TABLE IF NOT EXISTS `purpose` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `purpose`
 --
 
 INSERT INTO `purpose` (`id`, `name`) VALUES
-(1, 'для танцев');
+(1, 'Танцевальный зал'),
+(2, 'Спортивный зал'),
+(3, 'Ледовый зал'),
+(4, 'Конференц зал'),
+(5, 'Йога'),
+(6, 'Единоборства'),
+(7, 'Акробатика');
 
 -- --------------------------------------------------------
 
@@ -426,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password_reset_token` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `user`
@@ -435,7 +444,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `created_at`, `updated_at`, `username`, `auth_key`, `email_confirm_token`, `password_hash`, `password_reset_token`, `email`, `status`) VALUES
 (1, 1431083612, 1431083612, 'guest', '9J7BVOWfh9NaQbepmTnf2trfSqr_rXdp', 'mKaLQTyOR4BgB2vVINkO49esuRb5CUiu', '$2y$13$RIDZO5scZiLBsq75/gx3/OwIbLH4XilQYxK.3A0zeI6jLAeWLiZaW', NULL, 'guest@example.com', 1),
 (4, 1432020311, 1432020311, 'stas', '8wagWTxVVYyfQ0tSIW9joC5EkYHwv2DM', 'DNuvKAYU4TzElUCSdJsbyDTD8iUYb7Fk', '$2y$13$SAKGWJZmyYLdy.pWIlHhIuQgWHHfZmQyqoHPyCji/iUgebwSViUzC', NULL, 'zahs88@yandex.ru', 1),
-(5, 1432286078, 1432286078, 'ambros', 'by47PgLml1tadS8iHr927JiOwi8bAz07', 'RTEGRhd-KeXePya7fXeV26sgrHgirwjn', '$2y$13$VHY9Hf55P0YUZy12.bI9s.9rAgR/0yyq4GAszNlpdFTBYNNvpN9uu', NULL, 'zahs88@gmail.com', 1);
+(5, 1432286078, 1432286078, 'ambros', 'by47PgLml1tadS8iHr927JiOwi8bAz07', 'RTEGRhd-KeXePya7fXeV26sgrHgirwjn', '$2y$13$VHY9Hf55P0YUZy12.bI9s.9rAgR/0yyq4GAszNlpdFTBYNNvpN9uu', NULL, 'zahs88@gmail.com', 1),
+(6, 1432543171, 1432543171, 'admin', 'kPHLU_iN_WM-4ww3ZCcVOx2p1_T076IY', 'DVKdl-T-6SyHMGrfM1F8_GE1gUcicWLl', '$2y$13$KMS2POIXTdv8hG1DH9D8M.yVo1umfCshNPOsZC/iSpq4oTHrc/ZJa', NULL, 'admin@gmail.com', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -521,12 +531,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT для таблицы `agent`
 --
 ALTER TABLE `agent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT для таблицы `district`
 --
@@ -556,12 +566,12 @@ ALTER TABLE `metro`
 -- AUTO_INCREMENT для таблицы `price`
 --
 ALTER TABLE `price`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT для таблицы `purpose`
 --
 ALTER TABLE `purpose`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT для таблицы `town`
 --
@@ -571,7 +581,7 @@ ALTER TABLE `town`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

@@ -63,30 +63,29 @@ $(document).ready(function(){
             url:'http://geocode-maps.yandex.ru/1.x',
             data:data
         }).done(function(data){
-            geocode_results(data,kind);
+            //geocode_results(data,kind);
         });
     };
 
-    geocode_results=function(data,kind){
-        var collection=data.response.GeoObjectCollection.featureMember,
-            length=collection.length,
-            name='';
-        $('#'+kind).html('');
-        for(var i= 0;i<length;i++){
-            name=collection[i].GeoObject.name;
-            name=geocode_replace(name,kind);
-            $('#'+kind).append('<option>'+name+'</option>');
-        }
-        $('input[name="Address['+kind+']"]').val(name);
-    };
+    //geocode_results=function(data,kind){
+    //    var collection=data.response.GeoObjectCollection.featureMember,
+    //        length=collection.length,
+    //        name='';
+    //    $('#'+kind).html('');
+    //    for(var i= 0;i<length;i++){
+    //        name=collection[i].GeoObject.name;
+    //        name=geocode_replace(name,kind);
+    //        $('#'+kind).append('<option>'+name+'</option>');
+    //    }
+    //};
 
-    geocode_replace=function(name,kind){
-        if(kind=='metro')
-            name=name.replace('метро','');
-        if(kind=='district')
-            name=name.replace('район','');
-        return name
-    };
+    //geocode_replace=function(name,kind){
+    //    if(kind=='metro')
+    //        name=name.replace('метро','').trim();
+    //    if(kind=='district')
+    //        name=name.replace('район','').trim();
+    //    return name
+    //};
 
 
     $('.add-hall-form-params-album-button').click(function(){

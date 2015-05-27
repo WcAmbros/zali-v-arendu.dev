@@ -5,22 +5,22 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "hall_has_equipment".
+ * This is the model class for table "hall_has_options".
  *
  * @property integer $hall_id
- * @property integer $equipment_id
+ * @property integer $options_id
  *
- * @property Equipment $equipment
+ * @property Options $options
  * @property Hall $hall
  */
-class HallHasEquipment extends \yii\db\ActiveRecord
+class HallHasOptions extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'hall_has_equipment';
+        return 'hall_has_options';
     }
 
     /**
@@ -29,8 +29,8 @@ class HallHasEquipment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['hall_id', 'equipment_id'], 'required'],
-            [['hall_id', 'equipment_id'], 'integer']
+            [['hall_id', 'options_id'], 'required'],
+            [['hall_id', 'options_id'], 'integer']
         ];
     }
 
@@ -41,16 +41,16 @@ class HallHasEquipment extends \yii\db\ActiveRecord
     {
         return [
             'hall_id' => 'Hall ID',
-            'equipment_id' => 'Equipment ID',
+            'options_id' => 'Options ID',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEquipment()
+    public function getOptions()
     {
-        return $this->hasOne(Equipment::className(), ['id' => 'equipment_id']);
+        return $this->hasOne(Options::className(), ['id' => 'options_id']);
     }
 
     /**

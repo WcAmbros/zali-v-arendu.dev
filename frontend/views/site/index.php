@@ -3,8 +3,8 @@
  * @var $this yii\web\View
  *
  * @var array $floor
- * @var array $purpose
- * @var array $equipment
+ * @var array $category
+ * @var array $options
  * @var array $metro
  * @var array $district
  */
@@ -19,29 +19,6 @@ $this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
 $this->registerJsFile('https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js');
 $this->registerJsFile('/template/site/js/dadata.js');
 
-/*
-function getAutoComplete_config($collection,$name){
-
-    $list=array();
-    foreach($collection as $item){
-        $list[]=$item->name;
-    };
-    $config=[
-        'name' => $name,
-        'options'=>[
-            'class'=>'main-find-form-label__input'
-            ],
-        'clientOptions' => [
-            'source' => $list
-        ]
-    ];
-
-    return $config;
-}
-$district = getAutoComplete_config($district,'Search[district]');
-$metro = getAutoComplete_config($metro,'Search[metro]');
-$search_purpose = getAutoComplete_config('Search[purpose]');
-*/
 ?>
 <div class="add-hall">
     <div class="add-hall-background"></div>
@@ -61,12 +38,17 @@ $search_purpose = getAutoComplete_config('Search[purpose]');
                     <input class="add-hall-form-location__select" name="Address[town]">
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Метро:</span>
-                    <input class="add-hall-form-location__select"  name="Address[metro]" list="metro">
-	                <datalist id="metro"></datalist>
+                    <select class="add-hall-form-location__select"  name="Address[metro]">
+                        <option></option>
+                        <?= Html::renderSelectOptions('',ArrayHelper::map($metro,'name','name'));?>
+                    </select>
+
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Район:</span>
-                    <input class="add-hall-form-location__select"  name="Address[district]" list="district">
-	                <datalist id="district"></datalist>
+                    <select class="add-hall-form-location__select"  name="Address[district]">
+                        <option></option>
+                        <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name'));?>
+                    </select>
                 </label>
                 <label class="add-hall-form__line"><span class="add-hall-form-location__label">Улица:</span>
                     <input class="add-hall-form-location__select"  name="Address[street]">
@@ -90,8 +72,8 @@ $search_purpose = getAutoComplete_config('Search[purpose]');
                     <div class="add-hall-form-col">
                         <label class="add-hall-form__line">
                             <span class="add-hall-form-params__label">Назначение:</span>
-                            <select class="add-hall-form-params__select"  name="Hall[purpose]">
-                                <?= Html::renderSelectOptions('',ArrayHelper::map($purpose,'id','name'));?>
+                            <select class="add-hall-form-params__select"  name="Hall[category]">
+                                <?= Html::renderSelectOptions('',ArrayHelper::map($category,'id','name'));?>
                             </select>
                         </label>
                         <label class="add-hall-form__line">
@@ -111,8 +93,8 @@ $search_purpose = getAutoComplete_config('Search[purpose]');
                         </div>
                         <div class="add-hall-form-checklist">
 	                        <?php
-	                        foreach($equipment as $item)
-		                        print '<label class="add-hall-form-checklist-item"><input type="checkbox" value="'.$item->id.'" name="Equipment[]"/> '.$item->name."</label>\n";
+	                        foreach($options as $item)
+		                        print '<label class="add-hall-form-checklist-item"><input type="checkbox" value="'.$item->id.'" name="Options[]"/> '.$item->name."</label>\n";
 	                        ?>
                         </div>
                         <label>
@@ -149,13 +131,13 @@ $search_purpose = getAutoComplete_config('Search[purpose]');
                 <div class="add-hall-form-contacts">
                     <div class="add-hall-form-contacts__header">Контакты</div>
                     <label class="add-hall-form__line"><span class="add-hall-form-contacts__label">Имя:</span>
-                        <input class="add-hall-form-contacts__input" name="Agent[name]"/></label>
+                        <input class="add-hall-form-contacts__input" name="Contacts[name]"/></label>
                     <label class="add-hall-form__line"><span class="add-hall-form-contacts__label">Телефон:</span>
-                        <input class="add-hall-form-contacts__input" name="Agent[phone]"></label>
+                        <input class="add-hall-form-contacts__input" name="Contacts[phone]"></label>
                     <label class="add-hall-form__line"><span class="add-hall-form-contacts__label">E-mail:</span>
-                        <input class="add-hall-form-contacts__input"  name="Agent[email]"></label>
+                        <input class="add-hall-form-contacts__input"  name="Contacts[email]"></label>
                     <div class="add-hall-form-contacts-capthca">
-                        <label class="add-hall-form__line"><span>Введите текст с катртинки:</span>
+                        <label class="add-hall-form__line"><span>Введите текст с картинки:</span>
                             <input class="add-hall-form-contacts-capthca__input">
                         </label>
                     </div>
@@ -176,8 +158,8 @@ $search_purpose = getAutoComplete_config('Search[purpose]');
                 <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                 <fieldset>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Вид зала:</span>
-                        <select class="main-find-form-label__select" name="Search[purpose]">
-                            <?= Html::renderSelectOptions('',ArrayHelper::map($purpose,'name','name'));?>
+                        <select class="main-find-form-label__select" name="Search[category]">
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($category,'name','name'));?>
                         </select>
 
 

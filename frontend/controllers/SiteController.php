@@ -2,14 +2,14 @@
 namespace frontend\controllers;
 
 
-use Yii;
+use frontend\models\Category;
 use frontend\models\ContactForm;
-use yii\web\Controller;
-use frontend\models\Floor;
-use frontend\models\Purpose;
-use frontend\models\Equipment;
 use frontend\models\District;
+use frontend\models\Floor;
 use frontend\models\Metro;
+use frontend\models\Options;
+use Yii;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -36,15 +36,15 @@ class SiteController extends Controller
     {
 	    $floor=new Floor();
 
-	    $equipment=new Equipment();
-        $purpose=new Purpose();
+	    $options=new Options();
+        $category=new Category();
 	    $district=new District();
 	    $metro=new Metro();
 
         return $this->render('index',[
 	        'floor'=>$floor->find()->all(),
-	        'equipment'=>$equipment->find()->all(),
-            'purpose'=>$purpose->find()->all(),
+	        'options'=>$options->find()->all(),
+            'category'=>$category->find()->all(),
 	        'district'=>$district->find()->all(),
 	        'metro'=>$metro->find()->all(),
         ]);

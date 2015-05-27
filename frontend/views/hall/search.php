@@ -3,7 +3,7 @@
  * @var $this yii\web\View
  * @var array $search
  * @var array $models
- * @var array $purpose
+ * @var array $category
  * @var array $district
  * @var array $metro
  * @var \frontend\models\Hall $model
@@ -50,8 +50,8 @@ $metro_list = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
             <fieldset>
                 <label class="result-find-location-item">
                     <span  class="result-find-location-item__header">Вид зала:</span>
-                    <select name="Search[purpose]" class="result-find-location-item__select">
-                        <?= Html::renderSelectOptions($search['purpose'],ArrayHelper::map($purpose,'name','name'));?>
+                    <select name="Search[category]" class="result-find-location-item__select">
+                        <?= Html::renderSelectOptions($search['category'],ArrayHelper::map($category,'name','name'));?>
                     </select>
                 </label>
                 <label class="result-find-location-item">
@@ -94,7 +94,7 @@ $metro_list = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
     </form>
 
     <div class="result-content">
-        <div class="result-content-header"><?php echo $search['purpose'];?> <span class="result-content-header__span">(<?php echo count($models);?> найдено)</span></div>
+        <div class="result-content-header"><?php echo $search['category'];?> <span class="result-content-header__span">(<?php echo count($models);?> найдено)</span></div>
         <div class="result-content-sort">
             Сортировать: <span class="result-content-sort__select" >по цене за м<sup>2</sup></span>
         </div>

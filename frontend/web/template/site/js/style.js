@@ -12,7 +12,7 @@ $(document).ready(function(){
     });
 
     $(document).on('change','form',function(){
-        $(this).find('button').focus();
+        //$(this).find('button').focus();
     });
 
 });

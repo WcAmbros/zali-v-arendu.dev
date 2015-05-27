@@ -10,14 +10,14 @@ use yii\helpers\Url;
 AppAsset::register($this);
 
 if(!Yii::$app->user->isGuest){
-    $route='/agent';
+    $route='/profile';
     $username=Yii::$app->user->identity->username;
     $icon='';
-    $agent=Yii::$app->agent->findOne(['user_id'=>Yii::$app->user->id]);// плохо - переделать
-    if(!is_null($agent)){
-        $route='/agent/'.$agent->id;
-        $username=$agent->name;
-        $icon='<img src="/'.$agent->images.'" class="header-content-user__icon">';
+    $profile=Yii::$app->profile->findOne(['user_id'=>Yii::$app->user->id]);// плохо - переделать
+    if(!is_null($profile)){
+        $route='/profile/'.$profile->id;
+        $username=$profile->name;
+        $icon='<img src="/'.$profile->images.'" class="header-content-user__icon">';
     }
 
 }

@@ -6,30 +6,26 @@ use common\models\User;
 use Yii;
 
 /**
- * This is the model class for table "agent".
+ * This is the model class for table "contacts".
  *
  * @property integer $id
  * @property string $name
  * @property string $email
  * @property string $phone
- * @property string $image
  * @property integer $user_id
  *
  * @property User $user
  * @property Hall[] $halls
  */
-class Agent extends \yii\db\ActiveRecord
+class Contacts extends \yii\db\ActiveRecord
 {
-
-    public $image=null;
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'agent';
+        return 'contacts';
     }
-
 
     /**
      * @inheritdoc
@@ -37,22 +33,13 @@ class Agent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['images'], 'string'],
-            [['user_id','name','email','phone'], 'required'],
+            [['user_id'], 'required'],
             [['user_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['email', 'phone'], 'string', 'max' => 45]
         ];
     }
 
-    public function behaviors()
-    {
-        return [
-            'AgentUploadImageBehavior' => [
-                'class' => 'common\behaviors\AgentUploadImageBehavior',
-            ]
-        ];
-    }
     /**
      * @inheritdoc
      */
@@ -79,6 +66,6 @@ class Agent extends \yii\db\ActiveRecord
      */
     public function getHalls()
     {
-        return $this->hasMany(Hall::className(), ['agent_id' => 'id']);
+        return $this->hasMany(Hall::className(), ['contacts_id' => 'id']);
     }
 }

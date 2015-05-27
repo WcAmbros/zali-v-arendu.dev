@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Agent */
+/* @var $model frontend\models\Contacts */
 
 $this->title = 'Профиль пользователя';
 

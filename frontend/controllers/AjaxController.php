@@ -2,12 +2,12 @@
 namespace frontend\controllers;
 
 
+use frontend\models\District;
+use frontend\models\Hall;
+use frontend\models\Metro;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\Controller;
-use frontend\models\District;
-use frontend\models\Metro;
-use frontend\models\Hall;
 
 class AjaxController extends Controller
 {
@@ -48,7 +48,7 @@ class AjaxController extends Controller
     {
         $model=Hall::findOne($id);
         echo json_encode(['response'=>[
-            'phone'=>$model->agent->phone
+            'phone'=>$model->contacts->phone
         ]]);
     }
 

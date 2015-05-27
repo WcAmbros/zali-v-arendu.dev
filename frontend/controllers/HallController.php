@@ -2,11 +2,11 @@
 namespace frontend\controllers;
 
 
+use frontend\models\Category;
 use frontend\models\District;
 use frontend\models\Hall;
-use frontend\models\HallHasEquipment;
+use frontend\models\HallHasOptions;
 use frontend\models\Metro;
-use frontend\models\Purpose;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -52,7 +52,7 @@ class HallController extends Controller
         }else{
             $post=Yii::$app->session->get('search');
         }
-        $purpose=new Purpose();
+        $category=new Category();
         $district=new District();
         $metro=new Metro();
         $hall=new  Hall();
@@ -69,7 +69,7 @@ class HallController extends Controller
                 'models' => $models,
                 'pages' => $pages,
                 'search'=>$post['Search'],
-                'purpose'=>$purpose->find()->all(),
+                'category'=>$category->find()->all(),
                 'district'=>$district->find()->all(),
                 'metro'=>$metro->find()->all(),
             ]);
@@ -84,12 +84,12 @@ class HallController extends Controller
         $post=Yii::$app->request->post();
         $model = new Hall();
         if($model->load($post)&& $model->save()){
-            if(isset($post['Equipment']))
-                foreach($post['Equipment'] as $item){
-                    $equipment_has_hall=new HallHasEquipment();
-                    $equipment_has_hall->hall_id=$model->id;
-                    $equipment_has_hall->equipment_id=$item;
-                    $equipment_has_hall->save();
+            if(isset($post['Options']))
+                foreach($post['Options'] as $item){
+                    $option_has_hall=new HallHasOptions();
+                    $option_has_hall->hall_id=$model->id;
+                    $option_has_hall->options_id=$item;
+                    $option_has_hall->save();
                 }
         }
         return $this->goBack();

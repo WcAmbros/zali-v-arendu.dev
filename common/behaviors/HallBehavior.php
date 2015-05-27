@@ -3,7 +3,7 @@ namespace common\behaviors;
 
 use common\models\User;
 use frontend\models\Address;
-use frontend\models\Agent;
+use frontend\models\Contacts;
 use frontend\models\Price;
 use yii;
 use yii\base\Behavior;
@@ -21,20 +21,20 @@ class HallBehavior extends Behavior{
     /**
      * Loading post data
      *
-     * ['floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'required'
+     * ['floor_id', 'purpose_id', 'contacts_id', 'price_id', 'address_id'], 'required'
      * */
     public function beforeValidate($event)
     {
 	    $post=Yii::$app->request->post();
         $price=$this->savePrice();
         $address=$this->saveAddress();
-        $agent=$this->saveAgent();
+        $contacts=$this->saveContacts();
         $this->owner->name=$this->setName();
         $this->owner->price_id=$price->id;
         $this->owner->address_id=$address->id;
-        $this->owner->agent_id=$agent->id;
+        $this->owner->contacts_id=$contacts->id;
         $this->owner->floor_id=$post['Hall']['floor'];
-        $this->owner->purpose_id=$post['Hall']['purpose'];
+        $this->owner->category_id=$post['Hall']['category'];
 	    $this->owner->attribs=json_encode(
             [
                 'images'=>$this->owner->images,
@@ -85,13 +85,13 @@ class HallBehavior extends Behavior{
     }
 
     /**
-     * @return Agent
+     * @return Contacts
      **/
-    private function saveAgent(){
+    private function saveContacts(){
 
         if(Yii::$app->user->isGuest){
             $post=Yii::$app->request->post();
-            $model = new Agent();
+            $model = new Contacts();
             $model->load($post);
             $user=new User();
             $user=$user->findOne(['username'=>'guest']);
@@ -100,7 +100,7 @@ class HallBehavior extends Behavior{
 
         }else{
 
-            $model = Agent::findOne(['user_id'=>Yii::$app->user->id]);
+            $model = Contacts::findOne(['user_id'=>Yii::$app->user->id]);
         }
 
         return $model;

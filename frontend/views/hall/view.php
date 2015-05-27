@@ -4,6 +4,7 @@
  * @var \frontend\models\Hall $model
  * @var \frontend\models\Metro $metro
  */
+
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -19,7 +20,6 @@ foreach($metro as $metro_item){
         $metro_current=$metro_item;//json_decode($metro_item->attribs)->options->class;
     }
 }
-
 ?>
 
 <div class="return_to_search">
@@ -28,7 +28,7 @@ foreach($metro as $metro_item){
 </div>
 <div class="hall">
     <h1 class="hall__header"><?php echo $model->name;?></h1>
-    <div class="hall__caption"><?php echo $model->purpose->name;?></div>
+    <div class="hall__caption"><?php echo $model->category->name;?></div>
     <div class="hall-content">
         <div class="hall-content-slider">
             <a href="#" class="hall-content-slider-main"><img src="/<?php echo $images[0]->slide;?>"></a>
@@ -62,13 +62,13 @@ foreach($metro as $metro_item){
             <div class="main-deals-item-description__map">
                 <a href="#<?='map_'.$model->id;?>"
                    geoname="<?=$model->name;?>"
-                   geocode="<?=$geocode;?>"
+                   geocode='<?=$geocode;?>'
                    class="ymap">Смотреть на карте<span class="i-icons i-map"></span></a></div>
             <p class="equipment__header">Оборудование зала:</p>
             <ul class="equipment">
                 <li>Покрытие: <strong><?=$model->floor->name; ?></strong></li>
                 <?php
-                    foreach($model->equipment as $item){
+                    foreach($model->options as $item){
                         print "<li>{$item->name}: <strong>есть</strong></li>\n";
                     }
                 ?>
@@ -79,7 +79,7 @@ foreach($metro as $metro_item){
             <p><strong>Контакты:</strong></p>
             <ul class="hall-content-contact">
                 <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link" rel="<?=$model->id;?>"><span class="i-icons i-phone"></span>Показать номер</a></li>
-                <li class="hall-content-contact__line"><a href="mailto:<?=$model->agent->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
+                <li class="hall-content-contact__line"><a href="mailto:<?=$model->contacts->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>
             </ul>
             <?php
                 print_r("<div id='map_$model->id' style='width: 700px; height: 400px;display: none; '></div>\n");

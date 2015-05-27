@@ -8,16 +8,15 @@
 
 namespace common\behaviors;
 
-use Imagine\Image\ImageInterface;
+use Imagine\Image\Box;
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
-use yii\web\UploadedFile;
-use yii\validators\Validator;
 use yii\imagine\Image;
-use Imagine\Image\Box;
+use yii\validators\Validator;
+use yii\web\UploadedFile;
 
-class AgentUploadImageBehavior extends Behavior{
+class ProfileUploadImageBehavior extends Behavior{
 
     public $fileAttribute = 'image';
 
@@ -77,11 +76,11 @@ class AgentUploadImageBehavior extends Behavior{
         }else{
             $new_size= new Box($size->getWidth(),26);
         }
-        $img->thumbnail($new_size)->save("uploads/agent/icon_$name".$extension);
+        $img->thumbnail($new_size)->save("uploads/profile/icon_$name".$extension);
 
         if(trim($this->owner->images)!=''){
             unlink($this->owner->images);
         }
-        $this->owner->images="uploads/agent/icon_$name".$extension;
+        $this->owner->images="uploads/profile/icon_$name".$extension;
     }
 }

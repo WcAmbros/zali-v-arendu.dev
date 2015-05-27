@@ -20,18 +20,18 @@ use yii\db\Query;
  * @property integer $public
  * @property integer $deleted
  * @property integer $floor_id
- * @property integer $purpose_id
- * @property integer $agent_id
+ * @property integer $category_id
+ * @property integer $contacts_id
  * @property integer $price_id
  * @property integer $address_id
  *
  * @property Address $address
- * @property Agent $agent
+ * @property Contacts $contacts
  * @property Floor $floor
  * @property Price $price
- * @property Purpose $purpose
- * @property HallHasEquipment[] $hallHasEquipments
- * @property Equipment[] $equipment
+ * @property Category $category
+ * @property HallHasOptions[] $hallHasOptions
+ * @property Options[] $options
  */
 class Hall extends \yii\db\ActiveRecord
 {
@@ -50,9 +50,9 @@ class Hall extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['square', 'public', 'created_at', 'updated_at','deleted', 'floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'integer'],
+            [['square', 'public', 'created_at', 'updated_at','deleted', 'floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'integer'],
             [['optional_equipment','attribs'], 'string'],
-            [['floor_id', 'purpose_id', 'agent_id', 'price_id', 'address_id'], 'required'],
+            [['floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'required'],
             [['name'], 'string', 'max' => 255]
         ];
     }
@@ -68,12 +68,12 @@ class Hall extends \yii\db\ActiveRecord
             'attribs' => 'Attribs',
             'square' => 'Square',
             'images' => 'Images',
-            'optional_equipment' => 'Optional Equipment',
+            'optional_equipment' => 'Optional equipment',
             'public' => 'Public',
             'deleted' => 'Deleted',
             'floor_id' => 'Floor ID',
-            'purpose_id' => 'Purpose ID',
-            'agent_id' => 'Agent ID',
+            'category_id' => 'Category ID',
+            'contacts_id' => 'contacts ID',
             'price_id' => 'Price ID',
             'address_id' => 'Address ID',
         ];
@@ -90,9 +90,9 @@ class Hall extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAgent()
+    public function getContacts()
     {
-        return $this->hasOne(Agent::className(), ['id' => 'agent_id']);
+        return $this->hasOne(Contacts::className(), ['id' => 'contacts_id']);
     }
 
     /**
@@ -114,25 +114,25 @@ class Hall extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPurpose()
+    public function getCategory()
     {
-        return $this->hasOne(Purpose::className(), ['id' => 'purpose_id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHallHasEquipments()
+    public function getHallHasOptions()
     {
-        return $this->hasMany(HallHasEquipment::className(), ['hall_id' => 'id']);
+        return $this->hasMany(HallHasOptions::className(), ['hall_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEquipment()
+    public function getOptions()
     {
-        return $this->hasMany(Equipment::className(), ['id' => 'equipment_id'])->viaTable('hall_has_equipment', ['hall_id' => 'id']);
+        return $this->hasMany(Options::className(), ['id' => 'options_id'])->viaTable('hall_has_options', ['hall_id' => 'id']);
     }
 
     public function behaviors()
@@ -163,8 +163,8 @@ class Hall extends \yii\db\ActiveRecord
     public  function search($post){
 
         return $this->find()->innerJoin('address','address.id=hall.address_id')
-            ->innerJoin('purpose','purpose.id=hall.purpose_id')
-            ->where($this->searchOptions($post));
+            ->innerJoin('category','category.id=hall.category_id')
+            ->where($this->searchCondition($post));
     }
 
     /**
@@ -185,9 +185,9 @@ class Hall extends \yii\db\ActiveRecord
      * @param array $post
      * @return string
      */
-    private  function searchOptions($post){
+    private  function searchCondition($post){
         $fields=[
-            'purpose'=>'purpose.name',
+            'category'=>'category.name',
             'district'=>'address.district',
             'metro'=>'address.metro',
         ];

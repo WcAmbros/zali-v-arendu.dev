@@ -2,15 +2,14 @@
 namespace frontend\controllers;
 
 
-use frontend\models\Agent;
+use frontend\models\Profile;
 use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 
-class AgentController extends Controller
+class ProfileController extends Controller
 {
 
     /**
@@ -33,14 +32,14 @@ class AgentController extends Controller
     }
 
     /**
-     * Creates a new Agent model.
+     * Creates a new Profile model.
      * If creation is successful, the browser will be redirected to back page.
      * @return mixed
      */
     public function actionCreate()
     {
         $post=Yii::$app->request->post();
-        $model = new Agent();
+        $model = new Profile();
 
         if(($model->findOne(['user_id'=>Yii::$app->user->id]))!==null)
             throw new NotFoundHttpException('Страница недоступна.');
@@ -59,7 +58,7 @@ class AgentController extends Controller
     }
 
     /**
-     * Updates an existing Agent model.
+     * Updates an existing Profile model.
      * If update is successful, the browser will be redirected to back page.
      * @param integer $id
      * @return mixed
@@ -83,16 +82,16 @@ class AgentController extends Controller
 
 
     /**
-     * Finds the Agent model based on its primary key value.
+     * Finds the Profile model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @param integer $user_id
-     * @return Agent the loaded model
+     * @return Profile the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Agent::findOne(['id' => $id,'user_id'=>Yii::$app->user->id])) !== null) {
+        if (($model = Profile::findOne(['id' => $id,'user_id'=>Yii::$app->user->id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('Страница недоступна.');

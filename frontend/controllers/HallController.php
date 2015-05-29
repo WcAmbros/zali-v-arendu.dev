@@ -4,10 +4,13 @@ namespace frontend\controllers;
 
 use frontend\models\Category;
 use frontend\models\District;
+use frontend\models\Floor;
 use frontend\models\Hall;
 use frontend\models\HallHasOptions;
 use frontend\models\Metro;
+use frontend\models\Options;
 use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -16,6 +19,29 @@ use yii\web\NotFoundHttpException;
  */
 class HallController extends Controller
 {
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['update','delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['form'],
+                        'allow' => true
+                    ],
+                ],
+            ]
+        ];
+    }
      /**
      * @inheritdoc
      */
@@ -64,19 +90,14 @@ class HallController extends Controller
             ->limit($pages->limit)
             ->all();
 
-        if (!empty($models)) {
-            return $this->render('search', [
-                'models' => $models,
-                'pages' => $pages,
-                'search'=>$post['Search'],
-                'category'=>$category->find()->all(),
-                'district'=>$district->find()->all(),
-                'metro'=>$metro->find()->all(),
-            ]);
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
+        return $this->render('search', [
+            'models' => $models,
+            'pages' => $pages,
+            'search'=>$post['Search'],
+            'category'=>$category->find()->all(),
+            'district'=>$district->find()->all(),
+            'metro'=>$metro->find()->all(),
+        ]);
     }
 
     public function actionCreate()
@@ -94,16 +115,59 @@ class HallController extends Controller
         }
         return $this->goBack();
     }
-    public function actionRead($slug)
+
+    public function actionForm(){
+        $floor=new Floor();
+        $options=new Options();
+        $category=new Category();
+        $district=new District();
+        $metro=new Metro();
+        $model=new Hall();
+        return $this->render('form',[
+            'floor'=>$floor->find()->all(),
+            'options'=>$options->find()->all(),
+            'category'=>$category->find()->all(),
+            'district'=>$district->find()->all(),
+            'metro'=>$metro->find()->all(),
+            'model'=>$model,
+        ]);
+    }
+    public function actionUpdate($id)
     {
+        $floor=new Floor();
+        $options=new Options();
+        $category=new Category();
+        $district=new District();
+        $metro=new Metro();
+        $model=$this->findModel($id,Yii::$app->user->id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect([
+                'view',
+                'id'=>$model->id,
+            ]);
+        }else {
+            return $this->render('update', [
+                'model' => $model,
+                'floor'=>$floor->find()->all(),
+                'options'=>$options->find()->all(),
+                'category'=>$category->find()->all(),
+                'district'=>$district->find()->all(),
+                'metro'=>$metro->find()->all(),
+            ]);
+        }
     }
 
-    public function actionUpdate($slug)
+    /**
+     * Deletes an existing Hall model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
     {
-    }
-
-    public function actionDelete($slug)
-    {
+        $this->findModel($id,Yii::$app->user->id)->delete();
+        return $this->goHome();
     }
 
     /**
@@ -113,12 +177,27 @@ class HallController extends Controller
      * @return Hall the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($id,$user_id=null)
     {
-        if (($model = Hall::findOne(['id' => $id])) !== null) {
-            return $model;
-        } else {
+        if(is_null($user_id)){
+            $model = Hall::findOne(['id' => $id]);
+        }else{
+            $hall = new Hall();
+            $model=$hall->find()
+                ->innerJoin('contacts',['hall.contacts_id'=>'contacts.id'])
+                ->innerJoin('user',['contacts.user_id'=>'user.id'])
+                ->where([
+                    'user.id'=>$user_id,
+                    'hall.id'=>$id
+                ])
+                ->one();
+        }
+
+        if (($model) === null||$model===false) {
             throw new NotFoundHttpException('The requested page does not exist.');
+        } else {
+            return $model;
+
         }
     }
 

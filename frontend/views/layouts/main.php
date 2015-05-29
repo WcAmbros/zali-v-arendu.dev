@@ -58,7 +58,6 @@ if(!Yii::$app->user->isGuest){
             if(Yii::$app->user->isGuest){
                 echo '<a href="'.$login.'">Войти</a> / <a href="'.$signup.'">Зарегистрироваться</a>';
             }else{
-
                 echo 'Привет, <a href="'.$route.'" class="header-content-user__label">'.$username.'!</a>
                 '.$icon.' /
                 <a data-method="post" href="'.$logout.'">Выйти</a>';

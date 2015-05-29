@@ -15,6 +15,7 @@ $(document).ready(function(){
         //$(this).find('button').focus();
     });
 
+
 });
 
 ymaps.ready(function  () {

@@ -198,4 +198,44 @@ class Hall extends \yii\db\ActiveRecord
 
         return  implode(' AND ', $options);
     }
+
+    public function removeImage($id){
+        $attribs=json_decode($this->attribs);
+        $images=$attribs->images;
+        foreach($images as $key=>$image){
+            if($key==$id){
+                foreach($image as $path){
+                    unlink($path);
+                }
+                unset($images[$id]);
+            }
+        }
+        $attribs->images=$images;
+        $this->attribs=json_encode($attribs);
+    }
+
+    /**
+     * @var int $id
+     * @var int $user_id
+     *
+     * @return null|Hall
+    */
+    public static function findRow($id,$user_id=null){
+        if(is_null($user_id)){
+            $model = static::findOne(['id' => $id]);
+        }else{
+            $hall = new Hall();
+            $model=$hall->find()
+                ->innerJoin('contacts','hall.contacts_id=contacts.id')
+                ->where([
+                    'contacts.user_id'=>$user_id,
+                    'hall.id'=>$id
+                ])
+                ->one();
+            if($model==false){
+                $model=null;
+            }
+        }
+        return $model;
+    }
 }

@@ -8,6 +8,7 @@ use frontend\models\Metro;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class AjaxController extends Controller
 {
@@ -51,6 +52,30 @@ class AjaxController extends Controller
             'phone'=>$model->contacts->phone
         ]]);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function actionRemoveImage($id)
+    {
+
+        /**
+         * @var Hall $model
+        */
+
+        if(!Yii::$app->user->isGuest&&
+            isset($get['hall'])
+        ){
+            $get=Yii::$app->request->get();
+            $model=Hall::findRow((int)$get['hall'],Yii::$app->user->id);
+            $model->removeImage($id);
+            $model->save();
+        }else{
+            throw new NotFoundHttpException('The requested page does not exist.');
+
+        };
+    }
+
 
     /**
      * @param ActiveRecord $model

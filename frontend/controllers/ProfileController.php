@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $model = new Profile();
 
         if(($model->findOne(['user_id'=>Yii::$app->user->id]))!==null)
-            throw new NotFoundHttpException('Страница недоступна.');
+            throw new NotFoundHttpException('The requested page does not exist.');
 
 
         $model->load($post);
@@ -94,7 +94,7 @@ class ProfileController extends Controller
         if (($model = Profile::findOne(['id' => $id,'user_id'=>Yii::$app->user->id])) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('Страница недоступна.');
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 }

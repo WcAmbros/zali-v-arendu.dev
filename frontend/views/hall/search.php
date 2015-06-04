@@ -51,6 +51,7 @@ $metro_list = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
                 <label class="result-find-location-item">
                     <span  class="result-find-location-item__header">Вид зала:</span>
                     <select name="Search[category]" class="result-find-location-item__select">
+                        <option value="">Не выбрано</option>
                         <?= Html::renderSelectOptions($search['category'],ArrayHelper::map($category,'name','name'));?>
                     </select>
                 </label>
@@ -94,7 +95,7 @@ $metro_list = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
     </form>
 
     <div class="result-content">
-        <div class="result-content-header"><?php echo $search['category'];?> <span class="result-content-header__span">(<?php echo count($models);?> найдено)</span></div>
+        <div class="result-content-header"><?php echo ($search['category']=="")?$this->title:$search['category'];?> <span class="result-content-header__span">(<?php echo $pages->totalCount;?> найдено)</span></div>
         <div class="result-content-sort">
             Сортировать: <span class="result-content-sort__select" >по цене за м<sup>2</sup></span>
         </div>

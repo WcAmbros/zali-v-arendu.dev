@@ -4,7 +4,7 @@
  * @var array $models
  * @var array $metro
  * @var array $options
- * @var int $options['max'] - align justify in line
+ * @var int $options['max'] - align justify in line, create additional empty block
  * @var string $options['title'] - title for halls
  */
 

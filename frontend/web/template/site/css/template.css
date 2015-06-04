@@ -74,13 +74,26 @@ body{
     border-right: 3px solid transparent;
     content: '';
 }
+.user-actions{
+    display: none;
+    list-style-type: none;
+}
+.user-actions a{
+    text-decoration: none;
+}
+
 .header-content-user{
+    position: relative;
     vertical-align: middle;
     float: right;
     margin: 16px 0 0 0;
     font: 14px arial, Helvetica, sans-serif;
 
 }
+.header-content-user:hover .user-actions{
+    display: block;
+}
+
 .header-content-user__label{
     font-size: 16px;
     border-bottom: 1px dotted #3060bf;

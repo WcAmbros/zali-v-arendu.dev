@@ -51,7 +51,7 @@ if(!$model->isNewRecord){
             </select>
         </label>
         <label class="modal-hall-form__line"><span class="modal-hall-form-location__label">Улица:</span>
-            <input class="modal-hall-form-location__select"  name="Address[street]">
+            <input class="modal-hall-form-location__select"  name="Address[street]"  value="<?=($model->isNewRecord)?"":$model->address->street?>">
         </label>
         <label class="modal-hall-form__line">
             <span class="modal-hall-form-location__label">Дом:</span>
@@ -137,12 +137,24 @@ if(!$model->isNewRecord){
         <div class="modal-hall-form-params-album">
             <div class="modal-hall-form-params__label modal-hall-form-params-album__label">Фотографии зала (не более 9 шт.)</div>
             <div class="modal-hall-form-params-album-content">
+                <?php
+                if(!is_null($images)){
+                    foreach($images as $key=>$image){
+                        print "
+                        <div class='modal-hall-form-params-album-content-item'>
+                            <a class='modal-hall-form-params-album-content-item-remove i-icons i-close_black' href='#' onclick='album.removeImage(this)'></a>
+                            <img class='modal-hall-form-params-album-content-item__img' src='/$image->slide'>
+                        </div>
+                        \n";
+                    }
+                }
+                ?>
                 <div class="modal-hall-form-params-album-content-item">
                     <label><input class="modal-hall-form-params-album-content__input" type="file" name="Hall[images][]"></label>
                     <span class="modal-hall-form-params-album-content-item_remove i-icons i-close_black" onclick="album.remove(this)"></span>
                 </div>
             </div>
-            <div class="modal-hall-form-params-album-button"><span>+</span> Добавить фото</div>
+            <div class="modal-hall-form-params-album-button" onclick="album.addImage()"><span>+</span> Добавить фото</div>
         </div>
     </div>
 </div>
@@ -150,10 +162,10 @@ if(!$model->isNewRecord){
     <div class="modal-hall-form-contacts__header">Контакты</div>
     <label class="modal-hall-form__line"><span class="modal-hall-form-contacts__label">Имя:</span>
         <input class="modal-hall-form-contacts__input" name="Contacts[name]" value="<?=($model->isNewRecord)?"":$model->contacts->name?>"/></label>
-    <label class="modal-hall-form__line"><span class="modal-hall-form-contacts__label" value="<?=($model->isNewRecord)?"":$model->contacts->phone?>">Телефон:</span>
-        <input class="modal-hall-form-contacts__input" name="Contacts[phone]"></label>
-    <label class="modal-hall-form__line"><span class="modal-hall-form-contacts__label" value="<?=($model->isNewRecord)?"":$model->contacts->email?>">E-mail:</span>
-        <input class="modal-hall-form-contacts__input"  name="Contacts[email]"></label>
+    <label class="modal-hall-form__line"><span class="modal-hall-form-contacts__label">Телефон:</span>
+        <input class="modal-hall-form-contacts__input" name="Contacts[phone]" value="<?=($model->isNewRecord)?"":$model->contacts->phone?>"></label>
+    <label class="modal-hall-form__line"><span class="modal-hall-form-contacts__label">E-mail:</span>
+        <input class="modal-hall-form-contacts__input"  name="Contacts[email]" value="<?=($model->isNewRecord)?"":$model->contacts->email?>"></label>
     <div class="modal-hall-form-contacts-capthca">
         <label class="modal-hall-form__line"><span>Введите текст с картинки:</span>
             <input class="modal-hall-form-contacts-capthca__input">

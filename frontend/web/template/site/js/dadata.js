@@ -1,55 +1,46 @@
-var button={
-        close:function(el){
-            $(el).hide();
-        },
-        show:function(el){
-            $(el).show();
-        }
+var album={},
+    suggestions = function(){
+        $(".modal-hall-form-col__address").suggestions({
+            serviceUrl: "https://dadata.ru/api/v2",
+            token: "17d4c30316e5c06e8c5798f8587a898066205a7d",
+            type: "ADDRESS",
+            /* Вызывается, когда пользователь выбирает одну из подсказок */
+            onSelect: function(suggestion) {
+                var obj =suggestion.data,
+                    hall={},
+                    geo_results=null;
 
-    },
-    album={};
+                hall={
+                    name:'Address',
+                    params:{
+                        town:obj.city,
+                        street:obj.street,
+                        house:obj.house,
+                        block:obj.block
+                    }
+                };
+                for(var key in hall.params ){
+                    $('input[name="'+hall.name+'['+key+']"]').val(hall.params[key]);
+                }
+
+                $('input[name="Hall[geocode]"]').val(JSON.stringify([obj.geo_lat,obj.geo_lon]));
+
+                geocode_maps({
+                    geocode:obj.geo_lon+','+obj.geo_lat,
+                    kind:'district'
+                });
+                geocode_maps({
+                    geocode:obj.geo_lon+','+obj.geo_lat,
+                    kind:'metro',
+                    results:3
+                });
+
+
+            }
+        });
+    };
 
 $(document).ready(function(){
-
-    $(".add-hall-form-col__address").suggestions({
-        serviceUrl: "https://dadata.ru/api/v2",
-        token: "17d4c30316e5c06e8c5798f8587a898066205a7d",
-        type: "ADDRESS",
-        /* Вызывается, когда пользователь выбирает одну из подсказок */
-        onSelect: function(suggestion) {
-            var obj =suggestion.data,
-                hall={},
-                geo_results=null;
-
-            hall={
-                name:'Address',
-                params:{
-                    town:obj.city,
-                    street:obj.street,
-                    house:obj.house,
-                    block:obj.block
-                }
-            };
-            for(var key in hall.params ){
-                $('input[name="'+hall.name+'['+key+']"]').val(hall.params[key]);
-            }
-
-            $('input[name="Hall[geocode]"]').val(JSON.stringify([obj.geo_lat,obj.geo_lon]));
-
-            geocode_maps({
-                geocode:obj.geo_lon+','+obj.geo_lat,
-                kind:'district'
-            });
-            geocode_maps({
-                geocode:obj.geo_lon+','+obj.geo_lat,
-                kind:'metro',
-                results:3
-            });
-
-
-        }
-    });
-
 
     geocode_maps=function(data){
 
@@ -88,9 +79,6 @@ $(document).ready(function(){
     //};
 
 
-    $('.add-hall-form-params-album-button').click(function(){
-        album.add($('.add-hall-form-params-album-content'));
-    });
 
 
 });
@@ -106,11 +94,22 @@ album={
     remove:function(obj){
         $(obj).parent().remove();
         this.count--;
+    },
+    removeImage:function(obj){
+        var index=$(obj).index(),
+            hall=$('.modal-hall-form').attr('data-id');
+        $.ajax('/ajax/removeImage/'+index,{hall:hall}).done(function(){
+            this.remove(obj);
+        });
+
+    },
+    addImage:function(){
+        album.add($('.modal-hall-form-params-album-content'));
     }
-}
+};
 var template={
-    image:'<div class="add-hall-form-params-album-content-item">'+
-    '<label><input class="add-hall-form-params-album-content__input" type="file" name="Hall[images][]"></label>'+
-    '<span class="add-hall-form-params-album-content-item_remove i-icons i-close_black" onclick="album.remove(this)"></span>'+
+    image:'<div class="modal-hall-form-params-album-content-item">'+
+    '<label><input class="modal-hall-form-params-album-content__input" type="file" name="Hall[images][]"></label>'+
+    '<span class="modal-hall-form-params-album-content-item_remove i-icons i-close_black" onclick="album.remove(this)"></span>'+
     '</div>'
 };

@@ -25,6 +25,7 @@ class HallBehavior extends Behavior{
      * */
     public function beforeValidate($event)
     {
+
 	    $post=Yii::$app->request->post();
         $price=$this->savePrice();
         $address=$this->saveAddress();
@@ -67,7 +68,13 @@ class HallBehavior extends Behavior{
      **/
     private function savePrice(){
         $post=Yii::$app->request->post();
-        $model = new Price();
+
+        if($this->owner->isNewRecord){
+            $model = new Price();
+        }else{
+            $model=Price::findOne($this->owner->price_id);
+        }
+
         $model->load($post);
         $model->save();
         return $model;
@@ -78,7 +85,11 @@ class HallBehavior extends Behavior{
      **/
     private function saveAddress(){
         $post=Yii::$app->request->post();
-        $model = new Address();
+        if($this->owner->isNewRecord){
+            $model = new Address();
+        }else{
+            $model=Address::findOne($this->owner->address_id);
+        }
         $model->load($post);
         $model->save();
         return $model;
@@ -88,20 +99,23 @@ class HallBehavior extends Behavior{
      * @return Contacts
      **/
     private function saveContacts(){
+        $post=Yii::$app->request->post();
 
         if(Yii::$app->user->isGuest){
-            $post=Yii::$app->request->post();
-            $model = new Contacts();
-            $model->load($post);
-            $user=new User();
-            $user=$user->findOne(['username'=>'guest']);
-            $model->user_id=$user->id;
-            $model->save();
-
+            $user=User::findOne(['username'=>'guest']);
         }else{
-
-            $model = Contacts::findOne(['user_id'=>Yii::$app->user->id]);
+            $user=Yii::$app->user;
         }
+
+        if($this->owner->isNewRecord){
+            $model = new Contacts();
+        }else{
+            $model=Contacts::findOne($this->owner->contacts_id);
+        }
+
+        $model->load($post);
+        $model->user_id=$user->id;
+        $model->save();
 
         return $model;
     }

@@ -275,6 +275,13 @@
 .hall-content-contact__line{
     margin-bottom: 15px;
 }
+.hall-actions {
+    float: right;
+    list-style-type: none;
+}
+.hall-actions ul{
+    list-style-type: none;
+}
 .equipment{
     width: 350px;
     display: inline-block;
@@ -416,7 +423,7 @@
 .pagination-pages{
     float: left;
     display: inline-block;
-    width: 368px;
+    width: 410px;
     height: 28px;
     padding: 0;
 

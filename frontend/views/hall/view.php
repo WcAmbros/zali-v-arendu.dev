@@ -8,6 +8,10 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+$this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
+$this->registerJsFile('https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js');
+$this->registerJsFile('/template/site/js/dadata.js');
+
 $this->title = $model->name;
 $metro_current=null;
 $images_max_in_line=3;
@@ -20,6 +24,8 @@ foreach($metro as $metro_item){
         $metro_current=$metro_item;//json_decode($metro_item->attribs)->options->class;
     }
 }
+
+
 ?>
 
 <div class="return_to_search">
@@ -27,6 +33,12 @@ foreach($metro as $metro_item){
     <a href="<?=(Url::toRoute('hall/search'))?>" class="return_to_search__link">Назад к поиску</a>
 </div>
 <div class="hall">
+    <div class="hall-actions">
+       <ul>
+           <li> <a href="#" class="btn-update" onclick="button.update('/hall/update/<?=$model->id?>');">Редактировать</a></li>
+           <li> <a href="/hall/delete/<?=$model->id?>">Удалить</a></li>
+       </ul>
+    </div>
     <h1 class="hall__header"><?php echo $model->name;?></h1>
     <div class="hall__caption"><?php echo $model->category->name;?></div>
     <div class="hall-content">

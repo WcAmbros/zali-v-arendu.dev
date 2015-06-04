@@ -9,19 +9,6 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 
-if(!Yii::$app->user->isGuest){
-    $route='/profile';
-    $username=Yii::$app->user->identity->username;
-    $icon='';
-    $profile=Yii::$app->profile->findOne(['user_id'=>Yii::$app->user->id]);// плохо - переделать
-    if(!is_null($profile)){
-        $route='/profile/'.$profile->id;
-        $username=$profile->name;
-        $icon='<img src="/'.$profile->images.'" class="header-content-user__icon">';
-    }
-
-}
-
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -51,17 +38,7 @@ if(!Yii::$app->user->isGuest){
         </div>
         <div class="header-content-user">
             <?php
-
-            $login=Url::toRoute('user/login');
-            $logout=Url::toRoute('user/logout');
-            $signup=Url::toRoute('user/signup');
-            if(Yii::$app->user->isGuest){
-                echo '<a href="'.$login.'">Войти</a> / <a href="'.$signup.'">Зарегистрироваться</a>';
-            }else{
-                echo 'Привет, <a href="'.$route.'" class="header-content-user__label">'.$username.'!</a>
-                '.$icon.' /
-                <a data-method="post" href="'.$logout.'">Выйти</a>';
-            }
+            echo $this->render('_user_block');
             ?>
         </div>
     </div>

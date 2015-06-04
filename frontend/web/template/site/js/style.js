@@ -14,8 +14,6 @@ $(document).ready(function(){
     $(document).on('change','form',function(){
         //$(this).find('button').focus();
     });
-
-
 });
 
 ymaps.ready(function  () {
@@ -55,3 +53,25 @@ ymaps.ready(function  () {
         myMap = null;
     }});
 });
+
+var button={
+    close:function(el){
+        $(el).remove();
+    },
+    show:function(el){
+        $(el).show();
+    },
+    form:function(url){
+        $.ajax(url).done(function(data){
+            $("body").prepend(data);
+            suggestions();
+        });
+    },
+    update:function(url){
+        $.ajax(url).done(function(data){
+            $("body").prepend(data);
+            suggestions();
+        });
+    }
+
+};

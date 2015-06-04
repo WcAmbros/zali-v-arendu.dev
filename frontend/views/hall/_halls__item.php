@@ -13,14 +13,17 @@ $images=null;
 $geocode=null;
 $metro_current=null;
 if(!is_null($model->attribs)){
-    $images=json_decode($model->attribs)->images;
-    $geocode=json_decode($model->attribs)->geocode;
+    $attribs=json_decode($model->attribs);
+    $images=$attribs->images;
+    $geocode=$attribs->geocode;
 }
     foreach($metro as $metro_item){
         if($metro_item->name==$model->address->metro){
             $metro_current=$metro_item;//json_decode($metro_item->attribs)->options->class;
         }
     }
+
+
 ?>
 
 <div class='deals-item'>

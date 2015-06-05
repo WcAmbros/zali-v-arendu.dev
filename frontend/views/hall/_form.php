@@ -117,7 +117,7 @@ if(!$model->isNewRecord){
         </div>
         <label>
             <span>Дополнительное оборудование:</span>
-            <textarea class="modal-hall-form-params__textarea" name="Hall[optional_equipment]"></textarea>
+            <textarea class="modal-hall-form-params__textarea" name="Hall[comments]"></textarea>
         </label>
     </div>
     <div class="modal-hall-form-col modal-hall-form-col_right">

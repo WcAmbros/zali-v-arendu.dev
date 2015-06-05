@@ -8,8 +8,10 @@
  * @var string $options['title'] - title for halls
  */
 
+if(!isset($options['class']))
+    $options['class']="";
 ?>
-<div class="deals result-content-deals">
+<div class="deals <?=$options['class'];?>">
     <?php
         if(isset($options['title']))
             print("<div class='deals__header'>{$options['title']}</div>\n");
@@ -24,6 +26,13 @@
             $different=abs(count($models)%$options['max']-$options['max']);
             for($i=0;$i<$different;$i++)
                 print("<div class='deals-item'></div>\n");
+        }
+
+        if(isset($options['deals.all'])){
+                print(
+                "<div class='deals__more'>
+                    <a href='/hall/all' >Все предложения города</a>
+                </div>\n");
         }
         ?>
 

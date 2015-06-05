@@ -15,7 +15,7 @@ use yii\db\Query;
  * @property string $attribs
  * @property integer $square
  * @property string $images
- * @property string $optional_equipment
+ * @property string $favourite
  * @property string $created
  * @property integer $public
  * @property integer $deleted
@@ -51,7 +51,7 @@ class Hall extends \yii\db\ActiveRecord
     {
         return [
             [['square', 'public', 'created_at', 'updated_at','deleted', 'floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'integer'],
-            [['optional_equipment','attribs'], 'string'],
+            [['favourite','attribs'], 'string'],
             [['floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'required'],
             [['name'], 'string', 'max' => 255]
         ];
@@ -68,7 +68,7 @@ class Hall extends \yii\db\ActiveRecord
             'attribs' => 'Attribs',
             'square' => 'Square',
             'images' => 'Images',
-            'optional_equipment' => 'Optional equipment',
+            'favourite' => 'Favourite',
             'public' => 'Public',
             'deleted' => 'Deleted',
             'floor_id' => 'Floor ID',
@@ -236,6 +236,7 @@ class Hall extends \yii\db\ActiveRecord
         return in_array($image,$list);
 
     }
+
     /**
      * @var int $id
      * @var int $user_id
@@ -246,8 +247,7 @@ class Hall extends \yii\db\ActiveRecord
         if(is_null($user_id)){
             $model = static::findOne(['id' => $id]);
         }else{
-            $hall = new Hall();
-            $model=$hall->find()
+            $model=static::find()
                 ->innerJoin('contacts','hall.contacts_id=contacts.id')
                 ->where([
                     'contacts.user_id'=>$user_id,
@@ -259,5 +259,26 @@ class Hall extends \yii\db\ActiveRecord
             }
         }
         return $model;
+    }
+
+    /**
+     * @var int $limit
+     *
+     * @return array
+     */
+    public function favourites($limit=null){
+        return $this->find()->where([
+             'favourite'=>1
+            ]
+        )->limit($limit)->all();
+    }
+
+    /**
+     * @var int $limit
+     *
+     * @return array
+     */
+    public function similar($limit=null){
+
     }
 }

@@ -30,6 +30,7 @@ body{
     width: 970px;
     margin: auto;
     line-height: 60px;
+    position: relative;
 }
 
 .header-content-logo{
@@ -75,17 +76,32 @@ body{
     content: '';
 }
 .user-actions{
+    margin-top: 5px;
     display: none;
     list-style-type: none;
+    box-shadow: 5px 5px 5px 0 #3f3f3f;
 }
 .user-actions a{
     text-decoration: none;
 }
+.user-actions{
+    background: #fff;
+    padding: 0;
+}
+.user-actions a{
+    display: block;
+    color: #000;
+    font: normal 14px "Gotham Pro",gotham_pro;
+    padding: 7px 5px 7px 34px;
+}
+.user-actions a:hover{
+    background: #dbdbdb;
+}
 
 .header-content-user{
-    position: relative;
+    position: absolute;
     vertical-align: middle;
-    float: right;
+    right: 0;
     margin: 16px 0 0 0;
     font: 14px arial, Helvetica, sans-serif;
 

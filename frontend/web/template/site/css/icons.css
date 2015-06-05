@@ -1,6 +1,7 @@
 .i-icons{
     display: inline-block;
     background: url("../images/style/elements.png");
+    vertical-align: middle;
 }
 .i-search{
     width: 16px;

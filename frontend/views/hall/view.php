@@ -33,12 +33,12 @@ foreach($metro as $metro_item){
     <a href="<?=(Url::toRoute('hall/search'))?>" class="return_to_search__link">Назад к поиску</a>
 </div>
 <div class="hall">
-    <div class="hall-actions">
-       <ul>
-           <li> <a href="#" class="btn-update" onclick="button.update('/hall/update/<?=$model->id?>');">Редактировать</a></li>
-           <li> <a href="/hall/delete/<?=$model->id?>">Удалить</a></li>
-       </ul>
-    </div>
+
+    <?php
+    if(!Yii::$app->user->isGuest){
+        echo $this->render('_hall_actions',['model'=>$model]);
+    }
+    ?>
     <h1 class="hall__header"><?php echo $model->name;?></h1>
     <div class="hall__caption"><?php echo $model->category->name;?></div>
     <div class="hall-content">
@@ -86,9 +86,9 @@ foreach($metro as $metro_item){
                 ?>
             </ul>
             <div><?php
-                echo Html::encode($model->optional_equipment);
+                echo Html::encode($model->comments);
                 ?></div>
-            <p><strong>Контакты:</strong></p>
+            <p class="hall-content-contact__header">Контакты:</p>
             <ul class="hall-content-contact">
                 <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link" rel="<?=$model->id;?>"><span class="i-icons i-phone"></span>Показать номер</a></li>
                 <li class="hall-content-contact__line"><a href="mailto:<?=$model->contacts->email;?>" class="hall-content-contact-link"><span class="i-icons i-mail"></span>Написать владельцу</a></li>

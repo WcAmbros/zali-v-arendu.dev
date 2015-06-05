@@ -35,7 +35,7 @@ class HallController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['form','search','view'],
+                        'actions' => ['form','search','view','all'],
                         'allow' => true
                     ],
                 ],
@@ -108,6 +108,20 @@ class HallController extends Controller
             'district'=>$district->find()->all(),
             'metro'=>$metro->find()->all(),
         ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function actionAll(){
+       Yii::$app->session->set('search',[
+           'Search'=>[
+               'category'=>'',
+               'district'=>'',
+               'metro'=>'',
+           ]
+       ]);
+       return $this->redirect(['search']);
     }
 
     /**

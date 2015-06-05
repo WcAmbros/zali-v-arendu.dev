@@ -298,11 +298,14 @@
 .equipment li{
     display: inline-block;
     width: 160px;
+    margin-bottom: 7px;
 }
-.equipment__header{
+.equipment__header,
+.hall-content-contact__header{
     margin-top: 30px;
     font: bold 16px arial, Helvetica, sans-serif;
 }
+
 
 
 /* похожие товары*/

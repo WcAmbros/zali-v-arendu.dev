@@ -11,8 +11,8 @@ $(document).ready(function(){
         )
     });
 
-    $(document).on('change','form',function(){
-        //$(this).find('button').focus();
+    $(document).on('change','.main-find-form',function(){
+        $(this).find('button').focus();
     });
 });
 

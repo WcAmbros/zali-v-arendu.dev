@@ -38,7 +38,7 @@ AppAsset::register($this);
         </div>
         <div class="header-content-user">
             <?php
-            echo $this->render('_user_block');
+            echo $this->render('_user_menu');
             ?>
         </div>
     </div>
@@ -50,7 +50,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="footer-content">
         <div class="site-master">
-            <img src="/images/style/site-master.png">
+            <a href="http://site-spb.ru/"><img src="/images/style/site-master.png"></a>
         </div>
         <div class="footer-content-nav">
             <a href="<?=(Url::toRoute('site/about'))?>" class="footer-content-nav-link">О проекте</a> |

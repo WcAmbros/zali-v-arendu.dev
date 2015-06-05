@@ -103,7 +103,8 @@ $metro_list = getAutoComplete_config($metro,'Search[metro]',$search['metro']);
             'models'=>$models,
             'metro'=>$metro,
             'options'=>[
-                'max'=>3
+                'max'=>3,
+                'class'=>'result-content-deals'
             ],
         ]);
         ?>

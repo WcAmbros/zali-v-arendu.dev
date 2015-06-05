@@ -8,13 +8,13 @@
 
 namespace common\behaviors;
 
+use Imagine\Image\Box;
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
-use yii\web\UploadedFile;
-use yii\validators\Validator;
 use yii\imagine\Image;
-use Imagine\Image\Box;
+use yii\validators\Validator;
+use yii\web\UploadedFile;
 
 class UploadImageBehavior extends Behavior{
 
@@ -28,13 +28,7 @@ class UploadImageBehavior extends Behavior{
 
     public $savePathAlias = '@app/uploads';
 
-    public $list=[
-        [
-            'original'=>"uploads/noimage.jpg",
-            'thumbnail'=>"uploads/th_noimage.jpg",
-            'slide'=>"uploads/slide_noimage.jpg",
-        ]
-    ];
+    public $list=array();
 
     public function events()
     {
@@ -47,6 +41,17 @@ class UploadImageBehavior extends Behavior{
     {
         /** @var ActiveRecord $model */
         $model = $this->owner;
+
+        if($model->isNewRecord){
+            $this->list=[
+                [
+                    'original'=>"uploads/noimage.jpg",
+                    'thumbnail'=>"uploads/th_noimage.jpg",
+                    'slide'=>"uploads/slide_noimage.jpg",
+                ]
+            ];
+        }
+
         if ($model->{$this->fileAttribute} instanceof UploadedFile) {
             $files = $model->{$this->fileAttribute};
         } else {

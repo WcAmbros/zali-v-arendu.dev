@@ -27,7 +27,7 @@ if(!is_null($model->attribs)){
 ?>
 
 <div class='deals-item'>
-    <div class='b-star i-shadow'><span class='i-icons i-star'></span></div>
+    <?=($model->favourite)?"<div class='b-star i-shadow'><span class='i-icons i-star'></span></div>":""?>
     <a href='<?=(Url::toRoute(['hall/view','id'=>$model->id]))?>'><img src='/<?=$images[0]->slide;?>'></a>
     <div class='deals-item-description'>
         <a href='<?=(Url::toRoute(['hall/view','id'=>$model->id]))?>' class='deals-item-description__address'><?=$model->name;?></a>

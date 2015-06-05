@@ -46,6 +46,7 @@ return [
                 '<_a:(about|contact|banner)>' => 'site/<_a>',
                 'profile' => 'profile/create',
                 'profile/<id:\d+>' => 'profile/update',
+                'ajax/removeimage/<id:\d+>' => 'ajax/removeimage',
                 '<_c:[\w\-]+>' => '<_c>/index',
                 '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',

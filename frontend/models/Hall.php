@@ -158,6 +158,7 @@ class Hall extends \yii\db\ActiveRecord
 
     /**
      * @param array $post
+     *
      * @return Query
      */
     public  function search($post){
@@ -169,6 +170,7 @@ class Hall extends \yii\db\ActiveRecord
 
     /**
      * @param Query $query
+     *
      * @return Pagination
      */
     public  function searchPagination($query){
@@ -183,6 +185,7 @@ class Hall extends \yii\db\ActiveRecord
 
     /**
      * @param array $post
+     *
      * @return string
      */
     private  function searchCondition($post){
@@ -200,20 +203,39 @@ class Hall extends \yii\db\ActiveRecord
     }
 
     public function removeImage($id){
-        $attribs=json_decode($this->attribs);
-        $images=$attribs->images;
+        $attribs=json_decode($this->attribs,true);
+        $images=$attribs['images'];
         foreach($images as $key=>$image){
             if($key==$id){
-                foreach($image as $path){
-                    unlink($path);
+                if(!$this->isDefaultImages($image)){
+                    foreach($image as $path){
+                        unlink($path);
+                    }
                 }
                 unset($images[$id]);
             }
         }
-        $attribs->images=$images;
+        $attribs['images']=$images;
         $this->attribs=json_encode($attribs);
     }
 
+    /**
+     * @var array $image
+     *
+     * @return bool
+    */
+    public function isDefaultImages($image){
+        $list=[
+            [
+                'original'=>"uploads/noimage.jpg",
+                'thumbnail'=>"uploads/th_noimage.jpg",
+                'slide'=>"uploads/slide_noimage.jpg",
+            ]
+        ];
+
+        return in_array($image,$list);
+
+    }
     /**
      * @var int $id
      * @var int $user_id

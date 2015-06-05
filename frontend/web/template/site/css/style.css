@@ -703,6 +703,7 @@
 .modal-hall-form-params-album-content-item{
     display: inline-block;
     margin-top: 10px;
+    position: relative;
 }
 .modal-hall-form-params-album-content-item__img{
     width: 100px;
@@ -713,11 +714,15 @@
     cursor: pointer;
     vertical-align: middle;
 }
+.modal-hall-form-params-album-content-image-remove{
+    position: absolute;
+    right: 0;
+}
 .modal-hall-form-params-album-content__input{
     display: inline-block;
     width: 250px;
-
 }
+
 .modal-hall-form-params-album-button{
     font-size: 14px;
     font-weight: bold;

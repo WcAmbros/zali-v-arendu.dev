@@ -27,21 +27,39 @@ class HallBehavior extends Behavior{
     {
 
 	    $post=Yii::$app->request->post();
-        $price=$this->savePrice();
-        $address=$this->saveAddress();
-        $contacts=$this->saveContacts();
-        $this->owner->name=$this->setName();
-        $this->owner->price_id=$price->id;
-        $this->owner->address_id=$address->id;
-        $this->owner->contacts_id=$contacts->id;
-        $this->owner->floor_id=$post['Hall']['floor'];
-        $this->owner->category_id=$post['Hall']['category'];
-	    $this->owner->attribs=json_encode(
-            [
-                'images'=>$this->owner->images,
-                'geocode'=>$post['Hall']['geocode']
-            ]
-        );
+        if(!empty($post)){
+            $price=$this->savePrice();
+            $address=$this->saveAddress();
+            $contacts=$this->saveContacts();
+            $this->owner->name=$this->setName();
+            $this->owner->price_id=$price->id;
+            $this->owner->address_id=$address->id;
+            $this->owner->contacts_id=$contacts->id;
+            $this->owner->floor_id=$post['Hall']['floor'];
+            $this->owner->category_id=$post['Hall']['category'];
+            $this->owner->attribs=json_encode(
+                [
+                    'images'=>$this->images(),
+                    'geocode'=>$post['Hall']['geocode']
+                ]
+            );
+        }
+
+    }
+
+
+
+    /**
+     * @return array
+     **/
+    private function images(){
+        if($this->owner->isNewRecord){
+            $images=$this->owner->images;
+        }else{
+            $attribs=json_decode($this->owner->attribs,true);
+            $images=array_merge($attribs['images'],$this->owner->images);
+        }
+        return $images;
     }
 
     /**

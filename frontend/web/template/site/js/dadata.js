@@ -98,7 +98,10 @@ album={
     removeImage:function(obj){
         var index=$(obj).index(),
             hall=$('.modal-hall-form').attr('data-id');
-        $.ajax('/ajax/removeImage/'+index,{hall:hall}).done(function(){
+        $.ajax({
+            url:'/ajax/removeimage/'+index,
+            data:{hall:hall}
+        }).done(function(){
             this.remove(obj);
         });
 

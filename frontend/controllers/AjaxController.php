@@ -56,22 +56,23 @@ class AjaxController extends Controller
     /**
      * @inheritdoc
      */
-    public function actionRemoveImage($id)
+    public function actionRemoveimage($id)
     {
 
         /**
          * @var Hall $model
         */
-
+        $get=Yii::$app->request->get();
         if(!Yii::$app->user->isGuest&&
             isset($get['hall'])
         ){
-            $get=Yii::$app->request->get();
             $model=Hall::findRow((int)$get['hall'],Yii::$app->user->id);
             $model->removeImage($id);
-            $model->save();
+            if(!$model->save()){
+                throw new NotFoundHttpException('Не удалось сохранить изменения');
+            }
         }else{
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('hall id is not exist.');
 
         };
     }

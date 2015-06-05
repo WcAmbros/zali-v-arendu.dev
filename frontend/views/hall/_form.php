@@ -142,11 +142,15 @@ if(!$model->isNewRecord){
                     foreach($images as $key=>$image){
                         print "
                         <div class='modal-hall-form-params-album-content-item'>
-                            <a class='modal-hall-form-params-album-content-item-remove i-icons i-close_black' href='#' onclick='album.removeImage(this)'></a>
+                            <a class='modal-hall-form-params-album-content-image-remove i-icons i-close_black' href='#' onclick='album.removeImage(this)'></a>
                             <img class='modal-hall-form-params-album-content-item__img' src='/$image->slide'>
                         </div>
                         \n";
                     }
+                    $options['max']=3;
+                    $different=abs(count($images)%$options['max']-$options['max']);
+                    for($i=0;$i<$different;$i++)
+                        print("<div class='modal-hall-form-params-album-content-item' style='width: 100px;'></div>\n");
                 }
                 ?>
                 <div class="modal-hall-form-params-album-content-item">

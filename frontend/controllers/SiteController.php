@@ -40,6 +40,7 @@ class SiteController extends Controller
         $category=new Category();
 	    $district=new District();
 	    $metro=new Metro();
+
         return $this->render('index',[
 	        'floor'=>$floor->find()->all(),
 	        'options'=>$options->find()->all(),

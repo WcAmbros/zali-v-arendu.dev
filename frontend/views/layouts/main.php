@@ -28,13 +28,13 @@ AppAsset::register($this);
 
     <div class="header-content">
         <div class="header-content-logo">
-            <a class="header-content-logo-link" href="/"><span class="header-content-logo-link__label">Залы</span> в аренду</a>
+            <a class="header-content-logo-link" href="/"><span class="header-content-logo-link__label">Залы</span> в
+                аренду</a>
         </div>
         <div class="header-content-town">
-            В городе: <span class="header-content-town__label">Санкт-Петербург</span>
-            <div class="dropdown">
-                <ul class="dropdown-list"></ul>
-            </div>
+            <?php
+            echo $this->render('_region');
+            ?>
         </div>
         <div class="header-content-user">
             <?php
@@ -53,9 +53,9 @@ AppAsset::register($this);
             <a href="http://site-spb.ru/"><img src="/images/style/site-master.png"></a>
         </div>
         <div class="footer-content-nav">
-            <a href="<?=(Url::toRoute('site/about'))?>" class="footer-content-nav-link">О проекте</a> |
-            <a href="<?=(Url::toRoute('site/banner'))?>" class="footer-content-nav-link">Реклама</a> |
-            <a href="<?=(Url::toRoute('site/contact'))?>" class="footer-content-nav-link">Обратная связь</a>
+            <a href="<?= (Url::toRoute('site/about')) ?>" class="footer-content-nav-link">О проекте</a> |
+            <a href="<?= (Url::toRoute('site/banner')) ?>" class="footer-content-nav-link">Реклама</a> |
+            <a href="<?= (Url::toRoute('site/contact')) ?>" class="footer-content-nav-link">Обратная связь</a>
         </div>
         <div class="footer-social">
             <a href="#" class="i-icons i-vk"></a>

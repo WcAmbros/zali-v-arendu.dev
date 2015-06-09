@@ -19,7 +19,6 @@ $this->title = 'Залы в аренду';
 $this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
 $this->registerJsFile('https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js');
 $this->registerJsFile('/template/site/js/dadata.js');
-
 ?>
 <div class="main">
     <div class="main-background">
@@ -42,21 +41,15 @@ $this->registerJsFile('/template/site/js/dadata.js');
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
                         <select class="main-find-form-label__select" name="Search[district]">
-                            <option value="">Не выбрано</option>
+                            <option value="">Не выбран</option>
                             <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name'));?>
-                            <?php
-                            //AutoComplete::widget($district);
-                            ?>
                         </select>
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Станция метро:</span>
 
                         <select class="main-find-form-label__select" name="Search[metro]">
-                            <option value="">Не выбрано</option>
+                            <option value="">Не выбран</option>
                             <?= Html::renderSelectOptions('',ArrayHelper::map($metro,'name','name'));?>
-                            <?php
-                            //AutoComplete::widget($metro);
-                            ?>
                         </select>
                     </label>
                 </fieldset>

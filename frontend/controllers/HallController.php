@@ -30,12 +30,12 @@ class HallController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['update','delete'],
+                        'actions' => ['update', 'delete', 'create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['form','search','view','all'],
+                        'actions' => ['form', 'search', 'view', 'all'],
                         'allow' => true
                     ],
                 ],
@@ -43,7 +43,7 @@ class HallController extends Controller
         ];
     }
 
-     /**
+    /**
      * @inheritdoc
      */
     public function actions()
@@ -62,36 +62,39 @@ class HallController extends Controller
     /**
      * @inheritdoc
      */
-    public  function actionIndex(){
+    public function actionIndex()
+    {
         return $this->goBack();
     }
 
     /**
      * @inheritdoc
      */
-    public function actionView($id){
-        $metro=new Metro();
+    public function actionView($id)
+    {
+        $metro = new Metro();
 
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'metro'=>$metro->find()->all(),
+            'metro' => $metro->find()->all(),
         ]);
     }
 
     /**
      * @inheritdoc
      */
-    public function actionSearch(){
-        $post=Yii::$app->request->post();
-        if(!empty($post)){
-            Yii::$app->session->set('search',$post);
-        }else{
-            $post=Yii::$app->session->get('search');
+    public function actionSearch()
+    {
+        $post = Yii::$app->request->post();
+        if (!empty($post)) {
+            Yii::$app->session->set('search', $post);
+        } else {
+            $post = Yii::$app->session->get('search');
         }
-        $category=new Category();
-        $district=new District();
-        $metro=new Metro();
-        $hall=new  Hall();
+        $category = new Category();
+        $district = new District();
+        $metro = new Metro();
+        $hall = new  Hall();
 
         $query = $hall->search($post);
         $pages = $hall->searchPagination($query);
@@ -103,25 +106,26 @@ class HallController extends Controller
         return $this->render('search', [
             'models' => $models,
             'pages' => $pages,
-            'search'=>$post['Search'],
-            'category'=>$category->find()->all(),
-            'district'=>$district->find()->all(),
-            'metro'=>$metro->find()->all(),
+            'search' => $post['Search'],
+            'category' => $category->find()->all(),
+            'district' => $district->find()->all(),
+            'metro' => $metro->find()->all(),
         ]);
     }
 
     /**
      * @inheritdoc
      */
-    public function actionAll(){
-       Yii::$app->session->set('search',[
-           'Search'=>[
-               'category'=>'',
-               'district'=>'',
-               'metro'=>'',
-           ]
-       ]);
-       return $this->redirect(['search']);
+    public function actionAll()
+    {
+        Yii::$app->session->set('search', [
+            'Search' => [
+                'category' => '',
+                'district' => '',
+                'metro' => '',
+            ]
+        ]);
+        return $this->redirect(['search']);
     }
 
     /**
@@ -129,9 +133,9 @@ class HallController extends Controller
      */
     public function actionCreate()
     {
-        $post=Yii::$app->request->post();
+        $post = Yii::$app->request->post();
         $model = new Hall();
-        if($model->load($post)&& $model->save()){
+        if ($model->load($post) && $model->save()) {
             $this->_saveOptions($model->id);
         }
         return $this->goBack();
@@ -140,9 +144,10 @@ class HallController extends Controller
     /**
      * @inheritdoc
      */
-    public function actionForm(){
-        $params=$this->getParams();
-        return $this->renderAjax('create',$params);
+    public function actionForm()
+    {
+        $params = $this->getParams();
+        return $this->renderAjax('create', $params);
     }
 
     /**
@@ -151,19 +156,20 @@ class HallController extends Controller
     public function actionUpdate($id)
     {
         /**
-         *  @var  Hall $model
+         * @var  Hall $model
          */
 
-        $params=$this->getParams($id);
-        $model=$params['model'];
+        $params = $this->getParams($id);
+        $model = $params['model'];
+        $post = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($post) && $model->save()) {
             $this->_saveOptions($model->id);
             return $this->redirect([
                 'view',
-                'id'=>$model->id,
+                'id' => $model->id,
             ]);
-        }else {
+        } else {
             return $this->renderAjax('update', $params);
         }
     }
@@ -176,7 +182,7 @@ class HallController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id,Yii::$app->user->id)->delete();
+        $this->findModel($id, Yii::$app->user->id)->delete();
         return $this->goHome();
     }
 
@@ -184,26 +190,27 @@ class HallController extends Controller
     /**
      * @inheritdoc
      */
-    protected function getParams($id=null){
-        $floor=new Floor();
-        $options=new Options();
-        $category=new Category();
-        $district=new District();
-        $metro=new Metro();
+    protected function getParams($id = null)
+    {
+        $floor = new Floor();
+        $options = new Options();
+        $category = new Category();
+        $district = new District();
+        $metro = new Metro();
 
-        if(is_null($id)){
-            $model= new Hall();
-        }else{
-            $model=$this->findModel($id,Yii::$app->user->id);
+        if (is_null($id)) {
+            $model = new Hall();
+        } else {
+            $model = $this->findModel($id, Yii::$app->user->id);
         }
 
         return [
             'model' => $model,
-            'floor'=>$floor->find()->all(),
-            'options'=>$options->find()->all(),
-            'category'=>$category->find()->all(),
-            'district'=>$district->find()->all(),
-            'metro'=>$metro->find()->all(),
+            'floor' => $floor->find()->all(),
+            'options' => $options->find()->all(),
+            'category' => $category->find()->all(),
+            'district' => $district->find()->all(),
+            'metro' => $metro->find()->all(),
         ];
 
     }
@@ -215,9 +222,9 @@ class HallController extends Controller
      * @return Hall the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id,$user_id=null)
+    protected function findModel($id, $user_id = null)
     {
-        $model=Hall::findRow($id,$user_id);
+        $model = Hall::findRow($id, $user_id);
 
         if (is_null($model)) {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -231,16 +238,17 @@ class HallController extends Controller
     /**
      * @inheritdoc
      */
-    private function _saveOptions($hall_id){
-        $post=Yii::$app->request->post();
-        if(isset($post['Options'])){
-            $option_has_hall=new HallHasOptions();
-            $option_has_hall->deleteAll(['hall_id'=>$hall_id]);
+    private function _saveOptions($hall_id)
+    {
+        $post = Yii::$app->request->post();
+        if (isset($post['Options'])) {
+            $option_has_hall = new HallHasOptions();
+            $option_has_hall->deleteAll(['hall_id' => $hall_id]);
 
-            foreach($post['Options'] as $item){
-                $option_has_hall=new HallHasOptions();
-                $option_has_hall->hall_id=$hall_id;
-                $option_has_hall->options_id=$item;
+            foreach ($post['Options'] as $item) {
+                $option_has_hall = new HallHasOptions();
+                $option_has_hall->hall_id = $hall_id;
+                $option_has_hall->options_id = $item;
                 $option_has_hall->save();
             }
         }

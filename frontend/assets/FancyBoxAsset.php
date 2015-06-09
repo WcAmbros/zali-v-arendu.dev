@@ -11,7 +11,8 @@ namespace frontend\assets;
 use yii\web\AssetBundle;
 use yii\web\View;
 
-class FancyBoxAsset extends AssetBundle{
+class FancyBoxAsset extends AssetBundle
+{
     public $baseUrl = '@web/template/site/js/fancybox';
     public $js = [
         'jquery.fancybox.pack.js',

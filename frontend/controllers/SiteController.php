@@ -17,7 +17,7 @@ use yii\web\Controller;
  */
 class SiteController extends Controller
 {
-     /**
+    /**
      * @inheritdoc
      */
     public function actions()
@@ -35,20 +35,21 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-	    $floor=new Floor();
+        $floor = new Floor();
 
-	    $options=new Options();
-        $category=new Category();
-	    $district=new District();
-	    $metro=new Metro();
-        $hall= new Hall();
-        return $this->render('index',[
-	        'floor'=>$floor->find()->all(),
-	        'options'=>$options->find()->all(),
-            'category'=>$category->find()->all(),
-	        'district'=>$district->find()->all(),
-	        'metro'=>$metro->find()->all(),
-            'favourites'=>$hall->favourites(8),
+        $options = new Options();
+        $category = new Category();
+        $district = new District();
+        $metro = new Metro();
+        $hall = new Hall();
+
+        return $this->render('index', [
+            'floor' => $floor->find()->all(),
+            'options' => $options->find()->all(),
+            'category' => $category->find()->all(),
+            'district' => $district->find()->all(),
+            'metro' => $metro->find()->all(),
+            'favourites' => $hall->favourites(8),
         ]);
     }
 

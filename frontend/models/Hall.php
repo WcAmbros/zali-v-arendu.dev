@@ -35,7 +35,8 @@ use yii\db\Query;
  */
 class Hall extends \yii\db\ActiveRecord
 {
-	public $images=null;
+    public $images = null;
+
     /**
      * @inheritdoc
      */
@@ -50,8 +51,8 @@ class Hall extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['square', 'public', 'created_at', 'updated_at','deleted', 'floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'integer'],
-            [['favourite','attribs'], 'string'],
+            [['favourite', 'square', 'public', 'created_at', 'updated_at', 'deleted', 'floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'integer'],
+            [['attribs'], 'string'],
             [['floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'required'],
             [['name'], 'string', 'max' => 255]
         ];
@@ -67,7 +68,6 @@ class Hall extends \yii\db\ActiveRecord
             'name' => 'Name',
             'attribs' => 'Attribs',
             'square' => 'Square',
-            'images' => 'Images',
             'favourite' => 'Favourite',
             'public' => 'Public',
             'deleted' => 'Deleted',
@@ -144,7 +144,7 @@ class Hall extends \yii\db\ActiveRecord
             'HallBehavior' => [
                 'class' => 'common\behaviors\HallBehavior',
             ],
-	        TimestampBehavior::className(),
+            TimestampBehavior::className(),
 //            'SlugBehavior' => [
 //                'class' => 'common\behaviors\SlugBehavior',
 //                'in_attribute' => 'name',
@@ -155,16 +155,17 @@ class Hall extends \yii\db\ActiveRecord
     }
 
 
-
     /**
      * @param array $post
      *
      * @return Query
      */
-    public  function search($post){
+    public function search($post)
+    {
 
-        return $this->find()->innerJoin('address','address.id=hall.address_id')
-            ->innerJoin('category','category.id=hall.category_id')
+        return $this->find()
+            ->innerJoin('address', 'hall.address_id=address.id')
+            ->innerJoin('category', 'hall.category_id=category.id')
             ->where($this->searchCondition($post));
     }
 
@@ -173,11 +174,12 @@ class Hall extends \yii\db\ActiveRecord
      *
      * @return Pagination
      */
-    public  function searchPagination($query){
+    public function searchPagination($query)
+    {
         $countQuery = clone $query;
         $pages = new Pagination([
             'totalCount' => $countQuery->count(),
-            'pageSize'=>12
+            'pageSize' => 12
         ]);
 
         return $pages;
@@ -188,89 +190,121 @@ class Hall extends \yii\db\ActiveRecord
      *
      * @return string
      */
-    private  function searchCondition($post){
-        $fields=[
-            'category'=>'category.name',
-            'district'=>'address.district',
-            'metro'=>'address.metro',
-        ];
-        $options=array();
-        foreach($post['Search'] as $key=>$item)
-            if(trim($item)!='')
-                $options[]= $fields[$key].' LIKE ("%'.$item.'%")';
+    private function searchCondition($post)
+    {
+        $town = $this->getRegion();
 
-        return  implode(' AND ', $options);
+        $fields = [
+            'category' => 'category.name',
+            'district' => 'address.district',
+            'metro' => 'address.metro',
+            'town' => 'address.town'
+        ];
+        $options = array();
+        foreach ($post['Search'] as $key => $item)
+            if (trim($item) != '')
+                $options[] = $fields[$key] . ' LIKE ("%' . $item . '%")';
+
+        $options[] = $fields['town'] . ' LIKE ("%' . $town->name . '%")';
+
+        return implode(' AND ', $options);
     }
 
-    public function removeImage($id){
-        $attribs=json_decode($this->attribs,true);
-        $images=$attribs['images'];
-        foreach($images as $key=>$image){
-            if($key==$id){
-                if(!$this->isDefaultImages($image)){
-                    foreach($image as $path){
+    /**
+     * @return void
+     */
+    public function removeImage($id)
+    {
+        $attribs = json_decode($this->attribs, true);
+        $images = $attribs['images'];
+        foreach ($images as $key => $image) {
+            if ($key == $id) {
+                if (!$this->isDefaultImages($image)) {
+                    foreach ($image as $path) {
                         unlink($path);
                     }
                 }
                 unset($images[$id]);
             }
         }
-        $attribs['images']=$images;
-        $this->attribs=json_encode($attribs);
+        $attribs['images'] = $images;
+        $this->attribs = json_encode($attribs);
     }
 
     /**
      * @var array $image
      *
      * @return bool
-    */
-    public function isDefaultImages($image){
-        $list=[
+     */
+    public function isDefaultImages($image)
+    {
+        $list = [
             [
-                'original'=>"uploads/noimage.jpg",
-                'thumbnail'=>"uploads/th_noimage.jpg",
-                'slide'=>"uploads/slide_noimage.jpg",
+                'original' => "uploads/noimage.jpg",
+                'thumbnail' => "uploads/th_noimage.jpg",
+                'slide' => "uploads/slide_noimage.jpg",
             ]
         ];
 
-        return in_array($image,$list);
+        return in_array($image, $list);
 
     }
 
     /**
+     * если требуется найти зал пользователя, то регион не учитываем
+     *
      * @var int $id
      * @var int $user_id
      *
      * @return null|Hall
-    */
-    public static function findRow($id,$user_id=null){
-        if(is_null($user_id)){
-            $model = static::findOne(['id' => $id]);
-        }else{
-            $model=static::find()
-                ->innerJoin('contacts','hall.contacts_id=contacts.id')
-                ->where([
-                    'contacts.user_id'=>$user_id,
-                    'hall.id'=>$id
-                ])
-                ->one();
-            if($model==false){
-                $model=null;
-            }
+     */
+    public static function findRow($id, $user_id = null)
+    {
+
+        if (is_null($user_id)) {
+            $model = static::_findRowWithOutUser($id);
+        } else {
+            $model = static::_findRowWithUser($id, $user_id);
+        }
+        if ($model == false) {
+            $model = null;
         }
         return $model;
     }
 
     /**
-     * @var int $limit
+     * @var int $id
      *
-     * @return array
+     * @return bool|Hall
      */
-    public function favourites($limit=null){
-        return $this->find()->where([
-             'favourite'=>1
-            ]
-        )->limit($limit)->all();
+    private static function _findRowWithOutUser($id)
+    {
+        $town = static::getRegion();
+        return static::find()
+            ->innerJoin('address', 'hall.address_id=address.id')
+            ->where([
+                'hall.id' => $id,
+                'address.town' => $town->name
+            ])
+            ->one();
+    }
+
+    /**
+     *
+     * @var int $id
+     * @var int $user_id
+     *
+     * @return bool|Hall
+     */
+    private static function _findRowWithUser($id, $user_id)
+    {
+        return static::find()
+            ->innerJoin('contacts', 'hall.contacts_id=contacts.id')
+            ->where([
+                'contacts.user_id' => $user_id,
+                'hall.id' => $id
+            ])
+            ->one();
     }
 
     /**
@@ -278,7 +312,36 @@ class Hall extends \yii\db\ActiveRecord
      *
      * @return array
      */
-    public function similar($limit=null){
+    public function favourites($limit = null)
+    {
+        $town = $this->getRegion();
+        return $this->find()->innerJoin('address', 'hall.address_id=address.id')
+            ->where([
+                    'favourite' => 1,
+                    'address.town' => $town->name
+                ]
+            )->limit($limit)->all();
+    }
 
+    /**
+     * @var int $limit
+     *
+     * @return array
+     */
+    public function similar($limit = null)
+    {
+
+    }
+
+    /**
+     * @return Region
+     */
+    private static function getRegion()
+    {
+        $town = Yii::$app->region->currentRegion();
+        if (is_null($town)) {
+            $town = Yii::$app->region->defaultRegion();
+        }
+        return $town;
     }
 }

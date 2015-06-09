@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: sz
  * Date: 14.04.2015
- * Time: 9:54
+ *
+ * @author Zakharov Stanislav <zahs88@gmail.com>
  */
 
 namespace common\behaviors;
@@ -16,18 +16,37 @@ use yii\imagine\Image;
 use yii\validators\Validator;
 use yii\web\UploadedFile;
 
+/**
+ * Class ProfileUploadImageBehavior
+ * @package common\behaviors
+ */
 class ProfileUploadImageBehavior extends Behavior
 {
 
+    /**
+     * @var string
+     */
     public $fileAttribute = 'image';
 
+    /**
+     * @var null
+     */
     public $maxFileSize = null;
 
+    /**
+     * @var string
+     */
     public $fileTypes = 'image/jpeg,image/png';
 
+    /**
+     * @var string
+     */
     public $savePathAlias = '@app/uploads';
 
 
+    /**
+     * @return array
+     */
     public function events()
     {
         return [
@@ -35,6 +54,9 @@ class ProfileUploadImageBehavior extends Behavior
         ];
     }
 
+    /**
+     * @param $event
+     */
     public function beforeValidate($event)
     {
         /** @var ActiveRecord $model */

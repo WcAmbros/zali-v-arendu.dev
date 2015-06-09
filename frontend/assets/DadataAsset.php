@@ -11,7 +11,8 @@ namespace frontend\assets;
 use yii\web\AssetBundle;
 use yii\web\View;
 
-class DadataAsset extends AssetBundle{
+class DadataAsset extends AssetBundle
+{
     public $css = [
         'https://dadata.ru/static/css/lib/suggestions-15.2.css',
     ];

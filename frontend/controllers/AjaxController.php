@@ -25,9 +25,9 @@ class AjaxController extends Controller
      */
     public function actionDistrict($name)
     {
-        $model=new District();
-        return $this->renderAjax('index',[
-            'list'=>$this->findAll($model,$name)
+        $model = new District();
+        return $this->renderAjax('index', [
+            'list' => $this->findAll($model, $name)
         ]);
     }
 
@@ -36,9 +36,9 @@ class AjaxController extends Controller
      */
     public function actionMetro($name)
     {
-        $model=new Metro();
-        return $this->renderAjax('index',[
-            'list'=>$this->findAll($model,$name)
+        $model = new Metro();
+        return $this->renderAjax('index', [
+            'list' => $this->findAll($model, $name)
         ]);
     }
 
@@ -47,9 +47,9 @@ class AjaxController extends Controller
      */
     public function actionPhone($id)
     {
-        $model=Hall::findOne($id);
-        echo json_encode(['response'=>[
-            'phone'=>$model->contacts->phone
+        $model = Hall::findOne($id);
+        echo json_encode(['response' => [
+            'phone' => $model->contacts->phone
         ]]);
     }
 
@@ -61,17 +61,17 @@ class AjaxController extends Controller
 
         /**
          * @var Hall $model
-        */
-        $get=Yii::$app->request->get();
-        if(!Yii::$app->user->isGuest&&
+         */
+        $get = Yii::$app->request->get();
+        if (!Yii::$app->user->isGuest &&
             isset($get['hall'])
-        ){
-            $model=Hall::findRow((int)$get['hall'],Yii::$app->user->id);
+        ) {
+            $model = Hall::findRow((int)$get['hall'], Yii::$app->user->id);
             $model->removeImage($id);
-            if(!$model->save()){
+            if (!$model->save()) {
                 throw new NotFoundHttpException('Не удалось сохранить изменения');
             }
-        }else{
+        } else {
             throw new NotFoundHttpException('hall id is not exist.');
 
         };
@@ -84,7 +84,8 @@ class AjaxController extends Controller
      *
      * @return array|ActiveRecord
      */
-    private function findAll($model,$name){
+    private function findAll($model, $name)
+    {
         return $model->find()->where("name like '%$name%'")->limit(7)->all();
     }
 }

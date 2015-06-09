@@ -2,8 +2,8 @@
 namespace frontend\models;
 
 use common\models\User;
-use yii\base\Model;
 use Yii;
+use yii\base\Model;
 
 /**
  * Signup form
@@ -65,19 +65,18 @@ class SignupForm extends Model
     /**
      * Sends an email to the specified email address using the information collected by this model.
      *
-     * @param  string  $email the target email address
+     * @param  string $email the target email address
      * @return boolean whether the email was sent
      */
     public function sendEmail($user)
     {
-        return Yii::$app->mailer->compose('confirmEmail',['user' => $user])
+        return Yii::$app->mailer->compose('confirmEmail', ['user' => $user])
             ->setTo($this->email)
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
             ->setTo($this->email)
             ->setSubject('Подтверждение почты для ' . Yii::$app->name)
             ->send();
     }
-
 
 
     /**

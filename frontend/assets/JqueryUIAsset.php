@@ -7,10 +7,12 @@
  */
 
 namespace frontend\assets;
+
 use yii\web\AssetBundle;
 use yii\web\View;
 
-class JqueryUIAsset extends AssetBundle{
+class JqueryUIAsset extends AssetBundle
+{
     public $sourcePath = '@bower/jquery-ui';
     public $js = [
         'jquery-ui.js',

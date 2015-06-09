@@ -3,12 +3,12 @@
  * @var array|\yii\db\ActiveRecord $list
  * */
 
-$collections=array();
+$collections = array();
 
-foreach($list as $item){
-    $collections[]=array(
-        'id'=>$item->attributes['id'],
-        'name'=>$item->attributes['name'],
+foreach ($list as $item) {
+    $collections[] = array(
+        'id' => $item->attributes['id'],
+        'name' => $item->attributes['name'],
     );
 }
 echo json_encode($collections);

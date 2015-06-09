@@ -102,7 +102,7 @@ album={
             url:'/ajax/removeimage/'+index,
             data:{hall:hall}
         }).done(function(){
-            this.remove(obj);
+            $(obj).parent().remove();
         });
 
     },

@@ -52,4 +52,5 @@ class Town extends \yii\db\ActiveRecord
     {
         return $this->hasMany(District::className(), ['town_id' => 'id']);
     }
+
 }

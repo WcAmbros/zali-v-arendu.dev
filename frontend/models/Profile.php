@@ -21,7 +21,8 @@ use Yii;
 class Profile extends \yii\db\ActiveRecord
 {
 
-    public $image=null;
+    public $image = null;
+
     /**
      * @inheritdoc
      */
@@ -37,8 +38,8 @@ class Profile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['images','attribs'], 'string'],
-            [['user_id','phone'], 'required'],
+            [['images', 'attribs'], 'string'],
+            [['user_id', 'phone'], 'required'],
             [['user_id'], 'integer'],
             [['name'], 'string', 'max' => 255],
             [['email', 'phone'], 'string', 'max' => 45]
@@ -53,6 +54,7 @@ class Profile extends \yii\db\ActiveRecord
             ]
         ];
     }
+
     /**
      * @inheritdoc
      */

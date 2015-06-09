@@ -22,7 +22,7 @@ class ProfileController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['create','update'],
+                        'actions' => ['create', 'update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -38,17 +38,17 @@ class ProfileController extends Controller
      */
     public function actionCreate()
     {
-        $post=Yii::$app->request->post();
+        $post = Yii::$app->request->post();
         $model = new Profile();
 
-        if(($model->findOne(['user_id'=>Yii::$app->user->id]))!==null)
+        if (($model->findOne(['user_id' => Yii::$app->user->id])) !== null)
             throw new NotFoundHttpException('The requested page does not exist.');
 
 
         $model->load($post);
-        $model->user_id=Yii::$app->user->id;
+        $model->user_id = Yii::$app->user->id;
 
-        if (!empty($post)&&$model->save()) {
+        if (!empty($post) && $model->save()) {
             return $this->goHome();
         } else {
             return $this->render('create', [
@@ -67,11 +67,11 @@ class ProfileController extends Controller
     {
         $model = $this->findModel($id);
 
-        $post=Yii::$app->request->post();
+        $post = Yii::$app->request->post();
         $model->load($post);
-        $model->user_id=Yii::$app->user->id;
+        $model->user_id = Yii::$app->user->id;
 
-        if (!empty($post)&&$model->save()) {
+        if (!empty($post) && $model->save()) {
             return $this->goBack();
         } else {
             return $this->render('update', [
@@ -91,7 +91,7 @@ class ProfileController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Profile::findOne(['id' => $id,'user_id'=>Yii::$app->user->id])) !== null) {
+        if (($model = Profile::findOne(['id' => $id, 'user_id' => Yii::$app->user->id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

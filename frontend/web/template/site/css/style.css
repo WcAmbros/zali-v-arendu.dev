@@ -215,7 +215,13 @@
     font: bold 16px arial, Helvetica, sans-serif;
     margin-bottom:5px;
 }
-
+.hall-content{
+    font-size: 14px;
+}
+.hall-content__deals{
+    font-size: 24px;
+    font-weight: bold;
+}
 .hall-content-slider{
     float: left;
     margin: 0 30px 0 0;
@@ -237,9 +243,20 @@
     content: '';
 }
 .hall-content-slider-thumbnails-link{
+    position: relative;
     display: inline-block;
     margin-bottom: 18px;
 }
+
+.hall-content-slider-thumbnails-link:hover:before{
+    position: absolute;
+    display: inline-block;
+    height: 66px;
+    width: 92px;
+    border: solid 4px #fff04c;
+    content: '';
+}
+
 .hall-content-banner{
     width: 220px;
     min-height: 500px;
@@ -275,6 +292,7 @@
 .hall-content-contact__line{
     margin-bottom: 15px;
 }
+
 .hall-actions {
     float: right;
     list-style-type: none;
@@ -771,3 +789,4 @@
     margin:  0 0 30px 30px ;
     cursor: pointer;
 }
+

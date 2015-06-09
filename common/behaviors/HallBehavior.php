@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author Zakharov Stanislav <zahs88@gmail.com>
+ */
+
 namespace common\behaviors;
 
 use common\models\User;
@@ -9,9 +13,16 @@ use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
 
+/**
+ * Class HallBehavior
+ * @package common\behaviors
+ */
 class HallBehavior extends Behavior
 {
 
+    /**
+     * @return array
+     */
     public function events()
     {
         return [

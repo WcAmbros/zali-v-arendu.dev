@@ -8,12 +8,28 @@ use yii\base\Behavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Inflector;
 
+/**
+ * Class Slug
+ * @package common\behaviors
+ */
 class Slug extends Behavior
 {
+    /**
+     * @var string
+     */
     public $in_attribute = 'name';
+    /**
+     * @var string
+     */
     public $out_attribute = 'alias';
+    /**
+     * @var bool
+     */
     public $translit = true;
 
+    /**
+     * @return array
+     */
     public function events()
     {
         return [
@@ -21,6 +37,9 @@ class Slug extends Behavior
         ];
     }
 
+    /**
+     * @param $event
+     */
     public function getSlug($event)
     {
         $attr = empty($this->owner->{$this->out_attribute}) ?
@@ -29,6 +48,10 @@ class Slug extends Behavior
         $this->owner->{$this->out_attribute} = $this->generateSlug($this->owner->{$attr});
     }
 
+    /**
+     * @param $slug
+     * @return string
+     */
     private function generateSlug($slug)
     {
         $slug = $this->slugify($slug);
@@ -41,6 +64,10 @@ class Slug extends Behavior
         }
     }
 
+    /**
+     * @param $slug
+     * @return string
+     */
     private function slugify($slug)
     {
         if ($this->translit) {
@@ -50,6 +77,12 @@ class Slug extends Behavior
         }
     }
 
+    /**
+     * @param $string
+     * @param string $replacement
+     * @param bool $lowercase
+     * @return string
+     */
     private function slug($string, $replacement = '-', $lowercase = true)
     {
         $string = preg_replace('/[^\p{L}\p{Nd}]+/u', $replacement, $string);
@@ -57,6 +90,10 @@ class Slug extends Behavior
         return $lowercase ? strtolower($string) : $string;
     }
 
+    /**
+     * @param $slug
+     * @return bool
+     */
     private function checkUniqueSlug($slug)
     {
         $pk = $this->owner->primaryKey();

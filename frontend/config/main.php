@@ -16,8 +16,11 @@ return [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
         ],
-        'profile'=>[
-            'class'=>'frontend\models\Profile'
+        'profile' => [
+            'class' => 'frontend\models\Profile'
+        ],
+        'region' => [
+            'class' => 'frontend\models\Region'
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

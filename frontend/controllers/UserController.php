@@ -2,19 +2,18 @@
 namespace frontend\controllers;
 
 
-use frontend\models\Agent;
-use Yii;
-
 use common\models\LoginForm;
+use frontend\models\Agent;
+use frontend\models\ConfirmEmailForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ConfirmEmailForm;
+use Yii;
 use yii\base\InvalidParamException;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
  * Site controller
@@ -64,12 +63,13 @@ class UserController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-                'foreColor'=>0x5FA068,
-                'fontFile'=>'@webroot/template/site/fonts/gotham_pro/GothaProBolIta.ttf',
+                'foreColor' => 0x5FA068,
+                'fontFile' => '@webroot/template/site/fonts/gotham_pro/GothaProBolIta.ttf',
 
             ],
         ];
     }
+
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
@@ -124,6 +124,7 @@ class UserController extends Controller
 
         return $this->goHome();
     }
+
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();

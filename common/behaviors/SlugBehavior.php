@@ -21,55 +21,56 @@ class Slug extends Behavior
         ];
     }
 
-    public function getSlug( $event )
+    public function getSlug($event)
     {
-        $attr = empty( $this->owner->{$this->out_attribute}) ?
+        $attr = empty($this->owner->{$this->out_attribute}) ?
             $this->in_attribute : $this->out_attribute;
 
-        $this->owner->{$this->out_attribute} = $this->generateSlug( $this->owner->{$attr} );
+        $this->owner->{$this->out_attribute} = $this->generateSlug($this->owner->{$attr});
     }
 
-    private function generateSlug( $slug )
+    private function generateSlug($slug)
     {
-        $slug = $this->slugify( $slug );
-        if ( $this->checkUniqueSlug( $slug ) ) {
+        $slug = $this->slugify($slug);
+        if ($this->checkUniqueSlug($slug)) {
             return $slug;
         } else {
-            for ( $suffix = 2; !$this->checkUniqueSlug( $new_slug = $slug . '-' . $suffix ); $suffix++ ) {}
+            for ($suffix = 2; !$this->checkUniqueSlug($new_slug = $slug . '-' . $suffix); $suffix++) {
+            }
             return $new_slug;
         }
     }
 
-    private function slugify( $slug )
+    private function slugify($slug)
     {
-        if ( $this->translit ) {
-            return Inflector::slug( TransliteratorHelper::process( $slug ), '-', true );
+        if ($this->translit) {
+            return Inflector::slug(TransliteratorHelper::process($slug), '-', true);
         } else {
-            return $this->slug( $slug, '-', true );
+            return $this->slug($slug, '-', true);
         }
     }
 
-    private function slug( $string, $replacement = '-', $lowercase = true )
+    private function slug($string, $replacement = '-', $lowercase = true)
     {
-        $string = preg_replace( '/[^\p{L}\p{Nd}]+/u', $replacement, $string );
-        $string = trim( $string, $replacement );
-        return $lowercase ? strtolower( $string ) : $string;
+        $string = preg_replace('/[^\p{L}\p{Nd}]+/u', $replacement, $string);
+        $string = trim($string, $replacement);
+        return $lowercase ? strtolower($string) : $string;
     }
 
-    private function checkUniqueSlug( $slug )
+    private function checkUniqueSlug($slug)
     {
         $pk = $this->owner->primaryKey();
         $pk = $pk[0];
 
         $condition = $this->out_attribute . ' = :alias';
-        $params = [ ':alias' => $slug ];
-        if ( !$this->owner->isNewRecord ) {
+        $params = [':alias' => $slug];
+        if (!$this->owner->isNewRecord) {
             $condition .= ' and ' . $pk . ' != :pk';
             $params[':pk'] = $this->owner->{$pk};
         }
 
         return !$this->owner->find()
-            ->where( $condition, $params )
+            ->where($condition, $params)
             ->one();
     }
 }

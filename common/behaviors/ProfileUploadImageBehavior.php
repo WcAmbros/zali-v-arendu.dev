@@ -16,7 +16,8 @@ use yii\imagine\Image;
 use yii\validators\Validator;
 use yii\web\UploadedFile;
 
-class ProfileUploadImageBehavior extends Behavior{
+class ProfileUploadImageBehavior extends Behavior
+{
 
     public $fileAttribute = 'image';
 
@@ -43,17 +44,17 @@ class ProfileUploadImageBehavior extends Behavior{
         } else {
             $files = UploadedFile::getInstances($model, $this->fileAttribute);
         }
-        if(!empty($files)){
-            foreach($files as $file){
-                if ($file && $file->name){
+        if (!empty($files)) {
+            foreach ($files as $file) {
+                if ($file && $file->name) {
                     $model->{$this->fileAttribute} = $file;
 
-                    $validator = Validator::createValidator('image', $model, $this->fileAttribute,  [
-                        'mimeTypes'=>$this->fileTypes,
+                    $validator = Validator::createValidator('image', $model, $this->fileAttribute, [
+                        'mimeTypes' => $this->fileTypes,
                     ]);
                     $validator->validateAttribute($model, $this->fileAttribute);
-                    $errors=$model->getErrors();
-                    if(empty($errors)){
+                    $errors = $model->getErrors();
+                    if (empty($errors)) {
                         $this->uploadfile($file);
                     }
                 }
@@ -64,23 +65,24 @@ class ProfileUploadImageBehavior extends Behavior{
     /**
      * @param UploadedFile $file
      * */
-    public function uploadfile($file){
+    public function uploadfile($file)
+    {
         $img = Image::getImagine()->open($file->tempName);
-        $name=Yii::$app->security->generateRandomString();
-        preg_match('/\..*/i',$file->name,$extensions);
+        $name = Yii::$app->security->generateRandomString();
+        preg_match('/\..*/i', $file->name, $extensions);
 
-        $extension=$extensions[0];
-        $size=$img->getSize();
-        if($size->getHeight()>$size->getWidth()){
-            $new_size= new Box(26,$size->getHeight());
-        }else{
-            $new_size= new Box($size->getWidth(),26);
+        $extension = $extensions[0];
+        $size = $img->getSize();
+        if ($size->getHeight() > $size->getWidth()) {
+            $new_size = new Box(26, $size->getHeight());
+        } else {
+            $new_size = new Box($size->getWidth(), 26);
         }
-        $img->thumbnail($new_size)->save("uploads/profile/icon_$name".$extension);
+        $img->thumbnail($new_size)->save("uploads/profile/icon_$name" . $extension);
 
-        if(trim($this->owner->images)!=''){
+        if (trim($this->owner->images) != '') {
             unlink($this->owner->images);
         }
-        $this->owner->images="uploads/profile/icon_$name".$extension;
+        $this->owner->images = "uploads/profile/icon_$name" . $extension;
     }
 }

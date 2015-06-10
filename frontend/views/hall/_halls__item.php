@@ -47,7 +47,7 @@ foreach ($metro as $metro_item) {
 
         <div class='deals-item-description__map'>
             <a href='#map_<?= $model->id; ?>' geoname='<?= $model->name; ?>' geocode='<?= $geocode; ?>' class='ymap'>
-                Смотреть на карте<span class='i-icons i-map'></span>
+                cмотреть на карте<span class='i-icons i-map'></span>
             </a>
         </div>
         <p><strong><?= $model->square; ?></strong> м<sup>2</sup>, <strong><?= $model->price->min; ?></strong> руб./ час

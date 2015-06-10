@@ -42,14 +42,14 @@ $this->registerJsFile('/template/site/js/dadata.js');
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
                         <select class="main-find-form-label__select" name="Search[district]">
                             <option value="">Не выбран</option>
-                            <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name'));?>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name','f_category'));?>
                         </select>
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Станция метро:</span>
 
                         <select class="main-find-form-label__select" name="Search[metro]">
                             <option value="">Не выбран</option>
-                            <?= Html::renderSelectOptions('',ArrayHelper::map($metro,'name','name'));?>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($metro,'name','name','f_district'));?>
                         </select>
                     </label>
                 </fieldset>

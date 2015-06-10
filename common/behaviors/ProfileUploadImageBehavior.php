@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
+ * User: sz
  * Date: 14.04.2015
- *
- * @author Zakharov Stanislav <zahs88@gmail.com>
+ * Time: 9:54
  */
 
 namespace common\behaviors;
@@ -16,37 +16,18 @@ use yii\imagine\Image;
 use yii\validators\Validator;
 use yii\web\UploadedFile;
 
-/**
- * Class ProfileUploadImageBehavior
- * @package common\behaviors
- */
-class ProfileUploadImageBehavior extends Behavior
-{
+class ProfileUploadImageBehavior extends Behavior{
 
-    /**
-     * @var string
-     */
+
     public $fileAttribute = 'image';
 
-    /**
-     * @var null
-     */
     public $maxFileSize = null;
 
-    /**
-     * @var string
-     */
     public $fileTypes = 'image/jpeg,image/png';
 
-    /**
-     * @var string
-     */
     public $savePathAlias = '@app/uploads';
 
 
-    /**
-     * @return array
-     */
     public function events()
     {
         return [
@@ -54,9 +35,6 @@ class ProfileUploadImageBehavior extends Behavior
         ];
     }
 
-    /**
-     * @param $event
-     */
     public function beforeValidate($event)
     {
         /** @var ActiveRecord $model */
@@ -66,17 +44,17 @@ class ProfileUploadImageBehavior extends Behavior
         } else {
             $files = UploadedFile::getInstances($model, $this->fileAttribute);
         }
-        if (!empty($files)) {
-            foreach ($files as $file) {
-                if ($file && $file->name) {
+        if(!empty($files)){
+            foreach($files as $file){
+                if ($file && $file->name){
                     $model->{$this->fileAttribute} = $file;
 
-                    $validator = Validator::createValidator('image', $model, $this->fileAttribute, [
-                        'mimeTypes' => $this->fileTypes,
+                    $validator = Validator::createValidator('image', $model, $this->fileAttribute,  [
+                        'mimeTypes'=>$this->fileTypes,
                     ]);
                     $validator->validateAttribute($model, $this->fileAttribute);
-                    $errors = $model->getErrors();
-                    if (empty($errors)) {
+                    $errors=$model->getErrors();
+                    if(empty($errors)){
                         $this->uploadfile($file);
                     }
                 }
@@ -87,24 +65,50 @@ class ProfileUploadImageBehavior extends Behavior
     /**
      * @param UploadedFile $file
      * */
-    public function uploadfile($file)
-    {
-        $img = Image::getImagine()->open($file->tempName);
-        $name = Yii::$app->security->generateRandomString();
-        preg_match('/\..*/i', $file->name, $extensions);
+    public function uploadfile($file){
+        $name=Yii::$app->security->generateRandomString();
+        preg_match('/\..*/i',$file->name,$extensions);
 
-        $extension = $extensions[0];
-        $size = $img->getSize();
-        if ($size->getHeight() > $size->getWidth()) {
-            $new_size = new Box(26, $size->getHeight());
-        } else {
-            $new_size = new Box($size->getWidth(), 26);
-        }
-        $img->thumbnail($new_size)->save("uploads/profile/icon_$name" . $extension);
-
-        if (trim($this->owner->images) != '') {
+        $extension=$extensions[0];
+        $destination="uploads/profile/icon_$name".$extension;
+        $this->_image($file->tempName,$destination,new Box(26,26));
+        if(trim($this->owner->images)!=''){
             unlink($this->owner->images);
         }
-        $this->owner->images = "uploads/profile/icon_$name" . $extension;
+        $this->owner->images=$destination;
+    }
+
+
+    /**
+     *
+     * @param Box $size
+     * @param string $source
+     * @param string $destination
+     *
+     * @return void
+     */
+    private function _image($source, $destination, $size)
+    {
+        $width = $size->getWidth();
+        $height = $size->getHeight();
+        $mode = ImageInterface::THUMBNAIL_OUTBOUND;
+
+        $resizeimg = Image::getImagine()->open($source)
+            ->thumbnail($size, $mode);
+        $sizeR = $resizeimg->getSize();
+        $widthR = $sizeR->getWidth();
+        $heightR = $sizeR->getHeight();
+
+        $preserve = Image::getImagine()->create($size);
+        $startX = $startY = 0;
+        if ($widthR < $width) {
+            $startX = ($width - $widthR) / 2;
+        }
+        if ($heightR < $height) {
+            $startY = ($height - $heightR) / 2;
+        }
+        $preserve->paste($resizeimg, new Point($startX, $startY))
+            ->save($destination);
+
     }
 }

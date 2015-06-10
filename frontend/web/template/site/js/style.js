@@ -14,6 +14,44 @@ $(document).ready(function(){
     $(document).on('change','.main-find-form',function(){
         $(this).find('button').focus();
     });
+
+    $(document).on('change','.result-find',function(){
+        $(this).find('button').focus();
+    });
+
+    $('.result-content-sort__list li').on('click',function(){
+        var text = $(this).text(),
+            name= $(this).attr('name'),
+            order= 'asc',
+            obj=null;
+
+        $('.result-content-sort__value').html($(this).text());
+        obj=$('#order_'+name);
+
+        if(obj.length>0){
+            if(obj.attr('value')=='asc'){
+                order='desc';
+            }else{
+                order='asc';
+            }
+            obj.attr('name','Order['+name+']').attr('value',order);
+        }else{
+            $('#order_'+$('.result-content-sort__value').attr('order')).remove();
+            $('.result-find').prepend("<input type='hidden' id='order_"+name+"' name='Order["+name+"]' value='"+order+"'>");
+        }
+        $('.result-find').submit();
+    });
+    var init = function(){
+        var obj=$('.result-content-sort__value'),
+            name=obj.attr('order'),
+            value="",
+            parent=obj.parent();
+        if($('#order_'+name).length>0){
+            value=parent.find('li[name="'+name+'"]').text();
+        }
+        obj.html(value);
+    };
+    init();
 });
 
 ymaps.ready(function  () {
@@ -73,5 +111,4 @@ var button={
             suggestions();
         });
     }
-
 };

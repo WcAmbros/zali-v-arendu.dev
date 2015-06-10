@@ -8,10 +8,8 @@
  * @var string $options ['title'] - title for halls
  */
 
-if (!isset($options['class']))
-    $options['class'] = "";
 ?>
-<div class="deals <?= $options['class']; ?>">
+<div class="deals">
     <?php
     if (isset($options['title']))
         print("<div class='deals__header'>{$options['title']}</div>\n");
@@ -31,7 +29,7 @@ if (!isset($options['class']))
         if (isset($options['deals.all'])) {
             print(
             "<div class='deals__more'>
-                    <a href='/hall/all' >Все предложения города</a>
+                    <a href='/hall/all' class='deals__more-link' >Все предложения города</a>
                 </div>\n");
         }
         ?>

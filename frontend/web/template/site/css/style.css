@@ -105,6 +105,8 @@
     font:lighter 24px/70px "Gotham Pro",gotham_pro;
     vertical-align: middle;
     text-align: center;
+    text-transform: uppercase;
+
 }
 .main-caption:before{
     position: absolute;
@@ -165,7 +167,16 @@
     margin: 10px 0 0 0 ;
     text-align: left;
 }
+.deals-item-description > p {
+    margin: 6px 0;
+    line-height: 18px;
+}
+.deals-item-description strong{
+    font-size: 16px;
+    line-height: 24px;
+}
 .deals-item-description__address{
+    color: #003399;
     font-weight: bold;
 }
 .deals-item-description__map,.main-deals-item-description__map {
@@ -189,7 +200,7 @@
     text-align: right;
 }
 .main-content{
-    font: 12px arial, Helvetica, sans-serif;
+    font: 12px/18px arial, Helvetica, sans-serif;
     padding-bottom: 70px;
 }
 
@@ -246,13 +257,26 @@
     position: relative;
     display: inline-block;
     margin-bottom: 18px;
+    overflow: hidden;
 }
 
 .hall-content-slider-thumbnails-link:hover:before{
     position: absolute;
+    top:0;
+    left:0;
     display: inline-block;
-    height: 66px;
-    width: 92px;
+    height: 100%;
+    width: 100%;
+    border: solid 4px #fff04c;
+    content: '';
+}
+.hall-content-slider-thumbnails-link:hover:after{
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
     border: solid 4px #fff04c;
     content: '';
 }
@@ -412,14 +436,23 @@
 
 .result-content-sort{
     margin: 18px 0 18px;
+    position: relative;
 }
 .result-content-sort__select{
+    width: 115px;
+    display: inline-block;
+    position: absolute;
+    margin-left: 5px;
+}
+.result-content-sort__value{
+    display: inline-block;
+    min-width: 100px;
+
     color: #3060bf;
-    position: relative;
     cursor: pointer;
     border-bottom: 1px dotted #3060bf;
 }
-.result-content-sort__select:after{
+.result-content-sort__value:after{
     width: 0;
     height: 0;
     display: inline-block;
@@ -428,18 +461,41 @@
     border-top: 5px solid #3060bf;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
+    top: 0;
+    right: 0;
     content: '';
 }
-.result-content-deals{
-    border-bottom: 2px solid #ffff00;
-}
 
+.result-content-sort__list{
+    display: none;
+    background: #fff;
+    width: 100%;
+    box-shadow: 5px 5px 5px 0 #3f3f3f;
+    padding: 0;
+    list-style-type: none;
+}
+.result-content-sort__select:hover .result-content-sort__list{
+    display: block;
+}
+.result-content-sort__list li{
+    cursor: pointer;
+    width: 95px;
+    padding: 7px 5px 7px 15px;
+    height: 15px;
+}
+.result-content-sort__list li:hover{
+    background: #dbdbdb;
+
+}
 .pagination{
     font: 10px arial, Helvetica, sans-serif;
-    margin: 20px 0 50px;
+    margin: 0 0 50px;
+    padding-top: 20px;
     line-height: 28px;
     vertical-align: top;
     height: 28px;
+    border-top: 2px solid #ffff00;
+    clear: both;
 }
 .pagination-pages{
     float: left;

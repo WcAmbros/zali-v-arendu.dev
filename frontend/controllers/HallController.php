@@ -94,7 +94,7 @@ class HallController extends Controller
         $category = new Category();
         $district = new District();
         $metro = new Metro();
-        $hall = new  Hall();
+        $hall = new Hall();
 
         $query = $hall->search($post);
         $pages = $hall->searchPagination($query);
@@ -106,10 +106,10 @@ class HallController extends Controller
         return $this->render('search', [
             'models' => $models,
             'pages' => $pages,
-            'search' => $post['Search'],
+            'post' => $post,
             'category' => $category->find()->all(),
-            'district' => $district->find()->all(),
-            'metro' => $metro->find()->all(),
+            'district' => $district->findAllDistrict(),
+            'metro' => $metro->findAllMetro(),
         ]);
     }
 
@@ -209,8 +209,8 @@ class HallController extends Controller
             'floor' => $floor->find()->all(),
             'options' => $options->find()->all(),
             'category' => $category->find()->all(),
-            'district' => $district->find()->all(),
-            'metro' => $metro->find()->all(),
+            'district' => $district->findAllDistrict(),
+            'metro' => $metro->findAllMetro(),
         ];
 
     }
@@ -252,6 +252,36 @@ class HallController extends Controller
                 $option_has_hall->save();
             }
         }
+    }
+
+
+    public function ajaxSearch($id){
+
+        $post = Yii::$app->session->get('search');
+        $hall = new Hall();
+        $hall->find()->innerJoin("price",'hall.price_id=price.id');
+
+        /*
+         * Модель запроса при поиске через ajax
+            SELECT distinct hall.* FROM `hall`
+            inner join address on hall.address_id=address.id
+            inner join floor on hall.floor_id=floor.id
+            inner join price on hall.price_id=price.id
+            left join hall_has_options hho on hall.id=hho.hall_id
+            left join options on hho.options_id=options.id
+
+            order by hall.id asc
+        */
+
+    }
+
+    public function _builderQuery(){
+        $get=Yii::$app->request->get();
+        $default=[
+            'order'=>[
+                'price'
+            ]
+        ];
 
     }
 

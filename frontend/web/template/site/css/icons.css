@@ -14,6 +14,7 @@
     background-position: -19px 0;
 }
 .i-star{
+    margin-top: -3px;
     width: 15px;
     height: 13px;
     background-position: -36px 0;
@@ -43,7 +44,7 @@
 .i-metro_blue{
     width: 16px;
     height: 15px;
-    background-position: -136px 0;
+    background-position: -135px 0;
 }
 .i-map{
     width: 10px;

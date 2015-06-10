@@ -47,8 +47,8 @@ class SiteController extends Controller
             'floor' => $floor->find()->all(),
             'options' => $options->find()->all(),
             'category' => $category->find()->all(),
-            'district' => $district->find()->all(),
-            'metro' => $metro->find()->all(),
+            'district' => $district->findAllDistrict(),
+            'metro' => $metro->findAllMetro(),
             'favourites' => $hall->favourites(8),
         ]);
     }

@@ -10,6 +10,7 @@ namespace common\behaviors;
 
 use Imagine\Image\Box;
 use Imagine\Image\ImageInterface;
+use Imagine\Image\Point;
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
@@ -118,55 +119,52 @@ class UploadImageBehavior extends Behavior
         $name = Yii::$app->security->generateRandomString();
         preg_match('/\..*/i', $file->name, $extensions);
         $extension = $extensions[0];
-        $size = $this->_box($img, [
-                'width' => 100,
-                'height' => 65,
-            ]
-        );
 
-        $img->thumbnail($size)->save("uploads/hall/th_$name" . $extension);
-        $size = $this->_box($img, [
-                'width' => 336,
-                'height' => 213,
-            ]
-        );
-        $img->thumbnail($size)->save("uploads/hall/slide_$name" . $extension);
-        $img->save("uploads/hall/$name" . $extension);
+        $size['thumbnail'] = new Box(100, 65);
+        $size['slide'] = new Box(336, 213);
 
-        $this->list[] = [
-            'original' => "uploads/hall/$name" . $extension,
-            'thumbnail' => "uploads/hall/th_$name" . $extension,
-            'slide' => "uploads/hall/slide_$name" . $extension,
-        ];
+        $this->_image($file->tempName, "uploads/hall/{$name}{$extension}", $img->getSize());
+
+        foreach ($size as $key => $value) {
+            $destination = "uploads/hall/{$key}_{$name}{$extension}";
+            $this->_image($file->tempName, $destination, $value);
+            $list[$key] = $destination;
+        }
+        $list['original'] = "uploads/hall/$name" . $extension;
+        $this->list[] = $list;
     }
 
 
     /**
      *
-     * @param array $size
-     * @param ImageInterface $img
+     * @param Box $size
+     * @param string $source
+     * @param string $destination
      *
-     * @return Box
+     * @return void
      */
-    private function _box($img, $size = array())
+    private function _image($source, $destination, $size)
     {
-        $img_size = $img->getSize();
+        $width = $size->getWidth();
+        $height = $size->getHeight();
+        $mode = ImageInterface::THUMBNAIL_OUTBOUND;
 
-        if (empty($size)) {
+        $resizeimg = Image::getImagine()->open($source)
+            ->thumbnail($size, $mode);
+        $sizeR = $resizeimg->getSize();
+        $widthR = $sizeR->getWidth();
+        $heightR = $sizeR->getHeight();
 
-            /*  увеличение размера на 1, чтобы перезаписать изображение
-             */
-
-            $size['width'] = $img_size->getWidth() + 1;
-            $size['height'] = $img_size->getHeight();
+        $preserve = Image::getImagine()->create($size);
+        $startX = $startY = 0;
+        if ($widthR < $width) {
+            $startX = ($width - $widthR) / 2;
         }
-
-        if ($img_size->getHeight() > $img_size->getWidth()) {
-            $box = new Box($size['width'], $img_size->getHeight());
-        } else {
-            $box = new Box($img_size->getWidth(), $size['hieght']);
+        if ($heightR < $height) {
+            $startY = ($height - $heightR) / 2;
         }
+        $preserve->paste($resizeimg, new Point($startX, $startY))
+            ->save($destination);
 
-        return $box;
     }
 }

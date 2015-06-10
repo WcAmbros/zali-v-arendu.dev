@@ -158,6 +158,24 @@ class Hall extends \yii\db\ActiveRecord
     /**
      * @param array $post
      *
+     * @return array
+     */
+    public function extendSearch($post){
+//        $def_post=[
+////            'category'=>$post['category']
+//        ];
+//        $result=[];
+//        foreach($post as $key=>$value){
+//            $result[$key]=$this->search(
+//                array_merge($def_post,[$key=>$value])
+//            )->all();
+//        }
+//        return $result;
+    }
+
+    /**
+     * @param array $post
+     *
      * @return Query
      */
     public function search($post)
@@ -166,7 +184,8 @@ class Hall extends \yii\db\ActiveRecord
         return $this->find()
             ->innerJoin('address', 'hall.address_id=address.id')
             ->innerJoin('category', 'hall.category_id=category.id')
-            ->where($this->searchCondition($post));
+            ->innerJoin('price', 'hall.price_id=price.id')
+            ->where($this->searchCondition($post))->orderBy($this->searchOrder($post));
     }
 
     /**
@@ -201,16 +220,43 @@ class Hall extends \yii\db\ActiveRecord
             'town' => 'address.town'
         ];
         $options = array();
-        foreach ($post['Search'] as $key => $item)
-            if (trim($item) != '')
-                $options[] = $fields[$key] . ' LIKE ("%' . $item . '%")';
+        if(isset($post['Search'])){
+            foreach ($post['Search'] as $key => $item){
+                if (trim($item) != '')
+                    $options[] = $fields[$key] . ' LIKE ("%' . $item . '%")';
+            }
+        }
+
 
         $options[] = $fields['town'] . ' LIKE ("%' . $town->name . '%")';
 
         return implode(' AND ', $options);
     }
 
+    private function searchOrder($post){
+        $order=[
+            'asc' => SORT_ASC,
+            'desc' => SORT_DESC
+        ];
+
+        $fields=[
+            'price'=>'price.min'
+        ];
+
+        $options = array();
+        if(isset($post['Order'])){
+            foreach ($post['Order'] as $key => $item){
+                if(isset($order[$item])&&isset($fields[$key])){
+                    $value=$order[$item];
+                    $options[$fields[$key]] = $value;
+                }
+            }
+        }
+
+        return $options;
+    }
     /**
+     * @param int $id
      * @return void
      */
     public function removeImage($id)
@@ -227,6 +273,7 @@ class Hall extends \yii\db\ActiveRecord
                 unset($images[$id]);
             }
         }
+        $images=array_values($images);
         $attribs['images'] = $images;
         $this->attribs = json_encode($attribs);
     }

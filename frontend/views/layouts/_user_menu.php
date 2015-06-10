@@ -11,8 +11,8 @@ if (!Yii::$app->user->isGuest) {
         $username = $profile->name;
         $icon = '<img src="/' . $profile->images . '" class="header-content-user__icon">';
     }
-
 }
+
 $login = Url::toRoute('user/login');
 $logout = Url::toRoute('user/logout');
 $signup = Url::toRoute('user/signup');
@@ -20,9 +20,10 @@ $signup = Url::toRoute('user/signup');
 if (Yii::$app->user->isGuest) {
     echo '<a href="' . $login . '">Войти</a> / <a href="' . $signup . '">Зарегистрироваться</a>';
 } else {
-    echo "Привет, <a href='$route' class='header-content-user__label'>$username!</a>
+    echo "Привет, <span class='header-content-user__label'>$username!</span>
                 $icon
                 <ul class='user-actions'>
+                    <li><a href='$route' title='Редактирование профиля'>Профиль</a> </li>
                     <li><a href='#' title='Отображает список введенных залов'>Список залов</a> </li>
                     <li><a data-method='post' title='Выход из системы' href='$logout'>Выход</a></li>
                 </ul>

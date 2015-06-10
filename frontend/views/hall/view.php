@@ -79,7 +79,7 @@ foreach ($metro as $metro_item) {
                 <a href="#<?= 'map_' . $model->id; ?>"
                    geoname="<?= $model->name; ?>"
                    geocode='<?= $geocode; ?>'
-                   class="ymap">Смотреть на карте<span class="i-icons i-map"></span></a></div>
+                   class="ymap">смотреть на карте<span class="i-icons i-map"></span></a></div>
             <p class="equipment__header">Оборудование зала:</p>
             <ul class="equipment">
                 <li>Покрытие: <strong><?= $model->floor->name; ?></strong></li>

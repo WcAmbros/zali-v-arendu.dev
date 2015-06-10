@@ -17,6 +17,7 @@ use Yii;
  */
 class Metro extends \yii\db\ActiveRecord
 {
+    public $f_district=null;
     /**
      * @inheritdoc
      */
@@ -58,5 +59,13 @@ class Metro extends \yii\db\ActiveRecord
     public function getDistrict()
     {
         return $this->hasOne(District::className(), ['id' => 'district_id', 'town_id' => 'district_town_id']);
+    }
+
+    /**
+     * @return array
+     */
+    public function findAllMetro(){
+        return $this->find()->select("metro.*,district.name f_district")
+            ->innerJoin("district","metro.district_id=district.id")->all();
     }
 }

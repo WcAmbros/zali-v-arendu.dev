@@ -41,14 +41,14 @@ if (!$model->isNewRecord) {
         <label class="modal-hall-form__line"><span class="modal-hall-form-location__label">Метро:</span>
             <select class="modal-hall-form-location__select" name="Address[metro]">
                 <option></option>
-                <?= Html::renderSelectOptions(($model->isNewRecord) ? "" : $model->address->metro, ArrayHelper::map($metro, 'name', 'name')); ?>
+                <?= Html::renderSelectOptions(($model->isNewRecord) ? "" : $model->address->metro, ArrayHelper::map($metro, 'name', 'name','f_district')); ?>
             </select>
 
         </label>
         <label class="modal-hall-form__line"><span class="modal-hall-form-location__label">Район:</span>
             <select class="modal-hall-form-location__select" name="Address[district]">
                 <option></option>
-                <?= Html::renderSelectOptions(($model->isNewRecord) ? "" : $model->address->district, ArrayHelper::map($district, 'name', 'name')); ?>
+                <?= Html::renderSelectOptions(($model->isNewRecord) ? "" : $model->address->district, ArrayHelper::map($district, 'name', 'name','f_category')); ?>
             </select>
         </label>
         <label class="modal-hall-form__line"><span class="modal-hall-form-location__label">Улица:</span>

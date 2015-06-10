@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Июн 05 2015 г., 14:22
+-- Время создания: Июн 10 2015 г., 12:09
 -- Версия сервера: 5.6.23-1~dotdeb.3
 -- Версия PHP: 5.4.40-1~dotdeb+wheezy.1
 
@@ -35,14 +35,14 @@ CREATE TABLE IF NOT EXISTS `address` (
   `block` varchar(45) DEFAULT NULL,
   `comment` mediumtext,
   `metro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `address`
 --
 
 INSERT INTO `address` (`id`, `town`, `district`, `street`, `house`, `block`, `comment`, `metro`) VALUES
-(2, 'Санкт-Петербург', 'Петроградский', 'Чкаловский', '15', '', '                                                        ', 'Чкаловская'),
+(2, 'Санкт-Петербург', 'Петроградский', 'Чкаловский', '15', '', '', 'Чкаловская'),
 (3, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
 (4, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', 'Невский проспект'),
 (5, 'Санкт-Петербург', 'Адмиралтейский', 'Звенигородская', '11', '', '', 'Звенигородская'),
@@ -217,7 +217,8 @@ INSERT INTO `address` (`id`, `town`, `district`, `street`, `house`, `block`, `co
 (175, 'Санкт-Петербург', 'Московский', 'Авиационная ул.', '19', '', '', 'Балтийская'),
 (176, 'Санкт-Петербург', 'Калининский', 'ул. Кантемировская', '39', '', '', 'Лесная'),
 (177, 'Санкт-Петербург', 'Кировский', 'ул.Васи Алексеева', '9', '1', '', 'Кировский завод'),
-(178, 'Санкт-Петербург', 'Выборгский', 'пр. Культуры', '41', '', '', 'Проспект Просвещения');
+(178, 'Санкт-Петербург', 'Выборгский', 'пр. Культуры', '41', '', '', 'Проспект Просвещения'),
+(179, 'Санкт-Петербург', 'Невский', 'Дальневосточный', '71', '', '', 'Улица Дыбенко');
 
 -- --------------------------------------------------------
 
@@ -255,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `contacts`
@@ -438,7 +439,27 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `user_id`) VALUES
 (174, '', '', '3750520', 2),
 (175, '', '', '', 2),
 (176, 'Юлия Викторовна', '', '9232241', 2),
-(177, 'Фитнес Хаус', '', '6100606', 2);
+(177, 'Фитнес Хаус', '', '6100606', 2),
+(178, 'Тестер', 'test@sup.ru', '79112494689', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `directory_category`
+--
+
+CREATE TABLE IF NOT EXISTS `directory_category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `directory_category`
+--
+
+INSERT INTO `directory_category` (`id`, `name`) VALUES
+(1, 'Санкт-Петербург'),
+(2, 'Ленобласть');
 
 -- --------------------------------------------------------
 
@@ -449,33 +470,34 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `user_id`) VALUES
 CREATE TABLE IF NOT EXISTS `district` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `town_id` int(11) NOT NULL
+  `town_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `district`
 --
 
-INSERT INTO `district` (`id`, `name`, `town_id`) VALUES
-(1, 'Адмиралтейский', 1),
-(2, 'Василеостровский', 1),
-(3, 'Всеволожский', 1),
-(4, 'Выборгский', 1),
-(5, 'Калининский', 1),
-(6, 'Кировский', 1),
-(7, 'Колпинский', 1),
-(8, 'Красногвардейский', 1),
-(9, 'Красносельский', 1),
-(10, 'Кронштадтский', 1),
-(11, 'Курортный', 1),
-(12, 'Московский', 1),
-(13, 'Невский', 1),
-(14, 'Петроградский', 1),
-(15, 'Петродворцовый', 1),
-(16, 'Приморский', 1),
-(17, 'Пушкинский', 1),
-(18, 'Фрунзенский', 1),
-(19, 'Центральный', 1);
+INSERT INTO `district` (`id`, `name`, `town_id`, `category_id`) VALUES
+(1, 'Адмиралтейский', 1, 1),
+(2, 'Василеостровский', 1, 1),
+(3, 'Всеволожский', 1, 2),
+(4, 'Выборгский', 1, 2),
+(5, 'Калининский', 1, 1),
+(6, 'Кировский', 1, 2),
+(7, 'Колпинский', 1, 1),
+(8, 'Красногвардейский', 1, 1),
+(9, 'Красносельский', 1, 1),
+(10, 'Кронштадтский', 1, 1),
+(11, 'Курортный', 1, 1),
+(12, 'Московский', 1, 1),
+(13, 'Невский', 1, 1),
+(14, 'Петроградский', 1, 1),
+(15, 'Петродворцовый', 1, 1),
+(16, 'Приморский', 1, 1),
+(17, 'Пушкинский', 1, 1),
+(18, 'Фрунзенский', 1, 1),
+(19, 'Центральный', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -526,7 +548,7 @@ CREATE TABLE IF NOT EXISTS `hall` (
   `address_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `contacts_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `hall`
@@ -534,7 +556,7 @@ CREATE TABLE IF NOT EXISTS `hall` (
 
 INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `favourite`, `comments`, `created_at`, `updated_at`, `public`, `deleted`, `floor_id`, `price_id`, `address_id`, `category_id`, `contacts_id`) VALUES
 (1, 'Чкаловский, д.15', '{"images":[{"original":"uploads\\/hall\\/YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg","thumbnail":"uploads\\/hall\\/th_YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg","slide":"uploads\\/hall\\/slide_YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg"},{"original":"uploads\\/hall\\/kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg","thumbnail":"uploads\\/hall\\/th_kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg","slide":"uploads\\/hall\\/slide_kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432641783, 1433508398, 1, NULL, 1, 2, 2, 1, 1),
-(2, 'Планерная, д.20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432642186, 1432642186, 1, NULL, 5, 3, 3, 1, 2),
+(2, 'Планерная, д.20', '{"images":[{"thumbnail":"uploads\\/hall\\/thumbnail_fLaWZP2UHCFgPiXD2INnROpp9lQBkjjw.jpg","slide":"uploads\\/hall\\/slide_fLaWZP2UHCFgPiXD2INnROpp9lQBkjjw.jpg","original":"uploads\\/hall\\/fLaWZP2UHCFgPiXD2INnROpp9lQBkjjw.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg","slide":"uploads\\/hall\\/slide_wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg","original":"uploads\\/hall\\/wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg","slide":"uploads\\/hall\\/slide_B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg","original":"uploads\\/hall\\/B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg","slide":"uploads\\/hall\\/slide_NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg","original":"uploads\\/hall\\/NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg","slide":"uploads\\/hall\\/slide_Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg","original":"uploads\\/hall\\/Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg","slide":"uploads\\/hall\\/slide_Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg","original":"uploads\\/hall\\/Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg","slide":"uploads\\/hall\\/slide_X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg","original":"uploads\\/hall\\/X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg","slide":"uploads\\/hall\\/slide_oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg","original":"uploads\\/hall\\/oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg","slide":"uploads\\/hall\\/slide_rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg","original":"uploads\\/hall\\/rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432642186, 1433847781, 1, NULL, 5, 3, 3, 1, 2),
 (3, 'Казанская, д.7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 1, '', 1432642445, 1432642445, 1, NULL, 1, 4, 4, 1, 3),
 (4, 'Звенигородская, д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 75, 1, '', 1432642637, 1432642637, 1, NULL, 1, 5, 5, 1, 4),
 (5, 'Обводного канала, д.134, к.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432647746, 1432647746, 1, NULL, 2, 6, 6, 1, 5),
@@ -542,7 +564,7 @@ INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `favourite`, `comments`, 
 (7, 'Банковский переулок, д.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 1, '', 1432647746, 1432647746, 1, 0, 2, 8, 8, 1, 7),
 (8, 'Казанская ул., д.', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 1, 'ауд.: 515, 516 и 517', 1432647746, 1432647746, 1, 0, 2, 9, 9, 1, 8),
 (9, 'Большая Пушкарская ул., д.35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 1, 'ауд.: 418 и 517', 1432647746, 1432647746, 1, 0, 1, 10, 10, 1, 9),
-(10, 'пр. Солидарности, д.9, к.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, 'фитболы', 1432647746, 1432647746, 1, 0, 2, 11, 11, 1, 10),
+(10, 'пр. Солидарности, д.9, к.3', '{"images":[],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, 'фитболы', 1432647746, 1433770401, 1, 0, 2, 11, 11, 1, 10),
 (11, 'Мытнинская ул., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 80, 0, '', 1432647746, 1432647746, 1, 0, 1, 12, 12, 1, 11),
 (12, 'Ефимова ул., д.4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1432647746, 1, 0, 2, 13, 13, 1, 12),
 (13, 'Кузнечный переулок, д.6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'проектор, стулья, мешки-кресла, большой зал разделяется ролетами на два', 1432647746, 1432647746, 1, 0, 1, 14, 14, 1, 13),
@@ -705,10 +727,12 @@ INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `favourite`, `comments`, 
 (170, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 8, 172, 172, 2, 171),
 (171, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 8, 173, 173, 2, 172),
 (172, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 8, 174, 174, 2, 173),
-(173, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 8, 175, 175, 2, 174),
+(173, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 8, 175, 175, 2, 174);
+INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `favourite`, `comments`, `created_at`, `updated_at`, `public`, `deleted`, `floor_id`, `price_id`, `address_id`, `category_id`, `contacts_id`) VALUES
 (174, 'ул. Кантемировская, д.39', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 12, 176, 176, 2, 175),
 (175, 'ул.Васи Алексеева, д.9, к.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 4, 177, 177, 2, 176),
-(176, 'пр. Культуры, д.41', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 6, 178, 178, 6, 177);
+(176, 'пр. Культуры, д.41', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 0, 6, 178, 178, 6, 177),
+(177, 'Дальневосточный, д.71', '{"images":[{"original":"uploads\\/hall\\/Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg","thumbnail":"uploads\\/hall\\/th_Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg","slide":"uploads\\/hall\\/slide_Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg"},{"original":"uploads\\/hall\\/mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg","thumbnail":"uploads\\/hall\\/th_mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg","slide":"uploads\\/hall\\/slide_mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg"},{"original":"uploads\\/hall\\/wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg","thumbnail":"uploads\\/hall\\/th_wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg","slide":"uploads\\/hall\\/slide_wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg"}],"geocode":"[\\"59.8778098\\",\\"30.4770474\\"]"}', 0, 0, NULL, 1433766152, 1433769784, 1, 0, 1, 179, 179, 1, 178);
 
 -- --------------------------------------------------------
 
@@ -780,6 +804,7 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (108, 1),
 (111, 1),
 (112, 1),
+(177, 1),
 (1, 3),
 (4, 3),
 (6, 3),
@@ -909,6 +934,7 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (119, 4),
 (120, 4),
 (176, 4),
+(177, 4),
 (17, 5),
 (18, 5),
 (30, 5),
@@ -971,6 +997,7 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (106, 6),
 (115, 6),
 (116, 6),
+(177, 6),
 (29, 7),
 (56, 7),
 (67, 7),
@@ -978,6 +1005,7 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (94, 7),
 (104, 7),
 (109, 7),
+(177, 7),
 (1, 8),
 (6, 8),
 (40, 8),
@@ -1466,7 +1494,7 @@ CREATE TABLE IF NOT EXISTS `price` (
   `id` int(11) NOT NULL,
   `min` int(11) DEFAULT NULL,
   `max` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `price`
@@ -1648,7 +1676,8 @@ INSERT INTO `price` (`id`, `min`, `max`) VALUES
 (175, 1300, 1300),
 (176, 800, 800),
 (177, 300, 300),
-(178, 800, 800);
+(178, 800, 800),
+(179, 1000, 1000);
 
 -- --------------------------------------------------------
 
@@ -1671,38 +1700,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id`, `name`, `email`, `phone`, `images`, `user_id`, `attribs`) VALUES
-(1, 'Разработчик', 'support@example.com', '3330000', 'uploads/profile/icon_5zn46s9cWbzOouzOzYNH_tpAa_QwpShw.jpg', 2, NULL);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `tmp`
---
-
-CREATE TABLE IF NOT EXISTS `tmp` (
-  `id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(255) DEFAULT NULL,
-  `attribs` mediumtext,
-  `square` int(11) DEFAULT '0',
-  `images` mediumtext,
-  `optional_equipment` mediumtext,
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  `public` tinyint(1) DEFAULT '1',
-  `deleted` tinyint(1) DEFAULT '0',
-  `floor_id` int(11) NOT NULL,
-  `price_id` int(11) NOT NULL,
-  `address_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `contacts_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `tmp`
---
-
-INSERT INTO `tmp` (`id`, `name`, `attribs`, `square`, `images`, `optional_equipment`, `created_at`, `updated_at`, `public`, `deleted`, `floor_id`, `price_id`, `address_id`, `category_id`, `contacts_id`) VALUES
-(1, 'Чкаловский, д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, NULL, '', 1432641783, 1432641783, 1, NULL, 1, 2, 2, 1, 1);
+(1, 'Разработчик', 'support@example.com', '3330000', 'uploads/profile/icon_hRS5WQEkJlkoPs9py5vyXflyFevyb5L2.jpg', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -1714,14 +1712,15 @@ CREATE TABLE IF NOT EXISTS `town` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `subdomain` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `town`
 --
 
 INSERT INTO `town` (`id`, `name`, `subdomain`) VALUES
-(1, 'Санкт-Петербург', 'spb');
+(1, 'Санкт-Петербург', 'spb'),
+(2, 'Москва', 'msk');
 
 -- --------------------------------------------------------
 
@@ -1773,10 +1772,16 @@ ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`,`user_id`), ADD KEY `fk_agent_user1_idx` (`user_id`);
 
 --
+-- Индексы таблицы `directory_category`
+--
+ALTER TABLE `directory_category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `district`
 --
 ALTER TABLE `district`
-  ADD PRIMARY KEY (`id`,`town_id`), ADD KEY `fk_district_town1_idx` (`town_id`);
+  ADD PRIMARY KEY (`id`,`town_id`,`category_id`), ADD KEY `fk_district_town1_idx` (`town_id`), ADD KEY `fk_district_directory_category1_idx` (`category_id`);
 
 --
 -- Индексы таблицы `floor`
@@ -1840,7 +1845,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=179;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=180;
 --
 -- AUTO_INCREMENT для таблицы `category`
 --
@@ -1850,7 +1855,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=178;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=179;
+--
+-- AUTO_INCREMENT для таблицы `directory_category`
+--
+ALTER TABLE `directory_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `district`
 --
@@ -1865,7 +1875,7 @@ ALTER TABLE `floor`
 -- AUTO_INCREMENT для таблицы `hall`
 --
 ALTER TABLE `hall`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=177;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=178;
 --
 -- AUTO_INCREMENT для таблицы `metro`
 --
@@ -1880,7 +1890,7 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT для таблицы `price`
 --
 ALTER TABLE `price`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=179;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=180;
 --
 -- AUTO_INCREMENT для таблицы `profile`
 --
@@ -1890,7 +1900,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT для таблицы `town`
 --
 ALTER TABLE `town`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
@@ -1910,6 +1920,7 @@ ADD CONSTRAINT `fk_agent_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 -- Ограничения внешнего ключа таблицы `district`
 --
 ALTER TABLE `district`
+ADD CONSTRAINT `fk_district_directory_category1` FOREIGN KEY (`category_id`) REFERENCES `directory_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 ADD CONSTRAINT `fk_district_town1` FOREIGN KEY (`town_id`) REFERENCES `town` (`id`);
 
 --

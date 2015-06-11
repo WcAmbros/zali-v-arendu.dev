@@ -38,6 +38,7 @@ return [
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'category'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'district'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'dictrict-category'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'hall'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'metro'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'site'],

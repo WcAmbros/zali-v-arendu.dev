@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use backend\models\HallSearch;
 use common\models\Hall;
-use common\models\Price;
+use common\models\Options;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -61,12 +61,13 @@ class HallController extends Controller
     public function actionCreate()
     {
         $model = new Hall();
-        $price = new Price();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'options'=>Options::findAll([]),
             ]);
         }
     }
@@ -86,6 +87,7 @@ class HallController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'options'=>Options::find()->all(),
             ]);
         }
     }

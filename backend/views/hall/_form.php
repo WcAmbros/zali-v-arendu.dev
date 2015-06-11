@@ -1,10 +1,13 @@
 <?php
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Hall */
+/* @var $options array */
+
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -13,14 +16,52 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <div>
+        <div>Адрес</div>
+        <?= $form->field($model->address, 'town')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model->address, 'district')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model->address, 'metro')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model->address, 'house')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model->address, 'block')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model->address, 'comment')->textarea(['rows' => 6]) ?>
+    </div>
+    <div>
+        <div>Зала</div>
+        <?= $form->field($model, 'comments')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'square')->textInput() ?>
+        <div>
+            <div>Цены</div>
+            <?= $form->field($model->price, 'min')->textInput() ?>
+            <?= $form->field($model->price, 'max')->textInput() ?>
+        </div>
+        <div>
+            <div>Опции зала</div>
+            <?php
+                //$model->options
+                /* @var $options_item common\models\Options */
+//                print_r($options);
+                $list=ArrayHelper::map($options,'id','name');
+                ?>
+                    <?= $form->field($model,'options')->checkboxList($list); ?>
+                <?php
 
-    <?= $form->field($model, 'attribs')->textarea(['rows' => 6]) ?>
+            ?>
+        </div>
+    </div>
+    <div>
+        <div>Контакты</div>
+        <?= $form->field($model->contacts, 'name')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model->contacts, 'email')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model->contacts, 'phone')->textInput(['maxlength' => true]) ?>
+    </div>
 
-    <?= $form->field($model, 'square')->textInput() ?>
+
+    <?=$this->render('_attribs',['attribs'=>$model->attribs])?>
+
 
     <?= $form->field($model, 'favourite')->textInput() ?>
 
-    <?= $form->field($model, 'comments')->textarea(['rows' => 6]) ?>
+
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 
@@ -30,15 +71,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'deleted')->textInput() ?>
 
-    <?= $form->field($model, 'floor_id')->textInput() ?>
+    <?= $form->field($model, 'floor_id')->hiddenInput()?>
 
-    <?= $form->field($model, 'price_id')->textInput() ?>
+    <?= $form->field($model, 'price_id')->hiddenInput() ?>
 
-    <?= $form->field($model, 'address_id')->textInput() ?>
+    <?= $form->field($model, 'address_id')->hiddenInput() ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?= $form->field($model, 'category_id')->hiddenInput() ?>
 
-    <?= $form->field($model, 'contacts_id')->textInput() ?>
+    <?= $form->field($model, 'contacts_id')->hiddenInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

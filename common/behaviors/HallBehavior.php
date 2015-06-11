@@ -5,10 +5,10 @@
 
 namespace common\behaviors;
 
+use common\models\Address;
+use common\models\Contacts;
+use common\models\Price;
 use common\models\User;
-use frontend\models\Address;
-use frontend\models\Contacts;
-use frontend\models\Price;
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;

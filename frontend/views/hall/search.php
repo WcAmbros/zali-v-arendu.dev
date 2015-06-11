@@ -6,7 +6,7 @@
  * @var array $category
  * @var array $district
  * @var array $metro
- * @var \frontend\models\Hall $model
+ * @var \common\models\Hall $model
  * @var \yii\data\Pagination $pages
  */
 

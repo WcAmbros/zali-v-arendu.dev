@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 
@@ -10,8 +10,8 @@ use Yii;
  * @property integer $hall_id
  * @property integer $options_id
  *
- * @property Hall $hall
  * @property Options $options
+ * @property Hall $hall
  */
 class HallHasOptions extends \yii\db\ActiveRecord
 {
@@ -48,16 +48,16 @@ class HallHasOptions extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getHall()
+    public function getOptions()
     {
-        return $this->hasOne(Hall::className(), ['id' => 'hall_id']);
+        return $this->hasOne(Options::className(), ['id' => 'options_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getOptions()
+    public function getHall()
     {
-        return $this->hasOne(Options::className(), ['id' => 'options_id']);
+        return $this->hasOne(Hall::className(), ['id' => 'hall_id']);
     }
 }

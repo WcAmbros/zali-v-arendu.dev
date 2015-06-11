@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use common\models\Hall;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -56,17 +57,17 @@ class HallSearch extends Hall
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'square' => $this->square,
-            'favourite' => $this->favourite,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'public' => $this->public,
-            'deleted' => $this->deleted,
-            'floor_id' => $this->floor_id,
-            'price_id' => $this->price_id,
-            'address_id' => $this->address_id,
-            'category_id' => $this->category_id,
-            'contacts_id' => $this->contacts_id,
+            'name' => $this->name,
+//            'address.town' => $this->address['town'],
+//            'user.username' => $this->user['username'],
+//            'updated_at' => $this->updated_at,
+//            'public' => $this->public,
+//            'deleted' => $this->deleted,
+//            'floor_id' => $this->floor_id,
+//            'price_id' => $this->price_id,
+//            'address_id' => $this->address_id,
+//            'category_id' => $this->category_id,
+//            'contacts_id' => $this->contacts_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

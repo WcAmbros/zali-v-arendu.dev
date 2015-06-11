@@ -2,8 +2,8 @@
 /**
  *
  * @var $this yii\web\View
- * @var \frontend\models\Hall $model
- * @var \frontend\models\Metro $metro
+ * @var \common\models\Hall $model
+ * @var \common\models\Metro $metro
  */
 
 use yii\helpers\Html;

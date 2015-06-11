@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 
@@ -18,6 +18,8 @@ use Yii;
  */
 class District extends \yii\db\ActiveRecord
 {
+    public $f_category=null;
+
     /**
      * @inheritdoc
      */
@@ -47,7 +49,6 @@ class District extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'town_id' => 'Town ID',
-            'category_id' => 'Category ID',
         ];
     }
 
@@ -73,5 +74,13 @@ class District extends \yii\db\ActiveRecord
     public function getMetros()
     {
         return $this->hasMany(Metro::className(), ['district_id' => 'id', 'district_town_id' => 'town_id']);
+    }
+
+    /**
+     * @return array
+     */
+    public function findAllDistrict(){
+        return $this->find()->select('district.*, dc.name f_category')
+            ->innerJoin('district_category dc', 'district.category_id=dc.id')->all();
     }
 }

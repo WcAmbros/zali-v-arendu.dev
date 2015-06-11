@@ -1,25 +1,26 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "district_category".
+ * This is the model class for table "price".
  *
  * @property integer $id
- * @property string $name
+ * @property integer $min
+ * @property integer $max
  *
- * @property District[] $districts
+ * @property Hall[] $halls
  */
-class DistrictCategory extends \yii\db\ActiveRecord
+class Price extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'district_category';
+        return 'price';
     }
 
     /**
@@ -28,7 +29,7 @@ class DistrictCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'string', 'max' => 255]
+            [['min', 'max'], 'integer']
         ];
     }
 
@@ -39,15 +40,16 @@ class DistrictCategory extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'min' => 'Min',
+            'max' => 'Max',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDistricts()
+    public function getHalls()
     {
-        return $this->hasMany(District::className(), ['category_id' => 'id']);
+        return $this->hasMany(Hall::className(), ['price_id' => 'id']);
     }
 }

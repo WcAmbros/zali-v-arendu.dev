@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var \frontend\models\Hall $model
+ * @var \common\models\Hall $model
  */
 ?>
 

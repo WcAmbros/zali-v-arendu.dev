@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use common\models\Metro;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

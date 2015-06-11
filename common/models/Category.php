@@ -1,25 +1,25 @@
 <?php
 
-namespace frontend\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "district_category".
+ * This is the model class for table "category".
  *
  * @property integer $id
  * @property string $name
  *
- * @property District[] $districts
+ * @property Hall[] $halls
  */
-class DistrictCategory extends \yii\db\ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'district_category';
+        return 'category';
     }
 
     /**
@@ -46,8 +46,8 @@ class DistrictCategory extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDistricts()
+    public function getHalls()
     {
-        return $this->hasMany(District::className(), ['category_id' => 'id']);
+        return $this->hasMany(Hall::className(), ['category_id' => 'id']);
     }
 }

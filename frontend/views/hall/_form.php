@@ -6,7 +6,7 @@
  * @var array $options
  * @var array $metro
  * @var array $district
- * @var \frontend\models\Hall $model
+ * @var \common\models\Hall $model
  *
  */
 

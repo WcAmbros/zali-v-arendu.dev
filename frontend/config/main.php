@@ -14,7 +14,7 @@ return [
     'components' => [
 
         'profile' => [
-            'class' => 'frontend\models\Profile'
+            'class' => 'common\models\Profile'
         ],
         'region' => [
             'class' => 'frontend\models\Region'

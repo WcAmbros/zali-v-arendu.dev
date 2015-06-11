@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use common\models\District;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

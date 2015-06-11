@@ -2,13 +2,13 @@
 namespace frontend\controllers;
 
 
-use frontend\models\Category;
-use frontend\models\District;
-use frontend\models\Floor;
-use frontend\models\Hall;
-use frontend\models\HallHasOptions;
-use frontend\models\Metro;
-use frontend\models\Options;
+use common\models\Category;
+use common\models\District;
+use common\models\Floor;
+use common\models\Hall;
+use common\models\HallHasOptions;
+use common\models\Metro;
+use common\models\Options;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;

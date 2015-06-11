@@ -1,9 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-
 use common\models\LoginForm;
-use frontend\models\Agent;
 use frontend\models\ConfirmEmailForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;

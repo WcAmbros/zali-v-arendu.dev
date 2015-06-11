@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 
 
-use frontend\models\Profile;
+use common\models\Profile;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;

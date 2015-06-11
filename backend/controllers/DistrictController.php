@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\District;
 use backend\models\DistrictSearch;
+use common\models\District;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

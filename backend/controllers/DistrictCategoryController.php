@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\DistrictCategory;
 use backend\models\DistrictCategorySearch;
+use common\models\DistrictCategory;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

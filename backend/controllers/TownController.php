@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Town;
 use backend\models\TownSearch;
+use common\models\Town;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

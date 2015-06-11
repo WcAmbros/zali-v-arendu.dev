@@ -2,9 +2,9 @@
 namespace frontend\controllers;
 
 
-use frontend\models\District;
-use frontend\models\Hall;
-use frontend\models\Metro;
+use common\models\District;
+use common\models\Hall;
+use common\models\Metro;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\Controller;

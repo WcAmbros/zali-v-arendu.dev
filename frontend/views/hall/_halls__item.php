@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @var \frontend\models\Hall $model
+ * @var \common\models\Hall $model
  * @var array $metro
- * @var \frontend\models\Metro $metro_item
- * @var \frontend\models\Metro $metro_current
+ * @var \common\models\Metro $metro_item
+ * @var \common\models\Metro $metro_current
  */
 
 use yii\helpers\Url;

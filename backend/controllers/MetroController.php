@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Metro;
 use backend\models\MetroSearch;
+use common\models\Metro;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

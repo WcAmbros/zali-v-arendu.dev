@@ -21,27 +21,52 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
-            'attribs:ntext',
-            'square',
-            'favourite',
+            [
+                'attribute'=>'name',
+                'content'=>function($model){
+                    return Html::a($model['name'],['view','id'=>$model['id']]);
+                },
+            ],
+            [
+                'attribute'=>'category.name',
+                'label'=>'Категория'
+            ],
+            [
+                'attribute'=>'address.town',
+                'label'=>'Город',
+            ],
+            [
+                'attribute'=>'user.username',
+                'label'=>'Пользователь',
+            ],
+            [
+                'attribute'=>'status',
+                'label'=>'Статус',
+            ],
+//            'attribs:ntext',
+//            'square',
+//            'favourite',
             // 'comments:ntext',
             // 'created_at',
             // 'updated_at',
-            // 'public',
-            // 'deleted',
+//             'public',
+//             'deleted',
             // 'floor_id',
             // 'price_id',
             // 'address_id',
             // 'category_id',
             // 'contacts_id',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            'id',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'urlCreator'=>function($action, $model){
+                    return [$action,'id'=>$model['id']];
+                },
+                'template'=>'{update}{delete}'
+            ],
         ],
     ]); ?>
 

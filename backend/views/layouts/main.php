@@ -1,8 +1,8 @@
 <?php
 use backend\assets\AppAsset;
-use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 /* @var $this \yii\web\View */
@@ -33,6 +33,15 @@ AppAsset::register($this);
             ]);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => 'Hall', 'url' => ['/hall/index']],
+                ['label' => 'Category', 'url' => ['/category/index']],
+                ['label'=>'Dictionary', 'items'=>[
+                    ['label' => 'Town', 'url' => ['/town/index']],
+                    ['label' => 'District', 'url' => ['/district/index']],
+                    ['label' => 'District-Category', 'url' => ['/district-category']],
+                    ['label' => 'Metro', 'url' => ['/metro/index']],
+                ]],
+                ['label' => 'User', 'url' => ['/user/index']],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\models;
+namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -35,6 +35,12 @@ use yii\db\Query;
  */
 class Hall extends \yii\db\ActiveRecord
 {
+
+    const STATUS_WAIT = 0;
+    const STATUS_DELETED = 1;
+    const STATUS_PUBPLIC = 2;
+    const STATUS_UNPUBPLIC = 3;
+
     public $images = null;
 
     /**
@@ -54,9 +60,26 @@ class Hall extends \yii\db\ActiveRecord
             [['favourite', 'square', 'public', 'created_at', 'updated_at', 'deleted', 'floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'integer'],
             [['attribs'], 'string'],
             [['floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'required'],
-            [['name'], 'string', 'max' => 255]
+            [['name'], 'string', 'max' => 255],
+            ['status', 'integer'],
+            ['status', 'default', 'value' => self::STATUS_PUBPLIC],
+            ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    public static function getStatusesArray()
+    {
+        return [
+            self::STATUS_WAIT => 'Ожидает подтверждения',
+            self::STATUS_DELETED => 'Удален',
+            self::STATUS_PUBPLIC => 'Опубликован',
+            self::STATUS_UNPUBPLIC => 'Не опубликован',
+        ];
+    }
+
 
     /**
      * @inheritdoc
@@ -133,6 +156,14 @@ class Hall extends \yii\db\ActiveRecord
     public function getOptions()
     {
         return $this->hasMany(Options::className(), ['id' => 'options_id'])->viaTable('hall_has_options', ['hall_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id'])->viaTable('contacts', ['id' => 'contacts_id']);
     }
 
     public function behaviors()

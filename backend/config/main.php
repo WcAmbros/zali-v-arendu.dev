@@ -13,16 +13,18 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error'],
+                    'logFile' => '@app/runtime/logs/backend-error.log'
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['warning'],
+                    'logFile' => '@app/runtime/logs/backend-warning.log'
                 ],
             ],
         ],
@@ -34,9 +36,13 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
-                '<_c:[\w\-]+>' => '<_c>/index',
-                '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'category'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'district'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'hall'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'metro'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'site'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'town'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
             ],
         ],
     ],

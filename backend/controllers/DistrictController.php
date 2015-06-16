@@ -5,6 +5,7 @@ namespace backend\controllers;
 use backend\models\DistrictSearch;
 use common\models\District;
 use Yii;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -17,6 +18,15 @@ class DistrictController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -65,7 +75,7 @@ class DistrictController extends Controller
         $model = new District();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'town_id' => $model->town_id, 'category_id' => $model->category_id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -81,12 +91,12 @@ class DistrictController extends Controller
      * @param integer $category_id
      * @return mixed
      */
-    public function actionUpdate($id, $town_id, $category_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $town_id, $category_id);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'town_id' => $model->town_id, 'category_id' => $model->category_id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -102,9 +112,9 @@ class DistrictController extends Controller
      * @param integer $category_id
      * @return mixed
      */
-    public function actionDelete($id, $town_id, $category_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $town_id, $category_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -118,9 +128,9 @@ class DistrictController extends Controller
      * @return District the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $town_id, $category_id)
+    protected function findModel($id)
     {
-        if (($model = District::findOne(['id' => $id, 'town_id' => $town_id, 'category_id' => $category_id])) !== null) {
+        if (($model = District::findOne(['id' => $id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

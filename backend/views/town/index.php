@@ -24,12 +24,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'name',
+            [
+                'attribute'=>'name',
+                'content'=>function($model){
+                    return Html::a($model['name'],['view','id'=>$model['id']]);
+                },
+            ],
             'subdomain',
+            'id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'urlCreator'=>function($action, $model){
+                    return [$action,'id'=>$model['id']];
+                },
+                'template'=>'{update}{delete}'
+            ],
         ],
     ]); ?>
 

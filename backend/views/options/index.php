@@ -25,10 +25,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            [
+                'attribute'=>'name',
+                'content'=>function($model){
+                    return Html::a($model['name'],['view','id'=>$model['id']]);
+                },
+            ],
             'id',
-            'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'urlCreator'=>function($action, $model){
+                    return [$action,'id'=>$model['id']];
+                },
+                'template'=>'{update}{delete}'
+            ],
         ],
     ]); ?>
 

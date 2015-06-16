@@ -37,9 +37,6 @@ use yii\widgets\ActiveForm;
         <div>
             <div>Опции зала</div>
             <?php
-                //$model->options
-                /* @var $options_item common\models\Options */
-//                print_r($options);
                 $list=ArrayHelper::map($options,'id','name');
                 ?>
                     <?= $form->field($model,'options')->checkboxList($list); ?>

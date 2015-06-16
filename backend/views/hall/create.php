@@ -5,6 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Hall */
+/* @var $params array */
 
 $this->title = 'Create Hall';
 $this->params['breadcrumbs'][] = ['label' => 'Halls', 'url' => ['index']];
@@ -14,8 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?= $this->render('_form', array_merge([
         'model' => $model,
-    ]) ?>
+    ],
+        $params
+    )) ?>
 
 </div>

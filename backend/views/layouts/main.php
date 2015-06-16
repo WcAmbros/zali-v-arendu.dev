@@ -35,6 +35,7 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'Hall', 'url' => ['/hall/index']],
                 ['label' => 'Category', 'url' => ['/category/index']],
+                ['label' => 'Options', 'url' => ['/options/index']],
                 ['label'=>'Dictionary', 'items'=>[
                     ['label' => 'Town', 'url' => ['/town/index']],
                     ['label' => 'District', 'url' => ['/district/index']],

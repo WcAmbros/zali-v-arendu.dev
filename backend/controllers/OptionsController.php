@@ -2,8 +2,7 @@
 
 namespace backend\controllers;
 
-use backend\models\HallSearch;
-use common\models\Hall;
+use backend\models\OptionsSearch;
 use common\models\Options;
 use Yii;
 use yii\filters\VerbFilter;
@@ -11,9 +10,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
- * HallController implements the CRUD actions for Hall model.
+ * OptionsController implements the CRUD actions for Options model.
  */
-class HallController extends Controller
+class OptionsController extends Controller
 {
     public function behaviors()
     {
@@ -28,13 +27,14 @@ class HallController extends Controller
     }
 
     /**
-     * Lists all Hall models.
+     * Lists all Options models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new HallSearch();
+        $searchModel = new OptionsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -42,7 +42,7 @@ class HallController extends Controller
     }
 
     /**
-     * Displays a single Hall model.
+     * Displays a single Options model.
      * @param integer $id
      * @return mixed
      */
@@ -54,28 +54,25 @@ class HallController extends Controller
     }
 
     /**
-     * Creates a new Hall model.
+     * Creates a new Options model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Hall();
+        $model = new Options();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'params'=>[
-                    'options'=>Options::find()->all()
-                ],
             ]);
         }
     }
 
     /**
-     * Updates an existing Hall model.
+     * Updates an existing Options model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -89,15 +86,12 @@ class HallController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'params'=>[
-                    'options'=>Options::find()->all()
-                ],
             ]);
         }
     }
 
     /**
-     * Deletes an existing Hall model.
+     * Deletes an existing Options model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +104,15 @@ class HallController extends Controller
     }
 
     /**
-     * Finds the Hall model based on its primary key value.
+     * Finds the Options model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Hall the loaded model
+     * @return Options the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Hall::findOne(['id' => $id])) !== null) {
+        if (($model = Options::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

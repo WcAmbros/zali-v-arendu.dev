@@ -264,7 +264,7 @@ class Hall extends \yii\db\ActiveRecord
         $countQuery = clone $query;
         $pages = new Pagination([
             'totalCount' => $countQuery->count(),
-            'pageSize' => 12
+            'pageSize' => 11
         ]);
 
         return $pages;

@@ -127,7 +127,9 @@ input,textarea,select{
     margin-left: 12px;
     border-radius:26px;
 }
-
+.dropdown{
+    width: 200px;
+}
 .dropdown__content{
     margin-left: 3px;
     position: absolute;

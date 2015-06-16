@@ -2,11 +2,13 @@
 namespace frontend\controllers;
 
 
+use common\models\Category;
 use common\models\District;
 use common\models\Hall;
 use common\models\Metro;
+use common\models\Options;
+use common\models\Town;
 use Yii;
-use yii\db\ActiveRecord;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -17,30 +19,30 @@ class AjaxController extends Controller
      */
     public function actionIndex()
     {
-        return $this->goHome();
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function actionDistrict($name)
-    {
-        $model = new District();
-        return $this->renderAjax('index', [
-            'list' => $this->findAll($model, $name)
-        ]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function actionMetro($name)
-    {
-        $model = new Metro();
-        return $this->renderAjax('index', [
-            'list' => $this->findAll($model, $name)
-        ]);
-    }
+//    /**
+//     * @inheritdoc
+//     */
+//    public function actionDistrict($name)
+//    {
+//        $model = new District();
+//        return $this->renderAjax('index', [
+//            'list' => $this->findAll($model, $name)
+//        ]);
+//    }
+//
+//    /**
+//     * @inheritdoc
+//     */
+//    public function actionMetro($name)
+//    {
+//        $model = new Metro();
+//        return $this->renderAjax('index', [
+//            'list' => $this->findAll($model, $name)
+//        ]);
+//    }
 
     /**
      * @inheritdoc
@@ -51,6 +53,46 @@ class AjaxController extends Controller
         echo json_encode(['response' => [
             'phone' => $model->contacts->phone
         ]]);
+    }
+
+    public function actionList(){
+        $get=Yii::$app->request->get();
+        $result=array();
+
+        if(isset($get['type'])&&isset($get['name'])){
+
+            /**@var $region Town*/
+            if(is_null($region=Yii::$app->region->currentRegion())){
+                $region=Yii::$app->region->defaultRegion();
+            }
+            if($get['type']==='metro'){
+
+                $result= Metro::find()->leftJoin('district','district.id=metro.district_id')->where([
+                        'district.name'=>$get['name'],
+                        'district.town_id'=>$region->id
+                    ]
+                )->all();
+            }
+            if($get['type']==='district'){
+
+                $result=District::find()->leftJoin('metro','metro.district_id=district.id')->where([
+                    'metro.name'=>$get['name'],
+                    'district.town_id'=>$region->id,
+                ])->all();
+            }
+            if($get['type']==='options'){
+
+                $category=Category::findOne(['id'=>(int)$get['name']]);
+                if(!is_null($category)){
+                    $list_options=json_decode($category->options,true);
+                    if(!empty($list_options)){
+                        $result=Options::find()->where('id IN ('.implode(',',$list_options).')')->all();
+                    }
+                }
+
+            }
+        }
+        return $this->renderAjax('index',['list'=>$result]);
     }
 
     /**
@@ -77,15 +119,16 @@ class AjaxController extends Controller
         };
     }
 
-
-    /**
-     * @param ActiveRecord $model
-     * @param string $name
-     *
-     * @return array|ActiveRecord
-     */
-    private function findAll($model, $name)
-    {
-        return $model->find()->where("name like '%$name%'")->limit(7)->all();
-    }
+//
+//
+//    /**
+//     * @param ActiveRecord $model
+//     * @param string $name
+//     *
+//     * @return array|ActiveRecord
+//     */
+//    private function findAll($model, $name)
+//    {
+//        return $model->find()->where("name like '%$name%'")->limit(7)->all();
+//    }
 }

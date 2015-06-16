@@ -2,9 +2,8 @@
 
 /**
  * @var \common\models\Hall $model
- * @var array $metro
- * @var \common\models\Metro $metro_item
- * @var \common\models\Metro $metro_current
+ * @var \common\models\Metro[] $metro
+
  */
 
 use yii\helpers\Url;
@@ -17,9 +16,9 @@ if (!is_null($model->attribs)) {
     $images = $attribs->images;
     $geocode = $attribs->geocode;
 }
-foreach ($metro as $metro_item) {
-    if ($metro_item->name == $model->address->metro) {
-        $metro_current = $metro_item;//json_decode($metro_item->attribs)->options->class;
+foreach ($metro as $item) {
+    if ($item->name == $model->address->metro) {
+        $metro_current = $item;
     }
 }
 

@@ -88,6 +88,7 @@ class HallController extends Controller
         $post = Yii::$app->request->post();
         if (!empty($post)) {
             Yii::$app->session->set('search', $post);
+            return $this->redirect(['search']);
         } else {
             $post = Yii::$app->session->get('search');
         }
@@ -192,23 +193,25 @@ class HallController extends Controller
      */
     protected function getParams($id = null)
     {
-        $floor = new Floor();
-        $options = new Options();
-        $category = new Category();
+        $floor = Floor::find()->all();
+        $category = Category::find()->all();
         $district = new District();
         $metro = new Metro();
 
         if (is_null($id)) {
             $model = new Hall();
+            $list=json_decode($category[0]->options,true);
+
         } else {
             $model = $this->findModel($id, Yii::$app->user->id);
+            $list=json_decode($model->category->options,true);
         }
 
         return [
             'model' => $model,
-            'floor' => $floor->find()->all(),
-            'options' => $options->find()->all(),
-            'category' => $category->find()->all(),
+            'floor' => $floor,
+            'options' => $options=Options::find()->where('id IN ('.implode(',',$list).')')->all(),
+            'category' => $category,
             'district' => $district->findAllDistrict(),
             'metro' => $metro->findAllMetro(),
         ];

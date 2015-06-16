@@ -1,3 +1,8 @@
+var template={
+    metro:$('select[name="Search[metro]"]').html(),
+    district:$('select[name="Search[district]"]').html(),
+    checkBoxList:''
+};
 $(document).ready(function(){
     $('.hall-content-slider-thumbnails-link').fancybox();
     $('.hall-content-contact-link').click(function(){
@@ -17,6 +22,81 @@ $(document).ready(function(){
 
     $(document).on('change','.result-find',function(){
         $(this).find('button').focus();
+    });
+
+    $('select[name="Search[district]"]').change(function(){
+        var metro =$('select[name="Search[metro]"]');
+        if($(this).val()===''){
+            metro.html(template.metro);
+        }else{
+            $.get(
+                '/ajax/list',
+                {
+                    type:'metro',
+                    name:$(this).val()
+                },
+                function(data){
+
+                    metro.html('<option value="">Не выбран</option>');
+                    for(var i=0;i<data.length;i++){
+                        metro.append('<option value="'+data[i].name+'">'+data[i].name+'</option>');
+                    }
+                },
+                'json'
+            )
+        }
+
+    });
+
+    $('select[name="Search[metro]"]').change(function(){
+        var district =$('select[name="Search[district]"]');
+        if($(this).val()===''){
+            district.html(template.district);
+        }else{
+            $.get(
+                '/ajax/list',
+                {
+                    type:'district',
+                    name:$(this).val()
+                },
+                function(data){
+                    district.html('');
+                    for(var i=0;i<data.length;i++){
+                        district.append('<option value="'+data[i].name+'">'+data[i].name+'</option>');
+                    }
+                    //district.append('<option value="">Не выбран</option>');
+                },
+                'json'
+            )
+        }
+
+    });
+
+    $(document).delegate('.modal-hall-form-params__select','change',function(){
+        var checkBoxList =$('.modal-hall-form-checklist');
+        if($(this).val()===$(this).find('option[selected=""]').val()){
+            checkBoxList.html(template.checkBoxList);
+        }else{
+            $.get(
+                '/ajax/list',
+                {
+                    type:'options',
+                    name:$(this).val()
+                },
+                function(data){
+                    checkBoxList.html('');
+                    for(var i=0;i<data.length;i++){
+                        checkBoxList.append(
+                            '<label class="modal-hall-form-checklist-item">'+
+                            '<input type="checkbox" value="'+data[i].id+'" name="Options[]">'+data[i].name+
+                        '</label>'
+                        );
+                    }
+                },
+                'json'
+            )
+        }
+
     });
 
     $('.result-content-sort__list li').on('click',function(){
@@ -109,6 +189,7 @@ var button={
         $.ajax(url).done(function(data){
             $("body").prepend(data);
             suggestions();
+            template.checkBoxList=$('.modal-hall-form-checklist').html();
         });
     }
 };

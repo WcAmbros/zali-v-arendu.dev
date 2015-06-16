@@ -107,12 +107,12 @@ if (!$model->isNewRecord) {
             if (!$model->isNewRecord) {
                 $hallHasOptions = ArrayHelper::map($model->hallHasOptions, 'options_id', 'options_id');
             }
+
             foreach ($options as $item) {
                 print '<label class="modal-hall-form-checklist-item">';
                 $checked = false;
                 if (!$model->isNewRecord && (in_array($item->id, $hallHasOptions)))
                     $checked = true;
-
                 echo Html::checkbox('Options[]', $checked, [
                     'value' => $item->id
                 ]);

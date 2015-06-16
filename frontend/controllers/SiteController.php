@@ -8,7 +8,6 @@ use common\models\District;
 use common\models\Floor;
 use common\models\Hall;
 use common\models\Metro;
-use common\models\Options;
 use frontend\models\ContactForm;
 use Yii;
 use yii\web\Controller;
@@ -36,18 +35,15 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $floor = new Floor();
 
-        $options = new Options();
-        $category = new Category();
+        $category = Category::find()->all();
         $district = new District();
         $metro = new Metro();
         $hall = new Hall();
 
         return $this->render('index', [
-            'floor' => $floor->find()->all(),
-            'options' => $options->find()->all(),
-            'category' => $category->find()->all(),
+            'floor' => Floor::find()->all(),
+            'category' => $category,
             'district' => $district->findAllDistrict(),
             'metro' => $metro->findAllMetro(),
             'favourites' => $hall->favourites(8),

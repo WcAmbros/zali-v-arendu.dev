@@ -37,19 +37,19 @@ $search=$post['Search'];
                         <?= Html::renderSelectOptions($search['category'], ArrayHelper::map($category, 'name', 'name')); ?>
                     </select>
                 </label>
+                <label class="find-location-item">
+                    <span class="result-find-location-item__header">Станция метро:</span>
+                    <select name="Search[metro]" class="result-find-location-item__select">
+                        <option value="">Не выбран</option>
+                        <?= Html::renderSelectOptions($search['metro'], ArrayHelper::map($metro, 'name', 'name')); ?>
+                    </select>
+                </label>
                 <label class="result-find-location-item">
 
                     <span class="result-find-location-item__header">Район города:</span>
                     <select name="Search[district]" class="result-find-location-item__select">
                         <option value="">Не выбран</option>
-                        <?= Html::renderSelectOptions($search['district'], ArrayHelper::map($district, 'name', 'name','f_category')); ?>
-                    </select>
-                </label>
-                <label class="find-location-item">
-                    <span class="result-find-location-item__header">Станция метро:</span>
-                    <select name="Search[metro]" class="result-find-location-item__select">
-                        <option value="">Не выбран</option>
-                        <?= Html::renderSelectOptions($search['metro'], ArrayHelper::map($metro, 'name', 'name','f_district')); ?>
+                        <?= Html::renderSelectOptions($search['district'], ArrayHelper::map($district, 'name', 'name')); ?>
                     </select>
                 </label>
             </fieldset>
@@ -86,10 +86,14 @@ $search=$post['Search'];
         <?= $this->render('_halls', [
             'models' => $models,
             'metro' => $metro,
+            'pages' => $pages,
             'options' => [
+                'btn_next'=>1,
                 'max' => 3
             ],
         ]);
+
+
         ?>
         <div class="pagination">
             <?= $this->render('_pagination', ['pages' => $pages]) ?>

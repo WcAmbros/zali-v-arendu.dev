@@ -2,12 +2,11 @@
 /**
  * @var $this yii\web\View
  *
- * @var array $floor
- * @var array $category
- * @var array $options
- * @var array $metro
- * @var array $district
- * @var array $favourites
+ * @var \common\models\Floor[] $floor
+ * @var \common\models\Category[] $category
+ * @var \common\models\Metro[] $metro
+ * @var \common\models\District[] $district
+ * @var \common\models\Hall[] $favourites
  */
 
 use yii\helpers\ArrayHelper;
@@ -37,19 +36,18 @@ $this->registerJsFile('/template/site/js/dadata.js');
                             <option value="">Не выбрано</option>
                             <?= Html::renderSelectOptions('',ArrayHelper::map($category,'name','name'));?>
                         </select>
-
-                    </label>
-                    <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
-                        <select class="main-find-form-label__select" name="Search[district]">
-                            <option value="">Не выбран</option>
-                            <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name','f_category'));?>
-                        </select>
                     </label>
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Станция метро:</span>
 
                         <select class="main-find-form-label__select" name="Search[metro]">
                             <option value="">Не выбран</option>
-                            <?= Html::renderSelectOptions('',ArrayHelper::map($metro,'name','name','f_district'));?>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($metro,'name','name'));?>
+                        </select>
+                    </label>
+                    <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
+                        <select class="main-find-form-label__select" name="Search[district]">
+                            <option value="">Не выбран</option>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name'));?>
                         </select>
                     </label>
                 </fieldset>

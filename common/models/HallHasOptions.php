@@ -6,6 +6,7 @@ use Yii;
 
 /**
  * This is the model class for table "hall_has_options".
+ * Содержит список опций зала
  *
  * @property integer $hall_id
  * @property integer $options_id

@@ -11,8 +11,8 @@ use Yii;
  * @property string $name
  * @property string $attribs
  * @property integer $district_id
- * @property integer $district_town_id
  *
+ * @property Town $town
  * @property District $district
  */
 class Metro extends \yii\db\ActiveRecord
@@ -58,7 +58,15 @@ class Metro extends \yii\db\ActiveRecord
      */
     public function getDistrict()
     {
-        return $this->hasOne(District::className(), ['id' => 'district_id', 'town_id' => 'district_town_id']);
+        return $this->hasOne(District::className(), ['id' => 'district_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTown()
+    {
+        return $this->hasOne(Town::className(), ['id' => 'town_id'])->viaTable('district', ['id' => 'district_id']);
     }
 
     /**

@@ -35,11 +35,11 @@ use yii\db\Query;
  */
 class Hall extends \yii\db\ActiveRecord
 {
+    const STATUS_UNPUBPLIC = 0;
+    const STATUS_PUBPLIC = 1;
+    const STATUS_WAIT = 2;
+    const STATUS_DELETED = 3;
 
-    const STATUS_WAIT = 0;
-    const STATUS_DELETED = 1;
-    const STATUS_PUBPLIC = 2;
-    const STATUS_UNPUBPLIC = 3;
 
     public $images = null;
 
@@ -107,7 +107,12 @@ class Hall extends \yii\db\ActiveRecord
      */
     public function getAddress()
     {
-        return $this->hasOne(Address::className(), ['id' => 'address_id']);
+        if($this->isNewRecord){
+                return new Address();
+        }else{
+            return $this->hasOne(Address::className(), ['id' => 'address_id']);
+        }
+
     }
 
     /**
@@ -115,7 +120,12 @@ class Hall extends \yii\db\ActiveRecord
      */
     public function getContacts()
     {
-        return $this->hasOne(Contacts::className(), ['id' => 'contacts_id']);
+        if($this->isNewRecord){
+            return new Contacts();
+        }else{
+            return $this->hasOne(Contacts::className(), ['id' => 'contacts_id']);
+        }
+
     }
 
     /**
@@ -123,7 +133,11 @@ class Hall extends \yii\db\ActiveRecord
      */
     public function getFloor()
     {
-        return $this->hasOne(Floor::className(), ['id' => 'floor_id']);
+        if($this->isNewRecord){
+            return new Floor();
+        }else{
+            return $this->hasOne(Floor::className(), ['id' => 'floor_id']);
+        }
     }
 
     /**
@@ -131,7 +145,12 @@ class Hall extends \yii\db\ActiveRecord
      */
     public function getPrice()
     {
-        return $this->hasOne(Price::className(), ['id' => 'price_id']);
+
+        if($this->isNewRecord){
+            return new Price();
+        }else {
+            return $this->hasOne(Price::className(), ['id' => 'price_id']);
+        }
     }
 
     /**
@@ -139,7 +158,12 @@ class Hall extends \yii\db\ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+
+        if($this->isNewRecord){
+            return new Category();
+        }else{
+            return $this->hasOne(Category::className(), ['id' => 'category_id']);
+        }
     }
 
     /**
@@ -163,7 +187,18 @@ class Hall extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id'])->viaTable('contacts', ['id' => 'contacts_id']);
+        if($this->isNewRecord){
+            if(Yii::$app->user->isGuest){
+                $user=User::findOne(['username'=>'guest']);
+            }else{
+                $user=User::findOne(['id'=>Yii::$app->user->id]);
+            }
+
+        }else{
+            $user= $this->hasOne(User::className(), ['id' => 'user_id'])->viaTable('contacts', ['id' => 'contacts_id']);
+        }
+
+        return $user;
     }
 
     public function behaviors()

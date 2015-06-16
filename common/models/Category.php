@@ -50,4 +50,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Hall::className(), ['category_id' => 'id']);
     }
+
+    public function beforeSave($insert){
+        $this->options=json_encode(Yii::$app->request->post()['Options']);
+        return parent::beforeSave($insert);
+    }
 }

@@ -46,7 +46,7 @@ class Metro extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Наименование',
             'attribs' => 'Attribs',
             'district_id' => 'District ID',
             'district_town_id' => 'District Town ID',

@@ -40,8 +40,8 @@ class Town extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'subdomain' => 'Subdomain',
+            'name' => 'Наименование',
+            'subdomain' => 'Поддомен',
         ];
     }
 

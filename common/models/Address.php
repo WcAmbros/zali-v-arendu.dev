@@ -36,7 +36,8 @@ class Address extends \yii\db\ActiveRecord
         return [
             [['comment'], 'string'],
             [['town', 'district', 'street', 'metro'], 'string', 'max' => 255],
-            [['house', 'block'], 'string', 'max' => 45]
+            [['house', 'block'], 'string', 'max' => 45],
+            [['town', 'street', 'house'], 'required'],
         ];
     }
 
@@ -47,13 +48,13 @@ class Address extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'town' => 'Town',
-            'district' => 'District',
-            'street' => 'Street',
-            'house' => 'House',
-            'block' => 'Block',
-            'comment' => 'Comment',
-            'metro' => 'Metro',
+            'town' => 'Город',
+            'district' => 'Район',
+            'street' => 'Улица',
+            'house' => 'Дом',
+            'block' => 'Корпус',
+            'comment' => 'Комментарий',
+            'metro' => 'Метро',
         ];
     }
 

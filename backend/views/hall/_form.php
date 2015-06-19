@@ -7,15 +7,14 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\Hall */
 /* @var $options array */
+/* @var $event yii\base\ModelEvent */
 
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="hall-form">
-
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
     <div>
         <div>Адрес</div>
         <?= $form->field($model->address, 'town')->textInput(['maxlength' => true]) ?>
@@ -55,28 +54,17 @@ use yii\widgets\ActiveForm;
 
     <?=$this->render('_attribs',['attribs'=>$model->attribs])?>
 
-
     <?= $form->field($model, 'favourite')->textInput() ?>
 
-
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'public')->textInput() ?>
-
-    <?= $form->field($model, 'deleted')->textInput() ?>
-
-    <?= $form->field($model, 'floor_id')->hiddenInput()?>
-
-    <?= $form->field($model, 'price_id')->hiddenInput() ?>
-
-    <?= $form->field($model, 'address_id')->hiddenInput() ?>
-
-    <?= $form->field($model, 'category_id')->hiddenInput() ?>
-
-    <?= $form->field($model, 'contacts_id')->hiddenInput() ?>
+<!--    --><?//= $form->field($model, 'floor_id')->hiddenInput()?>
+<!---->
+<!--    --><?//= $form->field($model, 'price_id')->hiddenInput() ?>
+<!---->
+<!--    --><?//= $form->field($model, 'address_id')->hiddenInput() ?>
+<!---->
+<!--    --><?//= $form->field($model, 'category_id')->hiddenInput() ?>
+<!---->
+<!--    --><?//= $form->field($model, 'contacts_id')->hiddenInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

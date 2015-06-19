@@ -18,7 +18,7 @@ class MetroSearch extends Metro
     public function rules()
     {
         return [
-            [['id', 'district_id', 'district_town_id'], 'integer'],
+            [['id', 'district_id'], 'integer'],
             [['name', 'attribs'], 'safe'],
         ];
     }
@@ -57,8 +57,6 @@ class MetroSearch extends Metro
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'district_id' => $this->district_id,
-            'district_town_id' => $this->district_town_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

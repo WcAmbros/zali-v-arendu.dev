@@ -131,7 +131,7 @@ class MetroController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Metro::findOne(['id' => $id)) !== null) {
+        if (($model = Metro::findOne(['id' => $id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

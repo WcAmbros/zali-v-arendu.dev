@@ -1,6 +1,7 @@
 @import url(../fonts/gotham_pro/gotham_pro.css);
 @import url(icons.css);
 
+/**Содержит общие стили сайта*/
 p{
     margin: 12px 0;
 }

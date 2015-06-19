@@ -54,7 +54,7 @@ $this->registerJsFile('/template/site/js/dadata.js');
                 <button class="main-find-form__button main__button" ><span class="i-icons i-search"></span>Найти</button>
             </form>
         </div>
-        <div class="main__add main__button" onclick="button.form('/hall/form')">
+        <div class="main__add main__button" onclick="button.form('/hall/create')">
             <span class="i-icons i-add"></span>Добавить зал в базу
         </div>
     </div>

@@ -1,7 +1,11 @@
 var template={
-    metro:$('select[name="Search[metro]"]').html(),
-    district:$('select[name="Search[district]"]').html(),
-    checkBoxList:''
+    metro:'',
+    district:'',
+    checkBoxList:'',
+    image:'<div class="modal-hall-form-params-album-content-item">'+
+    '<label><input class="modal-hall-form-params-album-content__input" type="file" name="Hall[images][]"></label>'+
+    '<span class="modal-hall-form-params-album-content-item_remove i-icons i-close_black" onclick="album.remove(this)"></span>'+
+    '</div>'
 };
 $(document).ready(function(){
     $('.hall-content-slider-thumbnails-link').fancybox();
@@ -23,41 +27,16 @@ $(document).ready(function(){
     $(document).on('change','.result-find',function(){
         $(this).find('button').focus();
     });
-
-    $('select[name="Search[district]"]').change(function(){
-        var metro =$('select[name="Search[metro]"]');
-        if($(this).val()===''){
-            metro.html(template.metro);
-        }else{
-            $.get(
-                '/ajax/list',
-                {
-                    type:'metro',
-                    name:$(this).val()
-                },
-                function(data){
-
-                    metro.html('<option value="">Не выбран</option>');
-                    for(var i=0;i<data.length;i++){
-                        metro.append('<option value="'+data[i].name+'">'+data[i].name+'</option>');
-                    }
-                },
-                'json'
-            )
-        }
-
-    });
-
-    $('select[name="Search[metro]"]').change(function(){
-        var district =$('select[name="Search[district]"]');
-        if($(this).val()===''){
+    changeMetro=function(el,that){
+        var district =$(el);
+        if($(that).val()===''){
             district.html(template.district);
         }else{
             $.get(
                 '/ajax/list',
                 {
                     type:'district',
-                    name:$(this).val()
+                    name:$(that).val()
                 },
                 function(data){
                     district.html('');
@@ -69,7 +48,40 @@ $(document).ready(function(){
                 'json'
             )
         }
+    };
+    changeDistrict=function(el,that){
+        var metro =$(el);
+        if($(that).val()===''){
+            metro.html(template.metro);
+        }else{
+            $.get(
+                '/ajax/list',
+                {
+                    type:'metro',
+                    name:$(that).val()
+                },
+                function(data){
 
+                    metro.html('<option value="">Не выбран</option>');
+                    for(var i=0;i<data.length;i++){
+                        metro.append('<option value="'+data[i].name+'">'+data[i].name+'</option>');
+                    }
+                },
+                'json'
+            )
+        }
+    };
+    $('select[name="Search[district]"]').change(function(){
+        changeDistrict('select[name="Search[metro]"]',this);
+    });
+    $(document).delegate('#address-district','change',function(){
+        changeDistrict('#address-metro',this);
+    });
+    $('select[name="Search[metro]"]').change(function(){
+       changeMetro('select[name="Search[district]"]',this);
+    });
+    $(document).delegate('#address-metro','change',function(){
+        changeMetro('#address-district',this);
     });
 
     $(document).delegate('.modal-hall-form-params__select','change',function(){
@@ -130,6 +142,9 @@ $(document).ready(function(){
             value=parent.find('li[name="'+name+'"]').text();
         }
         obj.html(value);
+        template.metro=$('select[name="Search[metro]"]').html();
+        template.district=$('select[name="Search[district]"]').html();
+
     };
     init();
 });
@@ -182,13 +197,11 @@ var button={
     form:function(url){
         $.ajax(url).done(function(data){
             $("body").prepend(data);
-            suggestions();
         });
     },
     update:function(url){
         $.ajax(url).done(function(data){
             $("body").prepend(data);
-            suggestions();
             template.checkBoxList=$('.modal-hall-form-checklist').html();
         });
     }

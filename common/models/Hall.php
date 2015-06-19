@@ -2,8 +2,10 @@
 
 namespace common\models;
 
+
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\captcha\Captcha;
 use yii\data\Pagination;
 use yii\db\Query;
 
@@ -41,7 +43,8 @@ class Hall extends \yii\db\ActiveRecord
     const STATUS_DELETED = 3;
 
 
-    public $images = null;
+    public $images;
+    public $verifyCode;
 
     /**
      * @inheritdoc
@@ -64,6 +67,11 @@ class Hall extends \yii\db\ActiveRecord
             ['status', 'integer'],
             ['status', 'default', 'value' => self::STATUS_PUBPLIC],
             ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
+            ['verifyCode',
+                'captcha',
+                'captchaAction' => 'hall/captcha',
+                'isEmpty'=>!Yii::$app->user->isGuest || !Captcha::checkRequirements(),
+            ],
         ];
     }
 
@@ -88,10 +96,10 @@ class Hall extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Наименование',
             'attribs' => 'Attribs',
-            'square' => 'Square',
-            'favourite' => 'Favourite',
+            'square' => 'Площадь',
+            'favourite' => 'Популярные',
             'public' => 'Public',
             'deleted' => 'Deleted',
             'floor_id' => 'Floor ID',
@@ -210,6 +218,7 @@ class Hall extends \yii\db\ActiveRecord
             'HallBehavior' => [
                 'class' => 'common\behaviors\HallBehavior',
             ],
+
             TimestampBehavior::className(),
 //            'SlugBehavior' => [
 //                'class' => 'common\behaviors\SlugBehavior',
@@ -447,7 +456,7 @@ class Hall extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return Region
+     * @return \frontend\models\Region
      */
     private static function getRegion()
     {
@@ -456,5 +465,19 @@ class Hall extends \yii\db\ActiveRecord
             $town = Yii::$app->region->defaultRegion();
         }
         return $town;
+    }
+
+
+    public function afterSave($insert, $changedAttributes){
+        HallHasOptions::deleteAll(['hall_id'=>$this->id]);
+        $post=Yii::$app->request->post('Hall');
+        foreach($post['options'] as $item){
+            $_options=new HallHasOptions();
+            $_options->hall_id=$this->id;
+            $_options->options_id=$item;
+            $_options->save();
+        }
+        $this->options=json_encode(Yii::$app->request->post()['Options']);
+        parent::afterSave($insert, $changedAttributes);
     }
 }

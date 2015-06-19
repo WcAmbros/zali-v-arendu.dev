@@ -50,7 +50,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="footer-content">
         <div class="site-master">
-            <a class="site-master-link" href="http://site-spb.ru/"><img src="/images/style/site-master.png"><span>Создание и поддержка</span></a>
+            <a class="site-master-link" href="http://site-spb.ru/"><img src="/template/site/images/style/site-master.png"><span>Создание и поддержка</span></a>
         </div>
         <div class="footer-content-nav">
             <a href="<?= (Url::toRoute('site/about')) ?>" class="footer-content-nav-link">О проекте</a> |

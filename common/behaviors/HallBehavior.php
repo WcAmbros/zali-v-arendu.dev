@@ -16,7 +16,9 @@ use yii\db\ActiveRecord;
 /**
  * Class HallBehavior
  * @package common\behaviors
+ * @property \common\models\Hall $owner
  */
+
 class HallBehavior extends Behavior
 {
 
@@ -33,30 +35,45 @@ class HallBehavior extends Behavior
     /**
      * Loading post data
      *
-     * ['floor_id', 'purpose_id', 'contacts_id', 'price_id', 'address_id'], 'required'
+     * ['address_id', 'price_id', 'floor_id', 'contacts_id', 'category_id',  ], 'required'
      * */
     public function beforeValidate($event)
     {
 
         $post = Yii::$app->request->post();
-        if (!empty($post)) {
-            $contacts = $this->saveContacts();
-            $address = $this->saveAddress();
-            $price = $this->savePrice();
+
+        $address=new Address();
+        $price=new Price();
+
+        $contacts=new Contacts();
+        $contacts->user_id=(Yii::$app->user->isGuest)?User::findOne(['username' => 'guest'])->id:Yii::$app->user->id;
+
+        $transaction=Yii::$app->db->beginTransaction();
+        if(
+            $address->load($post)&&
+            $price->load($post)&&
+            $contacts->load($post)&&
+
+            $address->save()&&
+            $price->save()&&
+            $contacts->save()
+        ){
+            $this->owner->address_id = $address->id;
+            $this->owner->price_id = $price->id;
+            $this->owner->contacts_id = $contacts->id;
+
             $this->owner->name = $this->setName();
-            $this->owner->floor_id = $post['Hall']['floor'];
-            $this->owner->category_id = $post['Hall']['category'];
+
             $this->owner->attribs = json_encode(
                 [
                     'images' => $this->images(),
                     'geocode' => $post['Hall']['geocode']
                 ]
             );
-            $this->owner->price_id = $price->id;
-            $this->owner->address_id = $address->id;
-            $this->owner->contacts_id = $contacts->id;
+            $transaction->commit();
+        }else{
+            $transaction->rollBack();
         }
-
     }
 
 
@@ -92,66 +109,5 @@ class HallBehavior extends Behavior
             }
         }
         return $name;
-    }
-
-    /**
-     * @return Price
-     **/
-    private function savePrice()
-    {
-        $post = Yii::$app->request->post();
-
-        if ($this->owner->isNewRecord) {
-            $model = new Price();
-        } else {
-            $model = Price::findOne($this->owner->price_id);
-        }
-
-        $model->load($post);
-        $model->save();
-        return $model;
-    }
-
-    /**
-     * @return Address
-     **/
-    private function saveAddress()
-    {
-        $post = Yii::$app->request->post();
-        if ($this->owner->isNewRecord) {
-            $model = new Address();
-        } else {
-            $model = Address::findOne($this->owner->address_id);
-        }
-        $model->load($post);
-        $model->comment = trim($model->comment);
-        $model->save();
-        return $model;
-    }
-
-    /**
-     * @return Contacts
-     **/
-    private function saveContacts()
-    {
-        $post = Yii::$app->request->post();
-
-        if (Yii::$app->user->isGuest) {
-            $user = User::findOne(['username' => 'guest']);
-        } else {
-            $user = Yii::$app->user;
-        }
-
-        if ($this->owner->isNewRecord) {
-            $model = new Contacts();
-        } else {
-            $model = Contacts::findOne($this->owner->contacts_id);
-        }
-
-        $model->load($post);
-        $model->user_id = $user->id;
-        $model->save();
-
-        return $model;
     }
 }

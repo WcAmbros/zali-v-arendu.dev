@@ -28,6 +28,5 @@ use yii\helpers\Url;
             'district' => $district,
             'metro' => $metro,
         ]) ?>
-        <button class="modal-hall__button"><span class="i-icons i-add"></span> Обновить зал</button>
     </form>
 </div>

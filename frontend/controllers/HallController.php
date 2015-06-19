@@ -9,6 +9,7 @@ use common\models\Hall;
 use common\models\HallHasOptions;
 use common\models\Metro;
 use common\models\Options;
+use common\models\Town;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -30,13 +31,13 @@ class HallController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['update', 'delete', 'create'],
+                        'actions' => ['update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['form', 'search', 'view', 'all'],
-                        'allow' => true
+                        'actions' => ['create','form', 'search', 'view', 'all','captcha'],
+                        'allow' => true,
                     ],
                 ],
             ]
@@ -55,6 +56,8 @@ class HallController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'foreColor' => 0x5FA068,
+                'fontFile' => '@webroot/template/site/fonts/gotham_pro/GothaProBolIta.ttf',
             ],
         ];
     }
@@ -92,7 +95,6 @@ class HallController extends Controller
         } else {
             $post = Yii::$app->session->get('search');
         }
-        $category = new Category();
         $district = new District();
         $metro = new Metro();
         $hall = new Hall();
@@ -108,7 +110,7 @@ class HallController extends Controller
             'models' => $models,
             'pages' => $pages,
             'post' => $post,
-            'category' => $category->find()->all(),
+            'category' => Category::find()->all(),
             'district' => $district->findAllDistrict(),
             'metro' => $metro->findAllMetro(),
         ]);
@@ -136,20 +138,24 @@ class HallController extends Controller
     {
         $post = Yii::$app->request->post();
         $model = new Hall();
+
         if ($model->load($post) && $model->save()) {
-            $this->_saveOptions($model->id);
+//            $this->_saveOptions($model->id);
+            return $this->goHome();
+        }else{
+            $params = $this->getParams();
+            return $this->renderAjax('create', $params);
         }
-        return $this->goBack();
+
     }
 
     /**
      * @inheritdoc
      */
-    public function actionForm()
-    {
-        $params = $this->getParams();
-        return $this->renderAjax('create', $params);
-    }
+//    public function actionForm()
+//    {
+//
+//    }
 
     /**
      * @inheritdoc
@@ -163,9 +169,8 @@ class HallController extends Controller
         $params = $this->getParams($id);
         $model = $params['model'];
         $post = Yii::$app->request->post();
-
         if ($model->load($post) && $model->save()) {
-            $this->_saveOptions($model->id);
+//            $this->_saveOptions($model->id);
             return $this->redirect([
                 'view',
                 'id' => $model->id,
@@ -193,8 +198,7 @@ class HallController extends Controller
      */
     protected function getParams($id = null)
     {
-        $floor = Floor::find()->all();
-        $category = Category::find()->all();
+        $category=Category::find()->all();
         $district = new District();
         $metro = new Metro();
 
@@ -209,7 +213,8 @@ class HallController extends Controller
 
         return [
             'model' => $model,
-            'floor' => $floor,
+            'floor' => Floor::find()->all(),
+            'town' => Town::find()->all(),
             'options' => $options=Options::find()->where('id IN ('.implode(',',$list).')')->all(),
             'category' => $category,
             'district' => $district->findAllDistrict(),

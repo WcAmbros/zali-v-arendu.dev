@@ -14,7 +14,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 
 /**
- * Site controller
+ * User controller
  */
 class UserController extends Controller
 {
@@ -63,7 +63,6 @@ class UserController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
                 'foreColor' => 0x5FA068,
                 'fontFile' => '@webroot/template/site/fonts/gotham_pro/GothaProBolIta.ttf',
-
             ],
         ];
     }

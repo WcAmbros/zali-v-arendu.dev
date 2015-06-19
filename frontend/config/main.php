@@ -47,6 +47,7 @@ return [
                 'profile' => 'profile/create',
                 'profile/<id:\d+>' => 'profile/update',
                 'ajax/removeimage/<id:\d+>' => 'ajax/removeimage',
+                'hall/captcha'=>'hall/captcha',
                 '<_c:[\w\-]+>' => '<_c>/index',
                 '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',

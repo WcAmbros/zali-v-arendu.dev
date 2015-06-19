@@ -83,7 +83,7 @@ $search=$post['Search'];
                 </ul>
             </div>
         </div>
-        <?= $this->render('_halls', [
+        <?= $this->render('halls/_halls', [
             'models' => $models,
             'metro' => $metro,
             'pages' => $pages,

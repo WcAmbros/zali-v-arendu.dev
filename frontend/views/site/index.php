@@ -15,9 +15,6 @@ use yii\helpers\Url;
 
 $this->title = 'Залы в аренду';
 
-$this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
-$this->registerJsFile('https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js');
-$this->registerJsFile('/template/site/js/dadata.js');
 ?>
 <div class="main">
     <div class="main-background">
@@ -60,7 +57,7 @@ $this->registerJsFile('/template/site/js/dadata.js');
     </div>
 
     <div class="main-caption">В нашей базе свыше <span class="main-caption__span">100 000</span> залов</div>
-    <?= $this->render('../hall/_halls',[
+    <?= $this->render('../hall/halls/_halls',[
         'models'=>$favourites,
         'metro'=>$metro,
         'options'=>[

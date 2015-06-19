@@ -9,10 +9,6 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->registerCssFile('https://dadata.ru/static/css/lib/suggestions-15.2.css');
-$this->registerJsFile('https://dadata.ru/static/js/lib/jquery.suggestions-15.2.min.js');
-$this->registerJsFile('/template/site/js/dadata.js');
-
 $this->title = $model->name;
 $metro_current = null;
 $images_max_in_line = 3;
@@ -94,12 +90,12 @@ foreach ($metro as $metro_item) {
                 ?></div>
             <p class="hall-content-contact__header">Контакты:</p>
             <ul class="hall-content-contact">
-                <li class="hall-content-contact__line"><a href="#" class="hall-content-contact-link"
-                                                          rel="<?= $model->id; ?>"><span class="i-icons i-phone"></span>Показать
-                        номер</a></li>
-                <li class="hall-content-contact__line"><a href="mailto:<?= $model->contacts->email; ?>"
-                                                          class="hall-content-contact-link"><span
-                            class="i-icons i-mail"></span>Написать владельцу</a></li>
+                <li class="hall-content-contact__line">
+                    <a href="#" class="hall-content-contact-link" rel="<?= $model->id; ?>">
+                        <span class="i-icons i-phone"></span>Показать номер</a></li>
+                <li class="hall-content-contact__line">
+                    <a href="mailto:<?= $model->contacts->email; ?>" class="hall-content-contact-link">
+                        <span class="i-icons i-mail"></span>Написать владельцу</a></li>
             </ul>
             <?php
             print_r("<div id='map_$model->id' style='width: 700px; height: 400px;display: none; '></div>\n");

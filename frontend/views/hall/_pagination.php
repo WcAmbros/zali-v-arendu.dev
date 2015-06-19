@@ -32,5 +32,6 @@ echo LinkPager::widget([
     $model = ($pages->page != 0) ? $pages->page * $pages->pageSize : $pages->page + 1;
     $model_next = ($pages->page + 1) * $pages->pageSize;
     $model_total = $pages->totalCount;
+
     echo "$model-$model_next из $model_total"; ?>
 </div>

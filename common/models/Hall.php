@@ -5,9 +5,6 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\captcha\Captcha;
-use yii\data\Pagination;
-use yii\db\Query;
 
 /**
  * This is the model class for table "hall".
@@ -26,6 +23,7 @@ use yii\db\Query;
  * @property integer $contacts_id
  * @property integer $price_id
  * @property integer $address_id
+ * @property integer $status
  *
  * @property Address $address
  * @property Contacts $contacts
@@ -69,8 +67,7 @@ class Hall extends \yii\db\ActiveRecord
             ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
             ['verifyCode',
                 'captcha',
-                'captchaAction' => 'hall/captcha',
-                'isEmpty'=>!Yii::$app->user->isGuest || !Captcha::checkRequirements(),
+                'captchaAction' => 'hall/captcha'
             ],
         ];
     }
@@ -88,6 +85,14 @@ class Hall extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getStatusName()
+    {
+        $statuses = self::getStatusesArray();
+        return isset($statuses[$this->status]) ? $statuses[$this->status] : '';
+    }
 
     /**
      * @inheritdoc
@@ -231,106 +236,6 @@ class Hall extends \yii\db\ActiveRecord
 
 
     /**
-     * @param array $post
-     *
-     * @return array
-     */
-    public function extendSearch($post){
-//        $def_post=[
-////            'category'=>$post['category']
-//        ];
-//        $result=[];
-//        foreach($post as $key=>$value){
-//            $result[$key]=$this->search(
-//                array_merge($def_post,[$key=>$value])
-//            )->all();
-//        }
-//        return $result;
-    }
-
-    /**
-     * @param array $post
-     *
-     * @return Query
-     */
-    public function search($post)
-    {
-
-        return $this->find()
-            ->innerJoin('address', 'hall.address_id=address.id')
-            ->innerJoin('category', 'hall.category_id=category.id')
-            ->innerJoin('price', 'hall.price_id=price.id')
-            ->where($this->searchCondition($post))->orderBy($this->searchOrder($post));
-    }
-
-    /**
-     * @param Query $query
-     *
-     * @return Pagination
-     */
-    public function searchPagination($query)
-    {
-        $countQuery = clone $query;
-        $pages = new Pagination([
-            'totalCount' => $countQuery->count(),
-            'pageSize' => 11
-        ]);
-
-        return $pages;
-    }
-
-    /**
-     * @param array $post
-     *
-     * @return string
-     */
-    private function searchCondition($post)
-    {
-        $town = $this->getRegion();
-
-        $fields = [
-            'category' => 'category.name',
-            'district' => 'address.district',
-            'metro' => 'address.metro',
-            'town' => 'address.town'
-        ];
-        $options = array();
-        if(isset($post['Search'])){
-            foreach ($post['Search'] as $key => $item){
-                if (trim($item) != '')
-                    $options[] = $fields[$key] . ' LIKE ("%' . $item . '%")';
-            }
-        }
-
-
-        $options[] = $fields['town'] . ' LIKE ("%' . $town->name . '%")';
-
-        return implode(' AND ', $options);
-    }
-
-    private function searchOrder($post){
-        $order=[
-            'asc' => SORT_ASC,
-            'desc' => SORT_DESC
-        ];
-
-        $fields=[
-            'price'=>'price.min'
-        ];
-
-        $options = array();
-        if(isset($post['Order'])){
-            foreach ($post['Order'] as $key => $item){
-                if(isset($order[$item])&&isset($fields[$key])){
-                    $value=$order[$item];
-                    $options[$fields[$key]] = $value;
-                }
-            }
-        }
-
-        return $options;
-    }
-    /**
      * @param int $id
      * @return void
      */
@@ -458,7 +363,7 @@ class Hall extends \yii\db\ActiveRecord
     /**
      * @return \frontend\models\Region
      */
-    private static function getRegion()
+    public static function getRegion()
     {
         $town = Yii::$app->region->currentRegion();
         if (is_null($town)) {

@@ -79,8 +79,8 @@ class District extends \yii\db\ActiveRecord
     /**
      * @return District[]
      */
-    public function findAllDistrict(){
-        return $this->find()->select('district.*, dc.name f_category')
+    public static function findAllDistrict(){
+        return static::find()->select('district.*, dc.name f_category')
             ->innerJoin('district_category dc', 'district.category_id=dc.id')->all();
     }
 }

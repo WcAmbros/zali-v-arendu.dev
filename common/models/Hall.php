@@ -67,7 +67,8 @@ class Hall extends \yii\db\ActiveRecord
             ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
             ['verifyCode',
                 'captcha',
-                'captchaAction' => 'hall/captcha'
+                'captchaAction' => 'hall/captcha',
+                'skipOnEmpty'=>!Yii::$app->getUser()->getIsGuest()
             ],
         ];
     }
@@ -217,8 +218,8 @@ class Hall extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'UploadImageBehavior' => [
-                'class' => 'common\behaviors\UploadImageBehavior',
+            'HallImageBehavior' => [
+                'class' => 'common\behaviors\HallImageBehavior',
             ],
             'HallBehavior' => [
                 'class' => 'common\behaviors\HallBehavior',
@@ -374,15 +375,21 @@ class Hall extends \yii\db\ActiveRecord
 
 
     public function afterSave($insert, $changedAttributes){
-        HallHasOptions::deleteAll(['hall_id'=>$this->id]);
         $post=Yii::$app->request->post('Hall');
+        if(isset($post['options'])){
+            $this->updateOptions($post);
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    private function updateOptions($post){
+        HallHasOptions::deleteAll(['hall_id'=>$this->id]);
         foreach($post['options'] as $item){
             $_options=new HallHasOptions();
             $_options->hall_id=$this->id;
             $_options->options_id=$item;
             $_options->save();
         }
-        $this->options=json_encode(Yii::$app->request->post()['Options']);
-        parent::afterSave($insert, $changedAttributes);
     }
 }

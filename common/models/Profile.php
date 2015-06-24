@@ -48,8 +48,8 @@ class Profile extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'ProfileUploadImageBehavior' => [
-                'class' => 'common\behaviors\ProfileUploadImageBehavior',
+            'ImageBehavior' => [
+                'class' => 'common\behaviors\ImageBehavior',
             ]
         ];
     }

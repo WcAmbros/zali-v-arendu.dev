@@ -9,6 +9,8 @@
 namespace common\behaviors;
 
 use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
+use Imagine\Image\Point;
 use yii;
 use yii\base\Behavior;
 use yii\db\ActiveRecord;
@@ -16,7 +18,7 @@ use yii\imagine\Image;
 use yii\validators\Validator;
 use yii\web\UploadedFile;
 
-class ProfileUploadImageBehavior extends Behavior{
+class ImageBehavior extends Behavior{
 
 
     public $fileAttribute = 'image';
@@ -25,7 +27,7 @@ class ProfileUploadImageBehavior extends Behavior{
 
     public $fileTypes = 'image/jpeg,image/png';
 
-    public $savePathAlias = '@app/uploads';
+    public $savePathAlias = 'uploads';
 
 
     public function events()
@@ -44,40 +46,62 @@ class ProfileUploadImageBehavior extends Behavior{
         } else {
             $files = UploadedFile::getInstances($model, $this->fileAttribute);
         }
-        if(!empty($files)){
-            foreach($files as $file){
-                if ($file && $file->name){
-                    $model->{$this->fileAttribute} = $file;
 
-                    $validator = Validator::createValidator('image', $model, $this->fileAttribute,  [
-                        'mimeTypes'=>$this->fileTypes,
-                    ]);
-                    $validator->validateAttribute($model, $this->fileAttribute);
-                    $errors=$model->getErrors();
-                    if(empty($errors)){
-                        $this->uploadfile($file);
-                    }
+
+        foreach($files as $file){
+            if ($file && $file->name){
+                $model->{$this->fileAttribute} = $file;
+
+                if($this->isValid($model)){
+                    $this->save($file);
                 }
             }
         }
     }
 
+
     /**
      * @param UploadedFile $file
      * */
-    public function uploadfile($file){
+    public function save($file){
         $name=Yii::$app->security->generateRandomString();
-        preg_match('/\..*/i',$file->name,$extensions);
 
-        $extension=$extensions[0];
-        $destination="uploads/profile/icon_$name".$extension;
-        $this->_image($file->tempName,$destination,new Box(26,26));
-        if(trim($this->owner->images)!=''){
-            unlink($this->owner->images);
+        $path=$this->savePathAlias."/profile/icon_$name".$this->getExtension($file);
+
+        if($this->_image($file->tempName,$path,new Box(26,26))){
+
+            if(trim($this->owner->images)!='')$this->removeImage($this->owner->images);
+
+            $this->owner->images=$path;
         }
-        $this->owner->images=$destination;
+
     }
 
+    public function getExtension($file){
+        preg_match('/\..*/i',$file->name,$extensions);
+        return $extensions[0];
+    }
+
+    public function removeImage($path){
+        return unlink($path);
+    }
+    /**
+     * @var ActiveRecord $model
+     *
+     * @return bool
+     */
+    public function isValid($model){
+        $validator = Validator::createValidator('image', $model, $this->fileAttribute,  [
+            'mimeTypes'=>$this->fileTypes,
+        ]);
+        $validator->validateAttribute($model, $this->fileAttribute);
+        $errors=$model->getErrors();
+        if(empty($errors)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     /**
      *
@@ -85,10 +109,12 @@ class ProfileUploadImageBehavior extends Behavior{
      * @param string $source
      * @param string $destination
      *
-     * @return void
+     * @return bool
      */
-    private function _image($source, $destination, $size)
+    public function _image($source, $destination, $size)
     {
+        /**@var ImageInterface $resizeimg */
+
         $width = $size->getWidth();
         $height = $size->getHeight();
         $mode = ImageInterface::THUMBNAIL_OUTBOUND;
@@ -107,8 +133,8 @@ class ProfileUploadImageBehavior extends Behavior{
         if ($heightR < $height) {
             $startY = ($height - $heightR) / 2;
         }
-        $preserve->paste($resizeimg, new Point($startX, $startY))
-            ->save($destination);
 
+        return $preserve->paste($resizeimg, new Point($startX, $startY))->save($destination);
     }
+
 }

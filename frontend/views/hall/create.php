@@ -1,12 +1,8 @@
 <?php
 /**
  * @var $this yii\web\View
- * @var \common\models\Floor[] $floor
- * @var \common\models\Category[] $category
- * @var \common\models\Options[] $options
- * @var \common\models\Metro[] $metro
- * @var \common\models\District[] $district
- * @var \common\models\Town[] $town
+ * @var array $params
+ * @var \common\models\Hall $model
  */
 
 use yii\widgets\ActiveForm;
@@ -28,16 +24,7 @@ use yii\widgets\ActiveForm;
         <div class="modal-hall-form__header">Добавить зал в базу <span class="modal-hall-form__close i-close i-icons"
                                                                        onclick="button.close('.modal-hall')"></span>
         </div>
-        <?= $this->render('_form', [
-            'model' => $model,
-            'form'=>$form,
-            'floor' => $floor,
-            'town' => $town,
-            'options' => $options,
-            'category' => $category,
-            'district' => $district,
-            'metro' => $metro,
-        ]) ?>
+        <?= $this->render('_form', array_merge(['model' => $model,'form'=>$form,],$params)) ?>
 
         <?php $form = ActiveForm::end(); ?>
 

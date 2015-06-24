@@ -83,6 +83,7 @@
     width: 180px;
     height: 40px;
     margin: 5px 0 0 135px;
+    padding: 0 8px 0 4px;
 }
 .main-find-form__button .i-icons,
 .main__add .i-icons{
@@ -90,6 +91,7 @@
     vertical-align: middle;
 }
 .main__add{
+    opacity: 0.9;
     vertical-align: middle;
     margin: 40px 0 0 0;
     width: 238px;
@@ -181,11 +183,16 @@
     font-weight: bold;
 }
 .deals-item-description__map,.main-deals-item-description__map {
+    margin: -3px 0;
     color: #669900;
     display: inline-block;
     cursor: pointer;
     border-bottom: 1px dotted #669900;
 }
+.size-small{
+    font-size: 12px;
+}
+
 .ymap{
     color: #669900;
     text-decoration: none;

@@ -47,7 +47,7 @@ if (!$model->isNewRecord) {
         <div  class="modal-hall-form__line"><label class="modal-hall-form-location__label" for="address-district">Район:</label>
             <select id="address-district" class="modal-hall-form-location__select" name="Address[district]">
                 <option value="">Не выбран</option>
-                <?= Html::renderSelectOptions(($model->isNewRecord) ? "" : $model->address->district, ArrayHelper::map($district, 'name', 'name')); ?>
+                <?= Html::renderSelectOptions(($model->isNewRecord) ? "" : $model->address->district, ArrayHelper::map($district, 'name', 'name','f_category')); ?>
             </select>
             <?=$form->field($model->address,'district',['template' => "{hint}\n{error}",])?>
         </div>
@@ -189,7 +189,7 @@ if (!$model->isNewRecord) {
         ?>
     </div>
     <div class="modal-hall-form__line">
-        <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+        <?= (!Yii::$app->getUser()->getIsGuest())?"":$form->field($model, 'verifyCode')->widget(Captcha::className(), [
             'captchaAction'=>'hall/captcha',
             'options'=>['class'=>'modal-hall-form-contacts-capthca__input'],
             'imageOptions'=>['class'=>'modal-hall-form-contacts-capthca__image'],

@@ -6,10 +6,10 @@ use common\models\Category;
 use common\models\District;
 use common\models\Floor;
 use common\models\Hall;
-use common\models\HallHasOptions;
 use common\models\Metro;
 use common\models\Options;
 use common\models\Town;
+use frontend\models\HallSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -95,9 +95,8 @@ class HallController extends Controller
         } else {
             $post = Yii::$app->session->get('search');
         }
-        $district = new District();
-        $metro = new Metro();
-        $hall = new Hall();
+
+        $hall = new HallSearch();
 
         $query = $hall->search($post);
         $pages = $hall->searchPagination($query);
@@ -106,13 +105,24 @@ class HallController extends Controller
             ->limit($pages->limit)
             ->all();
 
+        if(empty($models)){
+            foreach($post['Search'] as $key=>$item){
+                $new_search=['category'=>$post['Search']['category']];
+                $new_search[$key]=$item;
+                    $result[$key]=count($hall->search(
+                        ['Search'=>$new_search]
+                    )->all());
+            }
+            Yii::$app->session->set('no_items', $result);
+        }
+
         return $this->render('search', [
             'models' => $models,
             'pages' => $pages,
             'post' => $post,
             'category' => Category::find()->all(),
-            'district' => $district->findAllDistrict(),
-            'metro' => $metro->findAllMetro(),
+            'district' => District::findAllDistrict(),
+            'metro' => Metro::find()->all(),
         ]);
     }
 
@@ -137,25 +147,18 @@ class HallController extends Controller
     public function actionCreate()
     {
         $post = Yii::$app->request->post();
-        $model = new Hall();
 
+        $model = new Hall();
         if ($model->load($post) && $model->save()) {
-//            $this->_saveOptions($model->id);
             return $this->goHome();
         }else{
-            $params = $this->getParams();
-            return $this->renderAjax('create', $params);
+            return $this->renderAjax('create', [
+                'model' => $model,
+                'params'=>$this->getParamsArray($model),
+            ]);
         }
 
     }
-
-    /**
-     * @inheritdoc
-     */
-//    public function actionForm()
-//    {
-//
-//    }
 
     /**
      * @inheritdoc
@@ -166,17 +169,19 @@ class HallController extends Controller
          * @var  Hall $model
          */
 
-        $params = $this->getParams($id);
-        $model = $params['model'];
+        $model = $this->findModel($id, Yii::$app->user->id);
+
         $post = Yii::$app->request->post();
         if ($model->load($post) && $model->save()) {
-//            $this->_saveOptions($model->id);
             return $this->redirect([
                 'view',
                 'id' => $model->id,
             ]);
         } else {
-            return $this->renderAjax('update', $params);
+            return $this->renderAjax('update', [
+                'model' => $model,
+                'params'=>$this->getParamsArray($model),
+            ]);
         }
     }
 
@@ -194,31 +199,26 @@ class HallController extends Controller
 
 
     /**
+     * @var Hall $model
      * @inheritdoc
      */
-    protected function getParams($id = null)
+    protected function getParamsArray($model)
     {
         $category=Category::find()->all();
-        $district = new District();
-        $metro = new Metro();
 
-        if (is_null($id)) {
-            $model = new Hall();
+        if ($model->isNewRecord) {
             $list=json_decode($category[0]->options,true);
-
         } else {
-            $model = $this->findModel($id, Yii::$app->user->id);
             $list=json_decode($model->category->options,true);
         }
 
         return [
-            'model' => $model,
             'floor' => Floor::find()->all(),
             'town' => Town::find()->all(),
-            'options' => $options=Options::find()->where('id IN ('.implode(',',$list).')')->all(),
+            'options' => Options::find()->where('id IN ('.implode(',',$list).')')->all(),
             'category' => $category,
-            'district' => $district->findAllDistrict(),
-            'metro' => $metro->findAllMetro(),
+            'district' => District::findAllDistrict(),
+            'metro' => Metro::find()->all(),
         ];
 
     }
@@ -241,56 +241,4 @@ class HallController extends Controller
 
         }
     }
-
-
-    /**
-     * @inheritdoc
-     */
-    private function _saveOptions($hall_id)
-    {
-        $post = Yii::$app->request->post();
-        if (isset($post['Options'])) {
-            $option_has_hall = new HallHasOptions();
-            $option_has_hall->deleteAll(['hall_id' => $hall_id]);
-
-            foreach ($post['Options'] as $item) {
-                $option_has_hall = new HallHasOptions();
-                $option_has_hall->hall_id = $hall_id;
-                $option_has_hall->options_id = $item;
-                $option_has_hall->save();
-            }
-        }
-    }
-
-
-    public function ajaxSearch($id){
-
-        $post = Yii::$app->session->get('search');
-        $hall = new Hall();
-        $hall->find()->innerJoin("price",'hall.price_id=price.id');
-
-        /*
-         * Модель запроса при поиске через ajax
-            SELECT distinct hall.* FROM `hall`
-            inner join address on hall.address_id=address.id
-            inner join floor on hall.floor_id=floor.id
-            inner join price on hall.price_id=price.id
-            left join hall_has_options hho on hall.id=hho.hall_id
-            left join options on hho.options_id=options.id
-
-            order by hall.id asc
-        */
-
-    }
-
-    public function _builderQuery(){
-        $get=Yii::$app->request->get();
-        $default=[
-            'order'=>[
-                'price'
-            ]
-        ];
-
-    }
-
 }

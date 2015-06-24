@@ -49,7 +49,7 @@ $search=$post['Search'];
                     <span class="result-find-location-item__header">Район города:</span>
                     <select name="Search[district]" class="result-find-location-item__select">
                         <option value="">Не выбран</option>
-                        <?= Html::renderSelectOptions($search['district'], ArrayHelper::map($district, 'name', 'name')); ?>
+                        <?= Html::renderSelectOptions($search['district'], ArrayHelper::map($district, 'name', 'name','f_category')); ?>
                     </select>
                 </label>
             </fieldset>

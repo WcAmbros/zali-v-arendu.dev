@@ -13,7 +13,7 @@ use yii\web\View;
 
 class FancyBoxAsset extends AssetBundle
 {
-    public $baseUrl = '@web/template/site/js/fancybox';
+    public $sourcePath = '@bower/fancybox/source';
     public $js = [
         'jquery.fancybox.pack.js',
         'helpers/jquery.fancybox-media.js',

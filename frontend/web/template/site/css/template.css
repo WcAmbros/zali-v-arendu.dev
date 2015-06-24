@@ -111,6 +111,7 @@ input,textarea,select{
     right: 0;
     margin: 16px 0 0 0;
     font: 14px arial, Helvetica, sans-serif;
+    z-index: 1;
 
 }
 .header-content-user:hover .user-actions{
@@ -200,7 +201,7 @@ input,textarea,select{
 .footer-content-nav-link{
     color: #ffff00;
     font: bold 12px arial, Helvetica, sans-serif;
-    margin: 0 3px;
+    margin: 0 6px;
 }
 .footer-social{
     float: left;
@@ -212,5 +213,6 @@ input,textarea,select{
 }
 .footer-copy-link{
     color: #fff;
+    font-size: 11px;
 }
 

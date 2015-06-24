@@ -34,7 +34,7 @@ foreach ($metro as $item) {
         <a href='<?= (Url::toRoute(['hall/view', 'id' => $model->id])) ?>'
            class='deals-item-description__address'><?= $model->name; ?></a>
 
-        <p>
+        <p class="size-small">
             <?php
             if (!is_null($metro_current)) {
                 $class = json_decode($metro_current->attribs)->options->class;
@@ -45,7 +45,7 @@ foreach ($metro as $item) {
         </p>
 
         <div class='deals-item-description__map'>
-            <a href='#map_<?= $model->id; ?>' geoname='<?= $model->name; ?>' geocode='<?= $geocode; ?>' class='ymap'>
+            <a href='#map_<?= $model->id; ?>' geoname='<?= $model->name; ?>' geocode='<?= $geocode; ?>' class='ymap size-small'>
                 cмотреть на карте<span class='i-icons i-map'></span>
             </a>
         </div>

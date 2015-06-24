@@ -39,9 +39,12 @@ $(document).ready(function(){
                     name:$(that).val()
                 },
                 function(data){
-                    district.html('');
-                    for(var i=0;i<data.length;i++){
-                        district.append('<option value="'+data[i].name+'">'+data[i].name+'</option>');
+                    if(data.length>0){
+                        district.find('option').each(function(index){
+                            if($(this).attr('value')==data[0].name){
+                                $(this).attr('selected',true)
+                            }
+                        });
                     }
                     //district.append('<option value="">Не выбран</option>');
                 },
@@ -61,11 +64,15 @@ $(document).ready(function(){
                     name:$(that).val()
                 },
                 function(data){
-
-                    metro.html('<option value="">Не выбран</option>');
-                    for(var i=0;i<data.length;i++){
-                        metro.append('<option value="'+data[i].name+'">'+data[i].name+'</option>');
+                    if(data.length>0){
+                        metro.html('<option value="">Не выбран</option>').attr('disabled',false);
+                        for(var i=0;i<data.length;i++){
+                            metro.append('<option value="'+data[i].name+'">'+data[i].name+'</option>');
+                        }
+                    }else{
+                        metro.html('<option value="">-</option>').attr('disabled',true);
                     }
+
                 },
                 'json'
             )
@@ -132,6 +139,30 @@ $(document).ready(function(){
             $('.result-find').prepend("<input type='hidden' id='order_"+name+"' name='Order["+name+"]' value='"+order+"'>");
         }
         $('.result-find').submit();
+    });
+
+    $('.search-halls').click(function(event){
+        event.preventDefault();
+        var url=$(this).attr('href'),
+            //data={_csrf:$('input[name="_csrf"]')};
+            data={};
+            $('.result-find-location-item__select').each(function(index){
+                data[$(this).attr('name')]='';
+                if($(this).attr('name')=='Search[category]'){
+                    data[$(this).attr('name')]=$(this).val()
+                }
+
+            });
+            data[$(this).attr('data-name')]=$(this).attr('data-value');
+            data['Search[category]']=$(this).attr('data-value');
+
+        $.post(
+            url,
+            data,
+            function(data){
+                location.href=url;
+            }
+        );
     });
     var init = function(){
         var obj=$('.result-content-sort__value'),

@@ -3,11 +3,10 @@
 /**
  * @var \common\models\Hall[] $models
  * @var \common\models\Metro[] $metro
- * @var array $options
- *
+ * @var $this yii\web\View
  * @var \yii\data\Pagination $pages
  *
- *
+ * @var array $options
  */
 
 ?>
@@ -20,6 +19,9 @@
         <?php
         foreach ($models as $model) {
             echo $this->render('_halls__item', ['model' => $model, 'metro' => $metro]);
+        }
+        if(empty($models)){
+            echo $this->render('_halls__noitems');
         }
         ?>
 

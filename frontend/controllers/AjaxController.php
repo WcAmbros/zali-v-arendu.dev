@@ -110,6 +110,8 @@ class AjaxController extends Controller
         ) {
             $model = Hall::findRow((int)$get['hall'], Yii::$app->user->id);
             $model->removeImage($id);
+
+
             if (!$model->save()) {
                 throw new NotFoundHttpException('Не удалось сохранить изменения');
             }

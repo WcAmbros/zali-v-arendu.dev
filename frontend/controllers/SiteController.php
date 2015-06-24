@@ -35,17 +35,13 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-
-        $category = Category::find()->all();
-        $district = new District();
-        $metro = new Metro();
         $hall = new Hall();
 
         return $this->render('index', [
             'floor' => Floor::find()->all(),
-            'category' => $category,
-            'district' => $district->findAllDistrict(),
-            'metro' => $metro->findAllMetro(),
+            'category' => Category::find()->all(),
+            'district' => District::findAllDistrict(),
+            'metro' => Metro::find()->all(),
             'favourites' => $hall->favourites(8),
         ]);
     }

@@ -44,7 +44,7 @@ $this->title = 'Залы в аренду';
                     <label  class="main-find-form-label"><span class="main-find-form-label__span">Район города:</span>
                         <select class="main-find-form-label__select" name="Search[district]">
                             <option value="">Не выбран</option>
-                            <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name'));?>
+                            <?= Html::renderSelectOptions('',ArrayHelper::map($district,'name','name','f_category'));?>
                         </select>
                     </label>
                 </fieldset>

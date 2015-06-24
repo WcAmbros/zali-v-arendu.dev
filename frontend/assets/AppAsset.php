@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/style.js',
+        'js/dadata.js',
     ];
     public $jsOptions = [
         'position' => View::POS_HEAD,

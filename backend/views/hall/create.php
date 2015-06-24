@@ -14,11 +14,5 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="hall-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', array_merge([
-        'model' => $model,
-    ],
-        $params
-    )) ?>
-
+    <?= $this->render('_form', array_merge(['model' => $model,],$params)) ?>
 </div>

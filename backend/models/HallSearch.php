@@ -2,6 +2,8 @@
 
 namespace backend\models;
 
+
+
 use common\models\Hall;
 use Yii;
 use yii\base\Model;
@@ -12,14 +14,17 @@ use yii\data\ActiveDataProvider;
  */
 class HallSearch extends Hall
 {
+
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'square', 'favourite', 'created_at', 'updated_at', 'public', 'deleted', 'floor_id', 'price_id', 'address_id', 'category_id', 'contacts_id'], 'integer'],
-            [['name', 'attribs', 'comments'], 'safe'],
+            [['id', 'square', 'status','favourite', 'created_at', 'updated_at', 'public', 'deleted', 'floor_id', 'price_id', 'address_id', 'category_id', 'contacts_id'], 'integer'],
+
+            [['name','attribs', 'comments'], 'safe'],
         ];
     }
 
@@ -32,6 +37,47 @@ class HallSearch extends Hall
         return Model::scenarios();
     }
 
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAddress()
+    {
+        if($this->isNewRecord){
+            return new AddressSearch();
+        }else{
+            return $this->hasOne(AddressSearch::className(), ['id' => 'address_id']);
+        }
+
+    }
+
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+
+        if($this->isNewRecord){
+            return new CategorySearch();
+        }else{
+            return $this->hasOne(CategorySearch::className(), ['id' => 'category_id']);
+        }
+    }
+
+    /**
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        if($this->isNewRecord){
+            return new UserSearch();
+        }else{
+            return $user= $this->hasOne(UserSearch::className(), ['id' => 'user_id'])->viaTable('contacts', ['id' => 'contacts_id']);
+        }
+    }
     /**
      * Creates data provider instance with search query applied
      *
@@ -42,37 +88,25 @@ class HallSearch extends Hall
     public function search($params)
     {
         $query = Hall::find();
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
         $this->load($params);
-
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'name' => $this->name,
-//            'address.town' => $this->address['town'],
-//            'user.username' => $this->user['username'],
-//            'updated_at' => $this->updated_at,
-//            'public' => $this->public,
-//            'deleted' => $this->deleted,
-//            'floor_id' => $this->floor_id,
-//            'price_id' => $this->price_id,
-//            'address_id' => $this->address_id,
-//            'category_id' => $this->category_id,
-//            'contacts_id' => $this->contacts_id,
-        ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'attribs', $this->attribs])
-            ->andFilterWhere(['like', 'comments', $this->comments]);
+        $query->andFilterWhere(['hall.id' => $this->id,])->
+            andFilterWhere(['hall.status' => $this->status])->
+            andFilterWhere(['like', 'hall.name', $this->name])->
+            orFilterWhere(['like', 'category.name', $this->name])->
+            orFilterWhere(['like', 'address.town', $this->name])->
+            orFilterWhere(['like', 'user.username', $this->name])->
+                rightJoin('address','hall.address_id=address.id')->
+                rightJoin('category','hall.category_id=category.id')->
+                leftJoin('contacts','hall.contacts_id=contacts.id')->
+                leftJoin('user','contacts.user_id=user.id');
 
         return $dataProvider;
     }

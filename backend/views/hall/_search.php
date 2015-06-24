@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model backend\models\HallSearch */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="hall-search">
@@ -13,41 +14,40 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'options'=>['class'=>'']
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'attribs') ?>
 
-    <?= $form->field($model, 'square') ?>
+    <div class="container-fluid">
+        <div class="form-group form-inline row">
+            <?= $form->field($model, 'id',[
+                'options'=>['class'=>'form-group input-group  col-md-1'],
+                'labelOptions'=>['class'=>'input-group-addon'],
+            ]) ?>
 
-    <?= $form->field($model, 'favourite') ?>
+            <div class="form-group field-hallsearch-status input-group col-md-3">
 
-    <?php // echo $form->field($model, 'comments') ?>
+                <label class="control-label  input-group-addon" for="hallsearch-status">Статус</label>
+                <select class="form-control" id="hallsearch-status" name="HallSearch[status]">
+                    <option value="">Не выбран</option>
+                    <?= Html::renderSelectOptions($model->status, $model->getStatusesArray()); ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <?= $form->field($model, 'name',[
+        'options'=>['class'=>'form-group input-group'],
+        'labelOptions'=>['class'=>'input-group-addon'],
+    ])->label('Поиск по фразе') ?>
 
-    <?php // echo $form->field($model, 'created_at') ?>
 
-    <?php // echo $form->field($model, 'updated_at') ?>
 
-    <?php // echo $form->field($model, 'public') ?>
-
-    <?php // echo $form->field($model, 'deleted') ?>
-
-    <?php // echo $form->field($model, 'floor_id') ?>
-
-    <?php // echo $form->field($model, 'price_id') ?>
-
-    <?php // echo $form->field($model, 'address_id') ?>
-
-    <?php // echo $form->field($model, 'category_id') ?>
-
-    <?php // echo $form->field($model, 'contacts_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+<!--        --><?//= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

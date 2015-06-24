@@ -3,8 +3,13 @@
 namespace backend\controllers;
 
 use backend\models\HallSearch;
+use common\models\Category;
+use common\models\District;
+use common\models\Floor;
 use common\models\Hall;
+use common\models\Metro;
 use common\models\Options;
+use common\models\Town;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -77,9 +82,7 @@ class HallController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'params'=>[
-                    'options'=>Options::find()->all()
-                ],
+                'params'=>$this->getParamsArray($model),
             ]);
         }
     }
@@ -99,9 +102,7 @@ class HallController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'params'=>[
-                    'options'=>Options::find()->all()
-                ],
+                'params'=>$this->getParamsArray($model),
             ]);
         }
     }
@@ -133,5 +134,30 @@ class HallController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * @var Hall $model
+     *
+     * @return array
+     */
+    public function getParamsArray($model){
+
+        $category=Category::find()->all();
+
+        if ($model->isNewRecord) {
+            $list=json_decode($category[0]->options,true);
+        } else {
+            $list=json_decode($model->category->options,true);
+        }
+
+        return [
+            'options'=>Options::find()->where('id IN ('.implode(',',$list).')')->all(),
+            'floor' => Floor::find()->all(),
+            'town' => Town::find()->all(),
+            'category' => $category,
+            'district' => District::find()->all(),
+            'metro' => Metro::find()->all(),
+        ];
     }
 }

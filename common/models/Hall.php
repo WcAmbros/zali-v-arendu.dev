@@ -63,6 +63,7 @@ class Hall extends \yii\db\ActiveRecord
             [['attribs'], 'string'],
             [['floor_id', 'category_id', 'contacts_id', 'price_id', 'address_id'], 'required'],
             [['name'], 'string', 'max' => 255],
+            [['alias'], 'unique'],
             ['status', 'integer'],
             ['status', 'default', 'value' => self::STATUS_PUBPLIC],
             ['status', 'in', 'range' => array_keys(self::getStatusesArray())],
@@ -104,7 +105,7 @@ class Hall extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Наименование',
-            'attribs' => 'Attribs',
+            'alias' => 'Алиас',
             'square' => 'Площадь',
             'favourite' => 'Популярные',
             'public' => 'Public',

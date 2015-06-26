@@ -47,9 +47,11 @@ use yii\widgets\ActiveForm;
                     <?= $form->field($model, 'status',['template' => "{hint}\n{error}",]) ?>
                 </div>
 
-                <?= $form->field($model, 'favourite',[
-                    'options'=>['class'=>'form-group input-group col-md-3 '],
-                    'labelOptions'=>['class'=>'control-label input-group-addon']])->textInput()?>
+                <?= $form->field($model, 'favourite')->textInput()?>
+
+                <?= $form->field($model, 'name')->textInput()?>
+
+                <?= $form->field($model, 'alias')->textInput()?>
 
                 <fieldset>
                     <legend>Адрес</legend>

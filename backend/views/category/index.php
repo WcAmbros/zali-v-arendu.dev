@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a($model['name'],['update','id'=>$model['id']]);
                 },
             ],
+            'alias',
             [
                 'attribute'=>'id',
                 'filterOptions'=>['class'=>'col-sm-1']

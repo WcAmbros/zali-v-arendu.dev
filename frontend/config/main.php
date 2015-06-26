@@ -44,14 +44,16 @@ return [
             'rules' => [
                 '<_a:(login|logout|signup|confirm-email|request-password-reset|reset-password)>' => 'user/<_a>',
                 '<_a:(about|contact|banner)>' => 'site/<_a>',
-                'zali'=>'hall/search',
-                '<category>/<hall>'=>'hall/category',
+                'hall/<_a:(create|captcha|search)>'=>'hall/<_a>',
+                'hall/update/<id:\d+>'=>'hall/update',
+
                 'profile' => 'profile/update',
+                'ajax/<_a:[\w\-]+>' => 'ajax/<_a>',
                 'ajax/removeimage/<id:\d+>' => 'ajax/removeimage',
-                'hall/captcha'=>'hall/captcha',
-                '<_c:[\w\-]+>' => '<_c>/index',
-                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
+
                 '<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_c>/<_a>',
+                '<alias>'=>'hall/category',
+                '<category>/<hall>'=>'hall/view',
             ],
         ],
     ],

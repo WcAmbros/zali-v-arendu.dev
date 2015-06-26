@@ -22,10 +22,6 @@ use yii\web\NotFoundHttpException;
 class HallController extends Controller
 {
 
-    public function actionTest($category,$hall){
-        print_r(var_dump($category));
-        print_r(var_dump($hall));
-    }
     /**
      * @inheritdoc
      */
@@ -41,7 +37,7 @@ class HallController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['create','form', 'search', 'view', 'all','captcha','test'],
+                        'actions' => ['create','form', 'search', 'view', 'all','captcha','category'],
                         'allow' => true,
                     ],
                 ],
@@ -78,19 +74,14 @@ class HallController extends Controller
     /**
      * @inheritdoc
      */
-    public function actionView($id)
+    public function actionView($category,$hall)
     {
-        $metro = new Metro();
-
         return $this->render('view', [
-            'model' => $this->findModel($id),
-            'metro' => $metro->find()->all(),
+            'model' => $this->findModelByAlias($category,$hall),
+            'metro' => Metro::find()->all(),
         ]);
     }
 
-    public function actionCategory($category,$hall){
-
-    }
     /**
      * @inheritdoc
      */
@@ -99,11 +90,19 @@ class HallController extends Controller
         $post = Yii::$app->request->post();
         if (!empty($post)) {
             Yii::$app->session->set('search', $post);
-            return $this->redirect(['search']);
-        } else {
-            $post = Yii::$app->session->get('search');
         }
+        $post=ArrayHelper::merge(['Search'=>['category'=>'','district'=>'','metro'=>'']],$post);
+        $category= Category::find()->where(['name'=>$post['Search']['category']])->one();
+        if(is_null($category)){
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }else{
+            return $this->redirect(['category','alias'=>$category->alias]);
+        }
+    }
 
+    public function actionCategory($alias){
+
+        $post = Yii::$app->session->get('search');
         $post=ArrayHelper::merge(['Search'=>['category'=>'','district'=>'','metro'=>'']],$post);//Заполняем недостающие поля
 
         $hall = new HallSearch();
@@ -181,7 +180,8 @@ class HallController extends Controller
         if ($model->load($post) && $model->save()) {
             return $this->redirect([
                 'view',
-                'id' => $model->id,
+                'category' => $model->category->alias,
+                'hall' => $model->alias,
             ]);
         } else {
             return $this->renderAjax('update', [
@@ -239,6 +239,26 @@ class HallController extends Controller
     protected function findModel($id, $user_id = null)
     {
         $model = Hall::findRow($id, $user_id);
+
+        if (is_null($model)) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        } else {
+            return $model;
+
+        }
+    }
+
+    /**
+     * Finds the Hall model based on its alias value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param string $category
+     * @param string $hall
+     * @return Hall the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModelByAlias($category,$hall, $user_id = null)
+    {
+        $model = HallSearch::findRowByAlias($category,$hall, $user_id);
 
         if (is_null($model)) {
             throw new NotFoundHttpException('The requested page does not exist.');

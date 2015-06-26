@@ -114,4 +114,22 @@ class HallSearch extends Hall
 
         return $options;
     }
+
+    public static function findRowByAlias($category,$hall,$user_id=null){
+        if(is_null($user_id)){
+            return static::find()
+                ->innerJoin('category', 'hall.category_id=category.id')
+                ->andFilterWhere(['hall.alias'=>$hall])
+                ->andFilterWhere(['category.alias'=>$category])
+                ->one();
+        }else{
+            return static::find()
+                ->innerJoin('contacts', 'hall.contacts_id=contacts.id')
+                ->innerJoin('category', 'hall.category_id=category.id')
+                ->andFilterWhere(['hall.alias'=>$hall])
+                ->andFilterWhere(['category.alias'=>$category])
+                ->andFilterWhere(['contacts.user_id' => $user_id])
+                ->one();
+        }
+    }
 }

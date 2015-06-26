@@ -27,11 +27,11 @@ foreach ($metro as $item) {
 
 <div class='deals-item'>
     <?= ($model->favourite) ? "<div class='b-star i-shadow'><span class='i-icons i-star'></span></div>" : "" ?>
-    <a href='<?= (Url::toRoute(['hall/view', 'id' => $model->id])) ?>'><img
+    <a href='<?= (Url::toRoute(['hall/view', 'category' => $model->category->alias,'hall'=>$model->alias])) ?>'><img
             src='/<?= (isset($images[0])) ? $images[0]->slide : "uploads/noimage.jpg" ?>'></a>
 
     <div class='deals-item-description'>
-        <a href='<?= (Url::toRoute(['hall/view', 'id' => $model->id])) ?>'
+        <a href='<?= (Url::toRoute(['hall/view', 'category' => $model->category->alias,'hall'=>$model->alias])) ?>'
            class='deals-item-description__address'><?= $model->name; ?></a>
 
         <p class="size-small">

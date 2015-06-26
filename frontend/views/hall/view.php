@@ -26,7 +26,7 @@ foreach ($metro as $metro_item) {
 
 <div class="return_to_search">
     <span class="i-icons i-arrow"></span>
-    <a href="<?= (Url::toRoute('hall/search')) ?>" class="return_to_search__link">Назад к поиску</a>
+    <a href="<?= (Url::toRoute(['category','alias'=>$model->category->alias])) ?>" class="return_to_search__link">Назад к поиску</a>
 </div>
 <div class="hall">
 

@@ -62,7 +62,8 @@ class HallBehavior extends Behavior
             $this->owner->price_id = $price->id;
             $this->owner->contacts_id = $contacts->id;
 
-            $this->owner->name = $this->setName();
+            if(trim($this->owner->name)=='')
+                $this->owner->name = $this->setName();
 
             $this->owner->attribs = json_encode(
                 [

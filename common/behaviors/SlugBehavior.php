@@ -45,7 +45,8 @@ class SlugBehavior extends Behavior
         $attr = empty($this->owner->{$this->out_attribute}) ?
             $this->in_attribute : $this->out_attribute;
 
-        $this->owner->{$this->out_attribute} = $this->generateSlug($this->owner->{$attr});
+        if(trim($this->owner->{$this->out_attribute})=='')
+            $this->owner->{$this->out_attribute} = $this->generateSlug($this->owner->{$attr});
     }
 
     /**

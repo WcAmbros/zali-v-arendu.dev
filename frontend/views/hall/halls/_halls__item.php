@@ -49,7 +49,7 @@ foreach ($metro as $item) {
                 cмотреть на карте<span class='i-icons i-map'></span>
             </a>
         </div>
-        <p><strong><?= $model->square; ?></strong> м<sup>2</sup>, <strong><?= $model->price->min; ?></strong> руб./ час
+        <p class="deals-item__price"><strong><?= $model->square; ?></strong> м<sup>2</sup>, <strong><?= $model->price->min; ?></strong> руб./ час
         </p>
 
         <div id='map_<?= $model->id; ?>' style='width: 700px; height: 400px;display: none; '></div>

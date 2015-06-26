@@ -19,7 +19,7 @@ class TownSearch extends Town
     {
         return [
             [['id'], 'integer'],
-            [['name', 'subdomain'], 'safe'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -59,8 +59,7 @@ class TownSearch extends Town
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'subdomain', $this->subdomain]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

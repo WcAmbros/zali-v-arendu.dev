@@ -20,6 +20,8 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ *
+ * @property Profiles[] $profiles
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -87,6 +89,15 @@ class User extends ActiveRecord implements IdentityInterface
             self::STATUS_ACTIVE => 'Активен',
             self::STATUS_WAIT => 'Ожидает подтверждения',
         ];
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfiles()
+    {
+        return $this->hasMany(Profile::className(), ['user_id' => 'id']);
     }
 
     /**

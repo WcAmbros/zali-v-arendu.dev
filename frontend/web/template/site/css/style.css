@@ -160,7 +160,7 @@
     vertical-align: top;
     display: inline-block;
     width: 220px;
-    margin: 0 0 20px 0;
+    margin: 0 0 37px 0;
 }
 .deals-item img{
     width: 220px;
@@ -188,6 +188,9 @@
     display: inline-block;
     cursor: pointer;
     border-bottom: 1px dotted #669900;
+}
+.deals-item .deals-item__price{
+    margin-top: 3px;
 }
 .size-small{
     font-size: 12px;
@@ -870,4 +873,27 @@
 }
 .help-block {
     position: absolute;
+}
+.hall-likes-content{
+    font-size: 14px;
+    font-weight: bold;
+    float:right;
+}
+.hall-like{
+    margin-bottom: 10px;
+    background: #fff04c;
+}
+.hall-dislike{
+    background: #3060bf;
+}
+.hall-like .hall-likes-link{
+    color: #000;
+}
+.hall-dislike .hall-likes-link{
+    color: #fff;
+}
+.hall-likes-link{
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 12px 10px;
 }

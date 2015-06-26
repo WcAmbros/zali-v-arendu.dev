@@ -154,7 +154,6 @@ $(document).ready(function(){
 
             });
             data[$(this).attr('data-name')]=$(this).attr('data-value');
-            data['Search[category]']=$(this).attr('data-value');
 
         $.post(
             url,

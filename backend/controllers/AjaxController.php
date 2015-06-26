@@ -1,20 +1,19 @@
 <?php
-namespace frontend\controllers;
 
+namespace backend\controllers;
 
-use common\models\Profile;
+use backend\models\CategorySearch;
+use common\models\Category;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-
-class ProfileController extends Controller
+/**
+ * CategoryController implements the CRUD actions for Category model.
+ */
+class AjaxController extends Controller
 {
-
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return [
@@ -22,7 +21,6 @@ class ProfileController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -31,37 +29,34 @@ class ProfileController extends Controller
         ];
     }
 
-
     /**
-     * Updates an existing Profile model.
-     * If update is successful, the browser will be redirected to back page.
-     * @param integer $id
+     * Lists all Category models.
      * @return mixed
      */
-    public function actionUpdate()
+    public function actionIndex()
     {
-        $model = $this->findModel(Yii::$app->user->id);
+        $searchModel = new CategorySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if ($model->load(Yii::$app->request->post())&& $model->save()) {
-            return $this->goHome();
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
+
+    /**
 
 
     /**
-     * Finds the Profile model based on its primary key value.
+     * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Profile the loaded model
+     * @return Category the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Profile::findOne(['user_id' => $id])) !== null) {
+        if (($model = Category::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

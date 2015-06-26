@@ -44,8 +44,9 @@ return [
             'rules' => [
                 '<_a:(login|logout|signup|confirm-email|request-password-reset|reset-password)>' => 'user/<_a>',
                 '<_a:(about|contact|banner)>' => 'site/<_a>',
-                'profile' => 'profile/create',
-                'profile/<id:\d+>' => 'profile/update',
+                'zali'=>'hall/search',
+                '<category>/<hall>'=>'hall/category',
+                'profile' => 'profile/update',
                 'ajax/removeimage/<id:\d+>' => 'ajax/removeimage',
                 'hall/captcha'=>'hall/captcha',
                 '<_c:[\w\-]+>' => '<_c>/index',

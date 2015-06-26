@@ -56,9 +56,7 @@ class DistrictSearch extends District
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
-            'town_id' => $this->town_id,
-            'category_id' => $this->category_id,
+            'id' => $this->id
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

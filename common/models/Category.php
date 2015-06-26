@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $name
+ * @property string $alias
  * @property string $options
  *
  * @property Hall[] $halls
@@ -53,7 +54,18 @@ class Category extends \yii\db\ActiveRecord
     }
 
     public function beforeSave($insert){
-        $this->options=json_encode(Yii::$app->request->post()['Options']);
+        if(isset(Yii::$app->request->post()['Options']))
+            $this->options=json_encode(Yii::$app->request->post()['Options']);
         return parent::beforeSave($insert);
+    }
+
+    public function behaviors()
+    {
+        return [
+            'SlugBehavior' => [
+                'class' => 'common\behaviors\SlugBehavior',
+                'translit' => true
+            ]
+        ];
     }
 }

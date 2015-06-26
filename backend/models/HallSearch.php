@@ -103,8 +103,8 @@ class HallSearch extends Hall
             orFilterWhere(['like', 'category.name', $this->name])->
             orFilterWhere(['like', 'address.town', $this->name])->
             orFilterWhere(['like', 'user.username', $this->name])->
-                rightJoin('address','hall.address_id=address.id')->
-                rightJoin('category','hall.category_id=category.id')->
+                leftJoin('address','hall.address_id=address.id')->
+                leftJoin('category','hall.category_id=category.id')->
                 leftJoin('contacts','hall.contacts_id=contacts.id')->
                 leftJoin('user','contacts.user_id=user.id');
 

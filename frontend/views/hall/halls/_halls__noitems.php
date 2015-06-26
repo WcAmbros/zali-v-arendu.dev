@@ -14,7 +14,7 @@ $search=Yii::$app->session->get('search')['Search'];
 <?php
     foreach($results as $key=>$item){
         if($key=='district'&&$item)
-            echo "<div><p>Найдены похожие записи в районе города <strong>{$search[$key]}</strong>
+            echo "<div><p>Посмотреть залы в районе: <strong>{$search[$key]}</strong>
                 <a class='search-halls' href='/hall/search' data-name='Search[{$key}]' data-value='$search[$key]'>($item записей)</a></p></div>";
     }
 ?>

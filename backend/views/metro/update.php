@@ -7,8 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Metro: ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Metros', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id, 'district_id' => $model->district_id, 'district_town_id' => $model->district_town_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = $model->name;
 ?>
 <div class="metro-update">
 

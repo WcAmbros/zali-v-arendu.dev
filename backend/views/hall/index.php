@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a($model['name'],['update','id'=>$model['id']]);
                 },
             ],
+            'alias',
             [
                 'attribute'=>'category.name',
                 'label'=>'Категория'

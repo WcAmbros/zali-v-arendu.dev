@@ -7,8 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update District Category: ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'District Categories', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = $model->name;
 ?>
 <div class="district-category-update">
 

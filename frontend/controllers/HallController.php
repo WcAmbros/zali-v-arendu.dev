@@ -12,6 +12,7 @@ use common\models\Town;
 use frontend\models\HallSearch;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -21,6 +22,10 @@ use yii\web\NotFoundHttpException;
 class HallController extends Controller
 {
 
+    public function actionTest($category,$hall){
+        print_r(var_dump($category));
+        print_r(var_dump($hall));
+    }
     /**
      * @inheritdoc
      */
@@ -36,7 +41,7 @@ class HallController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['create','form', 'search', 'view', 'all','captcha'],
+                        'actions' => ['create','form', 'search', 'view', 'all','captcha','test'],
                         'allow' => true,
                     ],
                 ],
@@ -83,6 +88,9 @@ class HallController extends Controller
         ]);
     }
 
+    public function actionCategory($category,$hall){
+
+    }
     /**
      * @inheritdoc
      */
@@ -96,22 +104,20 @@ class HallController extends Controller
             $post = Yii::$app->session->get('search');
         }
 
+        $post=ArrayHelper::merge(['Search'=>['category'=>'','district'=>'','metro'=>'']],$post);//Заполняем недостающие поля
+
         $hall = new HallSearch();
 
         $query = $hall->search($post);
         $pages = $hall->searchPagination($query);
 
-        $models = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
+        $models = $query->offset($pages->offset)->limit($pages->limit)->all();
 
         if(empty($models)){
             foreach($post['Search'] as $key=>$item){
                 $new_search=['category'=>$post['Search']['category']];
                 $new_search[$key]=$item;
-                    $result[$key]=count($hall->search(
-                        ['Search'=>$new_search]
-                    )->all());
+                $result[$key]=count($hall->search(['Search'=>$new_search])->all());
             }
             Yii::$app->session->set('no_items', $result);
         }

@@ -62,9 +62,6 @@ class AddressSearch extends Address
         $query->andFilterWhere(['like', 'town', $this->town])
             ->andFilterWhere(['like', 'district', $this->district])
             ->andFilterWhere(['like', 'street', $this->street])
-            ->andFilterWhere(['like', 'house', $this->house])
-            ->andFilterWhere(['like', 'block', $this->block])
-            ->andFilterWhere(['like', 'comment', $this->comment])
             ->andFilterWhere(['like', 'metro', $this->metro]);
 
         return $dataProvider;

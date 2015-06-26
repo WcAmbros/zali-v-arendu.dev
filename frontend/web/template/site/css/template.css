@@ -51,7 +51,9 @@ input,textarea,select{
 }
 .header-content-logo-link__label,
 .header-content-town__label,
-.header-content-user__label
+.header-content-user__label,
+.login,
+.signup
 {
     font-weight: bold;
     color: #3060bf;
@@ -208,11 +210,11 @@ input,textarea,select{
     margin: 30px 0 0 169px;
 }
 .footer-copy{
+    font-size: 11px;
     margin: 33px 0 0 0;
     float: right;
 }
 .footer-copy-link{
     color: #fff;
-    font-size: 11px;
 }
 

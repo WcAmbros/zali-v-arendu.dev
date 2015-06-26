@@ -105,3 +105,23 @@
     z-index: -1;
     content: '';
 }
+.i-like_black{
+    width: 15px;
+    height: 15px;
+    background-position: -224px 0;
+}
+.i-like_white{
+    width: 15px;
+    height: 15px;
+    background-position: -243px 0;
+}
+.i-dislike_black{
+    width: 15px;
+    height: 15px;
+    background-position: -284px 0;
+}
+.i-dislike_white{
+    width: 15px;
+    height: 15px;
+    background-position: -263px 0;
+}

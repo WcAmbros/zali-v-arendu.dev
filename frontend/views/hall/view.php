@@ -60,6 +60,10 @@ foreach ($metro as $metro_item) {
         <div class="hall-content-banner">
             <div class="hall-content-banner__example">Реклама</div>
         </div>
+        <div class="hall-likes-content">
+            <div class="hall-like"><a href="#like" class="hall-likes-link"><span class="i-icons i-like_black"></span> 1 258</a></div>
+            <div class="hall-dislike"><a href="#dislike" class="hall-likes-link"><span class="i-icons i-dislike_white"></span> 1</a></div>
+        </div>
         <div>
             <?php
             echo "<p><strong class='hall-content__deals'>$model->square</strong> м<sup>2</sup>, <strong class='hall-content__deals'>{$model->price->min}</strong> руб./ час</p>"

@@ -118,6 +118,14 @@ class CategoryController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionOptions($id){
+        $model=$this->findModel($id);
+        $list=json_decode($model->options,true);
+        return $this->renderAjax('ajax/options',[
+            'options'=>Options::find()->where('id IN ('.implode(',',$list).')')->asArray()->all()
+        ]);
+    }
+
     /**
      * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -133,4 +141,5 @@ class CategoryController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

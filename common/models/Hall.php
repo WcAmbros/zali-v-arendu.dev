@@ -11,6 +11,7 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $name
+ * @property string $alias
  * @property string $attribs
  * @property integer $square
  * @property string $images
@@ -226,12 +227,10 @@ class Hall extends \yii\db\ActiveRecord
             ],
 
             TimestampBehavior::className(),
-//            'SlugBehavior' => [
-//                'class' => 'common\behaviors\SlugBehavior',
-//                'in_attribute' => 'name',
-//                'out_attribute' => 'slug',
-//                'translit' => true
-//            ]
+            'SlugBehavior' => [
+                'class' => 'common\behaviors\SlugBehavior',
+                'translit' => true
+            ]
         ];
     }
 

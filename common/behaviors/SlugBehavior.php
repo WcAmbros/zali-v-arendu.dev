@@ -12,7 +12,7 @@ use yii\helpers\Inflector;
  * Class Slug
  * @package common\behaviors
  */
-class Slug extends Behavior
+class SlugBehavior extends Behavior
 {
     /**
      * @var string

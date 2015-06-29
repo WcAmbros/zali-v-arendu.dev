@@ -63,6 +63,7 @@ class HallImageBehavior extends ImageBehavior
 
 
         $i = 0;
+
         foreach ($files as $file) {
             if ($file && $file->name && ($i++) < $this->maxFileCount) {
                 $model->{$this->fileAttribute} = $file;
@@ -72,7 +73,7 @@ class HallImageBehavior extends ImageBehavior
             }
         }
 
-        if(empty($this->list))
+        if($model->isNewRecord)
             $this->list[] = $this->getDefaultList();
 
         $this->owner->images = $this->list;

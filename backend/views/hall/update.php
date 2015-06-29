@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model common\models\Hall */
 /* @var $params array */
 
-$this->title = 'Update Hall: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Halls', 'url' => ['index']];
+$this->title = 'Обновить: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Залы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->name;
 
 ?>

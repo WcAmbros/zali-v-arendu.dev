@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $searchModel backend\models\OptionsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Options';
+$this->title = 'Опции зала';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="options-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Options', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

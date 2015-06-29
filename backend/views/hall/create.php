@@ -7,8 +7,8 @@ use yii\helpers\Html;
 /* @var $model common\models\Hall */
 /* @var $params array */
 
-$this->title = 'Create Hall';
-$this->params['breadcrumbs'][] = ['label' => 'Halls', 'url' => ['index']];
+$this->title = 'Создать';
+$this->params['breadcrumbs'][] = ['label' => 'Залы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hall-create">

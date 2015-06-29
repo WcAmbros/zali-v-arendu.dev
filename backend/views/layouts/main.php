@@ -26,30 +26,30 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => Yii::$app->params['name'],
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'Hall', 'url' => ['/hall/index']],
-                ['label' => 'Category', 'url' => ['/category/index']],
-                ['label' => 'Options', 'url' => ['/options/index']],
-                ['label'=>'Dictionary', 'items'=>[
-                    ['label' => 'Town', 'url' => ['/town/index']],
-                    ['label' => 'District', 'url' => ['/district/index']],
-                    ['label' => 'District-Category', 'url' => ['/district-category']],
-                    ['label' => 'Metro', 'url' => ['/metro/index']],
+                ['label' => 'Главная', 'url' => ['/site/index']],
+                ['label' => 'Залы', 'url' => ['/hall/index']],
+                ['label' => 'Категории зала', 'url' => ['/category/index']],
+                ['label' => 'Опции зала', 'url' => ['/options/index']],
+                ['label'=>'Справочники', 'items'=>[
+                    ['label' => 'Город', 'url' => ['/town/index']],
+                    ['label' => 'Район', 'url' => ['/district/index']],
+                    ['label' => 'Категории районов', 'url' => ['/district-category']],
+                    ['label' => 'Метро', 'url' => ['/metro/index']],
                 ]],
-                ['label' => 'User', 'url' => ['/user/index']],
+                ['label' => 'Пользователи', 'url' => ['/user/index']],
             ];
             if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+                $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
             } else {
                 $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];

@@ -21,7 +21,6 @@ foreach ($metro as $metro_item) {
         $metro_current = $metro_item;
     }
 }
-
 ?>
 
 <div class="return_to_search">

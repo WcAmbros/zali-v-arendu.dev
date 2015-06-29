@@ -13,7 +13,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = 'Залы в аренду';
+$this->title = Yii::$app->params['name'];
 
 ?>
 <div class="main">

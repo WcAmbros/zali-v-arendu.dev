@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $searchModel backend\models\MetroSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Metros';
+$this->title = 'Метро';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="metro-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Metro', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Options */
 
-$this->title = 'Update Options: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Options', 'url' => ['index']];
+$this->title = 'Обновить: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Опции зала', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->name;
 ?>
 <div class="options-update">

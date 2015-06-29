@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Metro */
 
-$this->title = 'Update Metro: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Metros', 'url' => ['index']];
+$this->title = 'Обновить: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Метро', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->name;
 ?>
 <div class="metro-update">

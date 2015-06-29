@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Town */
 
-$this->title = 'Update Town: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Towns', 'url' => ['index']];
+$this->title = 'Обновить: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Города', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->name;
 ?>
 <div class="town-update">

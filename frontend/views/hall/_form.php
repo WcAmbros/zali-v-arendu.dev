@@ -146,7 +146,7 @@ if (!$model->isNewRecord) {
                     foreach ($images as $key => $image) {
                         print "
                         <div class='modal-hall-form-params-album-content-item'>
-                            <a class='modal-hall-form-params-album-content-image-remove i-icons i-close_black' href='#' onclick='album.removeImage(this)'></a>
+                            <a data-index='$key' class='modal-hall-form-params-album-content-image-remove i-icons i-close_black' href='#' onclick='album.removeImage(this)'></a>
                             <img class='modal-hall-form-params-album-content-item__img' src='/$image->slide'>
                         </div>
                         \n";

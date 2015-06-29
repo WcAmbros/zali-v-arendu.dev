@@ -23,7 +23,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'district_id') ?>
 
-    <?= $form->field($model, 'district_town_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

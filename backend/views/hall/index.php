@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var  \common\models\Hall $model*/
 
-$this->title = 'Halls';
+$this->title = 'Залы';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Hall', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php \yii\widgets\Pjax::begin(); ?>
     <?= GridView::widget([

@@ -106,7 +106,6 @@ class HallController extends Controller
         $post=ArrayHelper::merge(['Search'=>['category'=>'','district'=>'','metro'=>'']],$post);//Заполняем недостающие поля
 
         $hall = new HallSearch();
-
         $query = $hall->search($post);
         $pages = $hall->searchPagination($query);
 
@@ -120,7 +119,9 @@ class HallController extends Controller
             }
             Yii::$app->session->set('no_items', $result);
         }
+        $category=Category::find()->where(['alias'=>$alias])->one();
 
+        $list=json_decode($category->options,true);
         return $this->render('search', [
             'models' => $models,
             'pages' => $pages,
@@ -128,6 +129,12 @@ class HallController extends Controller
             'category' => Category::find()->all(),
             'district' => District::findAllDistrict(),
             'metro' => Metro::find()->all(),
+            'search_params'=>[
+                'square'=>$hall->getParamsSquare($post),
+                'price'=>$hall->getParamsPrice($post),
+                'floor'=>Floor::find()->all(),
+                'options'=>Options::find()->where('id IN ('.implode(',',$list).')')->all(),
+            ]
         ]);
     }
 

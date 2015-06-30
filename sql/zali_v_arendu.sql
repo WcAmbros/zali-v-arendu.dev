@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Июн 11 2015 г., 15:42
+-- Время создания: Июн 30 2015 г., 14:11
 -- Версия сервера: 5.6.23-1~dotdeb.3
 -- Версия PHP: 5.4.40-1~dotdeb+wheezy.1
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `block` varchar(45) DEFAULT NULL,
   `comment` mediumtext,
   `metro` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `address`
@@ -218,7 +218,40 @@ INSERT INTO `address` (`id`, `town`, `district`, `street`, `house`, `block`, `co
 (176, 'Санкт-Петербург', 'Калининский', 'ул. Кантемировская', '39', '', '', 'Лесная'),
 (177, 'Санкт-Петербург', 'Кировский', 'ул.Васи Алексеева', '9', '1', '', 'Кировский завод'),
 (178, 'Санкт-Петербург', 'Выборгский', 'пр. Культуры', '41', '', '', 'Проспект Просвещения'),
-(179, 'Санкт-Петербург', 'Невский', 'Дальневосточный', '71', '', '', 'Улица Дыбенко');
+(179, 'Санкт-Петербург', 'Невский', 'Дальневосточный', '71', '', '', 'Улица Дыбенко'),
+(180, 'Санкт-Петербург', 'Петроградский', NULL, '100', '2', '', 'Звенигородская'),
+(181, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '100', '', '', 'Ломоносовская'),
+(182, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '71', '', '', 'Улица Дыбенко'),
+(183, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '71', '', '', 'Улица Дыбенко'),
+(184, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '71', '', '', 'Улица Дыбенко'),
+(185, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '71', '', '', 'Улица Дыбенко'),
+(186, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '71', '', '', 'Улица Дыбенко'),
+(187, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '71', '', '', 'Улица Дыбенко'),
+(188, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '71', '', '', 'Улица Дыбенко'),
+(189, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '100', '', '', 'Ломоносовская'),
+(190, 'Санкт-Петербург', 'Невский', 'Дальневосточный проспект', '10', '', '', 'Улица Дыбенко'),
+(191, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(192, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(193, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(194, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(195, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(196, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(197, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(198, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
+(199, 'Санкт-Петербург', 'Петроградский', 'Чкаловский', '15', '', '', 'Чкаловская'),
+(200, 'Санкт-Петербург', 'Петроградский', 'Чкаловский', '15', '', '', 'Чкаловская'),
+(201, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
+(202, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(203, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(204, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(205, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(206, 'Санкт-Петербург', 'Центральный', 'Казанская', '7', '', '', ''),
+(207, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
+(208, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
+(209, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
+(210, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
+(211, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская'),
+(212, 'Санкт-Петербург', 'Петроградский', 'Планерная', '20', '', '', 'Петроградская');
 
 -- --------------------------------------------------------
 
@@ -228,21 +261,23 @@ INSERT INTO `address` (`id`, `town`, `district`, `street`, `house`, `block`, `co
 
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
+  `options` text
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `category`
 --
 
-INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Танцевальный зал'),
-(2, 'Спортивный зал'),
-(3, 'Ледовый зал'),
-(4, 'Конференц зал'),
-(5, 'Йога'),
-(6, 'Единоборства'),
-(7, 'Акробатика');
+INSERT INTO `category` (`id`, `name`, `alias`, `options`) VALUES
+(1, 'Танцевальный зал', 'tancevalnyj-zal', '["1","3","4","6","7","9","48"]'),
+(2, 'Спортивный зал', 'sportivnyj-zal', '["3","4","5","17","24","25","26","27","28","38","39"]'),
+(3, 'Ледовый зал', 'ledovyj-zal', '["4","5","17","18","19","20","21","22","23"]'),
+(4, 'Конференц зал', 'konferenc-zal', '["29","30","31","32"]'),
+(5, 'Йога', 'joga', '["1","3","4","5","9"]'),
+(6, 'Единоборства', 'edinoborstva', '["3","4","5","10","11","12","13","14","15","16"]'),
+(7, 'Акробатика', 'akrobatika', '["3","4","5","12","40","41","42","43","44","45","46","47"]');
 
 -- --------------------------------------------------------
 
@@ -256,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `email` varchar(45) DEFAULT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `contacts`
@@ -440,7 +475,37 @@ INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `user_id`) VALUES
 (175, '', '', '', 2),
 (176, 'Юлия Викторовна', '', '9232241', 2),
 (177, 'Фитнес Хаус', '', '6100606', 2),
-(178, 'Тестер', 'test@sup.ru', '79112494689', 2);
+(178, 'Тестер', 'test@sup.ru', '79112494689', 2),
+(179, 'Тестер', 'test@sup.ru', '79112494689', 2),
+(180, NULL, NULL, NULL, 1),
+(181, NULL, NULL, NULL, 1),
+(182, NULL, NULL, NULL, 1),
+(183, NULL, NULL, NULL, 1),
+(184, 'Тестер', 'test@sup.ru', '+7 (912) 253-75-88', 1),
+(185, 'Тестер', 'test@sup.ru', '+7 (912) 253-75-88', 1),
+(186, 'Тестер', 'test@sup.ru', '+7 (912) 253-75-88', 1),
+(187, '', '', '79112494689', 2),
+(188, '', '', '79112494689', 2),
+(189, '', '', '79112494689', 2),
+(190, 'Тестер', '', '79112494689', 2),
+(191, 'Тестер', '', '79112494689', 2),
+(192, 'Тестер', '', '79112494689', 2),
+(193, 'Тестер', '', '79112494689', 2),
+(194, '', '', '79626962222', 2),
+(195, 'Тестер', '', '79522234322', 2),
+(196, 'Тестер', '', '79522234322', 2),
+(197, '', '', '79626962222', 2),
+(198, 'Тестер', '', '79112494689', 2),
+(199, 'Тестер', '', '79112494689', 2),
+(200, 'Тестер1', '', '79112494689', 2),
+(201, 'Тестер', '', '79112494689', 2),
+(202, 'Тестер', '', '79112494689', 2),
+(203, '', '', '79626962222', 2),
+(204, '', '', '79626962222', 2),
+(205, '', '', '79626962222', 2),
+(206, '', '', '79626962222', 2),
+(207, '', '', '79626962222', 2),
+(208, '', '', '79626962222', 2);
 
 -- --------------------------------------------------------
 
@@ -463,20 +528,20 @@ INSERT INTO `district` (`id`, `name`, `town_id`, `category_id`) VALUES
 (1, 'Адмиралтейский', 1, 1),
 (2, 'Василеостровский', 1, 1),
 (3, 'Всеволожский', 1, 2),
-(4, 'Выборгский', 1, 2),
+(4, 'Выборгский', 1, 1),
 (5, 'Калининский', 1, 1),
-(6, 'Кировский', 1, 2),
-(7, 'Колпинский', 1, 1),
+(6, 'Кировский', 1, 1),
+(7, 'Колпинский', 1, 2),
 (8, 'Красногвардейский', 1, 1),
 (9, 'Красносельский', 1, 1),
-(10, 'Кронштадтский', 1, 1),
-(11, 'Курортный', 1, 1),
+(10, 'Кронштадтский', 1, 2),
+(11, 'Курортный', 1, 2),
 (12, 'Московский', 1, 1),
 (13, 'Невский', 1, 1),
 (14, 'Петроградский', 1, 1),
-(15, 'Петродворцовый', 1, 1),
+(15, 'Петродворцовый', 1, 2),
 (16, 'Приморский', 1, 1),
-(17, 'Пушкинский', 1, 1),
+(17, 'Пушкинский', 1, 2),
 (18, 'Фрунзенский', 1, 1),
 (19, 'Центральный', 1, 1);
 
@@ -497,7 +562,7 @@ CREATE TABLE IF NOT EXISTS `district_category` (
 
 INSERT INTO `district_category` (`id`, `name`) VALUES
 (1, 'Санкт-Петербург'),
-(2, 'Ленобласть');
+(2, 'Пригороды и ленобласть');
 
 -- --------------------------------------------------------
 
@@ -535,6 +600,7 @@ INSERT INTO `floor` (`id`, `name`) VALUES
 CREATE TABLE IF NOT EXISTS `hall` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) DEFAULT NULL,
   `attribs` mediumtext,
   `square` int(11) DEFAULT '0',
   `favourite` int(11) DEFAULT '0',
@@ -555,185 +621,185 @@ CREATE TABLE IF NOT EXISTS `hall` (
 -- Дамп данных таблицы `hall`
 --
 
-INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `favourite`, `comments`, `created_at`, `updated_at`, `status`, `public`, `deleted`, `floor_id`, `price_id`, `address_id`, `category_id`, `contacts_id`) VALUES
-(1, 'Чкаловский, д.15', '{"images":[{"original":"uploads\\/hall\\/YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg","thumbnail":"uploads\\/hall\\/th_YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg","slide":"uploads\\/hall\\/slide_YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg"},{"original":"uploads\\/hall\\/kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg","thumbnail":"uploads\\/hall\\/th_kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg","slide":"uploads\\/hall\\/slide_kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432641783, 1434027699, 1, 1, 0, 1, 2, 2, 1, 1),
-(2, 'Планерная, д.20', '{"images":[{"thumbnail":"uploads\\/hall\\/thumbnail_fLaWZP2UHCFgPiXD2INnROpp9lQBkjjw.jpg","slide":"uploads\\/hall\\/slide_fLaWZP2UHCFgPiXD2INnROpp9lQBkjjw.jpg","original":"uploads\\/hall\\/fLaWZP2UHCFgPiXD2INnROpp9lQBkjjw.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg","slide":"uploads\\/hall\\/slide_wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg","original":"uploads\\/hall\\/wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg","slide":"uploads\\/hall\\/slide_B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg","original":"uploads\\/hall\\/B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg","slide":"uploads\\/hall\\/slide_NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg","original":"uploads\\/hall\\/NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg","slide":"uploads\\/hall\\/slide_Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg","original":"uploads\\/hall\\/Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg","slide":"uploads\\/hall\\/slide_Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg","original":"uploads\\/hall\\/Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg","slide":"uploads\\/hall\\/slide_X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg","original":"uploads\\/hall\\/X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg","slide":"uploads\\/hall\\/slide_oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg","original":"uploads\\/hall\\/oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg","slide":"uploads\\/hall\\/slide_rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg","original":"uploads\\/hall\\/rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432642186, 1433847781, 1, 1, 0, 5, 3, 3, 1, 2),
-(3, 'Казанская, д.7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 1, '', 1432642445, 1432642445, 1, 1, 0, 1, 4, 4, 1, 3),
-(4, 'Звенигородская, д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 75, 1, '', 1432642637, 1432642637, 1, 1, 0, 1, 5, 5, 1, 4),
-(5, 'Обводного канала, д.134, к.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432647746, 1432647746, 1, 1, 0, 2, 6, 6, 1, 5),
-(6, 'Стародеревенская ул., д.34, к.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 62, 1, 'маты, степы', 1432647746, 1432647746, 1, 1, 0, 1, 7, 7, 1, 6),
-(7, 'Банковский переулок, д.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 1, '', 1432647746, 1432647746, 1, 1, 0, 2, 8, 8, 1, 7),
-(8, 'Казанская ул., д.', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 1, 'ауд.: 515, 516 и 517', 1432647746, 1432647746, 1, 1, 0, 2, 9, 9, 1, 8),
-(9, 'Большая Пушкарская ул., д.35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 1, 'ауд.: 418 и 517', 1432647746, 1432647746, 1, 1, 0, 1, 10, 10, 1, 9),
-(10, 'пр. Солидарности, д.9, к.3', '{"images":[],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, 'фитболы', 1432647746, 1433770401, 1, 1, 0, 2, 11, 11, 1, 10),
-(11, 'Мытнинская ул., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 80, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 12, 12, 1, 11),
-(12, 'Ефимова ул., д.4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 13, 13, 1, 12),
-(13, 'Кузнечный переулок, д.6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'проектор, стулья, мешки-кресла, большой зал разделяется ролетами на два', 1432647746, 1432647746, 1, 1, 0, 1, 14, 14, 1, 13),
-(14, 'Чайковского ул., д.', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 15, 15, 1, 14),
-(15, 'пр. Стачек, д.138', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 16, 16, 1, 15),
-(16, 'Большой Проспект ВО, д.89', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 17, 17, 1, 16),
-(17, 'Кузнецовская ул., д.22', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 18, 18, 1, 17),
-(18, 'пр. Юрия Гагарина, д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'кофемашина, солярий', 1432647746, 1432647746, 1, 1, 0, 1, 19, 19, 1, 18),
-(19, 'Казначейская ул., д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 20, 20, 1, 19),
-(20, 'пр. Обуховской обороны, д.72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 21, 21, 1, 20),
-(21, 'Лиговский пр., д.115', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 22, 22, 1, 21),
-(22, 'Большая Пушкарская ул., д.20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 110, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 23, 23, 1, 22),
-(23, 'Казанская ул., д.7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 80, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 24, 24, 1, 23),
-(24, 'Лесной пр., д.59/7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 25, 25, 1, 24),
-(25, 'Светлановский пр., д.54В', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 26, 26, 1, 25),
-(26, 'Светлановский пр., д.54В', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 27, 27, 1, 26),
-(27, 'пр. Стачек, д.138', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 28, 28, 1, 27),
-(28, 'ул.Васи Алексеева, д.9, к.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 69, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 29, 29, 1, 28),
-(29, 'пр. Стачек, д.111', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 30, 30, 1, 29),
-(30, 'ул. Кузнецовская, д.22', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 31, 31, 1, 30),
-(31, 'ул. Кузнецовская, д.22', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 32, 32, 1, 31),
-(32, 'ул. Кузнецовская, д.22', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 33, 33, 1, 32),
-(33, 'ул. Иркутская, д.4А', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 34, 34, 1, 33),
-(34, 'Лиговский пр., д.254', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 64, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 35, 35, 1, 34),
-(35, 'Большая Пушкарская ул., д.8', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 36, 36, 1, 35),
-(36, 'ул. Мира, д.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 66, 0, '"БЦ ""Троицкий"", оф. 328"', 1432647746, 1432647746, 1, 1, 0, 1, 37, 37, 1, 36),
-(37, 'ул. Мира, д.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 38, 38, 1, 37),
-(38, 'ул. Мира, д.3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 39, 39, 1, 38),
-(39, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 40, 40, 1, 39),
-(40, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 150, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 41, 41, 1, 40),
-(41, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 42, 42, 1, 41),
-(42, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 43, 43, 1, 42),
-(43, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 44, 44, 1, 43),
-(44, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 45, 45, 1, 44),
-(45, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 110, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 46, 46, 1, 45),
-(46, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 47, 47, 1, 46),
-(47, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 63, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 48, 48, 1, 47),
-(48, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 49, 49, 1, 48),
-(49, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 50, 50, 1, 49),
-(50, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 51, 51, 1, 50),
-(51, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 150, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 52, 52, 1, 51),
-(52, 'Дибуновская ул., д.50', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 53, 53, 1, 52),
-(53, 'Лиговский пр., д.50, к.6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 54, 54, 1, 53),
-(54, 'Лиговский пр., д.50, к.6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 55, 55, 1, 54),
-(55, 'наб. Обводного канала, д.93а', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 56, 56, 1, 55),
-(56, 'ул. Рубинштейна, д.6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 57, 57, 1, 56),
-(57, 'Невский пр., д.142/2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 58, 58, 1, 57),
-(58, 'ул. Марата, д.47 - 49', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, 'вход во дворе со Свечного пер., 16', 1432647746, 1432647746, 1, 1, 0, 1, 59, 59, 1, 58),
-(59, 'ул. Марата, д.47 - 49', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, 'вход во дворе со Свечного пер., 16', 1432647746, 1432647746, 1, 1, 0, 1, 60, 60, 1, 59),
-(60, 'ул. Марата, д.47 - 49', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, 'вход во дворе со Свечного пер., 16', 1432647746, 1432647746, 1, 1, 0, 1, 61, 61, 1, 60),
-(61, 'ул. Звенигородская, д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 110, 0, 'школа Shake City', 1432647746, 1432647746, 1, 1, 0, 1, 62, 62, 1, 61),
-(62, 'ул. Чайковского, д.12', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 63, 63, 1, 62),
-(63, 'Невский пр., д.124', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 64, 64, 1, 63),
-(64, 'Невский пр., д.124', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 65, 65, 1, 64),
-(65, 'Суворовский пр., д.39', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 66, 66, 1, 65),
-(66, 'Суворовский пр., д.39', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 67, 67, 1, 66),
-(67, 'Суворовский пр., д.39', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 20, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 68, 68, 1, 67),
-(68, 'ул. Звенигородская, д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 98, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 69, 69, 1, 68),
-(69, 'ул. Звенигородская, д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 70, 70, 1, 69),
-(70, 'ул. Звенигородская, д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 71, 71, 1, 70),
-(71, 'пр. Энгельса, д.33, к.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 72, 72, 1, 71),
-(72, 'пр. Обуховской Обороны, д.72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 151, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 73, 73, 1, 72),
-(73, 'пр. Обуховской Обороны, д.72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 74, 74, 1, 73),
-(74, 'пр. Обуховской Обороны, д.72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 33, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 75, 75, 1, 74),
-(75, 'ул. Коллонтай, д.31, к.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 76, 76, 1, 75),
-(76, 'Пулковское ш., д.35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 77, 77, 1, 76),
-(77, 'Аптекарская наб., д.20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 78, 78, 1, 77),
-(78, 'Аптекарская наб., д.20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 79, 79, 1, 78),
-(79, 'пр. Коломяжский, д.17', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 80, 80, 1, 79),
-(80, 'ул. Я. Гашека, д.17А', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 81, 81, 1, 80),
-(81, 'пр. Стачек, д.170', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 82, 82, 1, 81),
-(82, 'ул. Цветочная, д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 83, 83, 1, 82),
-(83, 'ул. Стародеревенская, д.34б', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 84, 84, 1, 83),
-(84, 'ул. Стародеревенская, д.34б', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 85, 85, 1, 84),
-(85, 'ул. Гаванская, д.34', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 86, 86, 1, 85),
-(86, 'пр. Обуховской обороны, д.119б', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 130, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 87, 87, 1, 86),
-(87, 'пр. Обуховской обороны, д.72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 151, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 88, 88, 1, 87),
-(88, 'пр. Обуховской обороны, д.72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 89, 89, 1, 88),
-(89, 'пр. Обуховской обороны, д.72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 34, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 90, 90, 1, 89),
-(90, 'Чкаловский пр., д.', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 91, 91, 1, 90),
-(91, 'Искровский пр., д.12', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 92, 92, 1, 91),
-(92, 'ул. Малая Морская, д.20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 75, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 93, 93, 1, 92),
-(93, 'ул. Малая Морская, д.20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 94, 94, 1, 93),
-(94, 'ул. Малая Морская, д.20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 95, 95, 1, 94),
-(95, 'Клинский пр., д.25', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 96, 96, 1, 95),
-(96, 'Клинский пр., д.25', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 97, 97, 1, 96),
-(97, 'Загородный пр., д.35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 98, 98, 1, 97),
-(98, '8-я линия В.О., д.33', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 99, 99, 1, 98),
-(99, '8-я линия В.О., д.33', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 100, 100, 1, 99),
-(100, '8-я линия В.О., д.33', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 101, 101, 1, 100),
-(101, 'Октябрьская наб., д.149', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 102, 102, 1, 101),
-(102, '8-я Красноармейская ул., д.5', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 55, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 103, 103, 1, 102),
-(103, '7-я Советская ул., д.16', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 104, 104, 1, 103),
-(104, '7-я Советская ул., д.16', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 105, 105, 1, 104),
-(105, '7-я Советская ул., д.16', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 106, 106, 1, 105),
-(106, '7-я Советская ул., д.16', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 107, 107, 1, 106),
-(107, '12-я Красноармейская ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 108, 108, 1, 107),
-(108, '12-я Красноармейская ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 109, 109, 1, 108),
-(109, '10-я Красноармейская ул., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 110, 110, 1, 109),
-(110, '10-я Красноармейская ул., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 111, 111, 1, 110),
-(111, 'Подъездной пер., д.10', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 112, 112, 1, 111),
-(112, 'Подъездной пер., д.10', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 15, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 113, 113, 1, 112),
-(113, 'наб. Обводного канала, д.136', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '"БЦ ""Красный Треугольник"", комн. 350, 346"', 1432647746, 1432647746, 1, 1, 0, 1, 114, 114, 1, 113),
-(114, 'Клинский пр., д.25', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 115, 115, 1, 114),
-(115, 'Звенигородская ул., д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 116, 116, 1, 115),
-(116, 'Звенигородская ул., д.11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 117, 117, 1, 116),
-(117, 'Выборгское ш., д.34', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 2, 118, 118, 1, 117),
-(118, 'пр. Ленинский, д.160', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 6, 120, 120, 6, 119),
-(119, 'ул. Коллонтай, д.31, к.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 121, 121, 6, 120),
-(120, 'Пулковское ш., д.35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 1, 122, 122, 6, 121),
-(121, 'Выборгское ш., д.13', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 160, 0, 'стулья (около 200 шт.), столы (4 шт.), проектор, экран, реллинги, вешалки, гардероб', 1432647746, 1432647746, 1, 1, 0, 7, 123, 123, 4, 122),
-(122, 'Большой Сампсониевский пр., д.28а', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'мягкие стулья, флип-чарт 90 см х 60 см с принадлежностями (фломастеры, блокнот) — 1000 руб./день., Wi-Fi, канцелярия (листы формата А4 и карандаши)', 1432647746, 1432647746, 1, 1, 0, 7, 124, 124, 4, 123),
-(123, 'Средний пр-т В.О., д.48/27', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'Флипчарт, Блокнот для флипчарта(5 листов), Вода, Стаканы, Мультимедийные системы с USB входом, Ручки, карандаши, маркеры, Кулер с горячей и холодной водой, Стулья, столы, Бумага, кухня, душ, два туалета, гардероб, Wi Fi', 1432647746, 1432647746, 1, 1, 0, 7, 125, 125, 4, 124),
-(124, 'наб. Канала Грибоедова', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, 'стулья, сцена', 1432647746, 1432647746, 1, 1, 0, 7, 126, 126, 4, 125),
-(125, 'ул. Марата, д.5', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'проектор, большой проекционный экран – 2000 руб./день., компьютер – 350 руб./день., Wi-fi, Флип-чарт, планшеты для бумаги, Услуги полиграфии', 1432647746, 1432647746, 1, 1, 0, 7, 127, 127, 4, 126),
-(126, 'наб. реки Смоленки, д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 160, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 128, 128, 4, 127),
-(127, 'наб. реки Смоленки, д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 160, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 129, 129, 4, 128),
-(128, 'Конюшенная площадь, д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 36, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 130, 130, 4, 129),
-(129, 'Конюшенная площадь, д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, 'стулья, столы, подушки, маты, проектор', 1432647746, 1432647746, 1, 1, 0, 7, 131, 131, 4, 130),
-(130, 'наб. Обводного канала, д.199', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'гостевая парковка, кафе-столовая, Wi-Fi (до 100 Мбит/сек.)', 1432647746, 1432647746, 1, 1, 0, 7, 132, 132, 4, 131),
-(131, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 1250, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 133, 133, 4, 132),
-(132, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 198, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 134, 134, 4, 133),
-(133, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 93, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 135, 135, 4, 134),
-(134, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 59, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 136, 136, 4, 135),
-(135, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 59, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 137, 137, 4, 136),
-(136, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 138, 138, 4, 137),
-(137, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 26, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 139, 139, 4, 138),
-(138, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 140, 140, 4, 139),
-(139, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 141, 141, 4, 140),
-(140, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 48, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 142, 142, 4, 141),
-(141, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 143, 143, 4, 142),
-(142, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 134, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 144, 144, 4, 143),
-(143, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 145, 145, 4, 144),
-(144, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 38, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 146, 146, 4, 145),
-(145, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 74, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 147, 147, 4, 146),
-(146, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 49, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 148, 148, 4, 147),
-(147, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 115, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 149, 149, 4, 148),
-(148, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 150, 150, 4, 149),
-(149, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 151, 151, 4, 150),
-(150, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 152, 152, 4, 151),
-(151, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 153, 153, 4, 152),
-(152, 'Лермонтовский пр-т, д.43/1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 105, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 154, 154, 4, 153),
-(153, 'пр. Пятилеток, д.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 155, 155, 3, 154),
-(154, 'Малый пр. В.О., д.66', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 156, 156, 3, 155),
-(155, 'ул. Потемкинская, д.4-a', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 157, 157, 3, 156),
-(156, 'ул. Аккуратова, д.7а', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 158, 158, 3, 157),
-(157, 'пр-т Обуховской Обороны, д.130', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 159, 159, 3, 158),
-(158, 'Приозерское ш., д.54 км.', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 160, 160, 3, 159),
-(159, 'ул. Ждановская, д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 7, 161, 161, 3, 160),
-(160, 'Чкаловский пр., д.15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 162, 162, 2, 161),
-(161, 'Ждановская наб., д.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 9, 163, 163, 2, 162),
-(162, 'Лиговский пр., д.289', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 12, 164, 164, 2, 163),
-(163, 'Лиговский пр., д.246', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 165, 165, 2, 164),
-(164, 'наб. Обводного Канала, д.136', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 166, 166, 2, 165),
-(165, 'Мориса Тореза пр., д.71', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 9, 167, 167, 2, 166),
-(166, 'Мориса Тореза пр., д.71', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 11, 168, 168, 2, 167),
-(167, 'Политехническая ул., д.27', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 169, 169, 2, 168),
-(168, 'Муринский парк, д.', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 170, 170, 2, 169),
-(169, 'Маршала Говорова ул., д.35, к.2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 12, 171, 171, 2, 170),
-(170, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 172, 172, 2, 171),
-(171, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 173, 173, 2, 172);
-INSERT INTO `hall` (`id`, `name`, `attribs`, `square`, `favourite`, `comments`, `created_at`, `updated_at`, `status`, `public`, `deleted`, `floor_id`, `price_id`, `address_id`, `category_id`, `contacts_id`) VALUES
-(172, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 174, 174, 2, 173),
-(173, 'Авиационная ул., д.19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 8, 175, 175, 2, 174),
-(174, 'ул. Кантемировская, д.39', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 12, 176, 176, 2, 175),
-(175, 'ул.Васи Алексеева, д.9, к.1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 4, 177, 177, 2, 176),
-(176, 'пр. Культуры, д.41', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1432647746, 1, 1, 0, 6, 178, 178, 6, 177),
-(177, 'Дальневосточный, д.71', '{"images":[{"original":"uploads\\/hall\\/Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg","thumbnail":"uploads\\/hall\\/th_Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg","slide":"uploads\\/hall\\/slide_Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg"},{"original":"uploads\\/hall\\/mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg","thumbnail":"uploads\\/hall\\/th_mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg","slide":"uploads\\/hall\\/slide_mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg"},{"original":"uploads\\/hall\\/wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg","thumbnail":"uploads\\/hall\\/th_wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg","slide":"uploads\\/hall\\/slide_wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg"}],"geocode":"[\\"59.8778098\\",\\"30.4770474\\"]"}', 0, 0, NULL, 1433766152, 1433769784, 1, 1, 0, 1, 179, 179, 1, 178);
+INSERT INTO `hall` (`id`, `name`, `alias`, `attribs`, `square`, `favourite`, `comments`, `created_at`, `updated_at`, `status`, `public`, `deleted`, `floor_id`, `price_id`, `address_id`, `category_id`, `contacts_id`) VALUES
+(1, 'Чкаловский, д.15', 'ckalovskij-d15', '{"images":[{"original":"uploads\\/hall\\/YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg","thumbnail":"uploads\\/hall\\/th_YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg","slide":"uploads\\/hall\\/slide_YCdUXHM6igQSpKBMo4XXiNpdch4jShyE.jpg"},{"original":"uploads\\/hall\\/kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg","thumbnail":"uploads\\/hall\\/th_kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg","slide":"uploads\\/hall\\/slide_kDHq5-BmWdkmupyuyUqvYc7zR7O0s8BU.jpg"}],"geocode":"[\\"30.295503\\",\\"59.962462\\"]"}', 35, 1, '', 1432641783, 1435664681, 1, 1, 0, 1, 210, 200, 1, 196),
+(2, 'Планерная, д.20', 'planernaa-d20', '{"images":[{"thumbnail":"uploads\\/hall\\/thumbnail_wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg","slide":"uploads\\/hall\\/slide_wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg","original":"uploads\\/hall\\/wJrMg8fsE4bFRrPw5_8pkWkfTVr6Gq17.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg","slide":"uploads\\/hall\\/slide_B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg","original":"uploads\\/hall\\/B7FXwWSD9JoLflOXyyudhrXPJtXlagfS.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg","slide":"uploads\\/hall\\/slide_NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg","original":"uploads\\/hall\\/NY2DpW6Nx5ZtTJ3UOPPcqAVb_KGGMGPR.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg","slide":"uploads\\/hall\\/slide_Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg","original":"uploads\\/hall\\/Iclez4WWvb4aMI9SOvDWONqPJtACuXxy.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg","slide":"uploads\\/hall\\/slide_Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg","original":"uploads\\/hall\\/Uj43xJrewHuHk2fxtRcR6hBjXriVO_F7.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg","slide":"uploads\\/hall\\/slide_X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg","original":"uploads\\/hall\\/X02cPJBoF2c8DdXoNOHJ1aIAWZahSRVb.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg","slide":"uploads\\/hall\\/slide_oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg","original":"uploads\\/hall\\/oBf9gFoAks3s_wp87MHc2SaY8V2SoRxf.jpg"},{"thumbnail":"uploads\\/hall\\/thumbnail_rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg","slide":"uploads\\/hall\\/slide_rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg","original":"uploads\\/hall\\/rsFVhEi59U-yNmMKAcUMalfQy7q78SYR.jpg"}],"geocode":"[\\"30.233672\\",\\"60.000461\\"]"}', 35, 1, '', 1432642186, 1435565614, 1, 1, 0, 5, 222, 212, 1, 208),
+(3, 'Казанская, д.7', 'kazanskaa-d7', '{"images":[{"original":"uploads\\/hall\\/6kZIwWI1JT0hXbAWzvKALgaaDRq8A9gl.jpg","thumbnail":"uploads\\/hall\\/thumbnail_6kZIwWI1JT0hXbAWzvKALgaaDRq8A9gl.jpg","slide":"uploads\\/hall\\/slide_6kZIwWI1JT0hXbAWzvKALgaaDRq8A9gl.jpg"},{"original":"uploads\\/hall\\/mkwewAkCrwvKUK-JWJOWzixgskhDgify.jpg","thumbnail":"uploads\\/hall\\/thumbnail_mkwewAkCrwvKUK-JWJOWzixgskhDgify.jpg","slide":"uploads\\/hall\\/slide_mkwewAkCrwvKUK-JWJOWzixgskhDgify.jpg"},{"original":"uploads\\/hall\\/pJWnG0u7Ok-5fty2_C_9XM1RrWob5Rq_.jpg","thumbnail":"uploads\\/hall\\/thumbnail_pJWnG0u7Ok-5fty2_C_9XM1RrWob5Rq_.jpg","slide":"uploads\\/hall\\/slide_pJWnG0u7Ok-5fty2_C_9XM1RrWob5Rq_.jpg"},{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"},{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"},{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"},{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"},{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"},{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"30.321186\\",\\"59.932437\\"]"}', 50, 1, '', 1432642445, 1435563880, 1, 1, 0, 1, 216, 206, 1, 202),
+(4, 'Звенигородская, д.11', 'zvenigorodskaa-d11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 75, 1, '', 1432642637, 1435240287, 1, 1, 0, 1, 5, 5, 1, 4),
+(5, 'Обводного канала, д.134, к.3', 'obvodnogo-kanala-d134-k3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 1, '', 1432647746, 1435240287, 1, 1, 0, 2, 6, 6, 1, 5),
+(6, 'Стародеревенская ул., д.34, к.1', 'staroderevenskaa-ul-d34-k1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 62, 1, 'маты, степы', 1432647746, 1435240287, 1, 1, 0, 1, 7, 7, 1, 6),
+(7, 'Банковский переулок, д.3', 'bankovskij-pereulok-d3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 1, '', 1432647746, 1435240287, 1, 1, 0, 2, 8, 8, 1, 7),
+(8, 'Казанская ул., д.', 'kazanskaa-ul-d', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 1, 'ауд.: 515, 516 и 517', 1432647746, 1435240287, 1, 1, 0, 2, 9, 9, 1, 8),
+(9, 'Большая Пушкарская ул., д.35', 'bolsaa-puskarskaa-ul-d35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 1, 'ауд.: 418 и 517', 1432647746, 1435240287, 1, 1, 0, 1, 10, 10, 1, 9),
+(10, 'пр. Солидарности, д.9, к.3', 'pr-solidarnosti-d9-k3', '{"images":[],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, 'фитболы', 1432647746, 1435240287, 1, 1, 0, 2, 11, 11, 1, 10),
+(11, 'Мытнинская ул., д.15', 'mytninskaa-ul-d15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 80, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 12, 12, 1, 11),
+(12, 'Ефимова ул., д.4', 'efimova-ul-d4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 13, 13, 1, 12),
+(13, 'Кузнечный переулок, д.6', 'kuznecnyj-pereulok-d6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'проектор, стулья, мешки-кресла, большой зал разделяется ролетами на два', 1432647746, 1435240287, 1, 1, 0, 1, 14, 14, 1, 13),
+(14, 'Чайковского ул., д.', 'cajkovskogo-ul-d', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 15, 15, 1, 14),
+(15, 'пр. Стачек, д.138', 'pr-stacek-d138', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 16, 16, 1, 15),
+(16, 'Большой Проспект ВО, д.89', 'bolsoj-prospekt-vo-d89', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 17, 17, 1, 16),
+(17, 'Кузнецовская ул., д.22', 'kuznecovskaa-ul-d22', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 18, 18, 1, 17),
+(18, 'пр. Юрия Гагарина, д.19', 'pr-uria-gagarina-d19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'кофемашина, солярий', 1432647746, 1435240287, 1, 1, 0, 1, 19, 19, 1, 18),
+(19, 'Казначейская ул., д.2', 'kaznacejskaa-ul-d2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 20, 20, 1, 19),
+(20, 'пр. Обуховской обороны, д.72', 'pr-obuhovskoj-oborony-d72', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 21, 21, 1, 20),
+(21, 'Лиговский пр., д.115', 'ligovskij-pr-d115', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 22, 22, 1, 21),
+(22, 'Большая Пушкарская ул., д.20', 'bolsaa-puskarskaa-ul-d20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 110, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 23, 23, 1, 22),
+(23, 'Казанская ул., д.7', 'kazanskaa-ul-d7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 80, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 24, 24, 1, 23),
+(24, 'Лесной пр., д.59/7', 'lesnoj-pr-d597', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1435240287, 1, 1, 0, 4, 25, 25, 1, 24),
+(25, 'Светлановский пр., д.54В', 'svetlanovskij-pr-d54v', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 26, 26, 1, 25),
+(26, 'Светлановский пр., д.54В', 'svetlanovskij-pr-d54v-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 27, 27, 1, 26),
+(27, 'пр. Стачек, д.138', 'pr-stacek-d138-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 28, 28, 1, 27),
+(28, 'ул.Васи Алексеева, д.9, к.1', 'ulvasi-alekseeva-d9-k1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 69, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 29, 29, 1, 28),
+(29, 'пр. Стачек, д.111', 'pr-stacek-d111', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 30, 30, 1, 29),
+(30, 'ул. Кузнецовская, д.22', 'ul-kuznecovskaa-d22', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 31, 31, 1, 30),
+(31, 'ул. Кузнецовская, д.22', 'ul-kuznecovskaa-d22-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 32, 32, 1, 31),
+(32, 'ул. Кузнецовская, д.22', 'ul-kuznecovskaa-d22-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 33, 33, 1, 32),
+(33, 'ул. Иркутская, д.4А', 'ul-irkutskaa-d4a', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 34, 34, 1, 33),
+(34, 'Лиговский пр., д.254', 'ligovskij-pr-d254', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 64, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 35, 35, 1, 34),
+(35, 'Большая Пушкарская ул., д.8', 'bolsaa-puskarskaa-ul-d8', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1435240287, 1, 1, 0, 4, 36, 36, 1, 35),
+(36, 'ул. Мира, д.3', 'ul-mira-d3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 66, 0, '"БЦ ""Троицкий"", оф. 328"', 1432647746, 1435240287, 1, 1, 0, 1, 37, 37, 1, 36),
+(37, 'ул. Мира, д.3', 'ul-mira-d3-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 38, 38, 1, 37),
+(38, 'ул. Мира, д.3', 'ul-mira-d3-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 39, 39, 1, 38),
+(39, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 40, 40, 1, 39),
+(40, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 150, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 41, 41, 1, 40),
+(41, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1435240287, 1, 1, 0, 1, 42, 42, 1, 41),
+(42, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 43, 43, 1, 42),
+(43, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-5', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 44, 44, 1, 43),
+(44, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 45, 45, 1, 44),
+(45, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 110, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 46, 46, 1, 45),
+(46, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-8', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 47, 47, 1, 46),
+(47, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-9', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 63, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 48, 48, 1, 47),
+(48, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-10', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 49, 49, 1, 48),
+(49, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 50, 50, 1, 49),
+(50, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-12', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 51, 51, 1, 50),
+(51, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-13', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 150, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 52, 52, 1, 51),
+(52, 'Дибуновская ул., д.50', 'dibunovskaa-ul-d50', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 53, 53, 1, 52),
+(53, 'Лиговский пр., д.50, к.6', 'ligovskij-pr-d50-k6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1435240287, 1, 1, 0, 2, 54, 54, 1, 53),
+(54, 'Лиговский пр., д.50, к.6', 'ligovskij-pr-d50-k6-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 55, 55, 1, 54),
+(55, 'наб. Обводного канала, д.93а', 'nab-obvodnogo-kanala-d93a', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 56, 56, 1, 55),
+(56, 'ул. Рубинштейна, д.6', 'ul-rubinstejna-d6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 57, 57, 1, 56),
+(57, 'Невский пр., д.142/2', 'nevskij-pr-d1422', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 58, 58, 1, 57),
+(58, 'ул. Марата, д.47 - 49', 'ul-marata-d47-49', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, 'вход во дворе со Свечного пер., 16', 1432647746, 1435240288, 1, 1, 0, 1, 59, 59, 1, 58),
+(59, 'ул. Марата, д.47 - 49', 'ul-marata-d47-49-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, 'вход во дворе со Свечного пер., 16', 1432647746, 1435240288, 1, 1, 0, 1, 60, 60, 1, 59),
+(60, 'ул. Марата, д.47 - 49', 'ul-marata-d47-49-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, 'вход во дворе со Свечного пер., 16', 1432647746, 1435240288, 1, 1, 0, 1, 61, 61, 1, 60),
+(61, 'ул. Звенигородская, д.11', 'ul-zvenigorodskaa-d11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 110, 0, 'школа Shake City', 1432647746, 1435240288, 1, 1, 0, 1, 62, 62, 1, 61),
+(62, 'ул. Чайковского, д.12', 'ul-cajkovskogo-d12', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 63, 63, 1, 62),
+(63, 'Невский пр., д.124', 'nevskij-pr-d124', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 64, 64, 1, 63),
+(64, 'Невский пр., д.124', 'nevskij-pr-d124-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 65, 65, 1, 64),
+(65, 'Суворовский пр., д.39', 'suvorovskij-pr-d39', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 66, 66, 1, 65),
+(66, 'Суворовский пр., д.39', 'suvorovskij-pr-d39-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 67, 67, 1, 66),
+(67, 'Суворовский пр., д.39', 'suvorovskij-pr-d39-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 20, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 68, 68, 1, 67),
+(68, 'ул. Звенигородская, д.11', 'ul-zvenigorodskaa-d11-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 98, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 69, 69, 1, 68),
+(69, 'ул. Звенигородская, д.11', 'ul-zvenigorodskaa-d11-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 70, 70, 1, 69),
+(70, 'ул. Звенигородская, д.11', 'ul-zvenigorodskaa-d11-4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 71, 71, 1, 70),
+(71, 'пр. Энгельса, д.33, к.1', 'pr-engelsa-d33-k1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 72, 72, 1, 71),
+(72, 'пр. Обуховской Обороны, д.72', 'pr-obuhovskoj-oborony-d72-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 151, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 73, 73, 1, 72),
+(73, 'пр. Обуховской Обороны, д.72', 'pr-obuhovskoj-oborony-d72-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 74, 74, 1, 73),
+(74, 'пр. Обуховской Обороны, д.72', 'pr-obuhovskoj-oborony-d72-4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 33, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 75, 75, 1, 74),
+(75, 'ул. Коллонтай, д.31, к.1', 'ul-kollontaj-d31-k1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 76, 76, 1, 75),
+(76, 'Пулковское ш., д.35', 'pulkovskoe-s-d35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 77, 77, 1, 76),
+(77, 'Аптекарская наб., д.20', 'aptekarskaa-nab-d20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 78, 78, 1, 77),
+(78, 'Аптекарская наб., д.20', 'aptekarskaa-nab-d20-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 79, 79, 1, 78),
+(79, 'пр. Коломяжский, д.17', 'pr-kolomazskij-d17', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 80, 80, 1, 79),
+(80, 'ул. Я. Гашека, д.17А', 'ul-a-gaseka-d17a', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 81, 81, 1, 80),
+(81, 'пр. Стачек, д.170', 'pr-stacek-d170', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 82, 82, 1, 81),
+(82, 'ул. Цветочная, д.19', 'ul-cvetocnaa-d19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 83, 83, 1, 82),
+(83, 'ул. Стародеревенская, д.34б', 'ul-staroderevenskaa-d34b', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 84, 84, 1, 83),
+(84, 'ул. Стародеревенская, д.34б', 'ul-staroderevenskaa-d34b-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 85, 85, 1, 84),
+(85, 'ул. Гаванская, д.34', 'ul-gavanskaa-d34', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 86, 86, 1, 85),
+(86, 'пр. Обуховской обороны, д.119б', 'pr-obuhovskoj-oborony-d119b', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 130, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 87, 87, 1, 86),
+(87, 'пр. Обуховской обороны, д.72', 'pr-obuhovskoj-oborony-d72-5', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 151, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 88, 88, 1, 87),
+(88, 'пр. Обуховской обороны, д.72', 'pr-obuhovskoj-oborony-d72-6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 89, 89, 1, 88),
+(89, 'пр. Обуховской обороны, д.72', 'pr-obuhovskoj-oborony-d72-7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 34, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 90, 90, 1, 89),
+(90, 'Чкаловский пр., д.', 'ckalovskij-pr-d', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 91, 91, 1, 90),
+(91, 'Искровский пр., д.12', 'iskrovskij-pr-d12', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 92, 92, 1, 91),
+(92, 'ул. Малая Морская, д.20', 'ul-malaa-morskaa-d20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 75, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 93, 93, 1, 92),
+(93, 'ул. Малая Морская, д.20', 'ul-malaa-morskaa-d20-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 94, 94, 1, 93),
+(94, 'ул. Малая Морская, д.20', 'ul-malaa-morskaa-d20-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 95, 95, 1, 94),
+(95, 'Клинский пр., д.25', 'klinskij-pr-d25', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 96, 96, 1, 95),
+(96, 'Клинский пр., д.25', 'klinskij-pr-d25-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 70, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 97, 97, 1, 96),
+(97, 'Загородный пр., д.35', 'zagorodnyj-pr-d35', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 98, 98, 1, 97),
+(98, '8-я линия В.О., д.33', '8-a-linia-vo-d33', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 99, 99, 1, 98),
+(99, '8-я линия В.О., д.33', '8-a-linia-vo-d33-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 100, 100, 1, 99),
+(100, '8-я линия В.О., д.33', '8-a-linia-vo-d33-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 30, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 101, 101, 1, 100),
+(101, 'Октябрьская наб., д.149', 'oktabrskaa-nab-d149', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 40, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 102, 102, 1, 101),
+(102, '8-я Красноармейская ул., д.5', '8-a-krasnoarmejskaa-ul-d5', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 55, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 103, 103, 1, 102),
+(103, '7-я Советская ул., д.16', '7-a-sovetskaa-ul-d16', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 90, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 104, 104, 1, 103),
+(104, '7-я Советская ул., д.16', '7-a-sovetskaa-ul-d16-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 105, 105, 1, 104),
+(105, '7-я Советская ул., д.16', '7-a-sovetskaa-ul-d16-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 45, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 106, 106, 1, 105),
+(106, '7-я Советская ул., д.16', '7-a-sovetskaa-ul-d16-4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 65, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 107, 107, 1, 106),
+(107, '12-я Красноармейская ул., д.19', '12-a-krasnoarmejskaa-ul-d19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 108, 108, 1, 107),
+(108, '12-я Красноармейская ул., д.19', '12-a-krasnoarmejskaa-ul-d19-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 109, 109, 1, 108),
+(109, '10-я Красноармейская ул., д.15', '10-a-krasnoarmejskaa-ul-d15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435664546, 1, 1, 0, 1, 110, 110, 1, 109),
+(110, '10-я Красноармейская ул., д.15', '10-a-krasnoarmejskaa-ul-d15-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435325114, 1, 1, 0, 1, 111, 111, 1, 110),
+(111, 'Подъездной пер., д.10', 'podezdnoj-per-d10', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 112, 112, 1, 111),
+(112, 'Подъездной пер., д.10', 'podezdnoj-per-d10-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 15, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 113, 113, 1, 112),
+(113, 'наб. Обводного канала, д.136', 'nab-obvodnogo-kanala-d136', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '"БЦ ""Красный Треугольник"", комн. 350, 346"', 1432647746, 1435240288, 1, 1, 0, 1, 114, 114, 1, 113),
+(114, 'Клинский пр., д.25', 'klinskij-pr-d25-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 115, 115, 1, 114),
+(115, 'Звенигородская ул., д.11', 'zvenigorodskaa-ul-d11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 116, 116, 1, 115),
+(116, 'Звенигородская ул., д.11', 'zvenigorodskaa-ul-d11-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 117, 117, 1, 116),
+(117, 'Выборгское ш., д.34', 'vyborgskoe-s-d34', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 2, 118, 118, 1, 117),
+(118, 'пр. Ленинский, д.160', 'pr-leninskij-d160', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 6, 120, 120, 6, 119),
+(119, 'ул. Коллонтай, д.31, к.1', 'ul-kollontaj-d31-k1-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 121, 121, 6, 120),
+(120, 'Пулковское ш., д.35', 'pulkovskoe-s-d35-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 1, 122, 122, 6, 121),
+(121, 'Выборгское ш., д.13', 'vyborgskoe-s-d13', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 160, 0, 'стулья (около 200 шт.), столы (4 шт.), проектор, экран, реллинги, вешалки, гардероб', 1432647746, 1435240288, 1, 1, 0, 7, 123, 123, 4, 122),
+(122, 'Большой Сампсониевский пр., д.28а', 'bolsoj-sampsonievskij-pr-d28a', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'мягкие стулья, флип-чарт 90 см х 60 см с принадлежностями (фломастеры, блокнот) — 1000 руб./день., Wi-Fi, канцелярия (листы формата А4 и карандаши)', 1432647746, 1435240288, 1, 1, 0, 7, 124, 124, 4, 123),
+(123, 'Средний пр-т В.О., д.48/27', 'srednij-pr-t-vo-d4827', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'Флипчарт, Блокнот для флипчарта(5 листов), Вода, Стаканы, Мультимедийные системы с USB входом, Ручки, карандаши, маркеры, Кулер с горячей и холодной водой, Стулья, столы, Бумага, кухня, душ, два туалета, гардероб, Wi Fi', 1432647746, 1435240288, 1, 1, 0, 7, 125, 125, 4, 124),
+(124, 'наб. Канала Грибоедова', 'nab-kanala-griboedova', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 60, 0, 'стулья, сцена', 1432647746, 1435240288, 1, 1, 0, 7, 126, 126, 4, 125),
+(125, 'ул. Марата, д.5', 'ul-marata-d5', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'проектор, большой проекционный экран – 2000 руб./день., компьютер – 350 руб./день., Wi-fi, Флип-чарт, планшеты для бумаги, Услуги полиграфии', 1432647746, 1435240288, 1, 1, 0, 7, 127, 127, 4, 126),
+(126, 'наб. реки Смоленки, д.2', 'nab-reki-smolenki-d2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 160, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 128, 128, 4, 127),
+(127, 'наб. реки Смоленки, д.2', 'nab-reki-smolenki-d2-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 160, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 129, 129, 4, 128),
+(128, 'Конюшенная площадь, д.2', 'konusennaa-plosad-d2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 36, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 130, 130, 4, 129),
+(129, 'Конюшенная площадь, д.2', 'konusennaa-plosad-d2-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, 'стулья, столы, подушки, маты, проектор', 1432647746, 1435240288, 1, 1, 0, 7, 131, 131, 4, 130),
+(130, 'наб. Обводного канала, д.199', 'nab-obvodnogo-kanala-d199', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, 'гостевая парковка, кафе-столовая, Wi-Fi (до 100 Мбит/сек.)', 1432647746, 1435240288, 1, 1, 0, 7, 132, 132, 4, 131),
+(131, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 1250, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 133, 133, 4, 132),
+(132, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 198, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 134, 134, 4, 133),
+(133, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 93, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 135, 135, 4, 134),
+(134, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 59, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 136, 136, 4, 135),
+(135, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-5', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 59, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 137, 137, 4, 136),
+(136, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-6', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 138, 138, 4, 137),
+(137, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-7', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 26, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 139, 139, 4, 138),
+(138, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-8', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 100, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 140, 140, 4, 139),
+(139, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-9', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 35, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 141, 141, 4, 140),
+(140, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-10', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 48, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 142, 142, 4, 141),
+(141, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-11', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 143, 143, 4, 142),
+(142, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-12', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 134, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 144, 144, 4, 143),
+(143, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-13', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 50, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 145, 145, 4, 144),
+(144, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-14', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 38, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 146, 146, 4, 145),
+(145, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-15', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 74, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 147, 147, 4, 146),
+(146, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-16', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 49, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 148, 148, 4, 147),
+(147, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-17', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 115, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 149, 149, 4, 148),
+(148, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-18', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 150, 150, 4, 149),
+(149, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 151, 151, 4, 150),
+(150, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-20', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 152, 152, 4, 151),
+(151, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-21', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 72, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 153, 153, 4, 152),
+(152, 'Лермонтовский пр-т, д.43/1', 'lermontovskij-pr-t-d431-22', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 105, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 154, 154, 4, 153),
+(153, 'пр. Пятилеток, д.1', 'pr-patiletok-d1', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 155, 155, 3, 154),
+(154, 'Малый пр. В.О., д.66', 'malyj-pr-vo-d66', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 156, 156, 3, 155);
+INSERT INTO `hall` (`id`, `name`, `alias`, `attribs`, `square`, `favourite`, `comments`, `created_at`, `updated_at`, `status`, `public`, `deleted`, `floor_id`, `price_id`, `address_id`, `category_id`, `contacts_id`) VALUES
+(155, 'ул. Потемкинская, д.4-a', 'ul-potemkinskaa-d4-a', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 157, 157, 3, 156),
+(156, 'ул. Аккуратова, д.7а', 'ul-akkuratova-d7a', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 158, 158, 3, 157),
+(157, 'пр-т Обуховской Обороны, д.130', 'pr-t-obuhovskoj-oborony-d130', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 159, 159, 3, 158),
+(158, 'Приозерское ш., д.54 км.', 'priozerskoe-s-d54-km', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 160, 160, 3, 159),
+(159, 'ул. Ждановская, д.2', 'ul-zdanovskaa-d2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 7, 161, 161, 3, 160),
+(160, 'Чкаловский пр., д.15', 'ckalovskij-pr-d15-14', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 162, 162, 2, 161),
+(161, 'Ждановская наб., д.2', 'zdanovskaa-nab-d2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 9, 163, 163, 2, 162),
+(162, 'Лиговский пр., д.289', 'ligovskij-pr-d289', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 12, 164, 164, 2, 163),
+(163, 'Лиговский пр., д.246', 'ligovskij-pr-d246', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 165, 165, 2, 164),
+(164, 'наб. Обводного Канала, д.136', 'nab-obvodnogo-kanala-d136-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 166, 166, 2, 165),
+(165, 'Мориса Тореза пр., д.71', 'morisa-toreza-pr-d71', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 9, 167, 167, 2, 166),
+(166, 'Мориса Тореза пр., д.71', 'morisa-toreza-pr-d71-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 11, 168, 168, 2, 167),
+(167, 'Политехническая ул., д.27', 'politehniceskaa-ul-d27', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 169, 169, 2, 168),
+(168, 'Муринский парк, д.', 'murinskij-park-d', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 170, 170, 2, 169),
+(169, 'Маршала Говорова ул., д.35, к.2', 'marsala-govorova-ul-d35-k2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 12, 171, 171, 2, 170),
+(170, 'Авиационная ул., д.19', 'aviacionnaa-ul-d19', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 172, 172, 2, 171),
+(171, 'Авиационная ул., д.19', 'aviacionnaa-ul-d19-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 173, 173, 2, 172),
+(172, 'Авиационная ул., д.19', 'aviacionnaa-ul-d19-3', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 174, 174, 2, 173),
+(173, 'Авиационная ул., д.19', 'aviacionnaa-ul-d19-4', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 8, 175, 175, 2, 174),
+(174, 'ул. Кантемировская, д.39', 'ul-kantemirovskaa-d39', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 12, 176, 176, 2, 175),
+(175, 'ул.Васи Алексеева, д.9, к.1', 'ulvasi-alekseeva-d9-k1-2', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 4, 177, 177, 2, 176),
+(176, 'пр. Культуры, д.41', 'pr-kultury-d41', '{"images":[{"original":"uploads\\/noimage.jpg","thumbnail":"uploads\\/th_noimage.jpg","slide":"uploads\\/slide_noimage.jpg"}],"geocode":"[\\"59.9626638\\",\\"30.2957918\\"]"}', 0, 0, '', 1432647746, 1435240288, 1, 1, 0, 6, 178, 178, 6, 177),
+(177, 'Дальневосточный, д.71', 'dalnevostocnyj-d71', '{"images":[{"original":"uploads\\/hall\\/Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg","thumbnail":"uploads\\/hall\\/th_Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg","slide":"uploads\\/hall\\/slide_Ul2FtgG2OWzS5Se33dmrqOLqlPCw0uMn.jpg"},{"original":"uploads\\/hall\\/mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg","thumbnail":"uploads\\/hall\\/th_mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg","slide":"uploads\\/hall\\/slide_mCBDY-qPdTyZO_mtlctyxboiXXLZKPWg.jpg"},{"original":"uploads\\/hall\\/wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg","thumbnail":"uploads\\/hall\\/th_wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg","slide":"uploads\\/hall\\/slide_wMzSX2x051X10hjcSriwZ5X4rIzfqkVF.jpg"}],"geocode":"[\\"59.8778098\\",\\"30.4770474\\"]"}', 0, 0, NULL, 1433766152, 1435240288, 1, 1, 0, 1, 179, 179, 1, 178);
 
 -- --------------------------------------------------------
 
@@ -752,6 +818,8 @@ CREATE TABLE IF NOT EXISTS `hall_has_options` (
 
 INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (1, 1),
+(2, 1),
+(3, 1),
 (6, 1),
 (7, 1),
 (8, 1),
@@ -806,7 +874,6 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (111, 1),
 (112, 1),
 (177, 1),
-(1, 2),
 (1, 3),
 (4, 3),
 (6, 3),
@@ -903,6 +970,7 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (119, 3),
 (120, 3),
 (176, 3),
+(2, 4),
 (10, 4),
 (21, 4),
 (22, 4),
@@ -1000,6 +1068,8 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (115, 6),
 (116, 6),
 (177, 6),
+(2, 7),
+(3, 7),
 (29, 7),
 (56, 7),
 (67, 7),
@@ -1008,7 +1078,6 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (104, 7),
 (109, 7),
 (177, 7),
-(1, 8),
 (6, 8),
 (40, 8),
 (77, 8),
@@ -1344,7 +1413,9 @@ INSERT INTO `hall_has_options` (`hall_id`, `options_id`) VALUES
 (149, 37),
 (150, 37),
 (151, 37),
-(152, 37);
+(152, 37),
+(2, 48),
+(3, 48);
 
 -- --------------------------------------------------------
 
@@ -1356,81 +1427,80 @@ CREATE TABLE IF NOT EXISTS `metro` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `attribs` mediumtext,
-  `district_id` int(11) NOT NULL,
-  `district_town_id` int(11) NOT NULL
+  `district_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `metro`
 --
 
-INSERT INTO `metro` (`id`, `name`, `attribs`, `district_id`, `district_town_id`) VALUES
-(1, 'Автово', '{"options":{"class":"i-metro_red"}}', 6, 1),
-(2, 'Адмиралтейская', '{"options":{"class":"i-metro_purple"}}', 1, 1),
-(3, 'Академическая', '{"options":{"class":"i-metro_red"}}', 5, 1),
-(4, 'Балтийская', '{"options":{"class":"i-metro_red"}}', 1, 1),
-(5, 'Бухарестская', '{"options":{"class":"i-metro_purple"}}', 18, 1),
-(6, 'Василеостровская', '{"options":{"class":"i-metro_green"}}', 2, 1),
-(7, 'Владимирская', '{"options":{"class":"i-metro_red"}}', 19, 1),
-(8, 'Волковская', '{"options":{"class":"i-metro_purple"}}', 18, 1),
-(9, 'Выборгская', '{"options":{"class":"i-metro_red"}}', 4, 1),
-(10, 'Горьковская', '{"options":{"class":"i-metro_blue"}}', 14, 1),
-(11, 'Гостиный двор', '{"options":{"class":"i-metro_green"}}', 19, 1),
-(12, 'Гражданский Проспект', '{"options":{"class":"i-metro_red"}}', 5, 1),
-(13, 'Девяткино', '{"options":{"class":"i-metro_red"}}', 3, 1),
-(14, 'Достоевская', '{"options":{"class":"i-metro_orange"}}', 19, 1),
-(15, 'Елизаровская', '{"options":{"class":"i-metro_green"}}', 13, 1),
-(16, 'Звёздная', '{"options":{"class":"i-metro_blue"}}', 12, 1),
-(17, 'Звенигородская', '{"options":{"class":"i-metro_purple"}}', 1, 1),
-(18, 'Кировский Завод', '{"options":{"class":"i-metro_red"}}', 6, 1),
-(19, 'Комендантский Проспект', '{"options":{"class":"i-metro_purple"}}', 16, 1),
-(20, 'Крестовский Остров', '{"options":{"class":"i-metro_purple"}}', 14, 1),
-(21, 'Купчино', '{"options":{"class":"i-metro_blue"}}', 18, 1),
-(22, 'Ладожская', '{"options":{"class":"i-metro_orange"}}', 8, 1),
-(23, 'Ленинский Проспект', '{"options":{"class":"i-metro_red"}}', 6, 1),
-(24, 'Лесная', '{"options":{"class":"i-metro_red"}}', 4, 1),
-(25, 'Лиговский Проспект', '{"options":{"class":"i-metro_orange"}}', 19, 1),
-(26, 'Ломоносовская', '{"options":{"class":"i-metro_green"}}', 13, 1),
-(27, 'Маяковская', '{"options":{"class":"i-metro_green"}}', 19, 1),
-(28, 'Международная', '{"options":{"class":"i-metro_purple"}}', 18, 1),
-(29, 'Московская', '{"options":{"class":"i-metro_blue"}}', 12, 1),
-(30, 'Московские Ворота', '{"options":{"class":"i-metro_blue"}}', 12, 1),
-(31, 'Нарвская', '{"options":{"class":"i-metro_red"}}', 6, 1),
-(32, 'Невский Проспект', '{"options":{"class":"i-metro_blue"}}', 19, 1),
-(33, 'Новочеркасская', '{"options":{"class":"i-metro_orange"}}', 8, 1),
-(34, 'Обводный Канал', '{"options":{"class":"i-metro_purple"}}', 18, 1),
-(35, 'Обухово', '{"options":{"class":"i-metro_green"}}', 13, 1),
-(36, 'Озерки', '{"options":{"class":"i-metro_blue"}}', 4, 1),
-(37, 'Парк Победы', '{"options":{"class":"i-metro_blue"}}', 12, 1),
-(38, 'Парнас', '{"options":{"class":"i-metro_blue"}}', 4, 1),
-(39, 'Петроградская', '{"options":{"class":"i-metro_blue"}}', 14, 1),
-(40, 'Пионерская', '{"options":{"class":"i-metro_blue"}}', 16, 1),
-(41, 'Площадь Александра Невского 1', '{"options":{"class":"i-metro_green"}}', 19, 1),
-(42, 'Площадь Александра Невского 2', '{"options":{"class":"i-metro_orange"}}', 19, 1),
-(43, 'Площадь Восстания', '{"options":{"class":"i-metro_red"}}', 19, 1),
-(44, 'Площадь Ленина', '{"options":{"class":"i-metro_red"}}', 5, 1),
-(45, 'Площадь Мужества', '{"options":{"class":"i-metro_red"}}', 5, 1),
-(46, 'Политехническая', '{"options":{"class":"i-metro_red"}}', 5, 1),
-(47, 'Приморская', '{"options":{"class":"i-metro_green"}}', 2, 1),
-(48, 'Пролетарская', '{"options":{"class":"i-metro_green"}}', 13, 1),
-(49, 'Проспект Большевиков', '{"options":{"class":"i-metro_orange"}}', 13, 1),
-(50, 'Проспект Ветеранов', '{"options":{"class":"i-metro_red"}}', 6, 1),
-(51, 'Проспект Просвещения', '{"options":{"class":"i-metro_blue"}}', 4, 1),
-(52, 'Пушкинская', '{"options":{"class":"i-metro_red"}}', 1, 1),
-(53, 'Рыбацкое', '{"options":{"class":"i-metro_green"}}', 13, 1),
-(54, 'Садовая', '{"options":{"class":"i-metro_purple"}}', 1, 1),
-(55, 'Сенная Площадь', '{"options":{"class":"i-metro_blue"}}', 1, 1),
-(56, 'Спасская', '{"options":{"class":"i-metro_orange"}}', 1, 1),
-(57, 'Спортивная', '{"options":{"class":"i-metro_purple"}}', 14, 1),
-(58, 'Старая Деревня', '{"options":{"class":"i-metro_purple"}}', 16, 1),
-(59, 'Технологический Институт', '{"options":{"class":"i-metro_red"}}', 1, 1),
-(60, 'Удельная', '{"options":{"class":"i-metro_blue"}}', 4, 1),
-(61, 'Улица Дыбенко', '{"options":{"class":"i-metro_orange"}}', 13, 1),
-(62, 'Фрунзенская', '{"options":{"class":"i-metro_blue"}}', 12, 1),
-(63, 'Чёрная Речка', '{"options":{"class":"i-metro_blue"}}', 16, 1),
-(64, 'Чернышевская', '{"options":{"class":"i-metro_red"}}', 19, 1),
-(65, 'Чкаловская', '{"options":{"class":"i-metro_purple"}}', 14, 1),
-(66, 'Электросила', '{"options":{"class":"i-metro_blue"}}', 12, 1);
+INSERT INTO `metro` (`id`, `name`, `attribs`, `district_id`) VALUES
+(1, 'Автово', '{"options":{"class":"i-metro_red"}}', 6),
+(2, 'Адмиралтейская', '{"options":{"class":"i-metro_purple"}}', 1),
+(3, 'Академическая', '{"options":{"class":"i-metro_red"}}', 5),
+(4, 'Балтийская', '{"options":{"class":"i-metro_red"}}', 1),
+(5, 'Бухарестская', '{"options":{"class":"i-metro_purple"}}', 18),
+(6, 'Василеостровская', '{"options":{"class":"i-metro_green"}}', 2),
+(7, 'Владимирская', '{"options":{"class":"i-metro_red"}}', 19),
+(8, 'Волковская', '{"options":{"class":"i-metro_purple"}}', 18),
+(9, 'Выборгская', '{"options":{"class":"i-metro_red"}}', 4),
+(10, 'Горьковская', '{"options":{"class":"i-metro_blue"}}', 14),
+(11, 'Гостиный двор', '{"options":{"class":"i-metro_green"}}', 19),
+(12, 'Гражданский Проспект', '{"options":{"class":"i-metro_red"}}', 5),
+(13, 'Девяткино', '{"options":{"class":"i-metro_red"}}', 3),
+(14, 'Достоевская', '{"options":{"class":"i-metro_orange"}}', 19),
+(15, 'Елизаровская', '{"options":{"class":"i-metro_green"}}', 13),
+(16, 'Звёздная', '{"options":{"class":"i-metro_blue"}}', 12),
+(17, 'Звенигородская', '{"options":{"class":"i-metro_purple"}}', 1),
+(18, 'Кировский Завод', '{"options":{"class":"i-metro_red"}}', 6),
+(19, 'Комендантский Проспект', '{"options":{"class":"i-metro_purple"}}', 16),
+(20, 'Крестовский Остров', '{"options":{"class":"i-metro_purple"}}', 14),
+(21, 'Купчино', '{"options":{"class":"i-metro_blue"}}', 18),
+(22, 'Ладожская', '{"options":{"class":"i-metro_orange"}}', 8),
+(23, 'Ленинский Проспект', '{"options":{"class":"i-metro_red"}}', 6),
+(24, 'Лесная', '{"options":{"class":"i-metro_red"}}', 4),
+(25, 'Лиговский Проспект', '{"options":{"class":"i-metro_orange"}}', 19),
+(26, 'Ломоносовская', '{"options":{"class":"i-metro_green"}}', 13),
+(27, 'Маяковская', '{"options":{"class":"i-metro_green"}}', 19),
+(28, 'Международная', '{"options":{"class":"i-metro_purple"}}', 18),
+(29, 'Московская', '{"options":{"class":"i-metro_blue"}}', 12),
+(30, 'Московские Ворота', '{"options":{"class":"i-metro_blue"}}', 12),
+(31, 'Нарвская', '{"options":{"class":"i-metro_red"}}', 6),
+(32, 'Невский Проспект', '{"options":{"class":"i-metro_blue"}}', 19),
+(33, 'Новочеркасская', '{"options":{"class":"i-metro_orange"}}', 8),
+(34, 'Обводный Канал', '{"options":{"class":"i-metro_purple"}}', 18),
+(35, 'Обухово', '{"options":{"class":"i-metro_green"}}', 13),
+(36, 'Озерки', '{"options":{"class":"i-metro_blue"}}', 4),
+(37, 'Парк Победы', '{"options":{"class":"i-metro_blue"}}', 12),
+(38, 'Парнас', '{"options":{"class":"i-metro_blue"}}', 4),
+(39, 'Петроградская', '{"options":{"class":"i-metro_blue"}}', 14),
+(40, 'Пионерская', '{"options":{"class":"i-metro_blue"}}', 16),
+(41, 'Площадь Александра Невского 1', '{"options":{"class":"i-metro_green"}}', 19),
+(42, 'Площадь Александра Невского 2', '{"options":{"class":"i-metro_orange"}}', 19),
+(43, 'Площадь Восстания', '{"options":{"class":"i-metro_red"}}', 19),
+(44, 'Площадь Ленина', '{"options":{"class":"i-metro_red"}}', 5),
+(45, 'Площадь Мужества', '{"options":{"class":"i-metro_red"}}', 5),
+(46, 'Политехническая', '{"options":{"class":"i-metro_red"}}', 5),
+(47, 'Приморская', '{"options":{"class":"i-metro_green"}}', 2),
+(48, 'Пролетарская', '{"options":{"class":"i-metro_green"}}', 13),
+(49, 'Проспект Большевиков', '{"options":{"class":"i-metro_orange"}}', 13),
+(50, 'Проспект Ветеранов', '{"options":{"class":"i-metro_red"}}', 6),
+(51, 'Проспект Просвещения', '{"options":{"class":"i-metro_blue"}}', 4),
+(52, 'Пушкинская', '{"options":{"class":"i-metro_red"}}', 1),
+(53, 'Рыбацкое', '{"options":{"class":"i-metro_green"}}', 13),
+(54, 'Садовая', '{"options":{"class":"i-metro_purple"}}', 1),
+(55, 'Сенная Площадь', '{"options":{"class":"i-metro_blue"}}', 1),
+(56, 'Спасская', '{"options":{"class":"i-metro_orange"}}', 1),
+(57, 'Спортивная', '{"options":{"class":"i-metro_purple"}}', 14),
+(58, 'Старая Деревня', '{"options":{"class":"i-metro_purple"}}', 16),
+(59, 'Технологический Институт', '{"options":{"class":"i-metro_red"}}', 1),
+(60, 'Удельная', '{"options":{"class":"i-metro_blue"}}', 4),
+(61, 'Улица Дыбенко', '{"options":{"class":"i-metro_orange"}}', 13),
+(62, 'Фрунзенская', '{"options":{"class":"i-metro_blue"}}', 12),
+(63, 'Чёрная Речка', '{"options":{"class":"i-metro_blue"}}', 16),
+(64, 'Чернышевская', '{"options":{"class":"i-metro_red"}}', 19),
+(65, 'Чкаловская', '{"options":{"class":"i-metro_purple"}}', 14),
+(66, 'Электросила', '{"options":{"class":"i-metro_blue"}}', 12);
 
 -- --------------------------------------------------------
 
@@ -1441,7 +1511,7 @@ INSERT INTO `metro` (`id`, `name`, `attribs`, `district_id`, `district_town_id`)
 CREATE TABLE IF NOT EXISTS `options` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `options`
@@ -1484,7 +1554,18 @@ INSERT INTO `options` (`id`, `name`) VALUES
 (34, 'Экран'),
 (35, 'Флипчарт'),
 (36, 'Компьютер'),
-(37, 'Организация мероприятий');
+(37, 'Организация мероприятий'),
+(38, 'Настольный тенис'),
+(39, 'Бадминтон'),
+(40, 'Спортивные батуты'),
+(41, 'Паралоновая яма'),
+(42, 'Гимнастические дорожки'),
+(43, 'Татами'),
+(44, 'Снаряды'),
+(45, 'Слеклайн'),
+(46, 'Джамперы'),
+(47, 'Пого-стик'),
+(48, 'Интерьер для съемки промо-видео');
 
 -- --------------------------------------------------------
 
@@ -1496,7 +1577,7 @@ CREATE TABLE IF NOT EXISTS `price` (
   `id` int(11) NOT NULL,
   `min` int(11) DEFAULT NULL,
   `max` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=180 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `price`
@@ -1679,7 +1760,50 @@ INSERT INTO `price` (`id`, `min`, `max`) VALUES
 (176, 800, 800),
 (177, 300, 300),
 (178, 800, 800),
-(179, 1000, 1000);
+(179, 1000, 1000),
+(180, 100, 200),
+(181, NULL, NULL),
+(182, NULL, NULL),
+(183, NULL, NULL),
+(184, NULL, NULL),
+(185, NULL, NULL),
+(186, NULL, NULL),
+(187, NULL, NULL),
+(188, NULL, NULL),
+(189, NULL, NULL),
+(190, NULL, NULL),
+(191, 200, 1000),
+(192, NULL, NULL),
+(193, 200, 1000),
+(194, 200, 1000),
+(195, 200, 1000),
+(196, 200, 1000),
+(197, 200, 1000),
+(198, 200, 1000),
+(199, 200, 1000),
+(200, 200, 1000),
+(201, 400, 600),
+(202, 400, 600),
+(203, 400, 600),
+(204, 400, 600),
+(205, 400, 600),
+(206, 400, 600),
+(207, 400, 600),
+(208, 250, 250),
+(209, 300, 300),
+(210, 300, 300),
+(211, 250, 250),
+(212, 400, 600),
+(213, 400, 600),
+(214, 400, 600),
+(215, 400, 600),
+(216, 400, 600),
+(217, 250, 250),
+(218, 250, 250),
+(219, 250, 250),
+(220, 250, 250),
+(221, 250, 250),
+(222, 250, 250);
 
 -- --------------------------------------------------------
 
@@ -1702,7 +1826,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id`, `name`, `email`, `phone`, `images`, `user_id`, `attribs`) VALUES
-(1, 'Разработчик', 'support@example.com', '3330000', 'uploads/profile/icon_hRS5WQEkJlkoPs9py5vyXflyFevyb5L2.jpg', 2, NULL);
+(1, 'Разработчик', 'support@example.com', '3330000', 'uploads/profile/icon_D4K0D_wofJmAZ7lfO1A5E-J8dN7aB9kX.jpg', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -1748,8 +1872,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `created_at`, `updated_at`, `username`, `auth_key`, `email_confirm_token`, `password_hash`, `password_reset_token`, `email`, `status`) VALUES
-(1, 1431083612, 1431083612, 'guest', '9J7BVOWfh9NaQbepmTnf2trfSqr_rXdp', 'mKaLQTyOR4BgB2vVINkO49esuRb5CUiu', '$2y$13$RIDZO5scZiLBsq75/gx3/OwIbLH4XilQYxK.3A0zeI6jLAeWLiZaW', NULL, 'guest@example.com', 1),
-(2, 1432647850, 1432647850, 'admin', 'YOrNM0mdy8Q16QeV9gXSqA157CgcXA7Z', 'Beagwlg1aQhmk_ejuAAqKTruNvAZuJkV', '$2y$13$7iYJrg0vGtRhjIqCsT3bGeHDS.HPm5HxMR4GUnuKbGSkmffADQpUq', NULL, 'admin@example.ru', 1);
+(1, 1431083612, 1434463228, 'guest', '9J7BVOWfh9NaQbepmTnf2trfSqr_rXdp', 'mKaLQTyOR4BgB2vVINkO49esuRb5CUiu', '$2y$13$RIDZO5scZiLBsq75/gx3/OwIbLH4XilQYxK.3A0zeI6jLAeWLiZaW', NULL, 'guest@example.com', 1),
+(2, 1432647850, 1434463234, 'admin', 'YOrNM0mdy8Q16QeV9gXSqA157CgcXA7Z', 'Beagwlg1aQhmk_ejuAAqKTruNvAZuJkV', '$2y$13$7iYJrg0vGtRhjIqCsT3bGeHDS.HPm5HxMR4GUnuKbGSkmffADQpUq', NULL, 'admin@example.ru', 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -1807,7 +1931,7 @@ ALTER TABLE `hall_has_options`
 -- Индексы таблицы `metro`
 --
 ALTER TABLE `metro`
-  ADD PRIMARY KEY (`id`,`district_id`,`district_town_id`), ADD KEY `fk_metro_district1_idx` (`district_id`,`district_town_id`), ADD KEY `fk_metro_town1` (`district_town_id`);
+  ADD PRIMARY KEY (`id`,`district_id`), ADD KEY `fk_metro_district1_idx` (`district_id`);
 
 --
 -- Индексы таблицы `options`
@@ -1847,7 +1971,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=180;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=213;
 --
 -- AUTO_INCREMENT для таблицы `category`
 --
@@ -1857,7 +1981,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=179;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=209;
 --
 -- AUTO_INCREMENT для таблицы `district`
 --
@@ -1887,12 +2011,12 @@ ALTER TABLE `metro`
 -- AUTO_INCREMENT для таблицы `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT для таблицы `price`
 --
 ALTER TABLE `price`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=180;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=223;
 --
 -- AUTO_INCREMENT для таблицы `profile`
 --
@@ -1946,7 +2070,7 @@ ADD CONSTRAINT `fk_hall_has_options_options1` FOREIGN KEY (`options_id`) REFEREN
 -- Ограничения внешнего ключа таблицы `metro`
 --
 ALTER TABLE `metro`
-ADD CONSTRAINT `fk_metro_district1` FOREIGN KEY (`district_id`, `district_town_id`) REFERENCES `district` (`id`, `town_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `fk_metro_district1` FOREIGN KEY (`district_id`) REFERENCES `district` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `profile`

@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use common\models\Hall;
+use common\models\Price;
 use Yii;
 use yii\base\Model;
 use yii\data\Pagination;
@@ -13,6 +14,8 @@ use yii\db\Query;
  */
 class HallSearch extends Hall
 {
+    public $min=null;
+    public $max=null;
     /**
      * @inheritdoc
      */
@@ -45,6 +48,9 @@ class HallSearch extends Hall
             ->innerJoin('address', 'hall.address_id=address.id')
             ->innerJoin('category', 'hall.category_id=category.id')
             ->innerJoin('price', 'hall.price_id=price.id')
+            ->innerJoin('floor', 'hall.floor_id=floor.id')
+            ->innerJoin('hall_has_options', 'hall_has_options.hall_id=hall.id')
+            ->distinct()
             ->where($this->searchCondition($post))->orderBy($this->searchOrder($post));
     }
 
@@ -73,12 +79,7 @@ class HallSearch extends Hall
     {
         $town = $this::getRegion();
 
-        $fields = [
-            'category' => 'category.name',
-            'district' => 'address.district',
-            'metro' => 'address.metro',
-            'town' => 'address.town'
-        ];
+        $fields = $this->fieldsArray() ;
         $options = array();
         if(isset($post['Search'])){
             foreach ($post['Search'] as $key => $item){
@@ -90,6 +91,18 @@ class HallSearch extends Hall
         $options[] = "hall.status=".$this::STATUS_PUBPLIC;
 
         return implode(' AND ', $options);
+    }
+
+    private function fieldsArray(){
+        return [
+            'category' => 'category.name',
+            'district' => 'address.district',
+            'metro' => 'address.metro',
+            'town' => 'address.town',
+            'square' => 'hall.square',
+            'floor' => 'floor.name',
+            'options'=>'hall_has_options.options_id',
+        ];
     }
 
     private function searchOrder($post){
@@ -131,5 +144,28 @@ class HallSearch extends Hall
                 ->andFilterWhere(['contacts.user_id' => $user_id])
                 ->one();
         }
+    }
+
+
+    public  function getParamsPrice($post=array()){
+        return Price::find()->select('min(price.min) min ,max(price.max) max')
+            ->innerJoin('hall','price.id=hall.price_id')
+            ->innerJoin('category','category.id=hall.category_id')
+            ->innerJoin('address','address.id=hall.address_id')
+            ->andFilterWhere(['hall.status'=>$this::STATUS_PUBPLIC])
+            ->andFilterWhere(['like','address.town',$this::getRegion()->name])
+            ->andFilterWhere(['like','category.name',$post['Search']['category']])
+            ->one();
+    }
+
+    public  function getParamsSquare($post=array()){
+        return static::find()->select('min(hall.square) min ,max(hall.square) max')
+            ->innerJoin('category','category.id=hall.category_id')
+            ->innerJoin('address','address.id=hall.address_id')
+            ->andFilterWhere(['hall.status'=>$this::STATUS_PUBPLIC])
+            ->andFilterWhere(['like','address.town',$this::getRegion()->name])
+            ->andFilterWhere(['like','category.name',$post['Search']['category']])
+            ->distinct()
+            ->one();
     }
 }

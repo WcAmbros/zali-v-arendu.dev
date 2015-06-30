@@ -39,14 +39,20 @@ album={
         this.count--;
     },
     removeImage:function(obj){
-        var index=$(obj).index(),
+        var pos=$(obj).attr('data-index'),
             hall=$('.modal-hall-form').attr('data-id');
-        $.ajax({
-            url:'/ajax/removeimage/'+index,
-            data:{hall:hall}
-        }).done(function(){
-            $(obj).parent().remove();
+        $(obj).parents('.modal-hall-form-params-album-content').find('a').each(function(index){
+
+            if(pos==$(this).attr('data-index')){
+                $.ajax({
+                    url:'/ajax/removeimage/'+index,
+                    data:{hall:hall}
+                }).done(function(){
+                    $(obj).parent().remove();
+                });
+            }
         });
+
 
     },
     addImage:function(){

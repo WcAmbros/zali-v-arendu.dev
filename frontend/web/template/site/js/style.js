@@ -219,7 +219,9 @@ ymaps.ready(function  () {
 
 var button={
     close:function(el){
-        $(el).remove();
+
+        window.location.href=window.location.pathname
+
     },
     show:function(el){
         $(el).show();
